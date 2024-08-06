@@ -1,4 +1,3 @@
-import RecoilRootWrapper from "@/recoil-wrapper";
 import "@/styles/globals.css";
 import "@/styles/responsive.css";
 import "@/styles/variables.css";
@@ -6,6 +5,7 @@ import "@/styles/common.css";
 
 import type { Metadata } from "next";
 import { Noto_Sans_KR, Roboto } from "next/font/google";
+import RecoilRootWrapper from "@/RecoilWrapper";
 
 const roboto = Roboto({
   display: "swap",
