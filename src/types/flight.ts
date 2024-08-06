@@ -154,7 +154,19 @@ interface Price {
   billingCurrency?: "KRW"; // 결제 통화
 }
 
-interface SegmentsData {
+interface SegmentsData extends FlightRouteData {
+  duration: string;
+  numberOfStops: number;
+  co2Emissions?: {
+    weight: number;
+    weightUnit: "KG";
+    cabin: "ECONOMY" | "BUSINESS" | "FIRST";
+  }[];
+  blacklistedInEU?: boolean;
+}
+
+interface FlightRouteData {
+  id: string;
   departure: {
     iataCode: string;
     terminal: string;
@@ -173,13 +185,115 @@ interface SegmentsData {
   operating: {
     carrierCode: string;
   };
-  duration: string;
-  id: string;
-  numberOfStops: number;
-  co2Emissions?: {
-    weight: number;
-    weightUnit: "KG";
-    cabin: "ECONOMY" | "BUSINESS" | "FIRST";
+}
+
+/* ---------------------------------------------------------------- */
+/*                              seatMap                             */
+/* ---------------------------------------------------------------- */
+export interface SeatMap {
+  meta: {
+    count: number;
+  };
+  data: SeatMapData[];
+  dictionaries: {
+    locations: {
+      [key: string]: {
+        cityCode: string;
+        countryCode: string;
+      };
+    };
+    facilities: {
+      [key: string]: string;
+    };
+    seatCharacteristics: {
+      [key: string]: string;
+    };
+  };
+}
+
+interface SeatMapData extends FlightRouteData {
+  type: "seatmap";
+  class: string;
+  flightOfferId: string;
+  segmentId: string;
+  decks: {
+    deckType: string;
+    deckConfiguration: {
+      width: number;
+      length: number;
+      startSeatRow: number;
+      endSeatRow: number;
+      startWingsX: number;
+      endWingsX: number;
+      startWingsRow: number;
+      endWingsRow: number;
+      exitRowsX: number[];
+    };
+    facilities: {
+      code: string;
+      column: string;
+      row: string;
+      position: string;
+      coordinates: {
+        x: number;
+        y: number;
+      };
+    }[];
+    seats: {
+      cabin: "ECONOMY" | "BUSINESS" | "FIRST";
+      number: string;
+      characteristicsCodes: string[];
+      travelerPricing: [
+        {
+          travelerId: string;
+          seatAvailabilityStatus: "BLOCKED" | "AVAILABLE";
+        },
+      ];
+      coordinates: {
+        x: number;
+        y: number;
+      };
+    }[];
   }[];
-  blacklistedInEU?: boolean;
+  aircraftCabinAmenities: {
+    power: {
+      isChargeable: boolean;
+      powerType: string;
+      usbType: string;
+    };
+    seat: {
+      legSpace: number;
+      spaceUnit: string;
+      tilt: string;
+      medias: {
+        title: string;
+        href: string;
+        description: {
+          text: string;
+          lang: string;
+        };
+        mediaType: string;
+      }[];
+    };
+    wifi: {
+      isChargeable: boolean;
+      wifiCoverage: string;
+    };
+    entertainment: {
+      isChargeable: boolean;
+      entertainmentType: string;
+    }[];
+    food: {
+      isChargeable: boolean;
+      foodType: string;
+    };
+    beverage: {
+      isChargeable: boolean;
+      beverageType: string;
+    };
+  };
+  availableSeatsCounters: {
+    travelerId: string;
+    value: number;
+  }[];
 }
