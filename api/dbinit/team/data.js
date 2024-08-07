@@ -15,9 +15,52 @@ function getTime(day = 0, second = 0) {
 export const initData = async (clientId, nextSeq) => {
   return {
     // 회원
-    user: [],
+    user: [
+      {
+        _id: await nextSeq("user"),
+        email: "test@trifly.com",
+        password:
+          "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
+        name: "트리플라이",
+        phone: "01011112222",
+        type: "user",
+        loginType: "email",
+        createdAt: getTime(-100, -60 * 60 * 3),
+        updatedAt: getTime(-100, -60 * 60 * 3),
+        extra: {
+          birth: "1995-01-01",
+        },
+      },
+      {
+        _id: await nextSeq("user"),
+        email: "admin@trifly.com",
+        password:
+          "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
+        name: "관리자",
+        phone: "01011112222",
+        type: "seller",
+        loginType: "email",
+        createdAt: getTime(-100, -60 * 60 * 3),
+        updatedAt: getTime(-100, -60 * 60 * 3),
+        extra: {
+          birth: "1999-01-01",
+        },
+      },
+    ],
     // 상품
-    product: [],
+    product: [
+      {
+        _id: await nextSeq("product"),
+        seller_id: 1,
+        price: 0,
+        name: "항공권",
+        content: "",
+        quantity: 999999999999999,
+        buyQuantity: 999999999999999,
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+      },
+    ],
     // 주문
     order: [],
     // 후기
