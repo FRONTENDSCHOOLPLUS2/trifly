@@ -127,7 +127,7 @@ interface OffersData {
   type: "flight-offer";
   id: string;
   source: "GDS";
-  instantTicketingRequired: boolean;
+  instantTicketingRequired?: boolean;
   nonHomogeneous: boolean;
   oneWay?: boolean;
   paymentCardRequired?: boolean;
@@ -185,6 +185,121 @@ interface FlightRouteData {
   operating: {
     carrierCode: string;
   };
+}
+
+/* ---------------------------------------------------------------- */
+/*                           create-orders                          */
+/* ---------------------------------------------------------------- */
+export interface NewOrderRequest {
+  data: NewOrderData;
+}
+
+interface NewOrderData {
+  type: "flight-order";
+  flightOffers: OffersPriceData[];
+  travelers: [
+    {
+      id: string;
+      dateOfBirth: string;
+      name: {
+        firstName: string;
+        lastName: string;
+      };
+      gender: string;
+      contact: {
+        purpose?: string;
+        emailAddress: string;
+        phones: [
+          {
+            deviceType: string;
+            countryCallingCode: string;
+            number: string;
+          },
+        ];
+      };
+      documents: [
+        {
+          documentType: string;
+          birthPlace: string;
+          issuanceLocation: string;
+          issuanceDate: string;
+          number: string;
+          expiryDate: string;
+          issuanceCountry: string;
+          validityCountry?: string;
+          nationality: string;
+          holder: boolean;
+        },
+      ];
+    },
+  ];
+  remarks: {
+    general: [
+      {
+        subType: string;
+        text: string;
+      },
+    ];
+  };
+  ticketingAgreement: {
+    option: string;
+    delay: string;
+  };
+  contacts: [
+    {
+      addresseeName: {
+        firstName: string;
+        lastName?: string;
+      };
+      companyName: string;
+      purpose: string;
+      phones: {
+        deviceType: string;
+        countryCallingCode: string;
+        number: string;
+      }[];
+      emailAddress: string;
+      address: {
+        lines: string[];
+        postalCode: string;
+        cityName: string;
+        countryCode: string;
+      };
+    },
+  ];
+  automatedProcess?: {
+    code: string;
+    queue: {
+      number: string;
+      category: string;
+    };
+    officeId: string;
+  }[];
+}
+
+export interface NewOrderResponse {
+  data: NewOrderResponseData;
+  dictionaries: {
+    locations: {
+      [key: string]: {
+        cityCode: string;
+        countryCode: string;
+      };
+    };
+  };
+}
+
+interface NewOrderResponseData extends NewOrderData {
+  id: string;
+  queuingOfficeId: string;
+  associatedRecords: [
+    {
+      reference: string;
+      creationDate: string;
+      originSystemCode: "GDS";
+      flightOfferId: string;
+    },
+  ];
 }
 
 /* ---------------------------------------------------------------- */
