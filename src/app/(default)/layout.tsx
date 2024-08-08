@@ -7,7 +7,7 @@ export default function DefaultLayout({
 }>) {
   return (
     <>
-      <Header type="white" />
+      <Header type="default" />
       <main className="containerLayout layout">{children}</main> ;
     </>
   );

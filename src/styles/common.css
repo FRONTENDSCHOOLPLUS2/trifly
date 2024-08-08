@@ -1,7 +1,7 @@
 .containerLayout {
   padding-top: var(--header-height);
   padding-bottom: 12rem;
-  min-height: 200svh;
+  min-height: 100svh;
   box-sizing: border-box;
   position: relative;
 }
@@ -44,7 +44,6 @@
 /* 모바일 */
 @media (max-width: 1023px) {
   .containerLayout {
-    padding-top: 30px;
-    padding-bottom: 5rem;
+    padding-bottom: 5.6rem;
   }
 }
