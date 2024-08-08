@@ -1,0 +1,30 @@
+.not-found {
+  background-image: url("/error.svg");
+  background-size: cover;
+  min-height: 100vh;
+  padding-top: calc(var(--header-height) + var(--layout-header-bottom) + 5rem);
+}
+
+.error-number {
+  font-size: 14rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  padding-bottom: 2rem;
+}
+
+.error-title {
+  font-size: var(--title-extra);
+  color: var(--color-blue-100);
+  font-weight: 600;
+}
+
+.error-content {
+  font-size: var(--title-big);
+  color: var(--color-gray-100);
+  font-weight: 400;
+  padding-top: 1rem;
+}
+
+button {
+  margin-top: 5rem;
+}

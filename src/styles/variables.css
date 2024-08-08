@@ -19,10 +19,11 @@
 
   --color-white: #ffffff;
 
+  --header-height: 7.2rem;
+
   --layout-pc: 1080px;
   --layout-padding: 3rem;
-
-  --header-height: 7.2rem;
+  --layout-header-bottom: 4rem;
 
   --title-max: 2.4rem;
   --title-extra: 2rem;
