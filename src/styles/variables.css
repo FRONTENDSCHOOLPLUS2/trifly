@@ -1,8 +1,10 @@
 :root {
   --color-primary: #ff5b10;
+  --color-primary-hover: #f24d00;
   --color-primary-30: #ffeadf;
 
   --color-secondary: #0348ea;
+  --color-secondary-hover: #003ed0;
   --color-secondary-30: #dde7ff;
 
   --color-error: var(--color-primary);
