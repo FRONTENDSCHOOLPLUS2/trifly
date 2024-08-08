@@ -49,8 +49,9 @@ interface OffersSearchData extends OffersData {
         fareBasis: string;
         class: string;
         includedCheckedBags: {
-          weight: number;
-          weightUnit: "KG";
+          weight?: number;
+          weightUnit?: "KG";
+          quantity?: number;
         };
       }[];
     },
