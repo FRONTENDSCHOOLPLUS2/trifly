@@ -1,7 +1,7 @@
-import Button from "@/components/Button/Button";
-import "../styles/not-found.scss";
-import Router from "next/router";
+import "@/styles/not-found.scss";
+
 import Header from "@/components/layout/Header/Header";
+import Anchor from "@/components/Anchor/Anchor";
 
 export default function NotFound() {
   return (
@@ -19,7 +19,9 @@ export default function NotFound() {
             데이터를 불러올 수 없습니다
           </p>
 
-          <Button>HOME</Button>
+          <Anchor href={"/"} size="sm">
+            HOME
+          </Anchor>
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 .not-found {
-  background-image: url("/error.svg");
+  background-image: url("/img/error.svg");
   background-size: cover;
   min-height: 100vh;
   padding-top: calc(var(--header-height) + var(--layout-header-bottom) + 5rem);
@@ -23,16 +23,12 @@
   font-size: var(--title-big);
   color: var(--color-gray-100);
   font-weight: 400;
-  padding-top: 1rem;
-}
-
-button {
-  margin-top: 5rem;
+  padding: 2rem 0;
 }
 
 @media (max-width: 500px) {
   .not-found {
-    background-image: url("/error-mobile.svg");
+    background-image: url("/img/error-mobile.svg");
   }
 
   .error-number {
@@ -52,12 +48,11 @@ button {
     font-size: var(--title-medium);
     color: var(--color-gray-100);
     font-weight: 400;
-    padding-top: 1rem;
   }
 }
 
 @media (min-width: 500px) and (max-width: 767px) {
   .not-found {
-    background-image: url("/error-tablet.svg");
+    background-image: url("/img/error-tablet.svg");
   }
 }
