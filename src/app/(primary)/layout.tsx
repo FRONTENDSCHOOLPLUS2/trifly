@@ -8,7 +8,7 @@ export default function PrimaryLayout({
   return (
     <>
       <Header type="primary" />
-      <main className="containerLayout layout">{children}</main>
+      <main className="containerLayout primaryVer layout">{children}</main>
     </>
   );
 }

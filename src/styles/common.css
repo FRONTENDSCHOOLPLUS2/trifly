@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.containerLayout.primaryVer {
+  padding-top: calc(var(--header-height) + 12rem);
+}
+
 /* 공통 레이아웃  */
 .layout {
   max-width: var(--layout-pc);
