@@ -11,7 +11,7 @@ const Header: React.FC<HeaderProps> = ({ type = "default" }) => {
       <div className="layout header-contents">
         <div className="header-logo">
           <Link href={`/`}>
-            <img src={`logo-${type}.svg`} alt="TriFly" />
+            <img src={`img/logo-${type}.svg`} alt="TriFly" />
             <h1 className="hidden">TriFly</h1>
           </Link>
         </div>
@@ -24,19 +24,19 @@ const Header: React.FC<HeaderProps> = ({ type = "default" }) => {
         <div className="header-user">
           {/* {user ? (
             <button type="button">
-              <img src={`icon-logout-${type === "default" ? "black" : "white"}.svg`} alt="로그아웃" />
+              <img src={`img/icon-logout-${type === "default" ? "black" : "white"}.svg`} alt="로그아웃" />
               <i className="hidden">로그아웃</i>
             </button>
           ) : (
             <Link href={`/login`}>
-              <img src={`icon-login-${type === "default" ? "black" : "white"}.svg`} alt="로그인" />
+              <img src={`img/icon-login-${type === "default" ? "black" : "white"}.svg`} alt="로그인" />
               <i className="hidden">로그인</i>
             </Link>
           )} */}
 
           <Link href={`/login`}>
             <img
-              src={`icon-login-${type === "default" ? "black" : "white"}.svg`}
+              src={`img/icon-login-${type === "default" ? "black" : "white"}.svg`}
               alt="로그인"
             />
             <i className="hidden">로그인</i>

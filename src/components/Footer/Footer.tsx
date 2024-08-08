@@ -11,7 +11,7 @@ export const Footer = () => {
             <Link href={"#"}>개인정보 처리방침</Link>
             <Link href={"#"}>취소 및 환불 정책</Link>
           </div>
-          <img src="logo-gray.svg" alt="로고" />
+          <img src="img/logo-text-gray.svg" alt="로고" />
         </div>
         <div className="footer_content">
           <p>
