@@ -1,0 +1,61 @@
+.header {
+  position: fixed;
+  inset: 0;
+  bottom: auto;
+  z-index: 9999;
+  height: var(--header-height);
+  background: #fff;
+
+  .corner {
+    display: none;
+  }
+
+  &.primaryType {
+    background: var(--color-primary);
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+    }
+
+    .corner {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      width: 100%;
+      height: var(--layout-padding);
+      bottom: 0;
+      transform: translateY(100%);
+      left: 0;
+
+      & > div {
+        position: relative;
+        height: 100%;
+        aspect-ratio: 1/1;
+        background: var(--color-primary);
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          height: 100%;
+          aspect-ratio: 1/1;
+          background: #fff;
+        }
+
+        &.left::before {
+          border-radius: 100% 0 0 0;
+        }
+        &.right::before {
+          border-radius: 0 100% 0 0;
+        }
+      }
+    }
+  }
+  &.transparentType::before {
+    background: transparent;
+  }
+}

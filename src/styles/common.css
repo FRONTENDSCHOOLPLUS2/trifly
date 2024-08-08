@@ -1,9 +1,17 @@
 .containerLayout {
-  max-width: var(--layout-pc);
-  padding: 60px var(--layout-padding) 10rem var(--layout-padding); /* 기본 padding-top을 60px로 설정 */
-  margin: 0 auto;
-  min-height: 100svh;
+  padding-top: var(--header-height);
+  padding-bottom: 12rem;
+  min-height: 200svh;
   box-sizing: border-box;
+  position: relative;
+}
+
+/* 공통 레이아웃  */
+.layout {
+  max-width: var(--layout-pc);
+  margin: 0 auto;
+  padding-left: var(--layout-padding);
+  padding-right: var(--layout-padding);
 }
 
 /* 스크린 리더기 적용 위함 */
