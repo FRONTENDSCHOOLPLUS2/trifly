@@ -32,6 +32,17 @@
   color: var(--color-error);
 }
 
+/* input 간격 */
+.input-box + .input-box {
+  margin-top: 2rem;
+}
+.chk-box {
+  display: inline-block;
+}
+.chk-box + .chk-box {
+  margin-left: 2rem;
+}
+
 /* 반응형 고려 - 지금은 mobile first */
 .mo {
   display: none;
