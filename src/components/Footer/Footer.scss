@@ -11,7 +11,7 @@
 }
 
 img {
-  height: 3.4rem;
+  width: 10rem;
 }
 
 .footer_info {
@@ -28,5 +28,21 @@ img {
 
   .footer_end {
     margin-top: 3rem;
+  }
+}
+
+@media (max-width: 499px) {
+  .footer_infobox {
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .footer_info {
+      order: 1;
+    }
+
+    img {
+      width: 8rem;
+      padding-bottom: 2rem;
+    }
   }
 }
