@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ type = "default" }) => {
         <div className="header-logo">
           <Link href={`/`}>
             <img src={`logo-${type}.svg`} alt="TriFly" />
-            <i className="hidden">메인</i>
+            <h1 className="hidden">TriFly</h1>
           </Link>
         </div>
 
