@@ -1,0 +1,63 @@
+.not-found {
+  background-image: url("/error.svg");
+  background-size: cover;
+  min-height: 100vh;
+  padding-top: calc(var(--header-height) + var(--layout-header-bottom) + 5rem);
+  background-position: center;
+}
+
+.error-number {
+  font-size: 14rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  padding-bottom: 2rem;
+}
+
+.error-title {
+  font-size: var(--title-extra);
+  color: var(--color-blue-100);
+  font-weight: 600;
+}
+
+.error-content {
+  font-size: var(--title-big);
+  color: var(--color-gray-100);
+  font-weight: 400;
+  padding-top: 1rem;
+}
+
+button {
+  margin-top: 5rem;
+}
+
+@media (max-width: 500px) {
+  .not-found {
+    background-image: url("/error-mobile.svg");
+  }
+
+  .error-number {
+    font-size: 10rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    padding-bottom: 2rem;
+  }
+
+  .error-title {
+    font-size: var(--title-big);
+    color: var(--color-blue-100);
+    font-weight: 600;
+  }
+
+  .error-content {
+    font-size: var(--title-medium);
+    color: var(--color-gray-100);
+    font-weight: 400;
+    padding-top: 1rem;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 767px) {
+  .not-found {
+    background-image: url("/error-tablet.svg");
+  }
+}
