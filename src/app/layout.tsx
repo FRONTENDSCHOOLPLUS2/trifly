@@ -6,6 +6,7 @@ import "@/styles/common.css";
 import type { Metadata } from "next";
 import { Noto_Sans_KR, Roboto } from "next/font/google";
 import RecoilRootWrapper from "@/RecoilWrapper";
+import { Footer } from "@/components/Footer/Footer";
 
 const roboto = Roboto({
   display: "swap",
@@ -52,7 +53,7 @@ export default function RootLayout({
       <body className={`${roboto.variable} ${noto.variable}`}>
         <RecoilRootWrapper>
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </RecoilRootWrapper>
       </body>
     </html>
