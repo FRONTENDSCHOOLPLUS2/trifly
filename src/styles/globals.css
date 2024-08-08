@@ -141,12 +141,13 @@ a {
   text-decoration: none;
 }
 
-button,
-input[type="text"],
-input[type="date"],
-input[type="month"],
-textarea {
+button {
   all: unset;
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
 }
 
 /* input style */
@@ -182,13 +183,14 @@ input[type="tel"]:focus {
 /* checkbox style */
 input[type="checkbox"],
 input[type="radio"] {
-  cursor: pointer;
   all: unset;
+  display: inline-block;
+  cursor: pointer;
   position: relative;
-  aspect-ratio: 1 / 1;
   vertical-align: text-top;
   border-radius: 0.2em;
   width: 1em;
+  aspect-ratio: 1 / 1;
   background: var(--color-primary-30);
   margin-right: 0.5em;
   box-sizing: border-box;
