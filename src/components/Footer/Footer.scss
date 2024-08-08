@@ -1,0 +1,32 @@
+.footer {
+  background-color: var(--color-gray-10);
+  // font-family: var(--font-roboto), var(--font-noto), "sans-serif";
+  padding-top: 5.6rem;
+  padding-bottom: 8.6rem;
+}
+
+.footer_infobox {
+  display: flex;
+  justify-content: space-between;
+}
+
+img {
+  height: 3.4rem;
+}
+
+.footer_info {
+  display: flex;
+  font-size: var(--title-big);
+  color: var(--color-gray-100);
+  gap: 2rem;
+  padding-bottom: 4rem;
+}
+
+.footer_content {
+  font-size: var(--title-small);
+  color: var(--color-gray-90);
+
+  .footer_end {
+    margin-top: 3rem;
+  }
+}
