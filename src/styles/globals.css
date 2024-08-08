@@ -99,7 +99,9 @@ video {
   font-size: 1.4rem;
   vertical-align: baseline;
   box-sizing: border-box;
+  letter-spacing: -0.02em;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -206,8 +208,8 @@ input[type="radio"]:after {
   content: "";
   display: block;
   position: absolute;
-  width: calc(100% - 4px);
-  height: calc(100% - 4px);
+  width: calc(100% - 0.22em);
+  aspect-ratio: 1/1;
   background: var(--color-primary);
   opacity: 0;
   top: 50%;
