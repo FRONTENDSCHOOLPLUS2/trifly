@@ -1,0 +1,60 @@
+@mixin center-xy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anchor {
+  @include center-xy();
+
+  height: 4.4rem;
+
+  border-radius: 1.4rem;
+  box-sizing: border-box;
+  font-weight: 500;
+  font-size: var(--title-big);
+  cursor: pointer;
+
+  &.xs {
+    width: 4.5rem;
+    height: 2.6rem;
+    font-size: var(--title-small);
+    border-radius: 1rem;
+  }
+
+  &.sm {
+    width: 8rem;
+  }
+
+  &.md {
+    width: 16rem;
+  }
+
+  &.lg {
+    width: 35rem;
+  }
+
+  &.full {
+    width: 100%;
+  }
+
+  &.primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-primary-hover);
+    }
+  }
+
+  &.gray {
+    background-color: var(--color-gray-50);
+    color: var(--color-white);
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-gray-90);
+    }
+  }
+}
