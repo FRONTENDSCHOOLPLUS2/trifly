@@ -53,16 +53,44 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq("product"),
         seller_id: 1,
         price: 0,
+        shippingFees: 0,
         name: "항공권",
-        content: "",
+        content: "전세계 어디로든 여행을 떠나보세요!",
+        show: true,
+        active: true,
         quantity: 999999999999999,
-        buyQuantity: 999999999999999,
+        buyQuantity: 1,
         createdAt: getTime(-41, -60 * 60 * 2),
         updatedAt: getTime(-40, -60 * 15),
       },
     ],
     // 주문
-    order: [],
+    order: [
+      {
+        _id: await nextSeq("order"),
+        user_id: 1,
+        products: [
+          {
+            _id: 1,
+            seller_id: 1,
+            name: "항공권",
+            quantity: 1,
+            price: 0,
+          },
+        ],
+        cost: {
+          products: 0,
+          shippingFees: 0,
+          discount: {
+            products: 0,
+            shippingFees: 0,
+          },
+          total: 0,
+        },
+        createdAt: getTime(-6, -60 * 60 * 3),
+        updatedAt: getTime(-6, -60 * 60 * 3),
+      },
+    ],
     // 후기
     reply: [],
     // 장바구니
@@ -84,7 +112,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Korean Air",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "OZ",
@@ -93,7 +121,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Asiana Airlines",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "7C",
@@ -102,7 +130,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Jeju Air",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "LJ",
@@ -111,7 +139,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Jin Air",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "BX",
@@ -120,7 +148,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air Busan",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "RS",
@@ -129,7 +157,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air Seoul",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "TW",
@@ -138,7 +166,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "T'way Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "YP",
@@ -147,7 +175,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air Premia",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "CA",
@@ -156,7 +184,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air China",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "CZ",
@@ -165,7 +193,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "China Southern Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "MU",
@@ -174,7 +202,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "China Eastern Airlines",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "HU",
@@ -183,7 +211,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Hainan Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "ZH",
@@ -192,7 +220,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Shenzhen Airlines",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "MF",
@@ -201,7 +229,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Xiamen Air",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "3U",
@@ -210,7 +238,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Sichuan Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "SC",
@@ -219,7 +247,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Shandong Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "FM",
@@ -228,7 +256,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Shanghai Airlines",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "HO",
@@ -237,7 +265,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Juneyao Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "9C",
@@ -246,7 +274,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Spring Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "CX",
@@ -255,7 +283,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Cathay Pacific Airways",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "HX",
@@ -264,7 +292,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Hong Kong Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "UO",
@@ -273,7 +301,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "HK Express",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "NX",
@@ -282,7 +310,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air Macau",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "CI",
@@ -291,7 +319,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "China Airlines",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "BR",
@@ -300,7 +328,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "EVA Air",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "IT",
@@ -309,7 +337,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Tigerair Taiwan",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "JX",
@@ -318,7 +346,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "STARLUX Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "JL",
@@ -327,7 +355,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Japan Airlines",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "NH",
@@ -336,7 +364,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "All Nippon Airlines",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "GK",
@@ -345,7 +373,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Jetstar Japan",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "MM",
@@ -354,7 +382,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Peach Aviation",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "IJ",
@@ -363,7 +391,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Spring Airlines Japan",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "ZG",
@@ -372,7 +400,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "ZIPAIR",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "NQ",
@@ -381,7 +409,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air Japan",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "XM",
@@ -390,7 +418,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "J-Air",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "BC",
@@ -399,7 +427,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Skymark Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "HD",
@@ -408,7 +436,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air Do",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "6J",
@@ -417,7 +445,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Solaseed Air",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "JH",
@@ -426,7 +454,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Fuji Dream Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "7G",
@@ -435,7 +463,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "StarFlyer",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "OM",
@@ -444,7 +472,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "MIAT Mongolian Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "M0",
@@ -453,7 +481,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Aero Mongolia",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "VN",
@@ -462,7 +490,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Vietnam Airlines",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "VJ",
@@ -471,7 +499,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "VietJet Air",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "BL",
@@ -480,7 +508,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Jetstar Pacific",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "QH",
@@ -489,7 +517,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Bamboo Airways",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "QV",
@@ -498,7 +526,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Lao Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "TG",
@@ -507,7 +535,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Thai Airways International",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "FD",
@@ -516,7 +544,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Thai AirAsia",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "PG",
@@ -525,7 +553,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Bangkok Airways",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "DD",
@@ -534,7 +562,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Nok Air",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "SL",
@@ -543,7 +571,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Thai Lion Air",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "XJ",
@@ -552,7 +580,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Thai AirAsia X",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "8M",
@@ -561,7 +589,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Myanmar Airways International",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "PR",
@@ -570,7 +598,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Philippine Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "5J",
@@ -579,7 +607,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Cebu Pacific",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "BI",
@@ -588,7 +616,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Royal Brunei Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "HY",
@@ -597,7 +625,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Uzbekistan Airways",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "MH",
@@ -606,7 +634,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Malaysia Airlines",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "AK",
@@ -615,7 +643,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air Asia",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "OD",
@@ -624,7 +652,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Batik Air Malaysia",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "D7",
@@ -633,7 +661,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air Asia X",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "SQ",
@@ -642,7 +670,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Singapore Airlines",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "TR",
@@ -651,7 +679,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Scoot",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "3K",
@@ -660,7 +688,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Jetstar Asia Airways",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "GA",
@@ -669,7 +697,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Garuda Indonesia",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "JT",
@@ -678,7 +706,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Lion Air",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "AI",
@@ -687,7 +715,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air India",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "KC",
@@ -696,7 +724,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air Astana",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "UL",
@@ -705,7 +733,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Srilankan Airlines",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "SV",
@@ -714,7 +742,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Saudia Airlines",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "EY",
@@ -723,7 +751,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Etihad Airways",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "EK",
@@ -732,7 +760,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Emirates",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "QR",
@@ -741,7 +769,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Qatar Airways",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "KU",
@@ -750,7 +778,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Kuwait Airways",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "LY",
@@ -759,7 +787,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "El Al",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "ME",
@@ -768,7 +796,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Middle East Airlines",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "DL",
@@ -777,7 +805,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Delta Air Lines",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "UA",
@@ -786,7 +814,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "United Airlines",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "AA",
@@ -795,7 +823,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "American Airlines",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "AS",
@@ -804,7 +832,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Alaska Airlines",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "HA",
@@ -813,7 +841,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Hawaiian Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "WN",
@@ -822,7 +850,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Southwest Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "B6",
@@ -831,7 +859,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Jetblue Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "NK",
@@ -840,7 +868,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Spirit Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "F9",
@@ -849,7 +877,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Frontier Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "AC",
@@ -858,7 +886,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air Canada",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "WS",
@@ -867,7 +895,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "WestJet Airlines",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "AM",
@@ -876,7 +904,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Aero Mexico",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "LA",
@@ -885,7 +913,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "LATAM Airlines Chile",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "JJ",
@@ -894,7 +922,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "LATAM Airlines Brazil",
             allianceKor: "",
             allianceEng: "",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "AR",
@@ -903,7 +931,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Aerolineas Argentinas",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "LH",
@@ -912,7 +940,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Lufthansa",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "BA",
@@ -921,7 +949,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "British Airways",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "VS",
@@ -930,7 +958,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Virgin Atlantic Airways",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "U2",
@@ -939,7 +967,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "EasyJet",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "BY",
@@ -948,7 +976,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "TUI Airways",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "EI",
@@ -957,7 +985,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Aer Lingus",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "FR",
@@ -966,7 +994,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "RyanAir",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "AF",
@@ -975,7 +1003,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air France",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "AZ",
@@ -984,7 +1012,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "ITA Airways",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "KL",
@@ -993,7 +1021,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "KLM Royal Dutch Airlines",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "SU",
@@ -1002,7 +1030,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Aeroflot",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "S7",
@@ -1011,7 +1039,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "S7 Airlines",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "IB",
@@ -1020,7 +1048,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Iberia Airlines",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "UX",
@@ -1029,7 +1057,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air Europa",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "OK",
@@ -1038,7 +1066,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Czech Airlines",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "RO",
@@ -1047,7 +1075,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "TAROM",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "SN",
@@ -1056,7 +1084,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Brussels Airlines",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "LZ",
@@ -1065,7 +1093,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Swiss International Airlines",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "SK",
@@ -1074,7 +1102,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Scandinavian Airlines",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "OS",
@@ -1083,7 +1111,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Austrian Airlines",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "OU",
@@ -1092,7 +1120,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Croatia Airlines",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "TK",
@@ -1101,7 +1129,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Turkish Airlines",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "BT",
@@ -1110,7 +1138,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air Baltic",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "W6",
@@ -1119,7 +1147,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Wizz Air Hungary",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "LO",
@@ -1128,7 +1156,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "LOT Polish Airlines",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "TP",
@@ -1137,7 +1165,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "TAP Air Portugal",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "AY",
@@ -1146,7 +1174,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Finnair",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "QF",
@@ -1155,7 +1183,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Qantas Airways",
             allianceKor: "원월드",
             allianceEng: "oneworld",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "JQ",
@@ -1164,7 +1192,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Jetstar",
             allianceKor: "",
             allianceEng: "",
-            sort: "LCC",
+            carrierType: "LCC",
           },
           {
             code: "NZ",
@@ -1173,7 +1201,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Air New Zealand",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "ET",
@@ -1182,7 +1210,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Ethiopian",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "KQ",
@@ -1191,7 +1219,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Kenya Airways",
             allianceKor: "스카이팀",
             allianceEng: "Skyteam",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "SA",
@@ -1200,7 +1228,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "South African Airways",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
           {
             code: "MS",
@@ -1209,7 +1237,7 @@ export const initData = async (clientId, nextSeq) => {
             nameEng: "Egypt Air",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
-            sort: "FSC",
+            carrierType: "FSC",
           },
         ],
       },
