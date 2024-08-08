@@ -132,3 +132,6 @@ dist
 
 # image files
 api/dbinit/team/uploadFiles/*
+
+# DS Store
+.DS_Store
