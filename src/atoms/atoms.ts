@@ -8,6 +8,8 @@ interface ModalProps {
   title?: string;
   content?: string;
   buttonNum?: 0 | 1 | 2;
+  handleConfirm?: () => void;
+  handleCancel?: () => void;
 }
 
 export const modalState = atom<ModalProps>({
@@ -18,5 +20,7 @@ export const modalState = atom<ModalProps>({
     title: "",
     content: "",
     buttonNum: 1,
+    handleConfirm: () => {},
+    handleCancel: () => {},
   },
 });
