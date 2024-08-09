@@ -1,18 +1,15 @@
 "use client";
+
 import { RecoilRoot } from "recoil";
-// import Modal from "./modal/modal";
+import Modal from "./components/Modal/Modal";
 
-interface RecoilRootWrapperProps {
-  children: React.ReactNode;
-}
-
-export default function RecoilRootWrapper({
-  children,
-}: RecoilRootWrapperProps) {
+const RecoilRootWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <RecoilRoot>
       {children}
-      {/* <Modal /> */}
+      <Modal />
     </RecoilRoot>
   );
-}
+};
+
+export default RecoilRootWrapper;
