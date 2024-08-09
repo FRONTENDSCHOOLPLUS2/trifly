@@ -3,8 +3,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import github from "next-auth/providers/github";
 import google from "next-auth/providers/google";
 
-const SERVER = process.env.MARKET_API_SERVER;
-const CLIENT_ID = process.env.MARKET_API_CLIENT_ID as string;
+const SERVER = process.env.NEXT_PUBLIC_MARKET_API_SERVER;
+const CLIENT_ID = process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID as string;
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
