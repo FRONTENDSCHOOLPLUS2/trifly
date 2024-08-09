@@ -6,7 +6,7 @@ import "@/styles/common.css";
 import type { Metadata } from "next";
 import { Noto_Sans_KR, Roboto } from "next/font/google";
 import RecoilRootWrapper from "@/RecoilWrapper";
-import { Footer } from "@/components/Footer/Footer";
+import { Footer } from "@/components/layout/Footer/Footer";
 
 const roboto = Roboto({
   display: "swap",
