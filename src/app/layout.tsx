@@ -1,12 +1,12 @@
+import "@/styles/common.css";
 import "@/styles/globals.css";
 import "@/styles/responsive.css";
 import "@/styles/variables.css";
-import "@/styles/common.css";
 
+import { Footer } from "@/components/layout/Footer/Footer";
+import RecoilRootWrapper from "@/RecoilWrapper";
 import type { Metadata } from "next";
 import { Noto_Sans_KR, Roboto } from "next/font/google";
-import RecoilRootWrapper from "@/RecoilWrapper";
-import { Footer } from "@/components/layout/Footer/Footer";
 
 const roboto = Roboto({
   display: "swap",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
