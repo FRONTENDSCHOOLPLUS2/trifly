@@ -1,0 +1,20 @@
+.main {
+  .search-container {
+    width: 100vw;
+    height: 32rem;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url("/img/img-airplane-main.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+@media (max-width: 1023px) {
+  .main {
+    .search-container {
+      height: 36rem;
+    }
+  }
+}
