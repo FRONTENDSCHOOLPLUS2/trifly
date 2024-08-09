@@ -93,6 +93,14 @@
     }
   }
 
+  &.transparentType {
+    background: transparent;
+
+    .header-nav {
+      color: var(--color-white);
+    }
+  }
+
   &.transparentType::before {
     background: transparent;
   }
