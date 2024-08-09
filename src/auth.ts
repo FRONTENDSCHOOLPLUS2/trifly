@@ -1,10 +1,11 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import github from "next-auth/providers/github";
+import kakao from "next-auth/providers/kakao";
+import naver from "next-auth/providers/naver";
 import google from "next-auth/providers/google";
 
-const SERVER = process.env.MARKET_API_SERVER;
-const CLIENT_ID = process.env.MARKET_API_CLIENT_ID as string;
+const SERVER = process.env.NEXT_PUBLIC_MARKET_API_SERVER;
+const CLIENT_ID = process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID as string;
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -36,15 +37,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
 
-    // github({
-    //   clientId: process.env.GITHUB_CLIENT_ID,
-    //   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    // }),
+    kakao({
+      clientId: process.env.KAKAO_CLIENT_ID,
+      clientSecret: process.env.KAKAO_CLIENT_SECRET,
+    }),
 
-    // google({
-    //   clientId: process.env.GOOGLE_CLIENT_ID,
-    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    // }),
+    naver({
+      clientId: process.env.NAVER_CLIENT_ID,
+      clientSecret: process.env.NAVER_CLIENT_SECRET,
+    }),
+
+    google({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
   ],
 
   session: {},
