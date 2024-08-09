@@ -1,0 +1,87 @@
+.progress {
+  ul {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      top: 1rem;
+      left: 0;
+      background: var(--color-gray-90);
+    }
+
+    li {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      font-size: var(--title-medium);
+      color: var(--color-gray-90);
+      min-width: 0;
+      flex-basis: 50%;
+      overflow: visible;
+
+      &:first-child {
+        align-items: flex-start;
+        &::after {
+          transform: translateX(-100%);
+        }
+      }
+      &:last-child {
+        align-items: flex-end;
+        &::after {
+          width: 200%;
+          transform: translateX(-50%);
+        }
+      }
+      &:has(~ .act)::after {
+        transform: translateX(-50%);
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        position: relative;
+        width: 2rem;
+        aspect-ratio: 1/1;
+        background: currentColor url(/img/icon-check-gray.svg) no-repeat center /
+          70% 40%;
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 1rem;
+        left: 0;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        z-index: 0;
+        opacity: 0;
+      }
+
+      // 활성화된 단계
+      &.act {
+        color: var(--color-primary);
+
+        &::before {
+          background-image: url(/img/icon-check.svg);
+        }
+
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
