@@ -28,9 +28,17 @@ const Banner = ({ user }: { user: boolean }) => {
   };
 
   return (
-    <section className="banner full-width" onClick={handleClick}>
-      <h3 className="hidden">배너-포토티켓 꾸미기</h3>
-      <div className="banner-background"></div>
+    <section className="banner" onClick={handleClick}>
+      <h3 className="hidden">포토티켓 바로가기</h3>
+
+      <img src="/banner-stars.svg" alt="" />
+      <img src="/banner-ticket.svg" alt="" />
+      <img src="/banner-tag.svg" alt="" />
+
+      <p>나만의</p>
+      <p>티켓을 만들어보세요!</p>
+
+      <div className="banner-background full-width"></div>
     </section>
   );
 };

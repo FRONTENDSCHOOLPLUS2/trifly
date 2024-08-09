@@ -1,17 +1,19 @@
+import { auth } from "@/auth";
+import Banner from "./Banner";
 import "./main.scss";
 
-const Home = () => {
+const Home = async () => {
+  const session = await auth();
+  const user = session?.user ? true : false;
+
   return (
     <div className="main">
       <h2 className="hidden">메인</h2>
-      <section className="search-container">
-        <h3 className="hidden">검색창</h3>
+      <section className="search-container full-width">
+        <h3 className="hidden">항공권 검색</h3>
       </section>
 
-      <section className="banner">
-        <h3 className="hidden">배너-포토티켓 꾸미기</h3>
-        배너
-      </section>
+      <Banner user={user} />
 
       <section className="notices">
         <h3 className="hidden">공지사항</h3>
