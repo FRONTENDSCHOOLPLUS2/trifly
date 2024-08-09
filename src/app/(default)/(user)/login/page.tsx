@@ -20,8 +20,8 @@ const Login = async () => {
           <span>SNS</span> <span className="hidden">로그인</span>
         </h3>
         <div className="sns-box">
-          <button type="button" className="github">
-            <h4 className="hidden">깃헙으로 로그인</h4>
+          <button type="button" className="kakao">
+            <h4 className="hidden">카카오로 로그인</h4>
           </button>
           <button type="button" className="naver">
             <h4 className="hidden">네이버로 로그인</h4>
