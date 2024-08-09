@@ -20,7 +20,7 @@ const LoginForm = () => {
   // https://bandal.dev/React/react-hook-form-with-nextjs-server-actions
 
   return (
-    <form className="form" action={signInWithCredentials}>
+    <>
       <div className="input-box">
         <input type="text" placeholder="이메일" id="email" name="email" />
       </div>
@@ -52,7 +52,7 @@ const LoginForm = () => {
           회원가입
         </Anchor>
       </div>
-    </form>
+    </>
   );
 };
 
