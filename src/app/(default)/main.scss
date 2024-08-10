@@ -8,7 +8,7 @@
   }
 
   .search-container {
-    height: 32rem;
+    padding: 8rem 0;
 
     background-image: url("/img/img-airplane-main.jpg");
     background-position: center;
@@ -34,7 +34,7 @@
 @media (max-width: 1023px) {
   .main {
     .search-container {
-      height: 36rem;
+      padding: 3rem 0;
       margin-bottom: 5.6rem;
     }
 
