@@ -8,7 +8,11 @@ const Progress = ({
   status: number;
 }) => {
   const li = textArr.map((item, idx) => {
-    return <li className={idx + 1 <= status ? "act" : ""}>{item}</li>;
+    return (
+      <li key={idx} className={idx + 1 <= status ? "act" : ""}>
+        {item}
+      </li>
+    );
   });
   return (
     <div className="progress">
