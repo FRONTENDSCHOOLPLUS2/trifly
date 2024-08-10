@@ -1,6 +1,5 @@
 "use client";
 
-import { CodeState } from "@/types";
 import { atom } from "recoil";
 
 interface ModalProps {
@@ -24,8 +23,4 @@ export const modalState = atom<ModalProps>({
     handleConfirm: () => {},
     handleCancel: () => {},
   },
-});
-
-export const codeState = atom<CodeState>({
-  key: "codes",
 });
