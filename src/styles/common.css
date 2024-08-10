@@ -17,6 +17,10 @@
   padding-left: var(--layout-padding);
   padding-right: var(--layout-padding);
 }
+.title {
+  font-size: var(--title-max);
+  font-weight: bold;
+}
 
 /* 스크린 리더기 적용 위함 */
 .hidden {
