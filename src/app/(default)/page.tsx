@@ -22,10 +22,24 @@ const Home = async () => {
           <h3>공지사항</h3>
           <Link href="/notice">
             <span>더보기</span>
-            <img src="" alt="더보기" />
+            <img src="img/icon-arrow.svg" alt="더보기" />
           </Link>
         </div>
-        공지사항
+
+        <div>
+          <Link href="/notices/1">
+            <span>HOT</span>
+            <span>
+              최초 발권 후 24시 이내 환불 처리 방침 변경 항공(국제선) 안내
+            </span>
+            <span className="pc">2024.05.01</span>
+          </Link>
+          <Link href="/notices/2">
+            <span>HOT</span>
+            <span>2024년 8월 유류할증 안내</span>
+            <span className="pc">2024.07.12</span>
+          </Link>
+        </div>
       </section>
     </div>
   );
