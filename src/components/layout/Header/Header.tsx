@@ -1,11 +1,15 @@
 import Link from "next/link";
 import "./Header.scss";
+import { auth } from "@/auth";
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: "default" | "primary" | "transparent";
 }
 
-const Header: React.FC<HeaderProps> = ({ type = "default" }) => {
+const Header: React.FC<HeaderProps> = async ({ type = "default" }) => {
+  const session = await auth();
+  const user = session?.user ? true : false;
+
   return (
     <header className={`header ${type}Type`}>
       <div className="layout header-contents">
@@ -22,25 +26,31 @@ const Header: React.FC<HeaderProps> = ({ type = "default" }) => {
         </nav>
 
         <div className="header-user">
-          {/* {user ? (
+          {user ? (
             <button type="button">
-              <img src={`img/icon-logout-${type === "default" ? "black" : "white"}.svg`} alt="로그아웃" />
+              <img
+                src={`img/icon-logout-${type === "default" ? "black" : "white"}.svg`}
+                alt="로그아웃"
+              />
               <i className="hidden">로그아웃</i>
             </button>
           ) : (
             <Link href={`/login`}>
-              <img src={`img/icon-login-${type === "default" ? "black" : "white"}.svg`} alt="로그인" />
+              <img
+                src={`img/icon-login-${type === "default" ? "black" : "white"}.svg`}
+                alt="로그인"
+              />
               <i className="hidden">로그인</i>
             </Link>
-          )} */}
+          )}
 
-          <Link href={`/login`}>
+          {/* <Link href={`/login`}>
             <img
               src={`img/icon-login-${type === "default" ? "black" : "white"}.svg`}
               alt="로그인"
             />
             <i className="hidden">로그인</i>
-          </Link>
+          </Link> */}
         </div>
 
         <div className="corner">
