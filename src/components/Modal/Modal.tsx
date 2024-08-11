@@ -42,7 +42,7 @@ const Modal = () => {
           <div className="modal-window">
             {closeButton && (
               <button className="modal-close" onClick={handleClose}>
-                <img src="img/icon-close-black.svg" alt="닫기" />
+                <img src="/img/icon-close-black.svg" alt="닫기" />
                 <i className="hidden">모달 닫기</i>
               </button>
             )}

@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = async ({ type = "default" }) => {
       <div className="layout header-contents">
         <div className="header-logo">
           <Link href={`/`}>
-            <img src={`img/logo-${type}.svg`} alt="TriFly" />
+            <img src={`/img/logo-${type}.svg`} alt="TriFly" />
             <h1 className="hidden">TriFly</h1>
           </Link>
         </div>
@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = async ({ type = "default" }) => {
           {user ? (
             <button type="button">
               <img
-                src={`img/icon-logout-${type === "default" ? "black" : "white"}.svg`}
+                src={`/img/icon-logout-${type === "default" ? "black" : "white"}.svg`}
                 alt="로그아웃"
               />
               <i className="hidden">로그아웃</i>
@@ -37,7 +37,7 @@ const Header: React.FC<HeaderProps> = async ({ type = "default" }) => {
           ) : (
             <Link href={`/login`}>
               <img
-                src={`img/icon-login-${type === "default" ? "black" : "white"}.svg`}
+                src={`/img/icon-login-${type === "default" ? "black" : "white"}.svg`}
                 alt="로그인"
               />
               <i className="hidden">로그인</i>
@@ -46,7 +46,7 @@ const Header: React.FC<HeaderProps> = async ({ type = "default" }) => {
 
           {/* <Link href={`/login`}>
             <img
-              src={`img/icon-login-${type === "default" ? "black" : "white"}.svg`}
+              src={`/img/icon-login-${type === "default" ? "black" : "white"}.svg`}
               alt="로그인"
             />
             <i className="hidden">로그인</i>

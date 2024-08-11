@@ -34,30 +34,30 @@ const Banner = ({ user }: { user: boolean }) => {
         <div className="banner-images">
           <img
             className="pc banner-image-star1-pc"
-            src="img/banner-star1-pc.svg"
+            src="/img/banner-star1-pc.svg"
             alt=""
           />
           <img
             className="mo banner-image-star1-mo"
-            src="img/banner-star1-mobile.svg"
+            src="/img/banner-star1-mobile.svg"
             alt=""
           />
           <img
             className="banner-image-star2"
-            src="img/banner-star2.svg"
+            src="/img/banner-star2.svg"
             alt=""
           />
           <img
             className="pc banner-image-ticket-pc"
-            src="img/banner-ticket-pc.svg"
+            src="/img/banner-ticket-pc.svg"
             alt=""
           />
           <img
             className="mo banner-image-ticket-mo"
-            src="img/banner-ticket-mobile.svg"
+            src="/img/banner-ticket-mobile.svg"
             alt=""
           />
-          <img className="banner-image-tag" src="img/banner-tag.svg" alt="" />
+          <img className="banner-image-tag" src="/img/banner-tag.svg" alt="" />
         </div>
 
         <div className="banner-text">
