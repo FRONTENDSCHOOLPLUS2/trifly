@@ -11,6 +11,7 @@ const Home = async () => {
       <h2 className="hidden">메인</h2>
       <section className="search-container full-width">
         <h3 className="hidden">항공권 검색</h3>
+        <div className="search-box"></div>
       </section>
 
       <Banner user={user} />
