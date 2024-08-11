@@ -1,0 +1,9 @@
+.accordion {
+  .accordion-body {
+    display: none;
+
+    &.act {
+      display: block;
+    }
+  }
+}
