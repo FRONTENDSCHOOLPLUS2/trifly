@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import Banner from "./Banner";
 import "./main.scss";
+import Link from "next/link";
 
 const Home = async () => {
   const session = await auth();
@@ -17,8 +18,28 @@ const Home = async () => {
       <Banner user={user} />
 
       <section className="notices">
-        <h3 className="hidden">공지사항</h3>
-        공지사항
+        <div className="notice-menu">
+          <h3>공지사항</h3>
+          <Link href="/notice">
+            <span>더보기</span>
+            <img src="img/icon-arrow.svg" alt="더보기" />
+          </Link>
+        </div>
+
+        <div className="notice-items">
+          <div className="notice-item">
+            <span className="badge primary">HOT</span>
+            <Link href="/notices/1">
+              최초 발권 후 24시 이내 환불 처리 방침 변경 항공(국제선) 안내
+            </Link>
+            <p className="pc">2024.05.01</p>
+          </div>
+          <div className="notice-item">
+            <span className="badge primary">HOT</span>
+            <Link href="/notices/2">2024년 8월 유류할증 안내</Link>
+            <p className="pc">2024.07.12</p>
+          </div>
+        </div>
       </section>
     </div>
   );
