@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import Banner from "./Banner";
 import "./main.scss";
+import Link from "next/link";
 
 const Home = async () => {
   const session = await auth();
@@ -17,7 +18,13 @@ const Home = async () => {
       <Banner user={user} />
 
       <section className="notices">
-        <h3 className="hidden">공지사항</h3>
+        <div className="notice-menu">
+          <h3>공지사항</h3>
+          <Link href="/notice">
+            <span>더보기</span>
+            <img src="" alt="더보기" />
+          </Link>
+        </div>
         공지사항
       </section>
     </div>
