@@ -1,6 +1,5 @@
 "use client";
 
-import Badge from "../Badge/Badge";
 import "./RecentSearch.scss";
 import RecentSearchResult from "./RecentSearchResult";
 
@@ -51,10 +50,7 @@ const RecentSearch = () => {
                 <h3>최근 검색</h3>
                 <button>전체 삭제</button>
               </div>
-              <div className="recent-search-results">
-                <div className="mo recent-search-blur"></div>
-                {result}
-              </div>
+              <div className="recent-search-results">{result}</div>
             </div>
           </div>
         </section>
