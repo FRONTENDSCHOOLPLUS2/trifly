@@ -2,6 +2,7 @@ import Badge from "../Badge/Badge";
 import "./RecentSearchResult.scss";
 
 interface RecentSearchData {
+  id: number;
   oneway: boolean;
   dep: string;
   arr: string;
@@ -15,9 +16,14 @@ const RecentSearchResult = ({ data }: { data: RecentSearchData }) => {
     console.log("검색!");
   };
 
+  const handleDelete = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    e.stopPropagation();
+    console.log("삭제!");
+  };
+
   return (
     <div className="recent-search-result" onClick={handleClick}>
-      <button className="delete-result" type="button">
+      <button className="delete-result" type="button" onClick={handleDelete}>
         <img src="/img/icon-close-black.svg" alt="닫기" />
         <i className="hidden">닫기</i>
       </button>
