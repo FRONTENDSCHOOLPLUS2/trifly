@@ -73,19 +73,6 @@
         gap: 4.5rem;
         margin-bottom: 2rem;
 
-        .badge {
-          font-size: var(--title-small);
-          font-weight: 500;
-          padding: 0.3rem 1rem;
-          border-radius: 0.8rem;
-          box-sizing: border-box;
-
-          &.primary {
-            background-color: var(--color-primary-30);
-            color: var(--color-primary);
-          }
-        }
-
         & a {
           flex-grow: 1;
           font-size: var(--title-large);
