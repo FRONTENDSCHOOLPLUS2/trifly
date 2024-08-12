@@ -3,7 +3,7 @@ import React from "react";
 import AccordionContext from "./AccordionContext";
 
 /**
- * eventKey: 1부터 시작
+ * * eventKey: 1부터 시작
  */
 const AccordionItem = ({
   eventKey,

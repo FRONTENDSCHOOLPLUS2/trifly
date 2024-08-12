@@ -7,8 +7,8 @@ type AccordionContextType = {
 };
 
 const AccordionContext = createContext<AccordionContextType>({
-  eventKey: 0,
-  activeKey: 0,
+  eventKey: 1,
+  activeKey: 1,
   setActiveKey: () => {},
 });
 
