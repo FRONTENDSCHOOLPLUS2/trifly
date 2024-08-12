@@ -6,7 +6,7 @@ import AccordionItem from "@/components/Accordion/AccordionItem";
 import Submit from "@/components/Submit/Submit";
 import { ChangeEvent, Dispatch, FormEvent, useRef, useState } from "react";
 
-export interface SignupStepProp {
+interface SignupStepProp {
   setStep: Dispatch<React.SetStateAction<number>>;
 }
 
@@ -49,9 +49,9 @@ const Agree = ({ setStep }: SignupStepProp) => {
   };
 
   return (
-    <section>
-      <h3>
-        약관동의
+    <section className="agree">
+      <div className="title-box">
+        <h3>약관동의</h3>
         <div className="chk-box">
           <input
             type="checkbox"
@@ -61,7 +61,7 @@ const Agree = ({ setStep }: SignupStepProp) => {
           />
           <label htmlFor="allChk">모두 동의</label>
         </div>
-      </h3>
+      </div>
 
       <form onSubmit={(e) => handleSubmit(e)}>
         <Accordion>
@@ -110,7 +110,7 @@ const Agree = ({ setStep }: SignupStepProp) => {
         </div>
 
         <div className="btn-box">
-          <Submit>다음 단계</Submit>
+          <Submit size="full">다음</Submit>
         </div>
       </form>
     </section>
