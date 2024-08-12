@@ -31,38 +31,11 @@ const Banner = ({ user }: { user: boolean }) => {
     <section className="banner full-width" onClick={handleClick}>
       <h3 className="hidden">포토티켓 바로가기</h3>
       <div className="banner-container">
-        <div className="banner-images">
-          <img
-            className="pc banner-image-star1-pc"
-            src="/img/banner-star1-pc.svg"
-            alt=""
-          />
-          <img
-            className="mo banner-image-star1-mo"
-            src="/img/banner-star1-mobile.svg"
-            alt=""
-          />
-          <img
-            className="banner-image-star2"
-            src="/img/banner-star2.svg"
-            alt=""
-          />
-          <img
-            className="pc banner-image-ticket-pc"
-            src="/img/banner-ticket-pc.svg"
-            alt=""
-          />
-          <img
-            className="mo banner-image-ticket-mo"
-            src="/img/banner-ticket-mobile.svg"
-            alt=""
-          />
-          <img className="banner-image-tag" src="/img/banner-tag.svg" alt="" />
-        </div>
-
-        <div className="banner-text">
-          <p className="banner-contents">나만의</p>
-          <p className="banner-contents">티켓을 만들어보세요!</p>
+        <div className="banner-contents">
+          <div className="banner-text">
+            <p className="banner-message">나만의</p>
+            <p className="banner-message">티켓을 만들어보세요!</p>
+          </div>
         </div>
       </div>
     </section>
