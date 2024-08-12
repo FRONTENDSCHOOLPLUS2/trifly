@@ -2,11 +2,26 @@
 
 import Badge from "../Badge/Badge";
 import "./RecentSearch.scss";
+import RecentSearchResult from "./RecentSearchResult";
 
 // 로컬 스토리지 접근 필요
 const RecentSearch = () => {
-  const handleClick = () => {
-    console.log("검색!");
+  // 임시
+  const data1 = {
+    oneway: false,
+    dep: "서울/인천 (ICN)",
+    arr: "오사카/간사이 (KIX)",
+    schedule: "2024년 8월 20일 - 2024년 8월 23일",
+    members: "성인 2",
+    cabin: "일반석",
+  };
+  const data2 = {
+    oneway: true,
+    dep: "서울/인천 (ICN)",
+    arr: "도쿄/나리타 (NRT)",
+    schedule: "2024년 8월 13일",
+    members: "성인 1",
+    cabin: "일반석",
   };
 
   return (
@@ -19,26 +34,9 @@ const RecentSearch = () => {
               <button>전체 삭제</button>
             </div>
             <div className="recent-search-results">
-              <div className="recent-search-result" onClick={handleClick}>
-                <button className="delete-result" type="button">
-                  <img src="/img/icon-close-black.svg" alt="닫기" />
-                  <i className="hidden">닫기</i>
-                </button>
-                {/* 왕복 or 편도 여부 확인 */}
-                <Badge type="secondary">왕복</Badge>
-                <div className="route">
-                  <p>서울/인천(ICN)</p>
-                  {/* 왕복 or 편도 여부 확인 */}
-                  <img src="/img/icon-roundtrip-gray.svg" alt="왕복" />
-                  <p>다낭(DAD)</p>
-                </div>
-                <div className="schedule">
-                  <p>5월 21일 - 5월 26일</p>
-                  {/* 왕복 or 편도 여부 확인 */}
-                </div>
-              </div>
-              <div className="recent-search-result">결과 2</div>
-              <div className="recent-search-result">결과 3</div>
+              <RecentSearchResult data={data1} />
+              <RecentSearchResult data={data2} />
+              <RecentSearchResult data={data1} />
             </div>
           </div>
         </div>
