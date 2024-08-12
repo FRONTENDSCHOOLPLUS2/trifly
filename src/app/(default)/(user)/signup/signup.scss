@@ -1,0 +1,35 @@
+.signup {
+  .title {
+    text-align: center;
+  }
+
+  section {
+    margin-top: 4rem;
+
+    h3 {
+      font-size: var(--title-extra);
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      border-bottom: 1px solid var(--color-gray-50);
+      padding: var(--title-small) 0;
+
+      .chk-box,
+      .chk-box label {
+        font-size: var(--title-big);
+      }
+    }
+  }
+
+  .btn-box {
+    margin-top: 7rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .error-box {
+    margin-top: 2rem;
+  }
+}
