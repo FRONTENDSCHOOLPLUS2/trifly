@@ -1,12 +1,12 @@
-import "@/styles/common.css";
-import "@/styles/globals.css";
-import "@/styles/responsive.css";
-import "@/styles/variables.css";
+import "@/styles/globals.scss";
+import "@/styles/variables.scss";
+import "@/styles/responsive.scss";
+import "@/styles/common.scss";
 
-import { Footer } from "@/components/layout/Footer/Footer";
-import RecoilRootWrapper from "@/RecoilWrapper";
 import type { Metadata } from "next";
-import { Noto_Sans_KR, Roboto, Do_Hyeon } from "next/font/google";
+import { Noto_Sans_KR, Roboto } from "next/font/google";
+import RecoilRootWrapper from "@/RecoilWrapper";
+import { Footer } from "@/components/layout/Footer/Footer";
 
 const roboto = Roboto({
   display: "swap",
@@ -20,13 +20,6 @@ const noto = Noto_Sans_KR({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-noto",
-});
-
-const dohyeon = Do_Hyeon({
-  display: "swap",
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-dohyeon",
 });
 
 export const metadata: Metadata = {
@@ -50,16 +43,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="ko">
-      <body
-        className={`${roboto.variable} ${noto.variable} ${dohyeon.variable}`}
-      >
+      <body className={`${roboto.variable} ${noto.variable}`}>
         <RecoilRootWrapper>
           {children}
           <Footer />

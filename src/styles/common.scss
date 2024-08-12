@@ -1,0 +1,111 @@
+.containerLayout {
+  padding-top: var(--header-height);
+  padding-bottom: 12rem;
+  min-height: 100svh;
+  box-sizing: border-box;
+  position: relative;
+
+  &.primaryVer {
+    padding-top: calc(var(--header-height) + 12rem);
+  }
+}
+
+/* 공통 레이아웃  */
+.layout {
+  max-width: var(--layout-pc);
+  margin: 0 auto;
+  padding-left: var(--layout-padding);
+  padding-right: var(--layout-padding);
+}
+.title {
+  font-size: var(--title-max);
+  font-weight: bold;
+}
+
+/* 스크린 리더기 적용 위함 */
+.hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+}
+
+/* form 에러 메시지 */
+.errorMsg {
+  color: var(--color-error);
+}
+
+/* 정보 입력 input, label */
+.input-form {
+  fieldset + fieldset {
+    margin-top: 3rem;
+  }
+  label {
+    position: relative;
+    padding-left: var(--title-medium);
+    margin-bottom: clamp(0.7rem, 0.65vw, 1rem);
+    display: block;
+    font-size: var(--title-big);
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 0.4rem;
+      aspect-ratio: 1/1;
+      background: var(--color-primary);
+      border-radius: 50%;
+    }
+
+    &.non-required::before {
+      background: var(--color-gray-90);
+    }
+
+    .errorMsg {
+      display: inline-block;
+      margin-left: var(--title-min);
+      font-size: var(--title-medium);
+    }
+  }
+
+  .input-phone {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(--color-gray-90);
+  }
+}
+
+/* input 간격 */
+.input-box {
+  & + .input-box {
+    margin-top: 2rem;
+  }
+}
+.chk-box {
+  display: inline-block;
+
+  & + .chk-box {
+    margin-left: 2rem;
+  }
+}
+
+/* 반응형 고려 - 지금은 mobile first */
+.mo {
+  display: none;
+}
+
+.pc {
+  display: block;
+}
+
+/* 모바일 */
+@media (max-width: 1023px) {
+  .containerLayout {
+    padding-bottom: 5.6rem;
+  }
+}

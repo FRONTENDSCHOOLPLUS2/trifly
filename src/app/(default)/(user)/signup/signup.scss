@@ -1,0 +1,75 @@
+.signup {
+  .title {
+    text-align: center;
+  }
+
+  section {
+    margin-top: 4rem;
+
+    .title-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      border-bottom: 1px solid var(--color-gray-50);
+      padding: var(--title-small) 0;
+      font-weight: bold;
+
+      h3 {
+        font-size: var(--title-extra);
+      }
+
+      .chk-box,
+      .chk-box label {
+        font-size: var(--title-big);
+      }
+    }
+  }
+
+  .btn-box {
+    margin-top: 7rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .error-box {
+    margin-top: 2rem;
+  }
+
+  // 가입완료
+  .complete {
+    .img-box {
+      width: calc(var(--title-small) * 10);
+      aspect-ratio: 1/1;
+      text-align: center;
+      margin: 0 auto 3rem;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .text-box {
+      background: var(--color-gray-10);
+      border: 1px solid var(--color-gray-50);
+      border-radius: var(--title-min);
+      padding: 2rem;
+      text-align: center;
+
+      strong {
+        color: var(--color-primary);
+        font-weight: 600;
+      }
+      span {
+        font-weight: bold;
+        letter-spacing: normal;
+      }
+    }
+
+    .link-box {
+      margin-top: calc(var(--layout-padding) + var(--layout-header-bottom));
+      display: flex;
+      gap: var(--title-min);
+    }
+  }
+}
