@@ -4,7 +4,7 @@ import "@/styles/responsive.scss";
 import "@/styles/common.scss";
 
 import type { Metadata } from "next";
-import { Noto_Sans_KR, Roboto } from "next/font/google";
+import { Noto_Sans_KR, Roboto, Do_Hyeon } from "next/font/google";
 import RecoilRootWrapper from "@/RecoilWrapper";
 import { Footer } from "@/components/layout/Footer/Footer";
 
@@ -20,6 +20,13 @@ const noto = Noto_Sans_KR({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-noto",
+});
+
+const dohyeon = Do_Hyeon({
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-dohyeon",
 });
 
 export const metadata: Metadata = {
@@ -50,7 +57,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${roboto.variable} ${noto.variable}`}>
+      <body
+        className={`${roboto.variable} ${noto.variable} ${dohyeon.variable}`}
+      >
         <RecoilRootWrapper>
           {children}
           <Footer />
