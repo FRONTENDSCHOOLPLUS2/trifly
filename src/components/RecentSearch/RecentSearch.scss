@@ -45,7 +45,7 @@
         flex-grow: 1;
         margin-top: 1rem;
         margin-bottom: 1.2rem;
-        padding: 1.3rem 0 1.7rem 4rem;
+        padding: 1.3rem 5rem 1.7rem 4rem;
 
         box-sizing: border-box;
         display: flex;
@@ -58,7 +58,7 @@
 
       &::after {
         content: "";
-        width: 9.3rem;
+        width: 5rem;
         height: 100%;
         padding-top: 1rem;
         padding-bottom: 1.2rem;
@@ -108,30 +108,26 @@
         .recent-search-results {
           padding: unset;
           margin: unset;
-          display: flex;
-          align-items: center;
           gap: 1rem;
-          overflow-x: scroll;
-          min-width: 0;
-          position: relative;
-
-          .recent-search-blur {
-            background: linear-gradient(
-              270deg,
-              #f8f8f8 0%,
-              rgba(255, 255, 255, 0) 100%
-            );
-            position: fixed;
-            top: 5rem;
-            bottom: 2rem;
-            right: var(--layout-padding);
-            width: 5rem;
-            z-index: 1;
-          }
+          padding-right: 3rem;
         }
 
         &::after {
           all: unset;
+          content: "";
+          width: 3rem;
+          margin-top: 3rem;
+          box-sizing: border-box;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+
+          background: linear-gradient(
+            270deg,
+            #f8f8f8 0%,
+            rgba(255, 255, 255, 0) 100%
+          );
         }
       }
     }
