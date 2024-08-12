@@ -51,31 +51,45 @@ const Modal = () => {
             <>
               {buttonNum && (
                 <div className="modal-button-container">
-                  {buttonNum > 1 && (
+                  {buttonNum > 1 ? (
+                    <>
+                      <Button
+                        size="full"
+                        bgColor="light"
+                        onClick={() => {
+                          if (handleCancel) {
+                            handleCancel();
+                          }
+                          handleClose();
+                        }}
+                      >
+                        취소
+                      </Button>
+                      <Button
+                        size="full"
+                        onClick={() => {
+                          if (handleConfirm) {
+                            handleConfirm();
+                          }
+                          handleClose();
+                        }}
+                      >
+                        확인
+                      </Button>
+                    </>
+                  ) : (
                     <Button
-                      size="full"
-                      bgColor="light"
+                      size="md"
                       onClick={() => {
-                        if (handleCancel) {
-                          handleCancel();
+                        if (handleConfirm) {
+                          handleConfirm();
                         }
                         handleClose();
                       }}
                     >
-                      취소
+                      확인
                     </Button>
                   )}
-                  <Button
-                    size="full"
-                    onClick={() => {
-                      if (handleConfirm) {
-                        handleConfirm();
-                      }
-                      handleClose();
-                    }}
-                  >
-                    확인
-                  </Button>
                 </div>
               )}
             </>
