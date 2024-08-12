@@ -12,7 +12,7 @@
 
     &::after {
       content: "";
-      background: url(/img/icon-accordion-primary.svg) no-repeat center;
+      background: url(/img/icon-accordion-primary.svg) no-repeat center / cover;
       width: var(--title-extra);
       aspect-ratio: 1/1;
       transition: all var(--transition-duration);
