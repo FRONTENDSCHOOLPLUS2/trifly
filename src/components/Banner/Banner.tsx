@@ -3,7 +3,7 @@
 import { modalState } from "@/atoms/atoms";
 import { useRouter } from "next/navigation";
 import { useSetRecoilState } from "recoil";
-import "./main.scss";
+import "./Banner.scss";
 
 const Banner = ({ user }: { user: boolean }) => {
   const setModal = useSetRecoilState(modalState);

@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import Banner from "./Banner";
+import Banner from "../../components/Banner/Banner";
 import "./main.scss";
 import Link from "next/link";
 
@@ -29,14 +29,14 @@ const Home = async () => {
         <div className="notice-items">
           <div className="notice-item">
             <span className="badge primary">HOT</span>
-            <Link href="/notices/1">
+            <Link href="/notice/1">
               최초 발권 후 24시 이내 환불 처리 방침 변경 항공(국제선) 안내
             </Link>
             <p className="pc">2024.05.01</p>
           </div>
           <div className="notice-item">
             <span className="badge primary">HOT</span>
-            <Link href="/notices/2">2024년 8월 유류할증 안내</Link>
+            <Link href="/notice/2">2024년 8월 유류할증 안내</Link>
             <p className="pc">2024.07.12</p>
           </div>
         </div>
