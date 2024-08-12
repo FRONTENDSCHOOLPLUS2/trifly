@@ -1,9 +1,51 @@
 .accordion {
+  .accordion-header {
+    font-size: var(--title-big);
+    display: block;
+    width: 100%;
+    padding: var(--title-extra) 0;
+    border-bottom: 1px solid var(--color-gray-30);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &::after {
+      content: "";
+      background: url(/img/icon-accordion-primary.svg) no-repeat center;
+      width: var(--title-extra);
+      aspect-ratio: 1/1;
+      transition: all var(--transition-duration);
+    }
+    &.act::after {
+      transform: rotate(180deg);
+    }
+  }
   .accordion-body {
     display: none;
+    padding: var(--title-extra) 0;
+    border-bottom: 1px solid var(--color-gray-30);
+    color: var(--color-gray-100);
+    font-size: var(--title-medium);
 
     &.act {
       display: block;
+    }
+  }
+
+  // small version
+  &.small {
+    .accordion-header {
+      font-size: var(--title-medium);
+      padding: var(--title-medium) 0;
+
+      &::after {
+        background-image: url(/img/icon-accordion-blue.svg);
+      }
+    }
+
+    .accordion-body {
+      font-size: var(--title-small);
     }
   }
 }
