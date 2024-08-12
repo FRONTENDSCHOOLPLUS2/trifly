@@ -43,6 +43,10 @@
     display: none;
   }
 
+  &.defaultType {
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+  }
+
   &.primaryType {
     background: var(--color-primary);
 

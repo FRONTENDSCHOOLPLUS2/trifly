@@ -24,9 +24,15 @@ const Modal = () => {
 
   // 모달 오픈 시 배경 스크롤 방지
   // if (isOpen) {
-  //   document.body.setAttribute("style", "overflow-y: hidden");
+  //   document.body.setAttribute(
+  //     "style",
+  //     "position: fixed; overflow-y: hidden; width: 100vw;"
+  //   );
   // } else {
-  //   document.body.setAttribute("style", "overflow-y: unset");
+  //   document.body.setAttribute(
+  //     "style",
+  //     "position: unset; overflow-y: unset; width: unset;"
+  //   );
   // }
 
   return (
@@ -36,7 +42,7 @@ const Modal = () => {
           <div className="modal-window">
             {closeButton && (
               <button className="modal-close" onClick={handleClose}>
-                <img src="img/icon-close-black.svg" alt="닫기" />
+                <img src="/img/icon-close-black.svg" alt="닫기" />
                 <i className="hidden">모달 닫기</i>
               </button>
             )}

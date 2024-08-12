@@ -13,6 +13,13 @@ export interface CodeData {
 }
 
 /* -------------------------------------------------------------------------- */
+/*                                    코드 상태                                 */
+/* -------------------------------------------------------------------------- */
+export interface CodeState {
+  [key: string]: AirlineData | AirportData | AircraftData;
+}
+
+/* -------------------------------------------------------------------------- */
 /*                                 항공사 코드                                   */
 /* -------------------------------------------------------------------------- */
 
@@ -22,7 +29,7 @@ interface AirlineCodes {
   codes: AirlineData[];
 }
 
-interface AirlineData {
+export interface AirlineData {
   code: string;
   value: string;
   nameKor: string;
@@ -41,7 +48,7 @@ interface AirportCodes {
   codes: AirportData[];
 }
 
-interface AirportData {
+export interface AirportData {
   code: string;
   value: string;
   nameKor: string;
@@ -61,7 +68,7 @@ interface AircraftCodes {
   codes: AircraftData[];
 }
 
-interface AircraftData {
+export interface AircraftData {
   code: string;
   value: string;
   nameKor: string;

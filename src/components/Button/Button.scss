@@ -7,36 +7,34 @@
 .button {
   @include center-xy();
 
-  height: 4.4rem;
-
   border-radius: 1.4rem;
-  box-sizing: border-box;
   font-weight: 500;
   font-size: var(--title-big);
   cursor: pointer;
   transition: background-color var(--transition-duration);
 
   &.xs {
-    width: 4.5rem;
-    height: 2.6rem;
+    padding: 0.4rem 1.1rem;
     font-size: var(--title-small);
     border-radius: 1rem;
   }
 
   &.sm {
-    width: 8rem;
+    padding: 1rem 2.5rem;
   }
 
   &.md {
-    width: 16rem;
+    padding: 1rem 5rem;
   }
 
   &.lg {
-    width: 35rem;
+    padding: 1rem 14.5rem;
   }
 
   &.full {
     width: 100%;
+    padding: 1rem 0;
+    box-sizing: border-box;
   }
 
   &.primary {
