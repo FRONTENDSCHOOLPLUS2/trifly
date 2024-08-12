@@ -1,8 +1,15 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, createContext } from "react";
 
-const AccordionContext = React.createContext({
+type AccordionContextType = {
+  eventKey: number;
+  activeKey: number;
+  setActiveKey: Dispatch<React.SetStateAction<number>>;
+};
+
+const AccordionContext = createContext<AccordionContextType>({
+  eventKey: 0,
   activeKey: 0,
-  setActiveKey: Dispatch<SetStateAction<number>>,
+  setActiveKey: () => {},
 });
 
 export default AccordionContext;

@@ -1,7 +1,10 @@
 "use client";
-import React, { useContext } from "react";
+import React from "react";
 import AccordionContext from "./AccordionContext";
 
+/**
+ * eventKey: 1부터 시작
+ */
 const AccordionItem = ({
   eventKey,
   children,
@@ -9,17 +12,12 @@ const AccordionItem = ({
   eventKey: number;
   children: React.ReactNode;
 }) => {
-  const { activeKey } = useContext(AccordionContext);
+  const { activeKey, setActiveKey } = React.useContext(AccordionContext)!;
 
   return (
-    <div className="accordion-item">
-      {React.Children.map(children, (child) =>
-        React.cloneElement(child as React.ReactElement, {
-          eventKey,
-          isActive: activeKey === eventKey,
-        })
-      )}
-    </div>
+    <AccordionContext.Provider value={{ eventKey, activeKey, setActiveKey }}>
+      <div className="accordion-item">{children}</div>
+    </AccordionContext.Provider>
   );
 };
 
