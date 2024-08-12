@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import Banner from "./Banner";
+import Banner from "../../components/Banner/Banner";
 import "./main.scss";
 import Link from "next/link";
 
