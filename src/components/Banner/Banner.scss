@@ -24,6 +24,7 @@
         .banner-message {
           width: fit-content;
           font-family: var(--font-dohyeon);
+          z-index: 2;
 
           &:first-child {
             font-size: 4.6rem;
@@ -138,7 +139,6 @@
         &::after {
           top: 0;
           right: 0;
-          z-index: -1;
           width: 18rem;
           height: 14.2rem;
           background-image: url("/img/banner-ticket-mobile.svg");
