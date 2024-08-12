@@ -7,8 +7,7 @@
 /* Typography */
 body {
   color: var(--color-black);
-  font-family: var(--font-roboto), var(--font-noto), var(--font-dohyeon),
-    "sans-serif";
+  font-family: var(--font-roboto), var(--font-noto), sans-serif;
 }
 
 /* Reset CSS */
@@ -96,7 +95,7 @@ video {
   margin: unset;
   padding: unset;
   border: 0;
-  font: inherit;
+  font-family: var(--font-roboto), var(--font-noto), sans-serif;
   font-size: 1.4rem;
   vertical-align: baseline;
   box-sizing: border-box;
