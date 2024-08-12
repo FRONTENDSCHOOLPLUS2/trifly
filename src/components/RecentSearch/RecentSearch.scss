@@ -1,0 +1,105 @@
+.recent-search {
+  // box-shadow: inset 0 0 2px red;
+  background-color: var(--color-gray-10);
+
+  .recent-search-wrapper {
+    // box-shadow: inset 0 0 2px black;
+    width: 100%;
+    max-width: var(--layout-pc);
+    padding: 0 var(--layout-padding);
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    .recent-search-layout {
+      display: flex;
+      gap: 5.6rem;
+      position: relative;
+
+      .recent-search-menu {
+        flex-shrink: 0;
+        box-shadow: inset 0 0 2px blue;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding-top: 2.6rem;
+        padding-bottom: 6rem;
+        box-sizing: border-box;
+
+        & h3 {
+          font-size: var(--title-extra);
+          font-weight: 700;
+          color: var(--color-black);
+        }
+
+        & button {
+          font-size: var(--title-medium);
+          font-weight: 400;
+          color: var(--color-gray-100);
+          transition: all var(--transition-duration);
+
+          &:hover {
+            font-weight: 600;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .recent-search-results {
+        // box-shadow: inset 0 0 2px purple;
+        flex-grow: 1;
+        margin-top: 1rem;
+        margin-bottom: 1.2rem;
+        padding: 1.3rem 0 1.7rem 4rem;
+
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        overflow-x: scroll;
+        min-width: 0;
+        position: relative;
+
+        .recent-search-result {
+          cursor: pointer;
+          width: 34.8rem;
+          height: 11.4rem;
+          padding: 1.5rem 2rem;
+          box-sizing: border-box;
+          box-shadow: -0.1rem 0.4rem 1.2rem rgba(0, 0, 0, 0.16);
+          border-radius: 1.4rem;
+          flex-shrink: 0;
+          position: relative;
+
+          .delete-result {
+            width: 2rem;
+            height: 2rem;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+
+            & img {
+              width: 2rem;
+            }
+          }
+        }
+      }
+
+      &::after {
+        content: "";
+        width: 9.3rem;
+        height: 100%;
+        padding-top: 1rem;
+        padding-bottom: 1.2rem;
+        box-sizing: border-box;
+        top: 0;
+        right: 0;
+        position: absolute;
+        background: linear-gradient(
+          270deg,
+          #f8f8f8 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+    }
+  }
+}
