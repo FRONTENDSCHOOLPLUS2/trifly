@@ -12,6 +12,7 @@ const AccordionHeader = React.forwardRef<
 
   return (
     <button
+      type="button"
       ref={ref}
       onClick={handleClick}
       {...props}
