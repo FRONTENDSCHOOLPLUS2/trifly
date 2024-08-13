@@ -11,6 +11,11 @@
     color: var(--color-primary);
   }
 
+  &.true {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
   &.secondary {
     background-color: #dde7ff;
     color: var(--color-secondary);
