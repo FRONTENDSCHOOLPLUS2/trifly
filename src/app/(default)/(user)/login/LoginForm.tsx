@@ -1,9 +1,7 @@
 "use client";
-
 import Anchor from "@/components/Anchor/Anchor";
 import Submit from "@/components/Submit/Submit";
 import { signInWithCredentials } from "@/data/actions/authAction";
-// import { useForm } from "react-hook-form";
 
 interface LoginForm {
   email: string;
@@ -11,14 +9,6 @@ interface LoginForm {
 }
 
 const LoginForm = () => {
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm<LoginForm>();
-
-  // https://bandal.dev/React/react-hook-form-with-nextjs-server-actions
-
   return (
     <>
       <div className="input-box">
