@@ -1,6 +1,7 @@
 import Link from "next/link";
 import "./Header.scss";
 import { auth } from "@/auth";
+import Logout from "./Logout";
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: "default" | "primary" | "transparent";
@@ -27,13 +28,7 @@ const Header: React.FC<HeaderProps> = async ({ type = "default" }) => {
 
         <div className="header-user">
           {user ? (
-            <button type="button">
-              <img
-                src={`/img/icon-logout-${type === "default" ? "black" : "white"}.svg`}
-                alt="로그아웃"
-              />
-              <i className="hidden">로그아웃</i>
-            </button>
+            <Logout type={type} />
           ) : (
             <Link href={`/login`}>
               <img
