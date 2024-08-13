@@ -3,6 +3,7 @@ import Accordion from "@/components/Accordion/Accordion";
 import AccordionBody from "@/components/Accordion/AccordionBody";
 import AccordionHeader from "@/components/Accordion/AccordionHeader";
 import AccordionItem from "@/components/Accordion/AccordionItem";
+import Badge from "@/components/Badge/Badge";
 import Submit from "@/components/Submit/Submit";
 import { ChangeEvent, Dispatch, FormEvent, useRef, useState } from "react";
 
@@ -76,7 +77,7 @@ const Agree = ({ setStep }: SignupStepProp) => {
                   ref={termChk}
                 />
                 <label htmlFor="termChk">
-                  이용 약관 <span>필수</span>
+                  이용 약관 <Badge type="gray">필수</Badge>
                 </label>
               </div>
             </AccordionHeader>
@@ -98,7 +99,9 @@ const Agree = ({ setStep }: SignupStepProp) => {
                   onChange={(e) => handleChk(e)}
                   ref={personalChk}
                 />
-                <label htmlFor="personalChk">개인정보 수집 및 이용</label>
+                <label htmlFor="personalChk">
+                  개인정보 수집 및 이용 <Badge type="gray">필수</Badge>
+                </label>
               </div>
             </AccordionHeader>
             <AccordionBody>ddd</AccordionBody>
