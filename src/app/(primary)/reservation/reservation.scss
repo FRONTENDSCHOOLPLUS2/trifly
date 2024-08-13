@@ -5,6 +5,7 @@
   .search-cover {
     display: flex;
     gap: 2rem;
+    align-items: start;
   }
 
   .input-cover {
@@ -12,9 +13,7 @@
   }
 }
 
-.reservation-title {
-  font-size: var(--title-max);
-  font-weight: 700;
+.title {
   margin-bottom: 4.6rem;
 }
 table {

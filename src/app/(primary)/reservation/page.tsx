@@ -1,8 +1,8 @@
 import React from "react";
 import "./reservation.scss";
 import Button from "@/components/Button/Button";
-
 import { FetchOrder } from "@/lib/fetchOrder";
+import OrdersItem from "./OrdersItem";
 
 export const reservation = async () => {
   const data = await FetchOrder();
@@ -11,7 +11,7 @@ export const reservation = async () => {
   return (
     <>
       <div className="reservation-header">
-        <h1 className="reservation-title">예약내역</h1>
+        <h1 className="title">예약내역</h1>
         <div className="search-cover">
           <div className="input-cover">
             <input type="text" name="reservation-search" id="search" />
@@ -34,29 +34,8 @@ export const reservation = async () => {
           </tr>
         </thead>
         <tbody>
-          {reservationData?.map((item, index: number) => (
-            // 출발지 : item.itineraries[0].segments[0].departure.iataCode
-            <tr key={index}>
-              {/* <Link href={`/auth/reservation/${item.reservationId}`}></Link> */}
-              <td className="reservation-number">HS0616</td>
-              <td className="reservation-date">
-                {item.createdAt.substring(0, 10)}
-              </td>
-              <td className="departure">
-                {item.itineraries[0].segments[0].departure.iataCode}
-              </td>
-              <td className="arrival">
-                {item.itineraries.slice(-1)[0].segments[0].departure.iataCode}
-              </td>
-              <td className="travel">
-                {item.itineraries.length === 2 ? "왕복" : "편도"}
-              </td>
-              <td className="schedule">
-                {item.itineraries[0].segments[0].departure.at.substring(0, 10)}
-              </td>
-              <td className="personnel">3인</td>
-              <td className="total">{item.totalPrice}</td>
-            </tr>
+          {reservationData?.map((item) => (
+            <OrdersItem key={item._id} item={item} />
           ))}
         </tbody>
       </table>

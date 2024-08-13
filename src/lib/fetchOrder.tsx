@@ -18,7 +18,5 @@ export const FetchOrder = async (): Promise<MultiItem<OrderItem>> => {
 
   const data = await response.json();
 
-  console.log("FetchOrder", data.item);
-
   return data;
 };
