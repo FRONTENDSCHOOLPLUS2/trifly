@@ -1,4 +1,3 @@
-import { auth } from "@/auth";
 import "../user.scss";
 import "./login.scss";
 import LoginForm from "./LoginForm";
@@ -6,8 +5,6 @@ import SnsLogin from "./SnsLogin";
 import { signInWithCredentials } from "@/data/actions/authAction";
 
 const Login = async () => {
-  const session = await auth();
-  console.log(session);
   return (
     <div className="login">
       <h2 className="hidden">로그인</h2>
