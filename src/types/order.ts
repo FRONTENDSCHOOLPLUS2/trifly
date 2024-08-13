@@ -61,7 +61,7 @@ export interface OrderItem extends OrderData {
 /* ---------------------------------------------------------------- */
 /*                            order 공통 타입                           */
 /* ---------------------------------------------------------------- */
-interface OrderData {
+export interface OrderData {
   reservationId: string;
   totalPrice: string;
   itineraries: {
@@ -73,12 +73,16 @@ interface OrderData {
       };
       arrival: {
         iataCode: string;
+        terminal?: string;
         at: string;
       };
       carrierCode: string;
       number: string;
       aircraft: {
         code: string;
+      };
+      operating?: {
+        carrierCode: string;
       };
       duration: string;
       id: string;
@@ -92,35 +96,33 @@ interface OrderData {
       ];
     }[];
   }[];
-  price: [
-    {
-      travelerId: string;
-      fareOption: string;
-      travelerType: "ADULT" | "CHILD" | "INFANT";
-      price: {
-        currency: "KRW";
-        total: string;
-        base: string;
-        taxes: {
-          amount: string;
-          code: string;
-        }[];
-        refundableTaxes: string;
-      };
-      fareDetailsBySegment: {
-        segmentId: string;
-        cabin: string;
-        fareBasis: string;
-        brandedFare: string;
-        class: string;
-        includedCheckedBags: {
-          weight?: number;
-          weightUnit?: "KG";
-          quantity?: number;
-        };
+  price: {
+    travelerId: string;
+    fareOption: string;
+    travelerType: "ADULT" | "CHILD" | "INFANT";
+    price: {
+      currency: "KRW";
+      total: string;
+      base: string;
+      taxes: {
+        amount: string;
+        code: string;
       }[];
-    },
-  ];
+      refundableTaxes: string;
+    };
+    fareDetailsBySegment: {
+      segmentId: string;
+      cabin: string;
+      fareBasis: string;
+      brandedFare?: string;
+      class: string;
+      includedCheckedBags: {
+        weight?: number;
+        weightUnit?: "KG";
+        quantity?: number;
+      };
+    }[];
+  }[];
   passengers: [
     {
       type: "adult" | "child" | "infant";

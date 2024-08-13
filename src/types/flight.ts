@@ -88,37 +88,37 @@ export interface OffersPrice {
   };
 }
 
-interface OffersPriceData extends OffersData {
+export interface OffersPriceData extends OffersData {
   itineraries: {
     segments: SegmentsData[];
   }[];
-  travelerPricings: [
-    {
-      travelerId: string;
-      fareOption: string;
-      travelerType: string;
-      price: {
-        currency: "KRW";
-        total: string;
-        base: string;
-        taxes: {
-          amount: string;
-          code: string;
-        }[];
-        refundableTaxes: string;
-      };
-      fareDetailsBySegment: {
-        segmentId: string;
-        cabin: "ECONOMY" | "BUSINESS" | "FIRST";
-        fareBasis: string;
-        brandedFare: string;
-        class: string;
-        includedCheckedBags: {
-          quantity: number;
-        };
+  travelerPricings: {
+    travelerId: string;
+    fareOption: string;
+    travelerType: string;
+    price: {
+      currency: "KRW";
+      total: string;
+      base: string;
+      taxes: {
+        amount: string;
+        code: string;
       }[];
-    },
-  ];
+      refundableTaxes: string;
+    };
+    fareDetailsBySegment: {
+      segmentId: string;
+      cabin: "ECONOMY" | "BUSINESS" | "FIRST";
+      fareBasis: string;
+      brandedFare?: string;
+      class: string;
+      includedCheckedBags: {
+        quantity?: number;
+        weight?: number;
+        weightUnit?: "KG";
+      };
+    }[];
+  }[];
 }
 
 /* ---------------------------------------------------------------- */
@@ -195,7 +195,7 @@ export interface NewOrderRequest {
   data: NewOrderData;
 }
 
-interface NewOrderData {
+export interface NewOrderData {
   type: "flight-order";
   flightOffers: OffersPriceData[];
   travelers: [
