@@ -5,6 +5,7 @@ const Logout = ({ type }: { type: string }) => {
   return (
     <button type="button" onClick={() => signOut()}>
       <img
+        className="logout"
         src={`/img/icon-logout-${type === "default" ? "black" : "white"}.svg`}
         alt="로그아웃"
       />

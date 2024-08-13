@@ -24,7 +24,7 @@
   .header-nav {
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 2vw, 3rem);
+    gap: clamp(1rem, 10vw, 2rem);
     font-weight: 500;
     color: var(--color-black);
 
@@ -34,8 +34,17 @@
   }
 
   .header-user {
+    & a {
+      display: inline-block;
+    }
+
     & img {
       width: 2.4rem;
+      vertical-align: sub;
+
+      &.logout {
+        width: 2rem;
+      }
     }
   }
 
@@ -111,21 +120,27 @@
 }
 
 @media (max-width: 1023px) {
-  .header-logo {
-    & img {
-      width: 5.6rem;
+  .header {
+    .header-logo {
+      & img {
+        width: 5.6rem;
+      }
     }
-  }
 
-  .header-nav {
-    & a {
-      font-size: var(--title-medium);
+    .header-nav {
+      & a {
+        font-size: var(--title-medium);
+      }
     }
-  }
 
-  .header-user {
-    & img {
-      width: 2rem;
+    .header-user {
+      & img {
+        width: 2rem;
+
+        &.logout {
+          width: 1.8rem;
+        }
+      }
     }
   }
 }
