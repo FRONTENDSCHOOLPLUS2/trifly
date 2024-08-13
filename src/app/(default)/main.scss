@@ -11,6 +11,7 @@
     padding: 8rem 0;
 
     background-image: url("/img/img-airplane-main.jpg");
+    background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
   }
@@ -96,6 +97,10 @@
 
 @media (max-width: 1023px) {
   .main {
+    .search-container {
+      padding: 3rem 0;
+    }
+
     .notices {
       .notice-menu {
         padding: unset;
@@ -130,14 +135,6 @@
           }
         }
       }
-    }
-  }
-}
-
-@media (max-width: 499px) {
-  .main {
-    .search-container {
-      padding: 3rem 0;
     }
   }
 }
