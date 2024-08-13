@@ -13,16 +13,6 @@
     background-image: url("/img/img-airplane-main.jpg");
     background-position: center;
     background-size: cover;
-
-    .search-box {
-      width: calc(100% - (2 * var(--layout-padding)));
-      max-width: calc(var(--layout-pc) - (2 * var(--layout-padding)));
-
-      margin: 0 auto;
-      height: 16rem;
-      border-radius: 2rem;
-      background-color: var(--color-white);
-    }
   }
 
   .notices {
@@ -148,10 +138,6 @@
   .main {
     .search-container {
       padding: 3rem 0;
-
-      .search-box {
-        height: 32rem;
-      }
     }
   }
 }

@@ -1,0 +1,9 @@
+.search-box {
+  width: calc(100% - (2 * var(--layout-padding)));
+  max-width: calc(var(--layout-pc) - (2 * var(--layout-padding)));
+
+  margin: 0 auto;
+  height: 16rem;
+  border-radius: 2rem;
+  background-color: var(--color-white);
+}
