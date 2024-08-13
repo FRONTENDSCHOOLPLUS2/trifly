@@ -4,7 +4,6 @@ import { OrderItem } from "@/types";
 import { useRouter } from "next/navigation";
 
 const OrdersItem = ({ item }: { item: OrderItem }) => {
-  console.log("xxxxxxxxxxxxxxxxxxxOrderItem", item);
   const router = useRouter();
 
   const handleClick = (_id: number) => {
@@ -12,7 +11,7 @@ const OrdersItem = ({ item }: { item: OrderItem }) => {
   };
 
   return (
-    <tr onClick={() => handleClick(item._id)}>
+    <tr onClick={() => handleClick(item._id)} style={{ cursor: "pointer" }}>
       <td className="reservation-number">{item.reservationId} </td>
       <td className="reservation-date">{item.createdAt.substring(0, 10)}</td>
       <td className="departure">
