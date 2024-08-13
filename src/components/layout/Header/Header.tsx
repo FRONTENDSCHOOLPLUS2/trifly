@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = async ({ type = "default" }) => {
         </div>
 
         <nav className="header-nav">
-          <Link href={`/order`}>예약내역</Link>
+          <Link href={`/reservation`}>예약내역</Link>
           <Link href={`/footprint`}>발자국</Link>
         </nav>
 
