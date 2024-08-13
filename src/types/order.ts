@@ -63,6 +63,7 @@ export interface OrderItem extends OrderData {
 /* ---------------------------------------------------------------- */
 interface OrderData {
   reservationId: string;
+  totalPrice: string;
   itineraries: {
     segments: {
       departure: {
