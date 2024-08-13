@@ -65,6 +65,7 @@ export interface OrderData {
   reservationId: string;
   totalPrice: string;
   itineraries: {
+    duration?: string;
     segments: {
       departure: {
         iataCode: string;
