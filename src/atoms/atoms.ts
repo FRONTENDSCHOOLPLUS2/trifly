@@ -38,32 +38,56 @@ export const orderState = atom<OrderProps>({
     totalPrice: "221600.00",
     itineraries: [
       {
+        duration: "PT11H40M",
         segments: [
           {
             departure: {
-              iataCode: "ICN",
-              terminal: "1",
-              at: "2024-08-16T10:05:00",
+              iataCode: "GMP",
+              terminal: "I",
+              at: "2024-08-08T19:55:00",
             },
             arrival: {
-              iataCode: "FUK",
-              terminal: "I",
-              at: "2024-08-16T11:30:00",
+              iataCode: "HND",
+              at: "2024-08-08T22:15:00",
             },
-            carrierCode: "TW",
-            number: "291",
+            carrierCode: "NH",
+            number: "868",
             aircraft: {
-              code: "737",
+              code: "763",
             },
-            operating: {
-              carrierCode: "TW",
-            },
-            duration: "PT1H25M",
-            id: "14",
+            duration: "PT2H20M",
+            id: "9",
             numberOfStops: 0,
             co2Emissions: [
               {
-                weight: 57,
+                weight: 88,
+                weightUnit: "KG",
+                cabin: "ECONOMY",
+              },
+            ],
+          },
+          {
+            departure: {
+              iataCode: "HND",
+              terminal: "3",
+              at: "2024-08-09T00:30:00",
+            },
+            arrival: {
+              iataCode: "LAX",
+              terminal: "B",
+              at: "2024-08-08T19:10:00",
+            },
+            carrierCode: "NH",
+            number: "106",
+            aircraft: {
+              code: "789",
+            },
+            duration: "PT10H40M",
+            id: "10",
+            numberOfStops: 0,
+            co2Emissions: [
+              {
+                weight: 359,
                 weightUnit: "KG",
                 cabin: "ECONOMY",
               },
@@ -72,32 +96,56 @@ export const orderState = atom<OrderProps>({
         ],
       },
       {
+        duration: "PT10H40M",
         segments: [
           {
             departure: {
-              iataCode: "FUK",
-              terminal: "I",
-              at: "2024-08-18T12:30:00",
+              iataCode: "LAX",
+              terminal: "B",
+              at: "2024-08-11T01:20:00",
             },
             arrival: {
-              iataCode: "ICN",
-              terminal: "1",
-              at: "2024-08-18T13:55:00",
+              iataCode: "HND",
+              at: "2024-08-12T05:00:00",
             },
-            carrierCode: "TW",
-            number: "292",
+            carrierCode: "NH",
+            number: "105",
             aircraft: {
-              code: "737",
+              code: "789",
             },
-            operating: {
-              carrierCode: "TW",
-            },
-            duration: "PT1H25M",
-            id: "40",
+            duration: "PT11H40M",
+            id: "61",
             numberOfStops: 0,
             co2Emissions: [
               {
-                weight: 57,
+                weight: 359,
+                weightUnit: "KG",
+                cabin: "ECONOMY",
+              },
+            ],
+          },
+          {
+            departure: {
+              iataCode: "HND",
+              terminal: "2",
+              at: "2024-08-12T08:40:00",
+            },
+            arrival: {
+              iataCode: "GMP",
+              terminal: "I",
+              at: "2024-08-12T11:05:00",
+            },
+            carrierCode: "NH",
+            number: "861",
+            aircraft: {
+              code: "763",
+            },
+            duration: "PT2H25M",
+            id: "62",
+            numberOfStops: 0,
+            co2Emissions: [
+              {
+                weight: 88,
                 weightUnit: "KG",
                 cabin: "ECONOMY",
               },
@@ -142,7 +190,7 @@ export const orderState = atom<OrderProps>({
             fareBasis: "AKJ",
             class: "A",
             includedCheckedBags: {
-              weight: 0,
+              weight: 10,
               weightUnit: "KG",
             },
           },
