@@ -1,3 +1,129 @@
 .route-modal {
   width: 40%;
+  display: flex;
+  border-radius: 2rem;
+  overflow: hidden;
+
+  .area-section {
+    flex-shrink: 0;
+    width: 40%;
+    height: 100%;
+    overflow: auto;
+    overscroll-behavior: none;
+    background-color: var(--color-gray-10);
+
+    .area-list {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .area-item {
+        flex-grow: 1;
+        width: 100%;
+        flex-shrink: 0;
+
+        .area-item-button {
+          width: 100%;
+          padding: 2rem 0;
+          text-align: center;
+          color: var(--color-gray-100);
+          font-size: var(--title-medium);
+          font-weight: 500;
+
+          &:hover {
+            font-weight: 700;
+            color: var(--color-primary);
+          }
+
+          &:focus {
+            font-weight: 700;
+            color: var(--color-primary);
+          }
+
+          &.selected {
+            background-color: var(--color-primary-30);
+            font-weight: 700;
+            color: var(--color-primary);
+          }
+        }
+
+        &:first-child {
+          border-top-left-radius: 2rem;
+        }
+
+        &:last-child {
+          border-bottom-left-radius: 2rem;
+        }
+      }
+    }
+  }
+
+  .airport-section {
+    flex-shrink: 0;
+    width: 60%;
+    height: 100%;
+    overflow: auto;
+    overscroll-behavior: none;
+
+    .airport-list {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      align-items: flex-start;
+
+      .airport-item {
+        flex-shrink: 0;
+
+        .airport-item-button {
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+
+          & span {
+            &:first-child {
+              font-size: var(--title-big);
+              font-weight: 500;
+              color: var(--color-gray-100);
+            }
+
+            &:last-child {
+              font-size: var(--title-medium);
+              font-weight: 500;
+              color: var(--color-gray-90);
+            }
+          }
+
+          &:hover,
+          &:focus {
+            & span {
+              &:first-child {
+                font-weight: 700;
+                color: var(--color-primary);
+              }
+
+              &:last-child {
+                font-weight: 600;
+                color: var(--color-blue-100);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .route-modal {
+    .area-section {
+      .area-list {
+        .area-item {
+          .area-item-button {
+            font-size: var(--title-big);
+          }
+        }
+      }
+    }
+  }
 }

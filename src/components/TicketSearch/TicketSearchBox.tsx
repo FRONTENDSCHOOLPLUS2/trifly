@@ -11,9 +11,13 @@ import PassengersModal from "./SearchModals/PassengersModal";
 const TicketSearchBox = ({ airport }: { airport: AirportData[] }) => {
   const [tripType, setTripType] = useState("round");
   const [nonStop, setNonStop] = useState(false);
-  const [route, setRoute] = useState({
-    origin: "서울/인천 (ICN)",
-    destination: "",
+  const [origin, setOrigin] = useState({
+    code: "ICN",
+    value: "서울/인천",
+  });
+  const [destination, setDestination] = useState({
+    code: "",
+    value: "",
   });
   const [originModal, setOriginModal] = useState(false);
   const [destinationModal, setDestinationModal] = useState(false);
@@ -76,10 +80,15 @@ const TicketSearchBox = ({ airport }: { airport: AirportData[] }) => {
   };
 
   const handleSwitch = () => {
-    if (route.destination) {
-      setRoute({
-        origin: route.destination,
-        destination: route.origin,
+    if (destination.code) {
+      setOrigin({
+        code: destination.code,
+        value: destination.value,
+      });
+
+      setDestination({
+        code: origin.code,
+        value: origin.value,
       });
     }
   };
@@ -133,14 +142,14 @@ const TicketSearchBox = ({ airport }: { airport: AirportData[] }) => {
             >
               <span className="schedule-title">출발</span>
               <span
-                className={`schedule-contents ${route.origin ? "selected" : ""}`}
+                className={`schedule-contents ${origin.code ? "selected" : ""}`}
               >
-                {route.origin ? route.origin : "공항 선택"}
+                {origin.code ? `${origin.value} (${origin.code})` : "공항 선택"}
               </span>
             </button>
             <button
               type="button"
-              className={`route-switch ${route.destination ? "is-active" : "disabled"}`}
+              className={`route-switch ${destination.code ? "is-active" : "disabled"}`}
               onClick={handleSwitch}
             >
               <img src="/img/icon-switch.svg" alt="출/도착 변경" />
@@ -153,9 +162,11 @@ const TicketSearchBox = ({ airport }: { airport: AirportData[] }) => {
             >
               <span className="schedule-title">도착</span>
               <span
-                className={`schedule-contents ${route.destination ? "selected" : ""}`}
+                className={`schedule-contents ${destination.code ? "selected" : ""}`}
               >
-                {route.destination ? route.destination : "공항 선택"}
+                {destination.code
+                  ? `${destination.value} (${destination.code})`
+                  : "공항 선택"}
               </span>
             </button>
           </div>
@@ -195,12 +206,22 @@ const TicketSearchBox = ({ airport }: { airport: AirportData[] }) => {
         </div>
         {originModal && (
           <div className="search-modal">
-            <RouteModal handleClose={setOriginModal} />
+            <RouteModal
+              type="origin"
+              handleClose={setOriginModal}
+              airport={airport}
+              setOrigin={setOrigin}
+            />
           </div>
         )}
         {destinationModal && (
           <div className="search-modal">
-            <RouteModal handleClose={setDestinationModal} />
+            <RouteModal
+              type="destination"
+              handleClose={setDestinationModal}
+              airport={airport}
+              setDestination={setDestination}
+            />
           </div>
         )}
         {scheduleModal && (
