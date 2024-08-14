@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { MouseEvent, useContext } from "react";
 import AccordionContext from "./AccordionContext";
 
 const AccordionHeader = React.forwardRef<
@@ -8,13 +8,17 @@ const AccordionHeader = React.forwardRef<
 >(({ children, ...props }, ref) => {
   const { eventKey, activeKey, setActiveKey } = useContext(AccordionContext);
 
-  const handleClick = () => setActiveKey(activeKey === eventKey ? 0 : eventKey);
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLInputElement;
+    if (target.tagName === "INPUT" || target.tagName === "LABEL") return false;
+    setActiveKey(activeKey === eventKey ? 0 : eventKey);
+  };
 
   return (
     <button
       type="button"
       ref={ref}
-      onClick={handleClick}
+      onClick={(e) => handleClick(e)}
       {...props}
       aria-expanded={`${activeKey === eventKey ? "true" : "false"}`}
       className={`accordion-header ${activeKey === eventKey ? "act" : ""}`}
