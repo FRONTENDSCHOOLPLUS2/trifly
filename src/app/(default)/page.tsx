@@ -2,9 +2,9 @@ import { auth } from "@/auth";
 import Badge from "@/components/Badge/Badge";
 import Banner from "@/components/Banner/Banner";
 import RecentSearch from "@/components/RecentSearch/RecentSearch";
+import TicketSearch from "@/components/TicketSearch/TicketSearch";
 import Link from "next/link";
 import "./main.scss";
-import TicketSearch from "@/components/TicketSearch/TicketSearch";
 
 const Home = async () => {
   const session = await auth();
@@ -15,9 +15,7 @@ const Home = async () => {
       <h2 className="hidden">메인</h2>
       <section className="search-container full-width">
         <h3 className="hidden">항공권 검색</h3>
-        <div className="search-container">
-          <TicketSearch />
-        </div>
+        <TicketSearch />
       </section>
 
       <RecentSearch />
