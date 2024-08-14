@@ -10,7 +10,8 @@ const AgreePage = async () => {
     <div className="order-inner agree flexVer">
       <div className="left-box">
         <section>
-          <Detail type="agree" code={code} />
+          <h3 className="hidden">상세 여정</h3>
+          <Detail code={code} />
         </section>
 
         <section>
@@ -19,7 +20,7 @@ const AgreePage = async () => {
         </section>
       </div>
 
-      <aside className="right-box">
+      <aside className="right-box receipt-box">
         <Receipt />
       </aside>
     </div>
