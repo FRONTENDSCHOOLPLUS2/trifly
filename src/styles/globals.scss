@@ -4,13 +4,6 @@
   overflow-x: clip;
 }
 
-/* Typography */
-body {
-  color: var(--color-black);
-  font-family: var(--font-roboto), var(--font-noto), sans-serif;
-  font-size: 1.4rem;
-}
-
 /* Reset CSS */
 html,
 body,
@@ -102,6 +95,13 @@ video {
   box-sizing: border-box;
   letter-spacing: -0.02em;
   line-height: 1.4;
+}
+
+/* Typography */
+body {
+  color: var(--color-black);
+  font-family: var(--font-roboto), var(--font-noto), sans-serif;
+  font-size: 1.4rem;
 }
 
 /* HTML5 display-role reset for older browsers */
