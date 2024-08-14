@@ -77,7 +77,7 @@ export const orderState = atom<OrderProps>({
               terminal: "B",
               at: "2024-08-08T19:10:00",
             },
-            carrierCode: "NH",
+            carrierCode: "UA",
             number: "106",
             aircraft: {
               code: "789",
@@ -108,7 +108,7 @@ export const orderState = atom<OrderProps>({
               iataCode: "HND",
               at: "2024-08-12T05:00:00",
             },
-            carrierCode: "NH",
+            carrierCode: "KE",
             number: "105",
             aircraft: {
               code: "789",
