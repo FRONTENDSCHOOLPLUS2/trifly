@@ -183,7 +183,7 @@ interface FlightRouteData {
   aircraft: {
     code: string;
   };
-  operating: {
+  operating?: {
     carrierCode: string;
   };
 }
