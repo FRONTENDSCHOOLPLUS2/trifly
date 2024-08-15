@@ -7,8 +7,8 @@ import Pagination from "@/components/Pagination/Pagination";
 
 export const reservation = async () => {
   const data = await FetchOrder();
-  console.log(data);
   const reservationData = data.item;
+  // console.log("resercationData", data);
 
   return (
     <>
@@ -22,7 +22,7 @@ export const reservation = async () => {
         </div>
       </div>
       <section>
-        <table>
+        <table className="reservation-table">
           <caption className="hidden">예약 내역 리스트</caption>
           <thead>
             <tr>

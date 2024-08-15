@@ -26,7 +26,7 @@ const OrdersItem = ({ item }: { item: OrderItem }) => {
       <td className="schedule">
         {item.itineraries[0].segments[0].departure.at.substring(0, 10)}
       </td>
-      <td className="personnel">{item.passengers?.length} 인</td>
+      <td className="personnel">{item.passengers?.length}</td>
       <td className="total">
         {Number(item.totalPrice.split(".")[0]).toLocaleString("ko-KR")} 원
       </td>
