@@ -257,6 +257,159 @@ export const orderState = atom<OrderProps>({
           },
         ],
       },
+      {
+        travelerId: "3",
+        fareOption: "STANDARD",
+        travelerType: "CHILD",
+        price: {
+          currency: "KRW",
+          total: "110800",
+          base: "40000",
+          taxes: [
+            {
+              amount: "9000.00",
+              code: "SW",
+            },
+            {
+              amount: "9200.00",
+              code: "TK",
+            },
+            {
+              amount: "27600.00",
+              code: "YR",
+            },
+            {
+              amount: "25000.00",
+              code: "BP",
+            },
+          ],
+          refundableTaxes: "70800",
+        },
+        fareDetailsBySegment: [
+          {
+            segmentId: "14",
+            cabin: "ECONOMY",
+            fareBasis: "AKJ",
+            class: "A",
+            includedCheckedBags: {
+              weight: 0,
+              weightUnit: "KG",
+            },
+          },
+          {
+            segmentId: "40",
+            cabin: "ECONOMY",
+            fareBasis: "AKJ",
+            class: "A",
+            includedCheckedBags: {
+              weight: 0,
+              weightUnit: "KG",
+            },
+          },
+        ],
+      },
+      {
+        travelerId: "3",
+        fareOption: "STANDARD",
+        travelerType: "INFANT",
+        price: {
+          currency: "KRW",
+          total: "110800",
+          base: "40000",
+          taxes: [
+            {
+              amount: "9000.00",
+              code: "SW",
+            },
+            {
+              amount: "9200.00",
+              code: "TK",
+            },
+            {
+              amount: "27600.00",
+              code: "YR",
+            },
+            {
+              amount: "25000.00",
+              code: "BP",
+            },
+          ],
+          refundableTaxes: "70800",
+        },
+        fareDetailsBySegment: [
+          {
+            segmentId: "14",
+            cabin: "ECONOMY",
+            fareBasis: "AKJ",
+            class: "A",
+            includedCheckedBags: {
+              weight: 0,
+              weightUnit: "KG",
+            },
+          },
+          {
+            segmentId: "40",
+            cabin: "ECONOMY",
+            fareBasis: "AKJ",
+            class: "A",
+            includedCheckedBags: {
+              weight: 0,
+              weightUnit: "KG",
+            },
+          },
+        ],
+      },
+      {
+        travelerId: "3",
+        fareOption: "STANDARD",
+        travelerType: "INFANT",
+        price: {
+          currency: "KRW",
+          total: "110800",
+          base: "40000",
+          taxes: [
+            {
+              amount: "9000.00",
+              code: "SW",
+            },
+            {
+              amount: "9200.00",
+              code: "TK",
+            },
+            {
+              amount: "27600.00",
+              code: "YR",
+            },
+            {
+              amount: "25000.00",
+              code: "BP",
+            },
+          ],
+          refundableTaxes: "70800",
+        },
+        fareDetailsBySegment: [
+          {
+            segmentId: "14",
+            cabin: "ECONOMY",
+            fareBasis: "AKJ",
+            class: "A",
+            includedCheckedBags: {
+              weight: 0,
+              weightUnit: "KG",
+            },
+          },
+          {
+            segmentId: "40",
+            cabin: "ECONOMY",
+            fareBasis: "AKJ",
+            class: "A",
+            includedCheckedBags: {
+              weight: 0,
+              weightUnit: "KG",
+            },
+          },
+        ],
+      },
     ],
     flightOffers: [
       {
