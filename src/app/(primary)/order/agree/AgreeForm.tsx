@@ -1,15 +1,16 @@
 "use client";
 import Accordion from "@/components/Accordion/Accordion";
-import AccordionItem from "@/components/Accordion/AccordionItem";
-import AccordionHeader from "@/components/Accordion/AccordionHeader";
-import Badge from "@/components/Badge/Badge";
 import AccordionBody from "@/components/Accordion/AccordionBody";
+import AccordionHeader from "@/components/Accordion/AccordionHeader";
+import AccordionItem from "@/components/Accordion/AccordionItem";
+import Badge from "@/components/Badge/Badge";
 import Submit from "@/components/Submit/Submit";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 const AgreeForm = () => {
   const [isError, setIsError] = useState(false);
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {};
+  const handleChk = (e: ChangeEvent) => {};
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
@@ -19,13 +20,13 @@ const AgreeForm = () => {
             <div className="chk-box">
               <input
                 type="checkbox"
-                id="termChk"
-                name="termChk"
-                // onChange={(e) => handleChk(e)}
-                // ref={termChk}
+                id="chk1"
+                name="chk1"
+                onChange={(e) => handleChk(e)}
+                // ref={chk1}
               />
-              <label htmlFor="termChk">
-                이용 약관 <Badge type="gray">필수</Badge>
+              <label htmlFor="chk1">
+                요금 / 환불 규정 및 안내 <Badge type="gray">필수</Badge>
               </label>
             </div>
           </AccordionHeader>
@@ -42,17 +43,125 @@ const AgreeForm = () => {
             <div className="chk-box">
               <input
                 type="checkbox"
-                id="personalChk"
-                name="personalChk"
-                // onChange={(e) => handleChk(e)}
-                // ref={personalChk}
+                id="chk2"
+                name="chk2"
+                onChange={(e) => handleChk(e)}
+                // ref={chk2}
               />
-              <label htmlFor="personalChk">
-                개인정보 수집 및 이용 <Badge type="gray">필수</Badge>
+              <label htmlFor="chk2">
+                개인정보 수집 및 이용 동의 <Badge type="gray">필수</Badge>
               </label>
             </div>
           </AccordionHeader>
-          <AccordionBody>ddd</AccordionBody>
+          <AccordionBody>내용</AccordionBody>
+        </AccordionItem>
+
+        <AccordionItem eventKey={3}>
+          <AccordionHeader>
+            <div className="chk-box">
+              <input
+                type="checkbox"
+                id="chk3"
+                name="chk3"
+                onChange={(e) => handleChk(e)}
+                // ref={chk3}
+              />
+              <label htmlFor="chk3">
+                개인정보 제3자 제공 동의 <Badge type="gray">필수</Badge>
+              </label>
+            </div>
+          </AccordionHeader>
+          <AccordionBody>내용</AccordionBody>
+        </AccordionItem>
+
+        <AccordionItem eventKey={4}>
+          <AccordionHeader>
+            <div className="chk-box">
+              <input
+                type="checkbox"
+                id="chk4"
+                name="chk4"
+                onChange={(e) => handleChk(e)}
+                // ref={chk4}
+              />
+              <label htmlFor="chk4">
+                고유식별정보 수집 및 처리 동의 <Badge type="gray">필수</Badge>
+              </label>
+            </div>
+          </AccordionHeader>
+          <AccordionBody>내용</AccordionBody>
+        </AccordionItem>
+
+        <AccordionItem eventKey={5}>
+          <AccordionHeader>
+            <div className="chk-box">
+              <input
+                type="checkbox"
+                id="chk5"
+                name="chk5"
+                onChange={(e) => handleChk(e)}
+                // ref={chk5}
+              />
+              <label htmlFor="chk5">
+                결제 및 발권동의 <Badge type="gray">필수</Badge>
+              </label>
+            </div>
+          </AccordionHeader>
+          <AccordionBody>내용</AccordionBody>
+        </AccordionItem>
+
+        <AccordionItem eventKey={6}>
+          <AccordionHeader>
+            <div className="chk-box">
+              <input
+                type="checkbox"
+                id="chk6"
+                name="chk6"
+                onChange={(e) => handleChk(e)}
+                // ref={chk6}
+              />
+              <label htmlFor="chk6">
+                발권수수료 <Badge type="gray">필수</Badge>
+              </label>
+            </div>
+          </AccordionHeader>
+          <AccordionBody>내용</AccordionBody>
+        </AccordionItem>
+
+        <AccordionItem eventKey={7}>
+          <AccordionHeader>
+            <div className="chk-box">
+              <input
+                type="checkbox"
+                id="chk7"
+                name="chk7"
+                onChange={(e) => handleChk(e)}
+                // ref={chk7}
+              />
+              <label htmlFor="chk7">
+                트리플라이 항공 일반규정 <Badge type="gray">필수</Badge>
+              </label>
+            </div>
+          </AccordionHeader>
+          <AccordionBody>내용</AccordionBody>
+        </AccordionItem>
+
+        <AccordionItem eventKey={8}>
+          <AccordionHeader>
+            <div className="chk-box">
+              <input
+                type="checkbox"
+                id="chk8"
+                name="chk8"
+                onChange={(e) => handleChk(e)}
+                // ref={chk8}
+              />
+              <label htmlFor="chk8">
+                항공사 정보 동의 <Badge type="gray">필수</Badge>
+              </label>
+            </div>
+          </AccordionHeader>
+          <AccordionBody>내용</AccordionBody>
         </AccordionItem>
       </Accordion>
 
