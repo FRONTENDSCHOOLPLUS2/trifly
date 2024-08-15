@@ -9,11 +9,12 @@
 
   .search-container {
     padding: 8rem 0;
-
     background-image: url("/img/img-airplane-main.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    position: relative;
+    z-index: 1;
   }
 
   .notices {
@@ -97,6 +98,13 @@
 
 @media (max-width: 1023px) {
   .main {
+    .full-width {
+      position: static;
+      transform: unset;
+      margin-left: calc(var(--layout-padding) * -1);
+      margin-right: calc(var(--layout-padding) * -1);
+    }
+
     .search-container {
       padding: 3rem 0;
     }

@@ -20,6 +20,11 @@
     &.act::after {
       transform: rotate(180deg);
     }
+
+    .badge {
+      vertical-align: 0.1em;
+      margin-left: 0.6rem;
+    }
   }
   .accordion-body {
     display: none;
