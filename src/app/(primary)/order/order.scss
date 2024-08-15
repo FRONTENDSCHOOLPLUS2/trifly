@@ -176,7 +176,112 @@
     }
   }
 
-  // 동의, 정보 입력 공통
+  // 영수증
+  .receipt {
+    h3 {
+      font-size: var(--title-large);
+    }
+
+    dl {
+      margin-top: var(--title-extra);
+      display: flex;
+      justify-content: space-between;
+      color: var(--color-blue-100);
+
+      dt {
+        font-size: var(--title-medium);
+        font-weight: bold;
+      }
+      dd {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.1em;
+        font-size: var(--title-big);
+        font-weight: 500;
+
+        span {
+          font-size: var(--title-small);
+          color: var(--color-gray-100);
+          font-weight: normal;
+        }
+      }
+    }
+
+    .show-btn {
+      position: relative;
+      background: var(--color-gray-30);
+      padding: var(--title-medium);
+      border-radius: 0.7em;
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: var(--title-extra);
+      font-size: var(--title-small);
+      transition: background-color var(--transition-duration);
+
+      &:hover {
+        background: var(--color-gray-50);
+      }
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        background: url(/img/icon-accordion-blue.svg) no-repeat center;
+        width: 1rem;
+        aspect-ratio: 10/6;
+        top: 50%;
+        transform: translateY(-50%);
+        right: var(--title-extra);
+        transition: all var(--transition-duration);
+      }
+      &.act::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+
+    .price-detail {
+      margin-top: var(--title-max);
+
+      .price + .price {
+        margin-top: var(--title-large);
+      }
+
+      h4 {
+        text-align: center;
+        font-weight: 500;
+        border-bottom: 1px solid var(--color-gray-30);
+        padding-bottom: 0.6em;
+        margin-bottom: 0.7em;
+        font-size: var(--title-medium);
+        display: flex;
+        justify-content: space-between;
+      }
+      table {
+        width: 100%;
+        font-size: var(--title-small);
+
+        caption {
+          display: none;
+        }
+        td {
+          width: 30%;
+          padding: 0.2em;
+          color: var(--color-gray-100);
+
+          &.tit {
+            width: 40%;
+          }
+          &.price {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+
+  // 약관 동의, 정보 입력 공통
   .order-inner {
     .receipt-box {
       width: clamp(25rem, 30vw, 35rem);
@@ -187,6 +292,13 @@
       padding: var(--layout-padding);
       box-shadow: var(--box-shadow);
       border-radius: var(--title-extra);
+    }
+  }
+
+  // 약관 동의
+  .agree {
+    .btn-box {
+      margin-top: 7rem;
     }
   }
 
@@ -226,6 +338,12 @@
             padding-left: calc(var(--title-extra) * 1.5);
           }
         }
+      }
+    }
+
+    .order-inner {
+      .receipt-box {
+        width: 100%;
       }
     }
   }
