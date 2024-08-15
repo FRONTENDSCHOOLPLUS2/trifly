@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ItineraryModal.scss";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+// import "react-calendar/dist/Calendar.css";
 import Button from "@/components/Button/Button";
 
 interface ISchedule {
@@ -27,7 +27,10 @@ const ItineraryModal = ({
   schedule,
   setSchedule,
 }: ItineraryModalProps) => {
-  const [date, setDate] = useState<Value>();
+  const [date, setDate] = useState<Value>(null);
+  // const [isSelectingRange, setIsSelectingRange] = useState(
+  //   tripType === "round"
+  // );
 
   const formatDates = (data: [Date, Date]) => {
     let formattedDates: string[] = [];
@@ -47,7 +50,7 @@ const ItineraryModal = ({
     const days = ["일", "월", "화", "수", "목", "금", "토"];
     const year = date.getFullYear();
     const month1 = date.getMonth() + 1;
-    const month2 = (date.getMonth() + 1).toString().padStart(2, "0"); // 월은 0부터 시작하므로 +1
+    const month2 = (date.getMonth() + 1).toString().padStart(2, "0");
     const day = date.getDate();
     const dayOfWeek = days[date.getDay()];
 
@@ -57,37 +60,33 @@ const ItineraryModal = ({
     return { formattedDate, selectedDate };
   };
 
-  const handleSelect = (selectedDate: Value) => {
-    setDate(selectedDate);
-  };
+  // const handleDone = () => {
+  //   if (date) {
+  //     if (date instanceof Array) {
+  //       const result = formatDates(date as [Date, Date]);
+  //       setSchedule({
+  //         departureDate: result.selectedDates[0],
+  //         departureFormattedDate: result.formattedDates[0],
+  //         returnDate: result.selectedDates[1],
+  //         returnFormattedDate: result.formattedDates[1],
+  //       });
+  //     } else {
+  //       const result = formatDate(date);
+  //       setSchedule({
+  //         departureDate: result.selectedDate,
+  //         departureFormattedDate: result.formattedDate,
+  //         returnDate: "",
+  //         returnFormattedDate: "",
+  //       });
+  //     }
 
-  const handleDone = () => {
-    if (date) {
-      if (date instanceof Array) {
-        const result = formatDates(date as [Date, Date]);
-        setSchedule({
-          departureDate: result.selectedDates[0],
-          departureFormattedDate: result.formattedDates[0],
-          returnDate: result.selectedDates[1],
-          returnFormattedDate: result.formattedDates[1],
-        });
-      } else {
-        const result = formatDate(date);
-        setSchedule({
-          departureDate: result.selectedDate,
-          departureFormattedDate: result.formattedDate,
-          returnDate: "",
-          returnFormattedDate: "",
-        });
-      }
-
-      handleClose(false);
-    } else if (!schedule.departureDate) {
-      alert("날짜를 선택하세요!");
-    } else {
-      handleClose(false);
-    }
-  };
+  //     handleClose(false);
+  //   } else if (!schedule.departureDate) {
+  //     alert("날짜를 선택하세요!");
+  //   } else {
+  //     handleClose(false);
+  //   }
+  // };
 
   return (
     <div className="itinerary-modal search-modal-contents">
@@ -100,21 +99,9 @@ const ItineraryModal = ({
         <span className="hidden">닫기</span>
       </button>
 
-      <div className="calendar">
-        <Calendar
-          onChange={handleSelect}
-          value={date}
-          locale="ko-KR"
-          calendarType="gregory"
-          prev2Label={null}
-          next2Label={null}
-          minDate={new Date()}
-          showDoubleView={true}
-          selectRange={tripType === "round"}
-        />
-      </div>
+      <div className="calendar"></div>
 
-      <Button onClick={handleDone}>완료</Button>
+      {/* <Button onClick={handleDone}>완료</Button> */}
     </div>
   );
 };
