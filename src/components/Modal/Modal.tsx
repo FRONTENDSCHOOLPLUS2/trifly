@@ -23,17 +23,11 @@ const Modal = () => {
   };
 
   // 모달 오픈 시 배경 스크롤 방지
-  // if (isOpen) {
-  //   document.body.setAttribute(
-  //     "style",
-  //     "position: fixed; overflow-y: hidden; width: 100vw;"
-  //   );
-  // } else {
-  //   document.body.setAttribute(
-  //     "style",
-  //     "position: unset; overflow-y: unset; width: unset;"
-  //   );
-  // }
+  if (isOpen) {
+    document.querySelector("html")!.setAttribute("style", "overflow: hidden;");
+  } else {
+    document.querySelector("html")!.setAttribute("style", "overflow: unset;");
+  }
 
   return (
     <>
