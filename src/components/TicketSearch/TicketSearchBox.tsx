@@ -23,7 +23,9 @@ const TicketSearchBox = ({ airport }: { airport: AirportData[] }) => {
   const [destinationModal, setDestinationModal] = useState(false);
   const [schedule, setSchedule] = useState({
     departureDate: "",
+    departureFormattedDate: "",
     returnDate: "",
+    returnFormattedDate: "",
   });
   const [scheduleModal, setScheduleModal] = useState(false);
   const [passengers, setPassengers] = useState({
@@ -36,6 +38,12 @@ const TicketSearchBox = ({ airport }: { airport: AirportData[] }) => {
 
   const handleTripType = (e: ChangeEvent<HTMLInputElement>) => {
     setTripType(e.target.value);
+    setSchedule({
+      departureDate: "",
+      departureFormattedDate: "",
+      returnDate: "",
+      returnFormattedDate: "",
+    });
   };
 
   const handleNonStop = () => {
@@ -183,9 +191,13 @@ const TicketSearchBox = ({ airport }: { airport: AirportData[] }) => {
               )}
 
               <span
-                className={`schedule-contents ${schedule.departureDate && schedule.returnDate ? "selected" : ""}`}
+                className={`schedule-contents ${schedule.departureDate ? "selected" : ""}`}
               >
-                여행 일정 선택
+                {schedule.departureDate
+                  ? tripType === "round"
+                    ? `${schedule.departureFormattedDate} ~ ${schedule.returnFormattedDate}`
+                    : `${schedule.departureFormattedDate}`
+                  : "여행 일정 선택"}
               </span>
             </button>
           </div>
@@ -226,7 +238,12 @@ const TicketSearchBox = ({ airport }: { airport: AirportData[] }) => {
         )}
         {scheduleModal && (
           <div className="search-modal">
-            <ItineraryModal handleClose={setScheduleModal} />
+            <ItineraryModal
+              handleClose={setScheduleModal}
+              tripType={tripType}
+              schedule={schedule}
+              setSchedule={setSchedule}
+            />
           </div>
         )}
         {passengersModal && (

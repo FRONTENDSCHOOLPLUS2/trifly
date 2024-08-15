@@ -79,9 +79,18 @@
           border-bottom-right-radius: 2rem;
         }
 
-        &.selected,
-        &:focus {
+        &.selected {
           background-color: var(--color-primary-30);
+
+          .schedule-contents {
+            color: var(--color-primary);
+          }
+        }
+
+        &:focus {
+          .schedule-contents {
+            color: var(--color-primary);
+          }
         }
 
         .schedule-title {
@@ -165,7 +174,7 @@
         position: absolute;
         border-radius: 2rem;
 
-        & > button {
+        & .close-button {
           position: absolute;
           top: 2rem;
           right: 2rem;
