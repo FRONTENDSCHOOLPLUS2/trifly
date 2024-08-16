@@ -1,0 +1,49 @@
+.ticket-detail {
+  .title-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4.6rem;
+
+    .tag {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.ticket-print {
+  .title {
+    margin-top: 20rem;
+    margin-bottom: 4.6rem;
+  }
+
+  table {
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+
+    thead {
+      background-color: var(--color-gray-30);
+
+      th {
+        font-size: var(--title-big);
+        color: var(--color-gray-100);
+        font-weight: 500;
+        border-bottom: 1px solid var(--color-gray-90);
+        line-height: 4rem;
+      }
+    }
+
+    tbody {
+      td {
+        font-size: var(--title-big);
+        text-align: center;
+        line-height: 6.5rem;
+        border-bottom: 1px solid var(--color-gray-30);
+      }
+    }
+  }
+}

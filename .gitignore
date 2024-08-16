@@ -128,3 +128,10 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+# image files
+api/dbinit/team/uploadFiles/*
+
+# DS Store
+.DS_Store

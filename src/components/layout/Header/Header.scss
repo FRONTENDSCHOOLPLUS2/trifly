@@ -1,0 +1,146 @@
+.header {
+  position: fixed;
+  inset: 0;
+  bottom: auto;
+  z-index: 9999;
+  background: #fff;
+
+  .header-contents {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 10vw, 2rem);
+    height: var(--header-height);
+  }
+
+  .header-logo {
+    flex-grow: 1;
+
+    & img {
+      width: 9.4rem;
+    }
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 10vw, 2rem);
+    font-weight: 500;
+    color: var(--color-black);
+
+    & a {
+      font-size: var(--title-big);
+    }
+  }
+
+  .header-user {
+    & a {
+      display: inline-block;
+    }
+
+    & img {
+      width: 2.4rem;
+      vertical-align: sub;
+
+      &.logout {
+        width: 2rem;
+      }
+    }
+  }
+
+  .corner {
+    display: none;
+  }
+
+  &.defaultType {
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+  }
+
+  &.primaryType {
+    background: var(--color-primary);
+
+    .header-nav {
+      color: var(--color-white);
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+    }
+
+    .corner {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      width: 100%;
+      height: var(--layout-padding);
+      bottom: 0;
+      transform: translateY(100%);
+      left: 0;
+
+      & > div {
+        position: relative;
+        height: 100%;
+        aspect-ratio: 1/1;
+        background: var(--color-primary);
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          height: 100%;
+          aspect-ratio: 1/1;
+          background: #fff;
+        }
+
+        &.left::before {
+          border-radius: 100% 0 0 0;
+        }
+        &.right::before {
+          border-radius: 0 100% 0 0;
+        }
+      }
+    }
+  }
+
+  &.transparentType {
+    background: transparent;
+
+    .header-nav {
+      color: var(--color-white);
+    }
+  }
+
+  &.transparentType::before {
+    background: transparent;
+  }
+}
+
+@media (max-width: 1023px) {
+  .header {
+    .header-logo {
+      & img {
+        width: 5.6rem;
+      }
+    }
+
+    .header-nav {
+      & a {
+        font-size: var(--title-medium);
+      }
+    }
+
+    .header-user {
+      & img {
+        width: 2rem;
+
+        &.logout {
+          width: 1.8rem;
+        }
+      }
+    }
+  }
+}

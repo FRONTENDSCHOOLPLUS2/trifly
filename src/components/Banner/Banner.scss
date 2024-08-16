@@ -1,0 +1,149 @@
+.banner {
+  margin: 15rem 0;
+  cursor: pointer;
+  background-color: #e3fce7;
+
+  .banner-container {
+    width: 100%;
+    max-width: var(--layout-pc);
+    padding: 0 var(--layout-padding);
+    box-sizing: border-box;
+    margin: 0 auto;
+    background-image: url("/img/banner-stars-pc.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center left;
+
+    .banner-contents {
+      position: relative;
+
+      .banner-text {
+        box-sizing: border-box;
+        padding: 8.8rem 19.6rem;
+
+        .banner-message {
+          width: fit-content;
+          font-family: var(--font-dohyeon);
+          z-index: 1;
+
+          &:first-child {
+            font-size: 4.6rem;
+            color: #33c78b;
+            position: relative;
+
+            &::before {
+              content: "";
+              position: absolute;
+              z-index: -1;
+              top: -4rem;
+              left: 5.5rem;
+              width: 17.4rem;
+              height: 8.2rem;
+              background-image: url("/img/banner-tag.svg");
+              background-repeat: no-repeat;
+              background-size: contain;
+              transform: rotate(5deg);
+            }
+          }
+
+          &:last-child {
+            font-size: 5rem;
+            color: #00a262;
+            font-weight: 700;
+            position: relative;
+          }
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: -11.4rem;
+        right: 0;
+        width: 53rem;
+        height: 43.8rem;
+        background-image: url("/img/banner-ticket-pc.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .banner {
+    margin: 5.6rem 0;
+
+    .banner-container {
+      .banner-contents {
+        .banner-text {
+          padding: 6rem 9rem;
+
+          .banner-message {
+            &:first-child {
+              font-size: 3.2rem;
+              position: relative;
+
+              &::before {
+                width: 11.6rem;
+                height: 6.1rem;
+                z-index: 0;
+              }
+            }
+
+            &:last-child {
+              font-size: 3.2rem;
+            }
+          }
+        }
+
+        &::after {
+          top: -4.3rem;
+          right: 0;
+          width: 30rem;
+          height: 25.6rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .banner {
+    .banner-container {
+      .banner-contents {
+        .banner-text {
+          padding: 4.1rem 4.7rem;
+
+          .banner-message {
+            &:first-child {
+              font-size: 2.4rem;
+
+              &::before {
+                width: 7.3rem;
+                height: 3.4rem;
+                top: -2rem;
+                left: 4rem;
+                z-index: 0;
+                transform: unset;
+              }
+            }
+
+            &:last-child {
+              font-size: 2.4rem;
+            }
+          }
+        }
+
+        &::after {
+          top: 0;
+          right: 0;
+          width: 18rem;
+          height: 14.2rem;
+          background-image: url("/img/banner-ticket-mobile.svg");
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.reservation-header {
+  display: flex;
+  justify-content: space-between;
+
+  .search-cover {
+    display: flex;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .input-cover {
+    width: 23rem;
+  }
+}
+
+.title {
+  margin-bottom: 4.6rem;
+}
+.reservation-table {
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+
+  thead {
+    background-color: var(--color-gray-30);
+
+    th {
+      font-size: var(--title-big);
+      color: var(--color-gray-100);
+      font-weight: 500;
+      border-bottom: 1px solid var(--color-gray-100);
+      line-height: 4rem;
+    }
+  }
+
+  tbody {
+    td {
+      font-size: var(--title-big);
+      text-align: center;
+      line-height: 6.5rem;
+      border-bottom: 1px solid var(--color-gray-30);
+    }
+
+    .reservation-number {
+      color: var(--color-blue-100);
+      font-weight: 600;
+    }
+
+    .schedule {
+      color: var(--color-blue-100);
+      font-weight: 600;
+    }
+
+    .total {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+  }
+}
