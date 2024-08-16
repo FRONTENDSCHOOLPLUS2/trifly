@@ -64,39 +64,7 @@ export interface OrderItem extends OrderData {
 export interface OrderData {
   reservationId: string;
   totalPrice: string;
-  itineraries: {
-    duration?: string;
-    segments: {
-      departure: {
-        iataCode: string;
-        terminal: string;
-        at: string;
-      };
-      arrival: {
-        iataCode: string;
-        terminal?: string;
-        at: string;
-      };
-      carrierCode: string;
-      number: string;
-      aircraft: {
-        code: string;
-      };
-      operating?: {
-        carrierCode: string;
-      };
-      duration: string;
-      id: string;
-      numberOfStops: number;
-      co2Emissions?: [
-        {
-          weight: number;
-          weightUnit: "KG";
-          cabin: "ECONOMY" | "BUSINESS" | "FIRST";
-        },
-      ];
-    }[];
-  }[];
+  itineraries: OrderItineraries[];
   price: {
     travelerId: string;
     fareOption: string;
@@ -150,4 +118,34 @@ export interface Purchaser {
   birth: string;
   phone: { main: string; sub: string };
   email: string;
+}
+
+
+export interface OrderItineraries {
+  segments: {
+    departure: {
+      iataCode: string;
+      terminal: string;
+      at: string;
+    };
+    arrival: {
+      iataCode: string;
+      at: string;
+    };
+    carrierCode: string;
+    number: string;
+    aircraft: {
+      code: string;
+    };
+    duration: string;
+    id: string;
+    numberOfStops: number;
+    co2Emissions?: [
+      {
+        weight: number;
+        weightUnit: "KG";
+        cabin: "ECONOMY" | "BUSINESS" | "FIRST";
+      },
+    ];
+  }[];
 }

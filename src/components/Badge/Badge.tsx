@@ -2,7 +2,7 @@ import "./Badge.scss";
 
 interface BadgeProps {
   children: React.ReactNode;
-  type?: "primary" | "secondary" | "gray";
+  type?: "primary" | "secondary" | "gray" | "deep";
   selected?: boolean;
 }
 
