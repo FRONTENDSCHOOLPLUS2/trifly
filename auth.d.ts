@@ -4,6 +4,8 @@ export declare module "@auth/core/types" {
     phone: string;
     name: string;
     email: string;
+    accessToken: string;
+    refreshToken: string;
   }
   interface Session {
     type: string;
