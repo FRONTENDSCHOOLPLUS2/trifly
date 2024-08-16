@@ -61,10 +61,9 @@ export interface OrderItem extends OrderData {
 /* ---------------------------------------------------------------- */
 /*                            order 공통 타입                           */
 /* ---------------------------------------------------------------- */
-export interface OrderData {
+interface OrderData {
   reservationId: string;
   totalPrice: string;
-
   itineraries: OrderItineraries[];
   price: [
     {
@@ -92,23 +91,9 @@ export interface OrderData {
           weightUnit?: "KG";
           quantity?: number;
         };
-
       }[];
-      refundableTaxes: string;
-    };
-    fareDetailsBySegment: {
-      segmentId: string;
-      cabin: string;
-      fareBasis: string;
-      brandedFare?: string;
-      class: string;
-      includedCheckedBags: {
-        weight?: number;
-        weightUnit?: "KG";
-        quantity?: number;
-      };
-    }[];
-  }[];
+    },
+  ];
   passengers: [
     {
       type: "adult" | "child" | "infant";
