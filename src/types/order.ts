@@ -92,28 +92,34 @@ export interface OrderData {
       };
     }[];
   }[];
-  passengers: {
-    type: "adult" | "child" | "infant";
-    nameKor: string;
-    nameEng: string;
-    birth: string;
-    phone: string;
-    passport: {
-      number: string;
-      expDate: string;
-    };
-    nationality: string;
-    issueCountry: string;
-    email: string;
-    seat?: string;
-  }[];
-  purchaser: {
-    name: string;
-    birth: string;
-    phone: { main: string; sub: string };
-    email: string;
-  };
+  passengers: Passengers[];
+  purchaser: Purchaser;
 }
+
+export interface Passengers {
+  type: "adult" | "child" | "infant";
+  nameKor: string;
+  gender: "M" | "F";
+  nameEng: string;
+  birth: string;
+  phone: string;
+  passport: {
+    number: string;
+    expDate: string;
+  };
+  nationality: string;
+  issueCountry: string;
+  email: string;
+  seat?: string;
+}
+
+export interface Purchaser {
+  name: string;
+  birth: string;
+  phone: { main: string; sub: string };
+  email: string;
+}
+
 
 export interface OrderItineraries {
   segments: {

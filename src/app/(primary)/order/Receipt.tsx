@@ -1,18 +1,8 @@
 "use client";
 import { orderState } from "@/atoms/atoms";
+import usePersonalPrice from "@/hook/usePersonalPrice";
 import { useState } from "react";
 import { useRecoilValue } from "recoil";
-
-type PersonalPrice = {
-  currency: "KRW";
-  total: string;
-  base: string;
-  taxes: {
-    amount: string;
-    code: string;
-  }[];
-  refundableTaxes: string;
-}[];
 
 const getLocalNum = (value: string | number) => {
   if (typeof value === "string") value = +value;
@@ -20,18 +10,10 @@ const getLocalNum = (value: string | number) => {
 };
 
 const Receipt = () => {
-  const { price, totalPrice } = useRecoilValue(orderState);
-  const charge = 10000;
-  const personalPrice: PersonalPrice[] = [[], [], []];
-  const personalIdx = {
-    ADULT: 0,
-    CHILD: 1,
-    INFANT: 2,
-  };
-  price.map((item) =>
-    personalPrice[personalIdx[item.travelerType]].push(item.price)
-  );
+  const { totalPrice } = useRecoilValue(orderState);
   const [isDetailShow, setIsDetailShow] = useState(false);
+  const charge = 10000;
+  const personalPrice = usePersonalPrice();
 
   return (
     <article className="receipt">

@@ -4,7 +4,7 @@ import Receipt from "../Receipt";
 import AgreeForm from "./AgreeForm";
 
 const AgreePage = async () => {
-  const code = await fetchCodes();
+  const { code } = await fetchCodes();
 
   return (
     <div className="order-inner agree flexVer">

@@ -75,8 +75,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }) {
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;
-      session.birth = token.birth;
-      session.phone = token.phone;
+      session.user.birth = token.birth;
+      session.user.phone = token.phone;
       return session;
     },
   },
