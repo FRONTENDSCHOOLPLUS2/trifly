@@ -3,9 +3,9 @@ import "./TicketSearch.scss";
 import TicketSearchBox from "./TicketSearchBox";
 
 const TicketSearch = async () => {
-  const { airportCode } = await fetchCodes();
+  const { code, airportCode } = await fetchCodes();
 
-  return <TicketSearchBox airport={airportCode} />;
+  return <TicketSearchBox code={code} airport={airportCode} />;
 };
 
 export default TicketSearch;

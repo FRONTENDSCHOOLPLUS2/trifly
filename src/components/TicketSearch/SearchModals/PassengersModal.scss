@@ -1,5 +1,131 @@
 .passengers-modal {
-  width: 30%;
+  width: 35%;
   top: 0;
   right: 0;
+  padding: 2rem;
+  padding-top: 3rem;
+  box-sizing: border-box;
+
+  .passengers-modal-contents {
+    height: 100%;
+
+    .section-title {
+      margin-bottom: 1rem;
+
+      & h4 {
+        font-size: var(--title-big);
+        font-weight: 700;
+      }
+
+      & p {
+        margin-top: 0.8rem;
+        font-size: var(--title-small);
+        font-weight: 400;
+        color: var(--color-gray-100);
+      }
+    }
+
+    .passengers-section {
+      .passengers-category {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.4rem;
+
+        &:last-child {
+          margin-bottom: unset;
+        }
+
+        & h5 {
+          font-size: var(--title-medium);
+          font-weight: 500;
+        }
+
+        & > p {
+          font-size: var(--title-small);
+          font-weight: 400;
+          color: var(--color-gray-100);
+        }
+
+        .counter {
+          margin-left: auto;
+          border: 0.1rem solid var(--color-gray-30);
+          border-radius: 1.8rem;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          color: var(--color-gray-100);
+          font-size: var(--title-medium);
+          font-weight: 500;
+
+          &:hover {
+            border-color: var(--color-primary);
+            background-color: var(--color-primary-30);
+            color: var(--color-primary);
+          }
+
+          .counter-button {
+            width: 2.4rem;
+            height: 2.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & img {
+              width: 0.8rem;
+              aspect-ratio: 1/1;
+            }
+          }
+        }
+      }
+    }
+
+    .cabin-section {
+      margin-top: 3rem;
+      .no-select {
+        padding-bottom: 1.4rem;
+        border-bottom: 0.1rem solid var(--color-gray-50);
+        box-sizing: border-box;
+      }
+
+      .cabin {
+        width: 50%;
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+
+        & label {
+          font-size: var(--title-medium);
+          font-weight: 500;
+        }
+      }
+
+      .cabins {
+        margin-top: 1.4rem;
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 1rem;
+      }
+    }
+
+    .passengers-select-done {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .passengers-modal {
+    padding: 4rem 3rem;
+
+    .passengers-modal-contents {
+      .passengers-select-done {
+        margin-top: 5rem;
+      }
+    }
+  }
 }
