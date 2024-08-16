@@ -2,7 +2,8 @@
   display: inline-block;
   font-size: var(--title-small);
   font-weight: 500;
-  padding: 0.3rem 1rem;
+  line-height: 1;
+  padding: 0.4rem 1rem;
   border-radius: 0.8rem;
   box-sizing: border-box;
 
@@ -24,5 +25,10 @@
   &.gray {
     background-color: var(--color-gray-30);
     color: var(--color-gray-100);
+  }
+
+  &.deep {
+    background-color: var(--color-gray-30);
+    color: var(--color-blue-100);
   }
 }
