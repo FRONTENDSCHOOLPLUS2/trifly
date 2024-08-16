@@ -19,8 +19,8 @@ const TicketSearchBox = ({
   const [tripType, setTripType] = useState("round");
   const [nonStop, setNonStop] = useState(false);
   const [origin, setOrigin] = useState({
-    code: "ICN",
-    value: "서울/인천",
+    code: "SEL",
+    value: "서울",
   });
   const [destination, setDestination] = useState({
     code: "",
@@ -30,7 +30,9 @@ const TicketSearchBox = ({
   const [destinationModal, setDestinationModal] = useState(false);
   const [schedule, setSchedule] = useState({
     departureDate: "",
+    departureFormattedDate: "",
     returnDate: "",
+    returnFormattedDate: "",
   });
   const [scheduleModal, setScheduleModal] = useState(false);
   const [passengers, setPassengers] = useState({
@@ -46,6 +48,12 @@ const TicketSearchBox = ({
 
   const handleTripType = (e: ChangeEvent<HTMLInputElement>) => {
     setTripType(e.target.value);
+    setSchedule({
+      departureDate: "",
+      departureFormattedDate: "",
+      returnDate: "",
+      returnFormattedDate: "",
+    });
   };
 
   const handleNonStop = () => {
@@ -111,6 +119,11 @@ const TicketSearchBox = ({
   };
 
   const handleClick = () => {
+    if (!destination.code) {
+      alert("도착 공항을 선택하세요!");
+      return;
+    }
+
     const originAirport = code[origin.code] as AirportData;
     const destinationAirport = code[destination.code] as AirportData;
 
@@ -219,9 +232,13 @@ const TicketSearchBox = ({
               )}
 
               <span
-                className={`schedule-contents ${schedule.departureDate && schedule.returnDate ? "selected" : ""}`}
+                className={`schedule-contents ${schedule.departureDate ? "selected" : ""}`}
               >
-                여행 일정 선택
+                {schedule.departureDate
+                  ? tripType === "round"
+                    ? `${schedule.departureFormattedDate} ~ ${schedule.returnFormattedDate}`
+                    : `${schedule.departureFormattedDate}`
+                  : "여행 일정 선택"}
               </span>
             </button>
           </div>
@@ -265,7 +282,12 @@ const TicketSearchBox = ({
         )}
         {scheduleModal && (
           <div className="search-modal">
-            <ScheduleModal handleClose={setScheduleModal} />
+            <ScheduleModal
+              handleClose={setScheduleModal}
+              tripType={tripType}
+              schedule={schedule}
+              setSchedule={setSchedule}
+            />
           </div>
         )}
         {passengersModal && (

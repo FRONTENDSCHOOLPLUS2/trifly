@@ -44,12 +44,6 @@ const RouteModal = ({
     "중남미",
   ];
 
-  // useEffect(() => {
-  //   document.querySelectorAll("button").forEach((button) => {
-  //     if (button.value === "대한민국") button.classList.add("selected");
-  //   });
-  // }, []);
-
   useEffect(() => {
     const filteredData = airport.filter(
       (item) => item.areaCode === selectedArea
@@ -125,7 +119,11 @@ const RouteModal = ({
 
   return (
     <div className="route-modal search-modal-contents">
-      <button type="button" onClick={() => handleClose(false)}>
+      <button
+        className="close-button"
+        type="button"
+        onClick={() => handleClose(false)}
+      >
         <img src="/img/icon-close-black.svg" alt="닫기" />
         <span className="hidden">닫기</span>
       </button>
