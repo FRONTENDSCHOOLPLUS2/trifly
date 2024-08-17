@@ -294,11 +294,133 @@
       border-radius: var(--title-extra);
     }
   }
-
-  // 약관 동의
-  .agree {
+  form {
     .btn-box {
       margin-top: 7rem;
+    }
+  }
+
+  // 정보 입력 및 결제
+  .payment {
+    .input-form {
+      margin-top: var(--title-extra);
+    }
+    .input-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: calc(var(--title-medium) * 2)
+        clamp(1.4rem, 1.7vw, calc(var(--title-medium) * 2));
+    }
+    .input-box {
+      width: calc(50% - var(--title-medium));
+      margin: 0;
+
+      label {
+        font-size: var(--title-medium);
+      }
+    }
+
+    .info-box {
+      margin-top: calc(var(--title-extra) * 2);
+      font-size: var(--title-small);
+      color: var(--color-gray-100);
+      padding: var(--title-extra);
+      background: var(--color-gray-30);
+      border-radius: var(--title-extra);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8em;
+
+      li {
+        position: relative;
+        padding-left: 1.6em;
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          width: 1em;
+          aspect-ratio: 1 / 1;
+          background: url(/img/icon-warning.svg) no-repeat center;
+          border-radius: 50%;
+          left: 0;
+          top: 0.1em;
+        }
+      }
+    }
+
+    // 예약자 정보
+    .reservation {
+      .input-flex {
+        margin-top: var(--title-extra);
+      }
+    }
+
+    // 탑승객 정보
+    .passenger {
+      margin-top: 7rem;
+
+      .input-toggle {
+        margin-top: calc(var(--title-big) * 2);
+      }
+
+      .information {
+        border: 1px solid var(--color-gray-50);
+        border-radius: var(--title-medium);
+
+        & + .information {
+          margin-top: var(--title-extra);
+        }
+
+        h4 {
+          display: flex;
+          align-items: center;
+          font-size: var(--title-large);
+          position: relative;
+          padding: var(--title-extra);
+          cursor: pointer;
+
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            background: url(/img/icon-accordion-blue.svg) no-repeat center /
+              cover;
+            width: 1rem;
+            aspect-ratio: 10/6;
+            top: 50%;
+            right: var(--title-medium);
+            transform: translateY(-50%) rotate(180deg);
+            transition: all var(--transition-duration);
+          }
+          &.act::after {
+            transform: translateY(-50%);
+          }
+          .badge {
+            margin-right: 0.8em;
+            font-size: var(--title-medium);
+          }
+          .count {
+            margin-left: 0.3em;
+          }
+        }
+
+        .input-flex {
+          padding: var(--title-extra);
+          position: relative;
+
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--color-gray-30);
+          }
+        }
+      }
     }
   }
 
@@ -345,6 +467,12 @@
       .receipt-box {
         width: 100%;
       }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .payment .input-box {
+      width: 100%;
     }
   }
 }
