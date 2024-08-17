@@ -118,7 +118,7 @@ const RouteModal = ({
   ));
 
   return (
-    <div className="route-modal search-modal-contents">
+    <div className="route-modal">
       <button
         className="close-button"
         type="button"

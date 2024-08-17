@@ -6,6 +6,24 @@
   padding-top: 3rem;
   box-sizing: border-box;
 
+  height: 100%;
+  background-color: var(--color-white);
+  position: absolute;
+  border-radius: 2rem;
+
+  & .close-button {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 2rem;
+    height: 2rem;
+
+    & img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
   .passengers-modal-contents {
     height: 100%;
 
@@ -120,7 +138,19 @@
 
 @media (max-width: 1023px) {
   .passengers-modal {
-    padding: 4rem 3rem;
+    position: absolute;
+    height: fit-content;
+    width: 100%;
+    min-width: 320px;
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
+    top: unset;
+    right: unset;
+    bottom: 0;
+
+    &.search-modal-contents {
+      height: fit-content;
+    }
 
     .passengers-modal-contents {
       .passengers-select-done {

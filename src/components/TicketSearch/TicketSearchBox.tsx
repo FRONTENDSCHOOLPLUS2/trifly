@@ -257,7 +257,9 @@ const TicketSearchBox = ({
             </button>
           </div>
           <div className="search-button">
-            <Button onClick={handleClick}>검색</Button>
+            <Button size="sm" onClick={handleClick}>
+              검색
+            </Button>
           </div>
         </div>
         {originModal && (
