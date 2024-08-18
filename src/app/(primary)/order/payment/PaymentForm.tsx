@@ -12,7 +12,6 @@ type PaymentData = {
   purchaser:
     | Purchaser
     | {
-        phone1: string;
         [key: string]: string;
       };
   passengers: {
@@ -110,12 +109,12 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
             <label htmlFor="phone1">
               휴대폰 번호
               <span className="errorMsg">
-                {errors?.purchaser?.phone1
+                {/* {errors?.purchaser?.phone1
                   ? errors.purchaser?.phone1?.message
                   : errors?.purchaser?.phone2
                     ? errors.purchaser?.phone2?.message
                     : errors?.purchaser?.phone3 &&
-                      errors.purchaser?.phone3?.message}
+                      errors.purchaser?.phone3?.message} */}
               </span>
             </label>
             <div className="input-phone">
