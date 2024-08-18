@@ -68,16 +68,221 @@ export const initData = async (clientId, nextSeq) => {
     order: [
       {
         _id: await nextSeq("order"),
-        user_id: 1,
         products: [
           {
             _id: 1,
+            quantity: 1,
             seller_id: 1,
             name: "항공권",
-            quantity: 1,
+            image: null,
             price: 0,
+            extra: null,
           },
         ],
+        reservationId: "UM2D6V",
+        totalPrice: "1319000.00",
+        itineraries: [
+          {
+            duration: "PT4H45M",
+            segments: [
+              {
+                departure: {
+                  iataCode: "ICN",
+                  terminal: "2",
+                  at: "2024-08-20T10:55:00",
+                },
+                arrival: {
+                  iataCode: "DAD",
+                  terminal: "2",
+                  at: "2024-08-20T13:40:00",
+                },
+                carrierCode: "KE",
+                number: "457",
+                aircraft: {
+                  code: "333",
+                },
+                operating: {
+                  carrierCode: "KE",
+                },
+                duration: "PT4H45M",
+                id: "16",
+                numberOfStops: 0,
+                blacklistedInEU: false,
+              },
+            ],
+          },
+          {
+            duration: "PT4H35M",
+            segments: [
+              {
+                departure: {
+                  iataCode: "DAD",
+                  terminal: "2",
+                  at: "2024-08-25T15:40:00",
+                },
+                arrival: {
+                  iataCode: "ICN",
+                  terminal: "2",
+                  at: "2024-08-25T22:15:00",
+                },
+                carrierCode: "KE",
+                number: "458",
+                aircraft: {
+                  code: "333",
+                },
+                operating: {
+                  carrierCode: "KE",
+                },
+                duration: "PT4H35M",
+                id: "37",
+                numberOfStops: 0,
+                blacklistedInEU: false,
+              },
+            ],
+          },
+        ],
+        price: [
+          {
+            travelerId: "1",
+            fareOption: "STANDARD",
+            travelerType: "ADULT",
+            price: {
+              currency: "KRW",
+              total: "635000",
+              base: "490000",
+              taxes: [
+                {
+                  amount: "2800.00",
+                  code: "C4",
+                },
+                {
+                  amount: "89600.00",
+                  code: "YR",
+                },
+                {
+                  amount: "27600.00",
+                  code: "JC",
+                },
+                {
+                  amount: "25000.00",
+                  code: "BP",
+                },
+              ],
+              refundableTaxes: "145000",
+            },
+            fareDetailsBySegment: [
+              {
+                segmentId: "16",
+                cabin: "ECONOMY",
+                fareBasis: "UKEVZRKS",
+                class: "U",
+                includedCheckedBags: {
+                  quantity: 1,
+                },
+              },
+              {
+                segmentId: "37",
+                cabin: "ECONOMY",
+                fareBasis: "KKEVZRKS",
+                class: "K",
+                includedCheckedBags: {
+                  quantity: 1,
+                },
+              },
+            ],
+          },
+          {
+            travelerId: "2",
+            fareOption: "STANDARD",
+            travelerType: "ADULT",
+            price: {
+              currency: "KRW",
+              total: "635000",
+              base: "490000",
+              taxes: [
+                {
+                  amount: "2800.00",
+                  code: "C4",
+                },
+                {
+                  amount: "89600.00",
+                  code: "YR",
+                },
+                {
+                  amount: "27600.00",
+                  code: "JC",
+                },
+                {
+                  amount: "25000.00",
+                  code: "BP",
+                },
+              ],
+              refundableTaxes: "145000",
+            },
+            fareDetailsBySegment: [
+              {
+                segmentId: "16",
+                cabin: "ECONOMY",
+                fareBasis: "UKEVZRKS",
+                class: "U",
+                includedCheckedBags: {
+                  quantity: 1,
+                },
+              },
+              {
+                segmentId: "37",
+                cabin: "ECONOMY",
+                fareBasis: "KKEVZRKS",
+                class: "K",
+                includedCheckedBags: {
+                  quantity: 1,
+                },
+              },
+            ],
+          },
+          {
+            travelerId: "3",
+            fareOption: "STANDARD",
+            travelerType: "HELD_INFANT",
+            associatedAdultId: "1",
+            price: {
+              currency: "KRW",
+              total: "49000",
+              base: "49000",
+              refundableTaxes: "0",
+            },
+            fareDetailsBySegment: [
+              {
+                segmentId: "16",
+                cabin: "ECONOMY",
+                fareBasis: "UKEVZRKS",
+                class: "U",
+                includedCheckedBags: {
+                  quantity: 1,
+                },
+              },
+              {
+                segmentId: "37",
+                cabin: "ECONOMY",
+                fareBasis: "KKEVZRKS",
+                class: "K",
+                includedCheckedBags: {
+                  quantity: 1,
+                },
+              },
+            ],
+          },
+        ],
+        purchaser: {
+          name: "전희선",
+          birth: "1999-01-01",
+          phone: "010-1111-1111",
+          email: "test@trifly.com",
+        },
+        state: "OS020",
+        user_id: 1,
+        createdAt: "2024.08.17 12:30:01",
+        updatedAt: "2024.08.17 12:30:01",
         cost: {
           products: 0,
           shippingFees: 0,
@@ -87,8 +292,787 @@ export const initData = async (clientId, nextSeq) => {
           },
           total: 0,
         },
-        createdAt: getTime(-6, -60 * 60 * 3),
-        updatedAt: getTime(-6, -60 * 60 * 3),
+        passengers: [
+          {
+            type: "adult",
+            nameKor: "윤우중",
+            nameEng: "WOOJUNG YOON",
+            birth: "1999-01-01",
+            phone: "010-1111-1111",
+            passport: {
+              number: "M222M2222",
+              expDate: "2032-01-01",
+            },
+            nationality: "대한민국",
+            issueCountry: "대한민국",
+            email: "test@trifly.com",
+            seat: "",
+          },
+          {
+            type: "adult",
+            nameKor: "전희선",
+            nameEng: "HEESUN JEON",
+            birth: "1999-01-03",
+            phone: "010-1111-1111",
+            passport: {
+              number: "M222M2225",
+              expDate: "2032-01-05",
+            },
+            nationality: "대한민국",
+            issueCountry: "대한민국",
+            email: "test@test.com",
+            seat: "",
+          },
+          {
+            type: "infant",
+            nameKor: "이소정",
+            nameEng: "SOJEONG LEE",
+            birth: "2024-01-03",
+            phone: "010-1111-1111",
+            passport: {
+              number: "M222M2225",
+              expDate: "2032-01-05",
+            },
+            nationality: "대한민국",
+            issueCountry: "대한민국",
+            email: "test@test.com",
+            seat: "",
+          },
+        ],
+      },
+      {
+        _id: await nextSeq("order"),
+        products: [
+          {
+            _id: 1,
+            quantity: 1,
+            seller_id: 1,
+            name: "항공권",
+            image: null,
+            price: 0,
+            extra: null,
+          },
+        ],
+        reservationId: "AXFEK5",
+        totalPrice: "221600.00",
+        itineraries: [
+          {
+            segments: [
+              {
+                departure: {
+                  iataCode: "ICN",
+                  terminal: "1",
+                  at: "2024-08-16T10:05:00",
+                },
+                arrival: {
+                  iataCode: "FUK",
+                  terminal: "I",
+                  at: "2024-08-16T11:30:00",
+                },
+                carrierCode: "TW",
+                number: "291",
+                aircraft: {
+                  code: "737",
+                },
+                operating: {
+                  carrierCode: "TW",
+                },
+                duration: "PT1H25M",
+                id: "14",
+                numberOfStops: 0,
+                co2Emissions: [
+                  {
+                    weight: 57,
+                    weightUnit: "KG",
+                    cabin: "ECONOMY",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            segments: [
+              {
+                departure: {
+                  iataCode: "FUK",
+                  terminal: "I",
+                  at: "2024-08-18T12:30:00",
+                },
+                arrival: {
+                  iataCode: "ICN",
+                  terminal: "1",
+                  at: "2024-08-18T13:55:00",
+                },
+                carrierCode: "TW",
+                number: "292",
+                aircraft: {
+                  code: "737",
+                },
+                operating: {
+                  carrierCode: "TW",
+                },
+                duration: "PT1H25M",
+                id: "40",
+                numberOfStops: 0,
+                co2Emissions: [
+                  {
+                    weight: 57,
+                    weightUnit: "KG",
+                    cabin: "ECONOMY",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+        price: [
+          {
+            travelerId: "1",
+            fareOption: "STANDARD",
+            travelerType: "ADULT",
+            price: {
+              currency: "KRW",
+              total: "110800",
+              base: "40000",
+              taxes: [
+                {
+                  amount: "9000.00",
+                  code: "SW",
+                },
+                {
+                  amount: "9200.00",
+                  code: "TK",
+                },
+                {
+                  amount: "27600.00",
+                  code: "YR",
+                },
+                {
+                  amount: "25000.00",
+                  code: "BP",
+                },
+              ],
+              refundableTaxes: "70800",
+            },
+            fareDetailsBySegment: [
+              {
+                segmentId: "14",
+                cabin: "ECONOMY",
+                fareBasis: "AKJ",
+                class: "A",
+                includedCheckedBags: {
+                  weight: 0,
+                  weightUnit: "KG",
+                },
+              },
+              {
+                segmentId: "40",
+                cabin: "ECONOMY",
+                fareBasis: "AKJ",
+                class: "A",
+                includedCheckedBags: {
+                  weight: 0,
+                  weightUnit: "KG",
+                },
+              },
+            ],
+          },
+          {
+            travelerId: "2",
+            fareOption: "STANDARD",
+            travelerType: "ADULT",
+            price: {
+              currency: "KRW",
+              total: "110800",
+              base: "40000",
+              taxes: [
+                {
+                  amount: "9000.00",
+                  code: "SW",
+                },
+                {
+                  amount: "9200.00",
+                  code: "TK",
+                },
+                {
+                  amount: "27600.00",
+                  code: "YR",
+                },
+                {
+                  amount: "25000.00",
+                  code: "BP",
+                },
+              ],
+              refundableTaxes: "70800",
+            },
+            fareDetailsBySegment: [
+              {
+                segmentId: "14",
+                cabin: "ECONOMY",
+                fareBasis: "AKJ",
+                class: "A",
+                includedCheckedBags: {
+                  weight: 0,
+                  weightUnit: "KG",
+                },
+              },
+              {
+                segmentId: "40",
+                cabin: "ECONOMY",
+                fareBasis: "AKJ",
+                class: "A",
+                includedCheckedBags: {
+                  weight: 0,
+                  weightUnit: "KG",
+                },
+              },
+            ],
+          },
+        ],
+        purchaser: {
+          name: "전희선",
+          birth: "1999-01-01",
+          phone: "010-1111-1111",
+          email: "test@trifly.com",
+        },
+        state: "OS020",
+        user_id: 1,
+        createdAt: "2024.08.13 14:42:43",
+        updatedAt: "2024.08.13 14:42:43",
+        cost: {
+          products: 0,
+          shippingFees: 0,
+          discount: {
+            products: 0,
+            shippingFees: 0,
+          },
+          total: 0,
+        },
+        passengers: [
+          {
+            type: "adult",
+            nameKor: "윤우중",
+            nameEng: "WOOJUNG YOON",
+            birth: "1999-01-01",
+            phone: "010-1111-1111",
+            passport: {
+              number: "M222M2222",
+              expDate: "2032-01-01",
+            },
+            nationality: "대한민국",
+            issueCountry: "대한민국",
+            email: "test@trifly.com",
+            seat: "",
+          },
+          {
+            type: "adult",
+            nameKor: "전희선",
+            nameEng: "HEESUN JEON",
+            birth: "1999-01-03",
+            phone: "010-1111-1111",
+            passport: {
+              number: "M222M2225",
+              expDate: "2032-01-05",
+            },
+            nationality: "대한민국",
+            issueCountry: "대한민국",
+            email: "test@test.com",
+            seat: "",
+          },
+        ],
+      },
+      {
+        _id: await nextSeq("order"),
+        products: [
+          {
+            _id: 1,
+            quantity: 1,
+            seller_id: 1,
+            name: "항공권",
+            image: null,
+            price: 0,
+            extra: null,
+          },
+        ],
+        reservationId: "TXOVJ4",
+        totalPrice: "1037400.00",
+        itineraries: [
+          {
+            segments: [
+              {
+                departure: {
+                  iataCode: "ICN",
+                  terminal: "1",
+                  at: "2024-08-16T08:55:00",
+                },
+                arrival: {
+                  iataCode: "FUK",
+                  terminal: "I",
+                  at: "2024-08-16T10:30:00",
+                },
+                carrierCode: "OZ",
+                number: "132",
+                aircraft: {
+                  code: "333",
+                },
+                duration: "PT1H35M",
+                id: "29",
+                numberOfStops: 0,
+                co2Emissions: [
+                  {
+                    weight: 57,
+                    weightUnit: "KG",
+                    cabin: "ECONOMY",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            segments: [
+              {
+                departure: {
+                  iataCode: "FUK",
+                  terminal: "I",
+                  at: "2024-08-18T10:35:00",
+                },
+                arrival: {
+                  iataCode: "ICN",
+                  terminal: "2",
+                  at: "2024-08-18T12:00:00",
+                },
+                carrierCode: "KE",
+                number: "788",
+                aircraft: {
+                  code: "772",
+                },
+                duration: "PT1H25M",
+                id: "38",
+                numberOfStops: 0,
+                co2Emissions: [
+                  {
+                    weight: 57,
+                    weightUnit: "KG",
+                    cabin: "ECONOMY",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+        price: [
+          {
+            travelerId: "1",
+            fareOption: "STANDARD",
+            travelerType: "ADULT",
+            price: {
+              currency: "KRW",
+              total: "518700.00",
+              base: "454700.00",
+              taxes: [
+                {
+                  amount: "25000.00",
+                  code: "BP",
+                },
+                {
+                  amount: "9000.00",
+                  code: "SW",
+                },
+                {
+                  amount: "9200.00",
+                  code: "TK",
+                },
+                {
+                  amount: "20800.00",
+                  code: "YQ",
+                },
+              ],
+              refundableTaxes: "82200.00",
+            },
+            fareDetailsBySegment: [
+              {
+                segmentId: "29",
+                cabin: "ECONOMY",
+                fareBasis: "YRT",
+                class: "Y",
+                includedCheckedBags: {
+                  quantity: 1,
+                },
+              },
+              {
+                segmentId: "38",
+                cabin: "ECONOMY",
+                fareBasis: "YRT",
+                class: "Y",
+                includedCheckedBags: {
+                  quantity: 1,
+                },
+              },
+            ],
+          },
+          {
+            travelerId: "2",
+            fareOption: "STANDARD",
+            travelerType: "ADULT",
+            price: {
+              currency: "KRW",
+              total: "518700.00",
+              base: "454700.00",
+              taxes: [
+                {
+                  amount: "25000.00",
+                  code: "BP",
+                },
+                {
+                  amount: "9000.00",
+                  code: "SW",
+                },
+                {
+                  amount: "9200.00",
+                  code: "TK",
+                },
+                {
+                  amount: "20800.00",
+                  code: "YQ",
+                },
+              ],
+              refundableTaxes: "82200.00",
+            },
+            fareDetailsBySegment: [
+              {
+                segmentId: "29",
+                cabin: "ECONOMY",
+                fareBasis: "YRT",
+                class: "Y",
+                includedCheckedBags: {
+                  quantity: 1,
+                },
+              },
+              {
+                segmentId: "38",
+                cabin: "ECONOMY",
+                fareBasis: "YRT",
+                class: "Y",
+                includedCheckedBags: {
+                  quantity: 1,
+                },
+              },
+            ],
+          },
+        ],
+        purchaser: {
+          name: "정진욱",
+          birth: "1999-01-01",
+          phone: "010-1111-1111",
+          email: "test@trifly.com",
+        },
+        state: "OS020",
+        user_id: 1,
+        createdAt: "2024.08.13 14:38:04",
+        updatedAt: "2024.08.13 14:38:04",
+        cost: {
+          products: 0,
+          shippingFees: 0,
+          discount: {
+            products: 0,
+            shippingFees: 0,
+          },
+          total: 0,
+        },
+        passengers: [
+          {
+            type: "adult",
+            nameKor: "정진욱",
+            nameEng: "JINWOOK JUNG",
+            birth: "1999-01-01",
+            phone: "010-1111-1111",
+            passport: {
+              number: "M222M2222",
+              expDate: "2032-01-01",
+            },
+            nationality: "대한민국",
+            issueCountry: "대한민국",
+            email: "test@trifly.com",
+            seat: "",
+          },
+          {
+            type: "adult",
+            nameKor: "전희선",
+            nameEng: "HEESUN JEON",
+            birth: "1999-01-03",
+            phone: "010-1111-1111",
+            passport: {
+              number: "M222M2225",
+              expDate: "2032-01-05",
+            },
+            nationality: "대한민국",
+            issueCountry: "대한민국",
+            email: "test@test.com",
+            seat: "",
+          },
+        ],
+      },
+      {
+        _id: await nextSeq("order"),
+        products: [
+          {
+            _id: 1,
+            quantity: 1,
+            seller_id: 1,
+            name: "항공권",
+            image: null,
+            price: 0,
+            extra: null,
+          },
+        ],
+        reservationId: "CKDFL9",
+        itineraries: [
+          {
+            segments: [
+              {
+                departure: {
+                  iataCode: "GMP",
+                  terminal: "I",
+                  at: "2024-08-08T19:55:00",
+                },
+                arrival: {
+                  iataCode: "HND",
+                  at: "2024-08-08T22:15:00",
+                },
+                carrierCode: "NH",
+                number: "868",
+                aircraft: {
+                  code: "763",
+                },
+                duration: "PT2H20M",
+                id: "9",
+                numberOfStops: 0,
+                co2Emissions: [
+                  {
+                    weight: 88,
+                    weightUnit: "KG",
+                    cabin: "ECONOMY",
+                  },
+                ],
+              },
+              {
+                departure: {
+                  iataCode: "HND",
+                  terminal: "3",
+                  at: "2024-08-09T00:30:00",
+                },
+                arrival: {
+                  iataCode: "LAX",
+                  terminal: "B",
+                  at: "2024-08-08T19:10:00",
+                },
+                carrierCode: "NH",
+                number: "106",
+                aircraft: {
+                  code: "789",
+                },
+                duration: "PT10H40M",
+                id: "10",
+                numberOfStops: 0,
+                co2Emissions: [
+                  {
+                    weight: 359,
+                    weightUnit: "KG",
+                    cabin: "ECONOMY",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            segments: [
+              {
+                departure: {
+                  iataCode: "LAX",
+                  terminal: "B",
+                  at: "2024-08-11T01:20:00",
+                },
+                arrival: {
+                  iataCode: "HND",
+                  at: "2024-08-12T05:00:00",
+                },
+                carrierCode: "NH",
+                number: "105",
+                aircraft: {
+                  code: "789",
+                },
+                duration: "PT11H40M",
+                id: "61",
+                numberOfStops: 0,
+                co2Emissions: [
+                  {
+                    weight: 359,
+                    weightUnit: "KG",
+                    cabin: "ECONOMY",
+                  },
+                ],
+              },
+              {
+                departure: {
+                  iataCode: "HND",
+                  terminal: "2",
+                  at: "2024-08-12T08:40:00",
+                },
+                arrival: {
+                  iataCode: "GMP",
+                  terminal: "I",
+                  at: "2024-08-12T11:05:00",
+                },
+                carrierCode: "NH",
+                number: "861",
+                aircraft: {
+                  code: "763",
+                },
+                duration: "PT2H25M",
+                id: "62",
+                numberOfStops: 0,
+                co2Emissions: [
+                  {
+                    weight: 88,
+                    weightUnit: "KG",
+                    cabin: "ECONOMY",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+        price: [
+          {
+            travelerId: "1",
+            fareOption: "STANDARD",
+            travelerType: "ADULT",
+            price: {
+              currency: "KRW",
+              total: "2217900.00",
+              base: "1800000.00",
+              taxes: [
+                {
+                  amount: "7800.00",
+                  code: "AY",
+                },
+                {
+                  amount: "25000.00",
+                  code: "BP",
+                },
+                {
+                  amount: "26600.00",
+                  code: "SW",
+                },
+                {
+                  amount: "61600.00",
+                  code: "US",
+                },
+                {
+                  amount: "5400.00",
+                  code: "XA",
+                },
+                {
+                  amount: "6300.00",
+                  code: "XF",
+                },
+                {
+                  amount: "9700.00",
+                  code: "XY",
+                },
+                {
+                  amount: "9700.00",
+                  code: "YC",
+                },
+                {
+                  amount: "265800.00",
+                  code: "YQ",
+                },
+              ],
+              refundableTaxes: "492900.00",
+            },
+            fareDetailsBySegment: [
+              {
+                segmentId: "9",
+                cabin: "ECONOMY",
+                fareBasis: "UHA4TDYU",
+                brandedFare: "ECOSTD",
+                class: "U",
+                includedCheckedBags: {
+                  quantity: 2,
+                },
+              },
+              {
+                segmentId: "10",
+                cabin: "ECONOMY",
+                fareBasis: "UHA4TDYU",
+                brandedFare: "ECOSTD",
+                class: "U",
+                includedCheckedBags: {
+                  quantity: 2,
+                },
+              },
+              {
+                segmentId: "61",
+                cabin: "ECONOMY",
+                fareBasis: "SHA4TDYS",
+                brandedFare: "ECOSTD",
+                class: "S",
+                includedCheckedBags: {
+                  quantity: 2,
+                },
+              },
+              {
+                segmentId: "62",
+                cabin: "ECONOMY",
+                fareBasis: "SHA4TDYS",
+                brandedFare: "ECOSTD",
+                class: "S",
+                includedCheckedBags: {
+                  quantity: 2,
+                },
+              },
+            ],
+          },
+        ],
+        passengers: [
+          {
+            nameKor: "이소정",
+            nameEng: "Lee Sojeong",
+            birth: "19951106",
+            phone: "010-1234-1234",
+            passport: {
+              number: "M212M4454",
+              expDate: "20320412",
+            },
+            nationality: "대한민국",
+            issueCountry: "대한민국",
+            email: "s0zzang@naver.com",
+          },
+        ],
+        purchaser: {
+          name: "이소정",
+          birth: "19951106",
+          phone: {
+            main: "010-1234-1234",
+            sub: "010-6789-6789",
+          },
+          email: "s0zzang@naver.com",
+        },
+        state: "OS020",
+        user_id: 1,
+        createdAt: "2024.08.07 21:04:41",
+        updatedAt: "2024.08.07 21:04:41",
+        cost: {
+          products: 0,
+          shippingFees: 0,
+          discount: {
+            products: 0,
+            shippingFees: 0,
+          },
+          total: 0,
+        },
+        totalPrice: "2217900.00",
       },
     ],
     // 후기
@@ -1060,15 +2044,6 @@ export const initData = async (clientId, nextSeq) => {
             carrierType: "FSC",
           },
           {
-            code: "OK",
-            value: "체코항공",
-            nameKor: "체코항공",
-            nameEng: "Czech Airlines",
-            allianceKor: "스카이팀",
-            allianceEng: "Skyteam",
-            carrierType: "FSC",
-          },
-          {
             code: "RO",
             value: "타롬항공",
             nameKor: "타롬항공",
@@ -1448,7 +2423,7 @@ export const initData = async (clientId, nextSeq) => {
           },
           {
             code: "KIX",
-            value: "오사카",
+            value: "오사카/간사이",
             nameKor: "오사카 간사이 국제공항",
             nameEng: "Osaka Kansai International Airport",
             cityCode: "OSA",
@@ -2488,7 +3463,7 @@ export const initData = async (clientId, nextSeq) => {
             img: `/files/${clientId}/london.webp`,
           },
           {
-            code: "LHR",
+            code: "STN",
             value: "런던/스탠스테드",
             nameKor: "스탠스테드 국제공항",
             nameEng: "Stansted International Airport",
