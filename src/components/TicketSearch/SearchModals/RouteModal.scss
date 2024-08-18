@@ -4,6 +4,24 @@
   border-radius: 2rem;
   overflow: hidden;
 
+  height: 100%;
+  background-color: var(--color-white);
+  position: absolute;
+  border-radius: 2rem;
+
+  & .close-button {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 2rem;
+    height: 2rem;
+
+    & img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
   .area-section {
     flex-shrink: 0;
     width: 40%;
@@ -116,6 +134,16 @@
 
 @media (max-width: 1023px) {
   .route-modal {
+    position: absolute;
+    height: 70%;
+    width: 100%;
+    min-width: 320px;
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
+    top: unset;
+    right: unset;
+    bottom: 0;
+
     .area-section {
       .area-list {
         .area-item {
