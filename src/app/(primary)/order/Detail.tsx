@@ -3,7 +3,7 @@ import { orderState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
 import { CodeState } from "@/types";
 import { useRecoilValue } from "recoil";
-import { cabinKor } from "./layout";
+import { cabinKor } from "./orderContext";
 
 const Detail = ({ code }: { code: CodeState }) => {
   const { itineraries, price } = useRecoilValue(orderState);
@@ -20,8 +20,6 @@ const Detail = ({ code }: { code: CodeState }) => {
     bags: bags[idx],
     cabin: cabin[idx],
   }));
-
-  console.log(data);
 
   return (
     <div className="detail-box">
