@@ -158,6 +158,7 @@
 
     .search-button {
       flex-grow: 1;
+      flex-shrink: 0;
 
       & > button {
         margin-right: 2rem;
@@ -205,8 +206,8 @@
           }
 
           &.passenger {
-            border-bottom-left-radius: 2rem;
-            border-bottom-right-radius: 2rem;
+            border-bottom-left-radius: unset;
+            border-bottom-right-radius: unset;
           }
 
           .schedule-contents {

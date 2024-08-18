@@ -124,11 +124,16 @@ const TicketSearchBox = ({
       return;
     }
 
+    if (!schedule.departureDate) {
+      alert("일정을 선택하세요!");
+      return;
+    }
+
     const originAirport = code[origin.code] as AirportData;
     const destinationAirport = code[destination.code] as AirportData;
 
     if (originAirport.cityCode === destinationAirport.cityCode) {
-      alert("다른 도시로 여행할 수 있습니다! 다시 선택해주세요.");
+      alert("다른 도시로만 여행할 수 있습니다! 다시 선택해주세요.");
     }
 
     console.log(
