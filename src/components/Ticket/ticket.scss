@@ -1,0 +1,184 @@
+.ticket-box {
+  border: 1px solid var(--color-gray-50);
+  padding: calc(var(--title-max) * 1.5) var(--title-max)
+    calc(var(--title-max) * 2);
+  border-radius: clamp(2rem, 3vw, 4rem);
+  max-width: 41.2rem;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  mask-image: radial-gradient(
+    circle closest-corner at center bottom,
+    transparent 18%,
+    #fff 18%
+  );
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border: 1px solid var(--color-gray-50);
+    border-radius: 50%;
+    width: 18%;
+    aspect-ratio: 1 / 1;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, calc(50% + 0.5px));
+    z-index: 1;
+  }
+
+  .flex-box {
+    display: flex;
+    gap: var(--title-small);
+  }
+
+  dl {
+    letter-spacing: normal;
+    line-height: 1;
+    dt,
+    dd {
+      letter-spacing: inherit;
+      line-height: inherit;
+    }
+    dt {
+      color: var(--color-gray-100);
+      font-size: var(--title-small);
+    }
+    dd {
+      font-weight: 500;
+      font-size: var(--title-big);
+      margin-top: 0.2em;
+    }
+  }
+
+  .top-box {
+    .barcode {
+      width: 9rem;
+      height: 6rem;
+      margin-bottom: var(--title-extra);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left;
+      }
+    }
+    .flex-box dl {
+      width: 50%;
+    }
+  }
+
+  .img-box {
+    width: calc(100% + calc(var(--title-max)) * 2);
+    margin: var(--title-extra) calc(var(--title-max) * -1) var(--title-max);
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: calc(var(--title-extra) * 3);
+      right: 0;
+      transform: translateY(-100%);
+      background: url(/img/img-ticket-stamp.svg) no-repeat center / cover;
+      width: calc(var(--title-max) * 10);
+      aspect-ratio: 240/228;
+      opacity: 0.2;
+    }
+    img {
+      width: 100%;
+    }
+  }
+
+  .segment-box {
+    & + .segment-box {
+      padding-top: calc(var(--title-max) * 1.5);
+      margin-top: var(--title-max);
+      position: relative;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: calc(var(--title-max) * -1);
+        top: 0;
+        background: var(--color-gray-50);
+        width: calc(100% + calc(var(--title-max) * 2));
+        height: 1px;
+      }
+    }
+
+    .path {
+      position: relative;
+      border-top: 2px dashed var(--color-gray-90);
+      display: flex;
+      justify-content: space-between;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, calc(-50% - 1px));
+        background: url(/img/icon-airline.svg) no-repeat center / cover;
+        width: calc(var(--title-extra) * 2);
+        aspect-ratio: 1/1;
+        filter: brightness(0.7);
+      }
+      & > span {
+        position: relative;
+        padding-top: 0.7em;
+        color: var(--color-gray-100);
+        font-weight: 500;
+        letter-spacing: 0.03em;
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          width: var(--title-medium);
+          aspect-ratio: 1/1;
+          background: var(--color-gray-90);
+          border-radius: 50%;
+          border: 2.5px solid var(--color-gray-30);
+          outline: 2.5px solid var(--color-gray-90);
+          top: 0;
+          left: 0;
+          transform: translateY(calc(-50% - 2px));
+          box-sizing: border-box;
+        }
+
+        &.arrival {
+          &::before {
+            left: auto;
+            right: 0;
+            background: var(--color-gray-30);
+          }
+        }
+      }
+    }
+
+    .flight-box {
+      margin-top: var(--title-big);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7em;
+
+      dl:first-child {
+        width: 50%;
+      }
+      dl:nth-child(2) {
+        width: 28%;
+      }
+
+      .barcode {
+        margin-top: var(--title-min);
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

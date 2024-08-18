@@ -1,14 +1,14 @@
-import { AirportData, ApiRes, CodeData, CodeState, SingleItem } from "@/types";
+import { AirportData, ApiRes, CodeData, SingleItem } from "@/types";
 
 const SERVER = process.env.NEXT_PUBLIC_MARKET_API_SERVER;
 const CLIENT_ID = process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID;
 
-interface CodeResult {
-  code: CodeState;
+interface CodeResult<T> {
+  code: T;
   airportCode: AirportData[];
 }
 
-export const fetchCodes = async (): Promise<CodeResult> => {
+export const fetchCodes = async <T>(): Promise<CodeResult<T>> => {
   const url = `${SERVER}/codes`;
   const res = await fetch(url, {
     headers: {
@@ -22,7 +22,7 @@ export const fetchCodes = async (): Promise<CodeResult> => {
   }
 
   return {
-    code: resJson.item.flatten,
+    code: resJson.item.flatten as T,
     airportCode: resJson.item.nested.airport.codes,
   };
 };

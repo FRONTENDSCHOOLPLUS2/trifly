@@ -144,6 +144,9 @@ export interface OrderItineraries {
     duration: string;
     id: string;
     numberOfStops: number;
+    operating?: {
+      carrierCode: string;
+    };
     co2Emissions?: [
       {
         weight: number;
