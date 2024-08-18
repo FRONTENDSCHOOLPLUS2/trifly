@@ -4,16 +4,6 @@ import { useMemo, useState } from "react";
 import "./order.scss";
 import OrderContext from "./orderContext";
 
-interface CabinType {
-  [index: string]: string;
-}
-
-export const cabinKor: CabinType = {
-  ECONOMY: "일반석",
-  BUSINESS: "비즈니스석",
-  FIRST: "일등석",
-};
-
 const layout = ({ children }: { children: React.ReactNode }) => {
   const [orderStatus, setOrderStatus] = useState(1);
   const orderPages = [
