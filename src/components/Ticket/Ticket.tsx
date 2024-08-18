@@ -1,6 +1,11 @@
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import FetchOrderId from "@/lib/fetchOrder";
 import "./ticket.scss";
+import { AirportData } from "@/types";
+
+interface Code {
+  [key: string]: AirportData;
+}
 
 const Ticket = async ({
   orderId,
@@ -13,7 +18,7 @@ const Ticket = async ({
   const { reservationId, itineraries, passengers } = await FetchOrderId(
     `${orderId}`
   );
-  const { code } = await fetchCodes();
+  const { code } = await fetchCodes<Code>();
   const arrival =
     itineraries[0].segments[itineraries[0].segments.length - 1].arrival
       .iataCode;
@@ -39,8 +44,8 @@ const Ticket = async ({
         <img src={`${URL}${code[arrival].img}`} alt={code[arrival].value} />
       </div>
       <div className="segments">
-        {itineraries.map((item) => (
-          <div className="segment-box">
+        {itineraries.map((item, idx) => (
+          <div className="segment-box" key={idx}>
             <div className="path">
               <span className="departure">
                 {item.segments[0].departure.iataCode}
