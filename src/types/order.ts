@@ -120,7 +120,6 @@ export interface Purchaser {
   email: string;
 }
 
-
 export interface OrderItineraries {
   segments: {
     departure: {
@@ -130,6 +129,7 @@ export interface OrderItineraries {
     };
     arrival: {
       iataCode: string;
+      terminal?: string;
       at: string;
     };
     carrierCode: string;
@@ -140,6 +140,9 @@ export interface OrderItineraries {
     duration: string;
     id: string;
     numberOfStops: number;
+    operating?: {
+      carrierCode: string;
+    };
     co2Emissions?: [
       {
         weight: number;
