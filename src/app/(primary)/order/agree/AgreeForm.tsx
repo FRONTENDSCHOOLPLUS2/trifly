@@ -8,7 +8,6 @@ import Badge from "@/components/Badge/Badge";
 import Submit from "@/components/Submit/Submit";
 import useAllChecked from "@/hook/useAllChecked";
 import { useRouter } from "next/navigation";
-
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useSetRecoilState } from "recoil";
 
