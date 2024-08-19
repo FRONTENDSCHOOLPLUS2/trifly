@@ -8,6 +8,7 @@
   .flexVer {
     display: flex;
     gap: calc(var(--title-max) * 2);
+    align-items: flex-start;
 
     & > .left-box {
       width: 100%;
@@ -272,6 +273,8 @@
 
     .price-detail {
       margin-top: var(--title-max);
+      max-height: 70svh;
+      overflow-y: auto;
 
       .price + .price {
         margin-top: var(--title-large);
@@ -315,6 +318,8 @@
     .receipt-box {
       width: clamp(25rem, 30vw, 35rem);
       flex-shrink: 0;
+      position: sticky;
+      top: calc(var(--header-height) + 3.5rem);
     }
 
     .receipt {
@@ -531,6 +536,11 @@
     .order-inner {
       .receipt-box {
         width: 100%;
+        position: relative;
+        top: unset;
+      }
+      .receipt .price-detail {
+        max-height: none;
       }
     }
 
