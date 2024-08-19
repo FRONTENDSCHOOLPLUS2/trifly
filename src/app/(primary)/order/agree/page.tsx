@@ -1,10 +1,11 @@
 import { fetchCodes } from "@/data/fetch/fetchCode";
+import { AirportData } from "@/types";
 import Detail from "../Detail";
 import Receipt from "../Receipt";
 import AgreeForm from "./AgreeForm";
 
 const AgreePage = async () => {
-  const { code } = await fetchCodes();
+  const { code } = await fetchCodes<AirportData>();
 
   return (
     <div className="order-inner agree flexVer">
@@ -15,7 +16,6 @@ const AgreePage = async () => {
         </section>
 
         <section>
-          <h3 className="title">약관 동의</h3>
           <AgreeForm />
         </section>
       </div>
