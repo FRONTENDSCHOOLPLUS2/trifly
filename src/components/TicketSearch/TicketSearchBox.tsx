@@ -5,7 +5,7 @@ import Badge from "@/components/Badge/Badge";
 import RouteModal from "@/components/TicketSearch/SearchModals/RouteModal";
 import { AirportData } from "@/types";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import Button from "../Button/Button";
 import PassengersModal from "./SearchModals/PassengersModal";
@@ -25,35 +25,63 @@ const TicketSearchBox = ({
 }) => {
   const [searchResult, setSearchResult] = useRecoilState(searchResultState);
   const router = useRouter();
-  const [tripType, setTripType] = useState(searchResult.tripType);
-  const [nonStop, setNonStop] = useState(searchResult.nonStop);
+  const [tripType, setTripType] = useState("round");
+  const [nonStop, setNonStop] = useState(false);
   const [origin, setOrigin] = useState({
-    code: searchResult.origin.code,
-    value: searchResult.origin.value,
+    code: "SEL",
+    value: "서울",
   });
   const [destination, setDestination] = useState({
-    code: searchResult.destination.code,
-    value: searchResult.destination.value,
+    code: "",
+    value: "",
   });
   const [originModal, setOriginModal] = useState(false);
   const [destinationModal, setDestinationModal] = useState(false);
   const [schedule, setSchedule] = useState({
-    departureDate: searchResult.schedule.departureDate,
-    departureFormattedDate: searchResult.schedule.departureFormattedDate,
-    returnDate: searchResult.schedule.returnDate,
-    returnFormattedDate: searchResult.schedule.returnFormattedDate,
+    departureDate: "",
+    departureFormattedDate: "",
+    returnDate: "",
+    returnFormattedDate: "",
   });
   const [scheduleModal, setScheduleModal] = useState(false);
   const [passengers, setPassengers] = useState({
-    adults: searchResult.passengers.adults,
-    children: searchResult.passengers.children,
-    infants: searchResult.passengers.infants,
+    adults: 1,
+    children: 0,
+    infants: 0,
   });
   const [cabin, setCabin] = useState({
-    cabin: searchResult.cabin.cabin,
-    cabinKor: searchResult.cabin.cabinKor,
+    cabin: "",
+    cabinKor: "모든 클래스",
   });
   const [passengersModal, setPassengersModal] = useState(false);
+
+  useEffect(() => {
+    setTripType(searchResult.tripType);
+    setNonStop(searchResult.nonStop);
+    setOrigin({
+      code: searchResult.origin.code,
+      value: searchResult.origin.value,
+    });
+    setDestination({
+      code: searchResult.destination.code,
+      value: searchResult.destination.value,
+    });
+    setSchedule({
+      departureDate: searchResult.schedule.departureDate,
+      departureFormattedDate: searchResult.schedule.departureFormattedDate,
+      returnDate: searchResult.schedule.returnDate,
+      returnFormattedDate: searchResult.schedule.returnFormattedDate,
+    });
+    setPassengers({
+      adults: searchResult.passengers.adults,
+      children: searchResult.passengers.children,
+      infants: searchResult.passengers.infants,
+    });
+    setCabin({
+      cabin: searchResult.cabin.cabin,
+      cabinKor: searchResult.cabin.cabinKor,
+    });
+  }, [searchResult]);
 
   const handleTripType = (e: ChangeEvent<HTMLInputElement>) => {
     setTripType(e.target.value);
