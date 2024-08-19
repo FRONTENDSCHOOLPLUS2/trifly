@@ -64,7 +64,7 @@ const PassengersModal = ({
   };
 
   return (
-    <div className="passengers-modal search-modal-contents">
+    <div className="passengers-modal">
       <button
         className="close-button"
         type="button"

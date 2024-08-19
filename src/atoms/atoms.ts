@@ -1,6 +1,7 @@
 "use client";
 import { NewOrderData, OffersPriceData, OrderData } from "@/types";
 import { atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
 
 interface ModalProps {
   isOpen: boolean;
@@ -12,11 +13,51 @@ interface ModalProps {
   handleCancel?: () => void;
 }
 
-type OrderProps = Pick<
-  OrderData,
-  "reservationId" | "totalPrice" | "itineraries" | "price"
-> &
-  Pick<NewOrderData, "flightOffers">;
+interface OrderProps
+  extends Pick<
+      OrderData,
+      "reservationId" | "totalPrice" | "itineraries" | "price"
+    >,
+    Pick<NewOrderData, "flightOffers"> {
+  departureDate: string;
+  returnDate: string;
+}
+
+interface DateProps {
+  departureDate: string;
+  returnDate?: string;
+}
+
+interface SearchResultProps {
+  tripType: string;
+  nonStop: boolean;
+  origin: {
+    code: string;
+    value: string;
+  };
+  destination: {
+    code: string;
+    value: string;
+  };
+  schedule: {
+    departureDate: string;
+    departureFormattedDate: string;
+    returnDate: string;
+    returnFormattedDate: string;
+  };
+  passengers: {
+    adults: number;
+    children: number;
+    infants: number;
+  };
+  cabin: {
+    cabin: string;
+    cabinKor: string;
+  };
+}
+
+const sessionStorage =
+  typeof window !== "undefined" ? window.sessionStorage : undefined;
 
 export const modalState = atom<ModalProps>({
   key: "modalState",
@@ -34,6 +75,8 @@ export const modalState = atom<ModalProps>({
 export const orderState = atom<OrderProps>({
   key: "orderState",
   default: {
+    departureDate: "8월 8일 (목)",
+    returnDate: "8월 11일 (일)",
     reservationId: "123456",
     totalPrice: "221600.00",
     itineraries: [
@@ -623,4 +666,49 @@ export const orderState = atom<OrderProps>({
       },
     ],
   },
+});
+
+export const dateState = atom<DateProps>({
+  key: "dateState",
+  default: {
+    departureDate: "",
+    returnDate: "",
+  },
+});
+
+const { persistAtom } = recoilPersist({
+  key: "searchResult",
+  storage: sessionStorage,
+});
+
+export const searchResultState = atom<SearchResultProps>({
+  key: "searchResultState",
+  default: {
+    tripType: "round",
+    nonStop: false,
+    origin: {
+      code: "SEL",
+      value: "서울",
+    },
+    destination: {
+      code: "",
+      value: "",
+    },
+    schedule: {
+      departureDate: "",
+      departureFormattedDate: "",
+      returnDate: "",
+      returnFormattedDate: "",
+    },
+    passengers: {
+      adults: 1,
+      children: 0,
+      infants: 0,
+    },
+    cabin: {
+      cabin: "",
+      cabinKor: "모든 클래스",
+    },
+  },
+  effects_UNSTABLE: [persistAtom],
 });

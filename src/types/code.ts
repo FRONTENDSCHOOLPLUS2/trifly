@@ -15,8 +15,8 @@ export interface CodeData {
 /* -------------------------------------------------------------------------- */
 /*                                    코드 상태                                 */
 /* -------------------------------------------------------------------------- */
-export interface CodeState {
-  [key: string]: AirlineData | AirportData | AircraftData;
+export interface CodeState<T> {
+  [key: string]: T;
 }
 
 /* -------------------------------------------------------------------------- */

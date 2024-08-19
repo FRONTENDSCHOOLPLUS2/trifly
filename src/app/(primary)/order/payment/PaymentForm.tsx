@@ -12,7 +12,6 @@ type PaymentData = {
   purchaser:
     | Purchaser
     | {
-        phone1: string;
         [key: string]: string;
       };
   passengers: {
@@ -110,12 +109,12 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
             <label htmlFor="phone1">
               휴대폰 번호
               <span className="errorMsg">
-                {errors?.purchaser?.phone1
+                {/* {errors?.purchaser?.phone1
                   ? errors.purchaser?.phone1?.message
                   : errors?.purchaser?.phone2
                     ? errors.purchaser?.phone2?.message
                     : errors?.purchaser?.phone3 &&
-                      errors.purchaser?.phone3?.message}
+                      errors.purchaser?.phone3?.message} */}
               </span>
             </label>
             <div className="input-phone">
@@ -287,7 +286,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                       <label htmlFor="nameKor">
                         이름
                         <span className="errorMsg">
-                          {errors && errors.passengers?.[key]?.nameKor?.message}
+                          {/* {errors && errors.passengers?.[key]?.nameKor?.message} */}
                         </span>
                       </label>
                       <input
@@ -307,7 +306,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                       <label htmlFor="gender">
                         성별
                         <span className="errorMsg">
-                          {errors && errors.passengers?.[key]?.gender?.message}
+                          {/* {errors && errors.passengers?.[key]?.gender?.message} */}
                         </span>
                       </label>
                       <input
@@ -332,8 +331,8 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                       <label htmlFor="nameEngLast">
                         영문 성
                         <span className="errorMsg">
-                          {errors &&
-                            errors.passengers?.[key]?.nameEngLast?.message}
+                          {/* {errors &&
+                            errors.passengers?.[key]?.nameEngLast?.message} */}
                         </span>
                       </label>
                       <input
@@ -349,8 +348,8 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                       <label htmlFor="nameEngFirst">
                         영문 이름
                         <span className="errorMsg">
-                          {errors &&
-                            errors.passengers?.[key]?.nameEngFirst?.message}
+                          {/* {errors &&
+                            errors.passengers?.[key]?.nameEngFirst?.message} */}
                         </span>
                       </label>
                       <input
@@ -366,7 +365,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                       <label htmlFor="birth">
                         생년월일
                         <span className="errorMsg">
-                          {errors && errors.passengers?.[key]?.birth?.message}
+                          {/* {errors && errors.passengers?.[key]?.birth?.message} */}
                         </span>
                       </label>
                       <input
@@ -451,8 +450,8 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                       <label htmlFor="passport.number">
                         여권 번호
                         <span className="errorMsg">
-                          {errors &&
-                            errors.passengers?.[key]?.passport.number?.message}
+                          {/* {errors &&
+                            errors.passengers?.[key]?.passport.number?.message} */}
                         </span>
                       </label>
                       <input
@@ -474,8 +473,8 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                       <label htmlFor="passport.expDate">
                         여권 만료일
                         <span className="errorMsg">
-                          {errors &&
-                            errors.passengers?.[key]?.passport.expDate?.message}
+                          {/* {errors &&
+                            errors.passengers?.[key]?.passport.expDate?.message} */}
                         </span>
                       </label>
                       <input
@@ -498,9 +497,9 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                       <label htmlFor="passport.nationality">
                         국적
                         <span className="errorMsg">
-                          {errors &&
+                          {/* {errors &&
                             errors.passengers?.[key]?.passport.nationality
-                              ?.message}
+                              ?.message} */}
                         </span>
                       </label>
                       <select>
@@ -511,9 +510,9 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                       <label htmlFor="passport.issueCountry">
                         발행 국가
                         <span className="errorMsg">
-                          {errors &&
+                          {/* {errors &&
                             errors.passengers?.[key]?.passport.nationality
-                              ?.message}
+                              ?.message} */}
                         </span>
                       </label>
                       <select>

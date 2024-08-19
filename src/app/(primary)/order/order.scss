@@ -8,6 +8,7 @@
   .flexVer {
     display: flex;
     gap: calc(var(--title-max) * 2);
+    align-items: flex-start;
 
     & > .left-box {
       width: 100%;
@@ -23,6 +24,35 @@
   section {
     & + section {
       margin-top: 7rem;
+    }
+  }
+
+  .info-box {
+    margin-top: calc(var(--title-extra) * 2);
+    font-size: var(--title-small);
+    color: var(--color-gray-100);
+    padding: var(--title-extra);
+    background: var(--color-gray-30);
+    border-radius: var(--title-extra);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+
+    li {
+      position: relative;
+      padding-left: 1.6em;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 1em;
+        aspect-ratio: 1 / 1;
+        background: url(/img/icon-warning.svg) no-repeat center;
+        border-radius: 50%;
+        left: 0;
+        top: 0.1em;
+      }
     }
   }
 
@@ -43,16 +73,16 @@
       padding: var(--title-large);
       border-radius: var(--title-extra);
 
+      .detail-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem var(--title-max);
+      }
       .badge {
         font-size: var(--title-small);
         padding: 0.4rem 1rem 0.3rem;
         flex-shrink: 0;
         white-space: nowrap;
-      }
-      .info-box {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem var(--title-max);
       }
       .date {
         letter-spacing: 0.02em;
@@ -243,6 +273,8 @@
 
     .price-detail {
       margin-top: var(--title-max);
+      max-height: 70svh;
+      overflow-y: auto;
 
       .price + .price {
         margin-top: var(--title-large);
@@ -286,6 +318,8 @@
     .receipt-box {
       width: clamp(25rem, 30vw, 35rem);
       flex-shrink: 0;
+      position: sticky;
+      top: calc(var(--header-height) + 3.5rem);
     }
 
     .receipt {
@@ -294,9 +328,23 @@
       border-radius: var(--title-extra);
     }
   }
+
   form {
     .btn-box {
       margin-top: 7rem;
+    }
+  }
+
+  // 약관 동의
+  .agree {
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      .chk-box {
+        font-size: var(--title-big);
+      }
     }
   }
 
@@ -317,35 +365,6 @@
 
       label {
         font-size: var(--title-medium);
-      }
-    }
-
-    .info-box {
-      margin-top: calc(var(--title-extra) * 2);
-      font-size: var(--title-small);
-      color: var(--color-gray-100);
-      padding: var(--title-extra);
-      background: var(--color-gray-30);
-      border-radius: var(--title-extra);
-      display: flex;
-      flex-direction: column;
-      gap: 0.8em;
-
-      li {
-        position: relative;
-        padding-left: 1.6em;
-
-        &::before {
-          content: "";
-          display: block;
-          position: absolute;
-          width: 1em;
-          aspect-ratio: 1 / 1;
-          background: url(/img/icon-warning.svg) no-repeat center;
-          border-radius: 50%;
-          left: 0;
-          top: 0.1em;
-        }
       }
     }
 
@@ -389,7 +408,7 @@
             width: 1rem;
             aspect-ratio: 10/6;
             top: 50%;
-            right: var(--title-medium);
+            right: var(--title-extra);
             transform: translateY(-50%) rotate(180deg);
             transition: all var(--transition-duration);
           }
@@ -424,6 +443,70 @@
     }
   }
 
+  // 구매 완료
+  .complete {
+    .title {
+      margin-bottom: var(--title-extra);
+    }
+
+    .reservation-box {
+      text-align: center;
+      font-size: var(--title-big);
+
+      .reservation-tit {
+        font-size: var(--title-extra);
+        padding-top: var(--title-max);
+
+        strong {
+          font-weight: 500;
+        }
+      }
+      .reservation-cont {
+        color: var(--color-gray-100);
+        margin-top: 0.3em;
+      }
+      dl {
+        display: flex;
+        justify-content: center;
+        gap: var(--title-small);
+        margin: var(--title-extra) auto 0;
+        background: var(--color-primary-30);
+        padding: var(--title-small) var(--title-max);
+        width: max-content;
+        border-radius: var(--title-small);
+        font-weight: 500;
+
+        dd {
+          color: var(--color-primary);
+          letter-spacing: normal;
+        }
+      }
+    }
+
+    .detail-box {
+      margin-top: var(--title-extra);
+    }
+
+    .eticket-box {
+      .e-ticket {
+        display: flex;
+        align-items: center;
+        gap: var(--title-small);
+        border: 1px solid var(--color-gray-50);
+        border-radius: var(--title-medium);
+        padding: var(--title-big) var(--title-extra);
+        font-size: var(--title-large);
+
+        & + .e-ticket {
+          margin-top: var(--title-extra);
+        }
+        .button {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+
   @media (max-width: 1023px) {
     .progress {
       top: calc(var(--header-height) * -1.8);
@@ -432,10 +515,10 @@
     .flexVer {
       flex-direction: column;
 
-      & > .left-box {
+      &:not(.eticket-box) > .left-box {
         order: 1;
       }
-      & > .receipt {
+      &:not(.eticket-box) > .receipt {
         order: 0;
       }
     }
@@ -466,6 +549,17 @@
     .order-inner {
       .receipt-box {
         width: 100%;
+        position: relative;
+        top: unset;
+      }
+      .receipt .price-detail {
+        max-height: none;
+      }
+    }
+
+    .complete {
+      .info-box {
+        display: none;
       }
     }
   }

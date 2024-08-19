@@ -1,21 +1,30 @@
 "use client";
 
+import { searchResultState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
 import RouteModal from "@/components/TicketSearch/SearchModals/RouteModal";
-import { AirportData, CodeState } from "@/types";
-import { ChangeEvent, useState } from "react";
+import { AirportData } from "@/types";
+import { useRouter } from "next/navigation";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import Button from "../Button/Button";
 import PassengersModal from "./SearchModals/PassengersModal";
 import ScheduleModal from "./SearchModals/ScheduleModal";
 import "./TicketSearch.scss";
-import Button from "../Button/Button";
 
 const TicketSearchBox = ({
   code,
   airport,
+  handleChange,
 }: {
-  code: CodeState;
+  code: {
+    [key: string]: AirportData;
+  };
   airport: AirportData[];
+  handleChange?: () => void;
 }) => {
+  const [searchResult, setSearchResult] = useRecoilState(searchResultState);
+  const router = useRouter();
   const [tripType, setTripType] = useState("round");
   const [nonStop, setNonStop] = useState(false);
   const [origin, setOrigin] = useState({
@@ -45,6 +54,34 @@ const TicketSearchBox = ({
     cabinKor: "모든 클래스",
   });
   const [passengersModal, setPassengersModal] = useState(false);
+
+  useEffect(() => {
+    setTripType(searchResult.tripType);
+    setNonStop(searchResult.nonStop);
+    setOrigin({
+      code: searchResult.origin.code,
+      value: searchResult.origin.value,
+    });
+    setDestination({
+      code: searchResult.destination.code,
+      value: searchResult.destination.value,
+    });
+    setSchedule({
+      departureDate: searchResult.schedule.departureDate,
+      departureFormattedDate: searchResult.schedule.departureFormattedDate,
+      returnDate: searchResult.schedule.returnDate,
+      returnFormattedDate: searchResult.schedule.returnFormattedDate,
+    });
+    setPassengers({
+      adults: searchResult.passengers.adults,
+      children: searchResult.passengers.children,
+      infants: searchResult.passengers.infants,
+    });
+    setCabin({
+      cabin: searchResult.cabin.cabin,
+      cabinKor: searchResult.cabin.cabinKor,
+    });
+  }, [searchResult]);
 
   const handleTripType = (e: ChangeEvent<HTMLInputElement>) => {
     setTripType(e.target.value);
@@ -119,8 +156,18 @@ const TicketSearchBox = ({
   };
 
   const handleClick = () => {
+    if (!origin.code) {
+      alert("출발 공항을 선택하세요!");
+      return;
+    }
+
     if (!destination.code) {
       alert("도착 공항을 선택하세요!");
+      return;
+    }
+
+    if (!schedule.departureDate) {
+      alert("일정을 선택하세요!");
       return;
     }
 
@@ -128,18 +175,33 @@ const TicketSearchBox = ({
     const destinationAirport = code[destination.code] as AirportData;
 
     if (originAirport.cityCode === destinationAirport.cityCode) {
-      alert("다른 도시로 여행할 수 있습니다! 다시 선택해주세요.");
+      alert("다른 도시로만 여행할 수 있습니다! 다시 선택해주세요.");
+      return;
     }
 
-    console.log(
+    /* -------------------------------------------------------------------------- */
+    /*                             검색정보로 넘겨줄 날짜 형식 저장                       */
+    /* -------------------------------------------------------------------------- */
+    setSearchResult({
       tripType,
       nonStop,
       origin,
       destination,
       schedule,
       passengers,
-      cabin
-    );
+      cabin,
+    });
+
+    if (handleChange) {
+      router.push(
+        `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" && `&returnDate=${schedule.returnDate}`}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`
+      );
+      handleChange();
+    } else {
+      router.push(
+        `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" && `&returnDate=${schedule.returnDate}`}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`
+      );
+    }
   };
 
   return (
@@ -252,12 +314,14 @@ const TicketSearchBox = ({
               <span
                 className={`schedule-contents ${passengers.adults && cabin ? "selected" : ""}`}
               >
-                {`성인 ${passengers.adults}명${passengers.children > 0 ? `, 소아 ${passengers.children}명` : ""}${passengers.infants > 0 ? `, 유아 ${passengers.infants}명` : ""}, ${cabin.cabinKor}`}
+                {`성인 ${passengers.adults}명${passengers.children ? `, 소아 ${passengers.children}명` : ""}${passengers.infants ? `, 유아 ${passengers.infants}명` : ""}, ${cabin.cabinKor}`}
               </span>
             </button>
           </div>
           <div className="search-button">
-            <Button onClick={handleClick}>검색</Button>
+            <Button size="sm" onClick={handleClick}>
+              검색
+            </Button>
           </div>
         </div>
         {originModal && (

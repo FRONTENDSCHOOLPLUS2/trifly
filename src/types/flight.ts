@@ -44,15 +44,28 @@ interface OffersSearchData extends OffersData {
         base: string;
       };
       fareDetailsBySegment: {
-        segmentId: string;
-        cabin: "ECONOMY" | "BUSINESS" | "FIRST";
+        cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
+        segmentId?: string;
         fareBasis: string;
+        brandedFare?: string;
+        brandedFareLabel?: string;
         class: string;
         includedCheckedBags: {
           weight?: number;
           weightUnit?: "KG";
           quantity?: number;
         };
+        includedCabinBags?: {
+          quantity?: number;
+        };
+        amenities?: {
+          description: string;
+          isChargeable: boolean;
+          amenityType: string;
+          amenityProvider: {
+            name: string;
+          };
+        }[];
       }[];
     },
   ];
@@ -108,7 +121,7 @@ export interface OffersPriceData extends OffersData {
     };
     fareDetailsBySegment: {
       segmentId: string;
-      cabin: "ECONOMY" | "BUSINESS" | "FIRST";
+      cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
       fareBasis: string;
       brandedFare?: string;
       class: string;
@@ -131,6 +144,7 @@ interface OffersData {
   instantTicketingRequired?: boolean;
   nonHomogeneous: boolean;
   oneWay?: boolean;
+  isUpsellOffer?: false;
   paymentCardRequired?: boolean;
   lastTicketingDate: string;
   lastTicketingDateTime?: string;
@@ -161,7 +175,7 @@ interface SegmentsData extends FlightRouteData {
   co2Emissions?: {
     weight: number;
     weightUnit: "KG";
-    cabin: "ECONOMY" | "BUSINESS" | "FIRST";
+    cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
   }[];
   blacklistedInEU?: boolean;
 }
@@ -306,9 +320,13 @@ interface NewOrderResponseData extends NewOrderData {
 /* ---------------------------------------------------------------- */
 /*                              seatMap                             */
 /* ---------------------------------------------------------------- */
+
 export interface SeatMap {
   meta: {
     count: number;
+    links: {
+      self: string;
+    };
   };
   data: SeatMapData[];
   dictionaries: {
@@ -327,7 +345,7 @@ export interface SeatMap {
   };
 }
 
-interface SeatMapData extends FlightRouteData {
+export interface SeatMapData extends FlightRouteData {
   type: "seatmap";
   class: string;
   flightOfferId: string;
@@ -348,7 +366,7 @@ interface SeatMapData extends FlightRouteData {
     facilities: {
       code: string;
       column: string;
-      row: string;
+      row?: string;
       position: string;
       coordinates: {
         x: number;
@@ -356,15 +374,22 @@ interface SeatMapData extends FlightRouteData {
       };
     }[];
     seats: {
-      cabin: "ECONOMY" | "BUSINESS" | "FIRST";
+      cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
       number: string;
       characteristicsCodes: string[];
-      travelerPricing: [
-        {
-          travelerId: string;
-          seatAvailabilityStatus: "BLOCKED" | "AVAILABLE";
-        },
-      ];
+      travelerPricing: {
+        travelerId: string;
+        seatAvailabilityStatus: "BLOCKED" | "AVAILABLE" | "OCCUPIED";
+        price?: {
+          currency: string;
+          total: string;
+          base: string;
+          taxes: {
+            amount: string;
+            code: string;
+          }[];
+        };
+      }[];
       coordinates: {
         x: number;
         y: number;
