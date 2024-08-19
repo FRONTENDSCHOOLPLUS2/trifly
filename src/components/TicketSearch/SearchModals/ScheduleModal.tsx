@@ -1,7 +1,6 @@
 import Button from "@/components/Button/Button";
 import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
-// import "react-calendar/dist/Calendar.css";
 import "./ScheduleModal.scss";
 import useCheckWindowWidth from "@/hook/useCheckWindowWidth";
 

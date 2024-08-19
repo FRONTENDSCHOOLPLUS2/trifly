@@ -1,50 +1,57 @@
 "use client";
 
+import { searchResultState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
 import RouteModal from "@/components/TicketSearch/SearchModals/RouteModal";
 import { AirportData } from "@/types";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
+import { useRecoilState } from "recoil";
+import Button from "../Button/Button";
 import PassengersModal from "./SearchModals/PassengersModal";
 import ScheduleModal from "./SearchModals/ScheduleModal";
 import "./TicketSearch.scss";
-import Button from "../Button/Button";
 
 const TicketSearchBox = ({
   code,
   airport,
+  handleChange,
 }: {
   code: {
     [key: string]: AirportData;
   };
   airport: AirportData[];
+  handleChange?: () => void;
 }) => {
-  const [tripType, setTripType] = useState("round");
-  const [nonStop, setNonStop] = useState(false);
+  const [searchResult, setSearchResult] = useRecoilState(searchResultState);
+  const router = useRouter();
+  const [tripType, setTripType] = useState(searchResult.tripType);
+  const [nonStop, setNonStop] = useState(searchResult.nonStop);
   const [origin, setOrigin] = useState({
-    code: "SEL",
-    value: "서울",
+    code: searchResult.origin.code,
+    value: searchResult.origin.value,
   });
   const [destination, setDestination] = useState({
-    code: "",
-    value: "",
+    code: searchResult.destination.code,
+    value: searchResult.destination.value,
   });
   const [originModal, setOriginModal] = useState(false);
   const [destinationModal, setDestinationModal] = useState(false);
   const [schedule, setSchedule] = useState({
-    departureDate: "",
-    departureFormattedDate: "",
-    returnDate: "",
-    returnFormattedDate: "",
+    departureDate: searchResult.schedule.departureDate,
+    departureFormattedDate: searchResult.schedule.departureFormattedDate,
+    returnDate: searchResult.schedule.returnDate,
+    returnFormattedDate: searchResult.schedule.returnFormattedDate,
   });
   const [scheduleModal, setScheduleModal] = useState(false);
   const [passengers, setPassengers] = useState({
-    adults: 1,
-    children: 0,
-    infants: 0,
+    adults: searchResult.passengers.adults,
+    children: searchResult.passengers.children,
+    infants: searchResult.passengers.infants,
   });
   const [cabin, setCabin] = useState({
-    cabin: "",
-    cabinKor: "모든 클래스",
+    cabin: searchResult.cabin.cabin,
+    cabinKor: searchResult.cabin.cabinKor,
   });
   const [passengersModal, setPassengersModal] = useState(false);
 
@@ -121,6 +128,11 @@ const TicketSearchBox = ({
   };
 
   const handleClick = () => {
+    if (!origin.code) {
+      alert("출발 공항을 선택하세요!");
+      return;
+    }
+
     if (!destination.code) {
       alert("도착 공항을 선택하세요!");
       return;
@@ -136,7 +148,12 @@ const TicketSearchBox = ({
 
     if (originAirport.cityCode === destinationAirport.cityCode) {
       alert("다른 도시로만 여행할 수 있습니다! 다시 선택해주세요.");
+      return;
     }
+
+    /* -------------------------------------------------------------------------- */
+    /*                             검색정보로 넘겨줄 날짜 형식 저장                       */
+    /* -------------------------------------------------------------------------- */
 
     console.log(
       tripType,
@@ -147,6 +164,22 @@ const TicketSearchBox = ({
       passengers,
       cabin
     );
+
+    setSearchResult({
+      tripType,
+      nonStop,
+      origin,
+      destination,
+      schedule,
+      passengers,
+      cabin,
+    });
+
+    if (handleChange) {
+      handleChange();
+    } else {
+      router.push("/ticket-result");
+    }
   };
 
   return (
@@ -259,7 +292,7 @@ const TicketSearchBox = ({
               <span
                 className={`schedule-contents ${passengers.adults && cabin ? "selected" : ""}`}
               >
-                {`성인 ${passengers.adults}명${passengers.children > 0 ? `, 소아 ${passengers.children}명` : ""}${passengers.infants > 0 ? `, 유아 ${passengers.infants}명` : ""}, ${cabin.cabinKor}`}
+                {`성인 ${passengers.adults}명${passengers.children ? `, 소아 ${passengers.children}명` : ""}${passengers.infants ? `, 유아 ${passengers.infants}명` : ""}, ${cabin.cabinKor}`}
               </span>
             </button>
           </div>
