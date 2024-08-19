@@ -497,10 +497,10 @@
     .flexVer {
       flex-direction: column;
 
-      &::not(.payment) > .left-box {
+      &:not(.eticket-box) > .left-box {
         order: 1;
       }
-      &::not(.payment) > .receipt {
+      &:not(.eticket-box) > .receipt {
         order: 0;
       }
     }
