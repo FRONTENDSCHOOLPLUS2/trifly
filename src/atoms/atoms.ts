@@ -56,6 +56,9 @@ interface SearchResultProps {
   };
 }
 
+const sessionStorage =
+  typeof window !== "undefined" ? window.sessionStorage : undefined;
+
 export const modalState = atom<ModalProps>({
   key: "modalState",
   default: {
