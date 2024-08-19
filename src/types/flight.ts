@@ -44,8 +44,8 @@ interface OffersSearchData extends OffersData {
         base: string;
       };
       fareDetailsBySegment: {
-        segmentId: string;
         cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
+        segmentId?: string;
         fareBasis: string;
         class: string;
         includedCheckedBags: {
@@ -306,9 +306,13 @@ interface NewOrderResponseData extends NewOrderData {
 /* ---------------------------------------------------------------- */
 /*                              seatMap                             */
 /* ---------------------------------------------------------------- */
+
 export interface SeatMap {
   meta: {
     count: number;
+    links: {
+      self: string;
+    };
   };
   data: SeatMapData[];
   dictionaries: {
@@ -327,7 +331,7 @@ export interface SeatMap {
   };
 }
 
-interface SeatMapData extends FlightRouteData {
+export interface SeatMapData extends FlightRouteData {
   type: "seatmap";
   class: string;
   flightOfferId: string;
@@ -348,7 +352,7 @@ interface SeatMapData extends FlightRouteData {
     facilities: {
       code: string;
       column: string;
-      row: string;
+      row?: string;
       position: string;
       coordinates: {
         x: number;
@@ -359,12 +363,19 @@ interface SeatMapData extends FlightRouteData {
       cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
       number: string;
       characteristicsCodes: string[];
-      travelerPricing: [
-        {
-          travelerId: string;
-          seatAvailabilityStatus: "BLOCKED" | "AVAILABLE";
-        },
-      ];
+      travelerPricing: {
+        travelerId: string;
+        seatAvailabilityStatus: "BLOCKED" | "AVAILABLE" | "OCCUPIED";
+        price?: {
+          currency: string;
+          total: string;
+          base: string;
+          taxes: {
+            amount: string;
+            code: string;
+          }[];
+        };
+      }[];
       coordinates: {
         x: number;
         y: number;

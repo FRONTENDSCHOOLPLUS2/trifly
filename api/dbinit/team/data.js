@@ -22,7 +22,7 @@ export const initData = async (clientId, nextSeq) => {
         password:
           "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
         name: "트리플라이",
-        phone: "01011112222",
+        phone: "010-1111-2222",
         type: "user",
         loginType: "email",
         createdAt: getTime(-100, -60 * 60 * 3),
@@ -37,7 +37,7 @@ export const initData = async (clientId, nextSeq) => {
         password:
           "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
         name: "관리자",
-        phone: "01011112222",
+        phone: "010-1111-2222",
         type: "seller",
         loginType: "email",
         createdAt: getTime(-100, -60 * 60 * 3),
