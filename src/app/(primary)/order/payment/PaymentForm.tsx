@@ -22,6 +22,7 @@ type PaymentData = {
 const PaymentForm = ({ user }: { user: User | undefined }) => {
   const { setOrderStatus } = useContext(OrderContext);
   const passengers = usePersonalPrice();
+  const [clickedTitle, setClickedTitle] = useState(["0-0"]);
 
   const {
     register,
@@ -32,8 +33,6 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
   const handleForm = (formData: PaymentData) => {
     console.log(formData);
   };
-
-  const [isTitleClicked, setIsTitleClicked] = useState(false);
 
   useEffect(() => {
     setOrderStatus(2);
@@ -262,11 +261,24 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
 
             return item.map((_, count) => {
               const key = `[${typeEn}_${count}]`;
+              const uniqueIdx = `${idx}-${count}`;
               return (
-                <div key={`${typeEn}${count}`} className="information">
+                <div
+                  key={`${typeEn}${count}`}
+                  className={`information ${!clickedTitle.includes(uniqueIdx) ? "hide" : ""}`}
+                  onClick={(e) =>
+                    setClickedTitle(
+                      clickedTitle.includes(uniqueIdx)
+                        ? clickedTitle.filter((item) => item !== uniqueIdx)
+                        : [...clickedTitle, uniqueIdx]
+                    )
+                  }
+                >
                   <h4
-                    className={`${typeEn} ${isTitleClicked ? "act" : ""}`}
-                    onClick={() => setIsTitleClicked(!isTitleClicked)}
+                    className={`${typeEn}`}
+                    onClick={() =>
+                      setClickedTitle([...clickedTitle, `${idx}-${count}`])
+                    }
                   >
                     <Badge type={type === "성인" ? "primary" : "gray"}>
                       {type}
@@ -274,9 +286,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                     탑승자 정보 <span className="count">{count + 1}</span>
                   </h4>
 
-                  <div
-                    className={`input-flex ${isTitleClicked ? "hidden" : ""}`}
-                  >
+                  <div className={`input-flex`}>
                     <input
                       type="hidden"
                       value={typeEn}

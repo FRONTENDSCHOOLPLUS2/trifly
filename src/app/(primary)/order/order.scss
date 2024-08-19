@@ -439,6 +439,16 @@
             background: var(--color-gray-30);
           }
         }
+
+        &.hide {
+          h4::after {
+            transform: translateY(-50%);
+          }
+
+          .input-flex {
+            display: none;
+          }
+        }
       }
     }
   }
