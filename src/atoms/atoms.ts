@@ -1,6 +1,7 @@
 "use client";
 import { NewOrderData, OffersPriceData, OrderData } from "@/types";
 import { atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
 
 interface ModalProps {
   isOpen: boolean;
@@ -54,6 +55,9 @@ interface SearchResultProps {
     cabinKor: string;
   };
 }
+
+const sessionStorage =
+  typeof window !== "undefined" ? window.sessionStorage : undefined;
 
 export const modalState = atom<ModalProps>({
   key: "modalState",
@@ -672,6 +676,11 @@ export const dateState = atom<DateProps>({
   },
 });
 
+const { persistAtom } = recoilPersist({
+  key: "searchResult",
+  storage: sessionStorage,
+});
+
 export const searchResultState = atom<SearchResultProps>({
   key: "searchResultState",
   default: {
@@ -701,4 +710,5 @@ export const searchResultState = atom<SearchResultProps>({
       cabinKor: "모든 클래스",
     },
   },
+  effects_UNSTABLE: [persistAtom],
 });

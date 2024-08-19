@@ -44,8 +44,8 @@ interface OffersSearchData extends OffersData {
         base: string;
       };
       fareDetailsBySegment: {
+        cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
         segmentId?: string;
-        cabin: "ECONOMY" | "BUSINESS" | "FIRST";
         fareBasis: string;
         class: string;
         includedCheckedBags: {
@@ -108,7 +108,7 @@ export interface OffersPriceData extends OffersData {
     };
     fareDetailsBySegment: {
       segmentId: string;
-      cabin: "ECONOMY" | "BUSINESS" | "FIRST";
+      cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
       fareBasis: string;
       brandedFare?: string;
       class: string;
@@ -161,7 +161,7 @@ interface SegmentsData extends FlightRouteData {
   co2Emissions?: {
     weight: number;
     weightUnit: "KG";
-    cabin: "ECONOMY" | "BUSINESS" | "FIRST";
+    cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
   }[];
   blacklistedInEU?: boolean;
 }
@@ -360,7 +360,7 @@ export interface SeatMapData extends FlightRouteData {
       };
     }[];
     seats: {
-      cabin: "ECONOMY" | "BUSINESS" | "FIRST";
+      cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
       number: string;
       characteristicsCodes: string[];
       travelerPricing: {
