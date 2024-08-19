@@ -5,7 +5,7 @@ export interface ButtonProps
   children: React.ReactNode;
   type?: "button" | "submit";
   size?: "xs" | "sm" | "md" | "lg" | "full";
-  bgColor?: "primary" | "secondary" | "gray" | "light";
+  bgColor?: "primary" | "primary30" | "secondary" | "gray" | "light";
 }
 
 const Button: React.FC<ButtonProps> = ({
