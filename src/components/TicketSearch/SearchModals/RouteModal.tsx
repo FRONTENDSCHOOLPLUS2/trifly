@@ -1,6 +1,7 @@
 import { AirportData } from "@/types";
 import "./RouteModal.scss";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface BaseProps {
   type: "origin" | "destination";
@@ -44,15 +45,15 @@ const RouteModal = ({
     "중남미",
   ];
 
-  useEffect(() => {
-    const filteredData = airport.filter(
-      (item) => item.areaCode === selectedArea
-    );
+  const handleAirport = (info: { code: string; value: string }) => {
+    if (type === "origin") {
+      setOrigin(info);
+    } else {
+      setDestination(info);
+    }
 
-    const newAirportList = renderAirport(filteredData);
-
-    setAirportList(newAirportList);
-  }, [selectedArea]);
+    handleClose(false);
+  };
 
   const renderAirport = (data: AirportData[]): JSX.Element[] => {
     const airports = data.map((item, index) => {
@@ -78,10 +79,20 @@ const RouteModal = ({
     return airports;
   };
 
+  useEffect(() => {
+    const filteredData = airport.filter(
+      (item) => item.areaCode === selectedArea,
+    );
+
+    const newAirportList = renderAirport(filteredData);
+
+    setAirportList(newAirportList);
+  }, [selectedArea]);
+
   const handleArea = (
     e:
       | React.MouseEvent<HTMLButtonElement>
-      | React.KeyboardEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLButtonElement>,
   ) => {
     const target = e.target as HTMLButtonElement;
 
@@ -92,16 +103,6 @@ const RouteModal = ({
     target.classList.add("selected");
 
     setSelectedArea(target.value);
-  };
-
-  const handleAirport = (info: { code: string; value: string }) => {
-    if (type === "origin") {
-      setOrigin(info);
-    } else {
-      setDestination(info);
-    }
-
-    handleClose(false);
   };
 
   const areaList = areas.map((area, index) => (
@@ -124,7 +125,7 @@ const RouteModal = ({
         type="button"
         onClick={() => handleClose(false)}
       >
-        <img src="/img/icon-close-black.svg" alt="닫기" />
+        <Image src="/img/icon-close-black.svg" alt="닫기" />
         <span className="hidden">닫기</span>
       </button>
       <div className="area-section">

@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import "./PassengersModal.scss";
 import Button from "@/components/Button/Button";
+import Image from "next/image";
 
 interface PassengersModalProps {
   handleClose: (a: boolean) => void;
@@ -34,18 +35,23 @@ const PassengersModal = ({
     setCabinType(e.target.value);
   };
 
-  const convertToKor = (cabinType: string) => {
-    if (cabinType === "") {
+  const convertToKor = (type: string) => {
+    if (type === "") {
       return "모든 클래스";
-    } else if (cabinType === "ECONOMY") {
-      return "일반석";
-    } else if (cabinType === "PREMIUM_ECONOMY") {
-      return "프리미엄 일반석";
-    } else if (cabinType === "BUSINESS") {
-      return "비즈니스석";
-    } else {
-      return "일등석";
     }
+
+    if (type === "ECONOMY") {
+      return "일반석";
+    }
+
+    if (type === "PREMIUM_ECONOMY") {
+      return "프리미엄 일반석";
+    }
+    if (type === "BUSINESS") {
+      return "비즈니스석";
+    }
+
+    return "일등석";
   };
 
   const handlePassengers = () => {
@@ -70,7 +76,7 @@ const PassengersModal = ({
         type="button"
         onClick={() => handleClose(false)}
       >
-        <img src="/img/icon-close-black.svg" alt="닫기" />
+        <Image src="/img/icon-close-black.svg" alt="닫기" />
         <span className="hidden">닫기</span>
       </button>
 
@@ -96,7 +102,7 @@ const PassengersModal = ({
                   }
                 }}
               >
-                <img src="/img/icon-minus.svg" alt="제외" />
+                <Image src="/img/icon-minus.svg" alt="제외" />
                 <span className="hidden">1명 제외</span>
               </button>
               <p>{adults}</p>
@@ -106,7 +112,7 @@ const PassengersModal = ({
                 id="adults"
                 onClick={() => setAdults((state) => state + 1)}
               >
-                <img src="/img/icon-plus.svg" alt="추가" />
+                <Image src="/img/icon-plus.svg" alt="추가" />
                 <span className="hidden">1명 추가</span>
               </button>
             </div>
@@ -125,7 +131,7 @@ const PassengersModal = ({
                   }
                 }}
               >
-                <img src="/img/icon-minus.svg" alt="제외" />
+                <Image src="/img/icon-minus.svg" alt="제외" />
                 <span className="hidden">1명 제외</span>
               </button>
               <p>{children}</p>
@@ -137,7 +143,7 @@ const PassengersModal = ({
                   setChildren((state) => state + 1);
                 }}
               >
-                <img src="/img/icon-plus.svg" alt="추가" />
+                <Image src="/img/icon-plus.svg" alt="추가" />
                 <span className="hidden">1명 추가</span>
               </button>
             </div>
@@ -156,7 +162,7 @@ const PassengersModal = ({
                   }
                 }}
               >
-                <img src="/img/icon-minus.svg" alt="제외" />
+                <Image src="/img/icon-minus.svg" alt="제외" />
                 <span className="hidden">1명 제외</span>
               </button>
               <p>{infants}</p>
@@ -168,7 +174,7 @@ const PassengersModal = ({
                   setInfants((state) => state + 1);
                 }}
               >
-                <img src="/img/icon-plus.svg" alt="추가" />
+                <Image src="/img/icon-plus.svg" alt="추가" />
                 <span className="hidden">1명 추가</span>
               </button>
             </div>
