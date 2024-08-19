@@ -1,24 +1,17 @@
-import { fetchCodes } from "@/data/fetch/fetchCode";
-import FetchOrderId from "@/lib/fetchOrder";
+"use client";
+import { AirportData, CodeState, OrderItem } from "@/types";
 import "./ticket.scss";
-import { AirportData } from "@/types";
 
-interface Code {
-  [key: string]: AirportData;
-}
-
-const Ticket = async ({
-  orderId,
+const Ticket = ({
+  data: { reservationId, itineraries, passengers },
+  code,
   passengerId,
 }: {
-  orderId: string | number;
+  data: OrderItem;
+  code: CodeState<AirportData>;
   passengerId: number;
 }) => {
   const URL = process.env.NEXT_PUBLIC_MARKET_API_SERVER;
-  const { reservationId, itineraries, passengers } = await FetchOrderId(
-    `${orderId}`
-  );
-  const { code } = await fetchCodes<Code>();
   const arrival =
     itineraries[0].segments[itineraries[0].segments.length - 1].arrival
       .iataCode;

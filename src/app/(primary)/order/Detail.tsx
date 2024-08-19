@@ -1,11 +1,11 @@
 "use client";
 import { orderState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
-import { CodeState } from "@/types";
+import { AirportData, CodeState } from "@/types";
 import { useRecoilValue } from "recoil";
 import { cabinKor } from "./orderContext";
 
-const Detail = ({ code }: { code: CodeState }) => {
+const Detail = ({ code }: { code: CodeState<AirportData> }) => {
   const { itineraries, price } = useRecoilValue(orderState);
   const bags = price.map((item) =>
     item.fareDetailsBySegment.map((item) => item.includedCheckedBags)
@@ -35,7 +35,7 @@ const Detail = ({ code }: { code: CodeState }) => {
               <h4>
                 <Badge>{idx === 0 ? "가는편" : "오는편"}</Badge>
               </h4>
-              <div className="info-box">
+              <div className="detail-info">
                 <span className="date">{date}</span>
                 <span className="duration">
                   소요시간 <span>{`${hour}시간 ${minute}분`}</span>

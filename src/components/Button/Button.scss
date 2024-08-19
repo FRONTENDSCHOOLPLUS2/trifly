@@ -47,6 +47,17 @@
     }
   }
 
+  &.primary30 {
+    background-color: var(--color-primary-30);
+    color: var(--color-primary);
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+
   &.secondary {
     background-color: var(--color-secondary);
     color: var(--color-white);
