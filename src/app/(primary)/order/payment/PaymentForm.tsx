@@ -81,10 +81,6 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                   value: 8,
                   message: "생년월일 8자리를 입력해주세요.",
                 },
-                pattern: {
-                  value: /^[0-9]*$/,
-                  message: "숫자만 입력해주세요.",
-                },
               })}
               placeholder="20020101"
             />
@@ -250,6 +246,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
           </li>
         </ul>
       </div>
+
       <div className="input-inner passenger">
         <h3 className="title">탑승자 정보</h3>
         <div className="input-toggle">
@@ -266,18 +263,15 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                 <div
                   key={`${typeEn}${count}`}
                   className={`information ${!clickedTitle.includes(uniqueIdx) ? "hide" : ""}`}
-                  onClick={(e) =>
-                    setClickedTitle(
-                      clickedTitle.includes(uniqueIdx)
-                        ? clickedTitle.filter((item) => item !== uniqueIdx)
-                        : [...clickedTitle, uniqueIdx]
-                    )
-                  }
                 >
                   <h4
                     className={`${typeEn}`}
                     onClick={() =>
-                      setClickedTitle([...clickedTitle, `${idx}-${count}`])
+                      setClickedTitle(
+                        clickedTitle.includes(uniqueIdx)
+                          ? clickedTitle.filter((item) => item !== uniqueIdx)
+                          : [...clickedTitle, uniqueIdx]
+                      )
                     }
                   >
                     <Badge type={type === "성인" ? "primary" : "gray"}>
