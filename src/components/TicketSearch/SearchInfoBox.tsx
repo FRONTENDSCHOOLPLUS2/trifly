@@ -4,9 +4,19 @@ import Button from "@/components/Button/Button";
 import "./SearchInfo.scss";
 import { useRecoilValue } from "recoil";
 import { searchResultState } from "@/atoms/atoms";
+import { useEffect, useState } from "react";
 
 const SearchInfoBox = ({ handleChange }: { handleChange: () => void }) => {
   const searchResult = useRecoilValue(searchResultState);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <div className="info-layout">
