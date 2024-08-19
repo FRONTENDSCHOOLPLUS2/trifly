@@ -3,8 +3,26 @@ import { fetchCodes } from "@/data/fetch/fetchCode";
 import { AirportData } from "@/types";
 import "./result.scss";
 
-const TicketResult = async () => {
+const AMADEUS_API_SERVER = process.env.NEXT_PUBLIC_AMADEUS_API_SERVER;
+
+interface IPageProps {
+  searchParams: {
+    originLocationCode: string;
+    destinationLocationCode: string;
+    departureDate: string;
+    returnDate?: string;
+    adults: string;
+    children?: string;
+    infants?: string;
+    nonStop?: boolean;
+    travelClass?: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
+    currencyCode: "KRW";
+  };
+}
+
+const TicketResult = async ({ searchParams }: IPageProps) => {
   const { code, airportCode } = await fetchCodes<AirportData>();
+  console.log(searchParams);
 
   return (
     <div className="result">
