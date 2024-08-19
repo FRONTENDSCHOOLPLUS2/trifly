@@ -1,8 +1,8 @@
 import { fetchCodes } from "@/data/fetch/fetchCode";
+import { AirportData } from "@/types";
 import Detail from "../Detail";
 import Receipt from "../Receipt";
 import AgreeForm from "./AgreeForm";
-import { AirportData } from "@/types";
 
 const AgreePage = async () => {
   const { code } = await fetchCodes<AirportData>();
@@ -16,7 +16,6 @@ const AgreePage = async () => {
         </section>
 
         <section>
-          <h3 className="title">약관 동의</h3>
           <AgreeForm />
         </section>
       </div>

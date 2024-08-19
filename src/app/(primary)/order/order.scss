@@ -335,6 +335,19 @@
     }
   }
 
+  // 약관 동의
+  .agree {
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      .chk-box {
+        font-size: var(--title-big);
+      }
+    }
+  }
+
   // 정보 입력 및 결제
   .payment {
     .input-form {
