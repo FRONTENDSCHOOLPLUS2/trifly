@@ -47,12 +47,25 @@ interface OffersSearchData extends OffersData {
         cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
         segmentId?: string;
         fareBasis: string;
+        brandedFare?: string;
+        brandedFareLabel?: string;
         class: string;
         includedCheckedBags: {
           weight?: number;
           weightUnit?: "KG";
           quantity?: number;
         };
+        includedCabinBags?: {
+          quantity?: number;
+        };
+        amenities?: {
+          description: string;
+          isChargeable: boolean;
+          amenityType: string;
+          amenityProvider: {
+            name: string;
+          };
+        }[];
       }[];
     },
   ];
@@ -131,6 +144,7 @@ interface OffersData {
   instantTicketingRequired?: boolean;
   nonHomogeneous: boolean;
   oneWay?: boolean;
+  isUpsellOffer?: false;
   paymentCardRequired?: boolean;
   lastTicketingDate: string;
   lastTicketingDateTime?: string;
