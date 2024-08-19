@@ -2,7 +2,7 @@
 
 import Badge from "@/components/Badge/Badge";
 import RouteModal from "@/components/TicketSearch/SearchModals/RouteModal";
-import { AirportData, CodeState } from "@/types";
+import { AirportData } from "@/types";
 import { ChangeEvent, useState } from "react";
 import PassengersModal from "./SearchModals/PassengersModal";
 import ScheduleModal from "./SearchModals/ScheduleModal";
@@ -13,7 +13,9 @@ const TicketSearchBox = ({
   code,
   airport,
 }: {
-  code: CodeState;
+  code: {
+    [key: string]: AirportData;
+  };
   airport: AirportData[];
 }) => {
   const [tripType, setTripType] = useState("round");
