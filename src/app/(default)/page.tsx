@@ -2,20 +2,23 @@ import { auth } from "@/auth";
 import Badge from "@/components/Badge/Badge";
 import Banner from "@/components/Banner/Banner";
 import RecentSearch from "@/components/RecentSearch/RecentSearch";
-import TicketSearch from "@/components/TicketSearch/TicketSearch";
 import Link from "next/link";
 import "./main.scss";
+import { fetchCodes } from "@/data/fetch/fetchCode";
+import { AirportData } from "@/types";
+import TicketSearchBox from "@/components/TicketSearch/TicketSearchBox";
 
 const Home = async () => {
   const session = await auth();
   const user = session?.user ? true : false;
+  const { code, airportCode } = await fetchCodes<AirportData>();
 
   return (
     <div className="main">
       <h2 className="hidden">메인</h2>
       <section className="search-container full-width">
         <h3 className="hidden">항공권 검색</h3>
-        <TicketSearch />
+        <TicketSearchBox code={code} airport={airportCode} />
       </section>
 
       <RecentSearch />
