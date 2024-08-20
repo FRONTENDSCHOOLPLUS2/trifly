@@ -14,7 +14,7 @@ const CompletePage = async () => {
       <section className="reservation-box">
         <h3 className="hidden">항공권 예약 완료</h3>
         <p className="reservation-tit">
-          <strong>{data.purchaser?.name}</strong>님, 항공권 구매가
+          <strong>{data?.purchaser?.name}</strong>님, 항공권 구매가
           완료되었습니다.
         </p>
         <p className="reservation-cont">
@@ -22,7 +22,7 @@ const CompletePage = async () => {
         </p>
         <dl>
           <dt>예약 번호</dt>
-          <dd>{data.reservationId}</dd>
+          <dd>{data?.reservationId}</dd>
         </dl>
       </section>
 
@@ -31,7 +31,7 @@ const CompletePage = async () => {
         <Detail code={code} />
       </section>
 
-      <TicketChk data={data} code={code} />
+      {data && <TicketChk data={data} code={code} />}
     </div>
   );
 };
