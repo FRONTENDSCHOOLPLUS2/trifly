@@ -75,6 +75,7 @@
           color: var(--color-gray-100);
           font-size: var(--title-medium);
           font-weight: 500;
+          padding: 0.5rem 1rem;
 
           &:hover {
             border-color: var(--color-primary);
@@ -85,13 +86,14 @@
           .counter-button {
             width: 2.4rem;
             height: 2.4rem;
+
             display: flex;
             align-items: center;
             justify-content: center;
 
             &.img-box {
-              width: 0.8rem;
-              height: 0.8rem;
+              width: 100%;
+              height: 100%;
             }
           }
         }
@@ -129,7 +131,7 @@
     }
 
     .passengers-select-done {
-      margin-top: 3rem;
+      margin-top: 2rem;
       display: flex;
       justify-content: center;
     }
@@ -147,10 +149,6 @@
     top: unset;
     right: unset;
     bottom: 0;
-
-    &.search-modal-contents {
-      height: fit-content;
-    }
 
     .passengers-modal-contents {
       .passengers-select-done {
