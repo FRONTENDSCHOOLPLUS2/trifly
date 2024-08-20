@@ -53,7 +53,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
 
-  secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
+  secret: process.env.AUTH_SECRET,
 
   session: {},
 
