@@ -32,17 +32,18 @@
       2,
       { "namedComponents": ["arrow-function", "function-declaration"] }
     ],
-    "@typescript-eslint/no-unused-vars": "off", // 불필요한 변수 제거 => 변경 예정
-    "lines-around-directive": "warn", // "use client" 선언 이후에 한 칸 띄우기 => 변경 예정
+
     "no-underscore-dangle": "off", // _id 방식 사용
-    "no-console": "off", // console.log 제거 => 추후 변경 예정
-    "import/prefer-default-export": "off", // export 하나일 때는 default export => 추후 변경 예정
     "react/require-default-props": "off", // props가 not required면 default 옵션 필요,
     "jsx-a11y/label-has-associated-control": "off", // label은 form 안에서 관리
     "no-nested-ternary": "off", // 중첩 삼항 연산자 제거
-    "no-alert": "off", // alert 제거 => 추후 변경 예정
     "react/jsx-no-useless-fragment": "off", // 불필요한 <></> 제거
     "react-hooks/exhaustive-deps": "off", // useEffect 이후 dependency 등
-    "react/no-array-index-key": "off" // 반복되는 요소의 key 값으로 index를 사용하지 말 것 (렌더링 최적화를 위해)
+    "react/no-array-index-key": "off", // 반복되는 요소의 key 값으로 index를 사용하지 말 것 (렌더링 최적화를 위해)
+    "@typescript-eslint/no-unused-vars": "off", // 불필요한 변수 제거 => 변경 예정
+    "lines-around-directive": "warn", // "use client" 선언 이후에 한 칸 띄우기 => 변경 예정
+    "no-console": "off", // console.log 제거 => 추후 변경 예정
+    "import/prefer-default-export": "off", // export 하나일 때는 default export => 추후 변경 예정
+    "no-alert": "off" // alert 제거 => 추후 변경 예정
   }
 }
