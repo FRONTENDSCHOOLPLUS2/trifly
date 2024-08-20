@@ -266,7 +266,12 @@ const TicketSearchBox = ({
               className={`route-switch ${destination.code ? "is-active" : "disabled"}`}
               onClick={handleSwitch}
             >
-              <Image src="/img/icon-switch.svg" alt="출/도착 변경" />
+              <Image
+                src="/img/icon-switch.svg"
+                alt="출/도착 변경"
+                width={0}
+                height={0}
+              />
               <span className="hidden">출/도착 변경</span>
             </button>
             <button

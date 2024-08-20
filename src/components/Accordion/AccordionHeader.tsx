@@ -1,4 +1,5 @@
 "use client";
+
 import React, { MouseEvent, useContext } from "react";
 import AccordionContext from "./AccordionContext";
 

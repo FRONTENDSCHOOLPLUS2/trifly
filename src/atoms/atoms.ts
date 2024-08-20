@@ -1,5 +1,6 @@
 "use client";
-import { NewOrderData, OffersPriceData, OrderData } from "@/types";
+
+import { NewOrderData, OrderData } from "@/types";
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 

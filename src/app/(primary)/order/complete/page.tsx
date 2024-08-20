@@ -14,7 +14,7 @@ const CompletePage = async () => {
       <section className="reservation-box">
         <h3 className="hidden">항공권 예약 완료</h3>
         <p className="reservation-tit">
-          <strong>{data.purchaser.name}</strong>님, 항공권 구매가
+          <strong>{data.purchaser?.name}</strong>님, 항공권 구매가
           완료되었습니다.
         </p>
         <p className="reservation-cont">

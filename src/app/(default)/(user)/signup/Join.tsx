@@ -1,12 +1,13 @@
 "use client";
+
+import { modalState } from "@/atoms/atoms";
 import Button from "@/components/Button/Button";
 import Submit from "@/components/Submit/Submit";
+import signupAction from "@/data/actions/signupAction";
 import { UserForm } from "@/types";
 import { Dispatch, useState } from "react";
 import { useForm } from "react-hook-form";
-import signupAction from "@/data/actions/signupAction";
 import { useSetRecoilState } from "recoil";
-import { modalState } from "@/atoms/atoms";
 
 export interface UserData extends UserForm {
   passwordChk: string;
@@ -50,6 +51,7 @@ const Join = ({ setStep, setName }: SignupStepProp) => {
         handleCancel: () => {},
       });
     }
+    return null;
   };
 
   return (
