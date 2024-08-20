@@ -1,24 +1,26 @@
 "use client";
+
 import { orderState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
 import { AirportData, CodeState } from "@/types";
+import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { cabinKor } from "./orderContext";
 
 const Detail = ({ code }: { code: CodeState<AirportData> }) => {
   const { itineraries, price } = useRecoilValue(orderState);
-  const bags = price.map((item) =>
-    item.fareDetailsBySegment.map((item) => item.includedCheckedBags)
+  const bags = price.map((bag) =>
+    bag.fareDetailsBySegment.map((item) => item.includedCheckedBags),
   );
-  const cabin = price.map((item) =>
-    item.fareDetailsBySegment.map((item) => item.cabin)
+  const cabins = price.map((cabin) =>
+    cabin.fareDetailsBySegment.map((item) => item.cabin),
   );
   const data = itineraries.map((item, idx) => ({
     date: item.segments[idx].departure.at,
     duration: item.duration,
     segments: item.segments,
     bags: bags[idx],
-    cabin: cabin[idx],
+    cabin: cabins[idx],
   }));
 
   return (
@@ -44,24 +46,29 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
             </div>
 
             <div className="detail-cont">
-              {item.segments.map((segment, idx) => {
+              {item.segments.map((segment, segmentIdx) => {
                 const departure = segment.departure.at.split("T")[1].split(":");
                 const arrival = segment.departure.at.split("T")[1].split(":");
                 return (
-                  <div key={idx} className="detail-segment">
+                  <div key={segmentIdx} className="detail-segment">
                     <div className="segment left-box">
                       <span className="departure">
                         {`${departure[0]}:${departure[1]}`}
                       </span>
-                      <img
-                        src={`https://flights.myrealtrip.com/air/wfw/imgs/mbl/logo/air/${segment.operating ? segment.operating.carrierCode : segment.carrierCode}.png`}
-                        alt={
-                          segment.operating
-                            ? segment.operating.carrierCode
-                            : segment.carrierCode
-                        }
-                        className="center"
-                      />
+                      <div className="img-box">
+                        <Image
+                          src={`https://flights.myrealtrip.com/air/wfw/imgs/mbl/logo/air/${segment.operating ? segment.operating.carrierCode : segment.carrierCode}.png`}
+                          alt={
+                            segment.operating
+                              ? segment.operating.carrierCode
+                              : segment.carrierCode
+                          }
+                          width={0}
+                          height={0}
+                          sizes="100%"
+                        />
+                      </div>
+                      {/* <img src={} className="center" /> */}
                       <span className="arrival">
                         {`${arrival[0]}:${arrival[1]}`}
                       </span>

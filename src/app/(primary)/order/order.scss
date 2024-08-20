@@ -423,9 +423,12 @@
           align-items: center;
           font-size: var(--title-large);
           position: relative;
-          padding: var(--title-extra);
           cursor: pointer;
 
+          button {
+            padding: var(--title-extra);
+            width: 100%;
+          }
           &::after {
             content: "";
             display: block;

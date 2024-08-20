@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useMemo } from "react";
 import AccordionContext from "./AccordionContext";
 import "./accordion.scss";
@@ -23,19 +24,17 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
         activeKey,
         setActiveKey,
       }),
-      [activeKey]
+      [activeKey],
     );
 
     return (
       <AccordionContext.Provider value={contextValue}>
-        <div
-          className={`accordion ${type ? type : ""}`}
-          ref={ref}
-          children={children}
-        />
+        <div className={`accordion ${type || ""}`} ref={ref}>
+          {children}
+        </div>
       </AccordionContext.Provider>
     );
-  }
+  },
 );
 
 export default Accordion;

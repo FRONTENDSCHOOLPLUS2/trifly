@@ -1,15 +1,24 @@
+import { signInWithCredentials } from "@/data/actions/authAction";
+import Image from "next/image";
 import "../user.scss";
 import "./login.scss";
 import LoginForm from "./LoginForm";
 import SnsLogin from "./SnsLogin";
-import { signInWithCredentials } from "@/data/actions/authAction";
 
 const Login = async () => {
   return (
     <div className="login">
       <h2 className="hidden">로그인</h2>
       <div className="logo">
-        <img src="/img/logo-text-primary.svg" alt="trifly" />
+        <div className="img-box">
+          <Image
+            alt="trifly"
+            src="/img/logo-text-primary.svg"
+            width={0}
+            height={0}
+            sizes="100%"
+          />
+        </div>
       </div>
 
       <form className="form" action={signInWithCredentials}>

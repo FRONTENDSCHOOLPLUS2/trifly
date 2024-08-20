@@ -1,6 +1,8 @@
 "use client";
+
 import { AirportData, CodeState, OrderItem } from "@/types";
 import "./ticket.scss";
+import Image from "next/image";
 
 const Ticket = ({
   data: { reservationId, itineraries, passengers },
@@ -20,7 +22,13 @@ const Ticket = ({
     <div className="ticket-box">
       <div className="top-box">
         <div className="barcode">
-          <img src="/img/img-ticket-barcode.svg" alt="티켓 바코드" />
+          <Image
+            src="/img/img-ticket-barcode.svg"
+            alt="티켓 바코드"
+            width={0}
+            height={0}
+            sizes="100%"
+          />
         </div>
         <div className="flex-box">
           <dl>
@@ -34,7 +42,13 @@ const Ticket = ({
         </div>
       </div>
       <div className="img-box">
-        <img src={`${URL}${code[arrival].img}`} alt={code[arrival].value} />
+        <Image
+          src={`${URL}${code[arrival].img}`}
+          alt={code[arrival].value}
+          width={0}
+          height={0}
+          sizes="100%"
+        />
       </div>
       <div className="segments">
         {itineraries.map((item, idx) => (
@@ -84,7 +98,13 @@ const Ticket = ({
                 </dl>
               </div>
               <div className="barcode">
-                <img src="/img/img-ticket-barcode.svg" alt="여정 바코드" />
+                <Image
+                  src="/img/img-ticket-barcode.svg"
+                  alt="여정 바코드"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
               </div>
             </div>
           </div>

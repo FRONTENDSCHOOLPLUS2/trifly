@@ -1,13 +1,13 @@
 "use client";
+
+import Badge from "@/components/Badge/Badge";
+import Submit from "@/components/Submit/Submit";
 import usePersonalPrice from "@/hook/usePersonalPrice";
 import { Passengers, Purchaser } from "@/types";
 import { User } from "next-auth";
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import OrderContext from "../orderContext";
-import Submit from "@/components/Submit/Submit";
-import Badge from "@/components/Badge/Badge";
-import Button from "@/components/Button/Button";
 
 type PaymentData = {
   purchaser:
@@ -30,6 +30,14 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<PaymentData>();
+
+  const handleInfoClick = (uniqueIdx: string) => {
+    setClickedTitle(
+      clickedTitle.includes(uniqueIdx)
+        ? clickedTitle.filter((item) => item !== uniqueIdx)
+        : [...clickedTitle, uniqueIdx],
+    );
+  };
 
   const handleForm = (formData: PaymentData) => {
     console.log(formData);
@@ -252,36 +260,34 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
         <h3 className="title">탑승자 정보</h3>
         <div className="input-toggle">
           {passengers.map((item, idx) => {
-            const count = item.length;
-            if (!count) return;
+            if (!item.length) return false;
             const type = idx === 0 ? "성인" : idx === 1 ? "소아" : "유아";
             const typeEn = idx === 0 ? "adult" : idx === 1 ? "child" : "infant";
 
             return item.map((_, count) => {
               const key = `[${typeEn}_${count}]`;
               const uniqueIdx = `${idx}-${count}`;
+
               return (
                 <div
                   key={`${typeEn}${count}`}
                   className={`information ${!clickedTitle.includes(uniqueIdx) ? "hide" : ""}`}
                 >
-                  <h4
-                    className={`${typeEn}`}
-                    onClick={() =>
-                      setClickedTitle(
-                        clickedTitle.includes(uniqueIdx)
-                          ? clickedTitle.filter((item) => item !== uniqueIdx)
-                          : [...clickedTitle, uniqueIdx]
-                      )
-                    }
-                  >
-                    <Badge type={type === "성인" ? "primary" : "gray"}>
-                      {type}
-                    </Badge>
-                    탑승자 정보 <span className="count">{count + 1}</span>
+                  <h4>
+                    <button
+                      type="button"
+                      className={`${typeEn}`}
+                      onClick={() => handleInfoClick(uniqueIdx)}
+                      onKeyDown={() => handleInfoClick(uniqueIdx)}
+                    >
+                      <Badge type={type === "성인" ? "primary" : "gray"}>
+                        {type}
+                      </Badge>
+                      탑승자 정보 <span className="count">{count + 1}</span>
+                    </button>
                   </h4>
 
-                  <div className={`input-flex`}>
+                  <div className="input-flex">
                     <input
                       type="hidden"
                       value={typeEn}
@@ -398,7 +404,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                     <div className="input-box">
                       <label htmlFor="phone1">
                         휴대폰 번호
-                        <span className="errorMsg"></span>
+                        {/* <span className="errorMsg"></span> */}
                       </label>
                       <div className="input-phone">
                         <input
@@ -542,8 +548,8 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
               탑승할 수 없습니다.
             </strong>
             <br />
-            (영문 성/이름 입력시 띄어쓰기나 "-"표시 없이 영문스펠링만 정확히
-            입력해 주십시오)
+            (영문 성/이름 입력시 띄어쓰기나 &quot;-&quot;표시 없이 영문스펠링만
+            정확히 입력해 주십시오)
           </li>
           <li>
             출발 24시간 전까지 꼭 정확한 여권 정보를 등록해주세요. <br />

@@ -13,7 +13,7 @@ const Complete = ({ name }: { name: string }) => {
             sizes="100%"
             width={0}
             height={0}
-          ></Image>
+          />
         </div>
         <div className="text-box">
           <p>
