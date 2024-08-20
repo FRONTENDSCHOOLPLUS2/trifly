@@ -1,21 +1,22 @@
 "use client";
+
 import { seatMap } from "@/lib/seatMap";
 import React from "react";
 import "./seat-map-test.scss";
 
 const page = () => {
-  const data = seatMap.data;
+  const { data } = seatMap;
   const allDecks = data.flatMap((dataItem) => dataItem.decks);
   const allSeats = allDecks.map((item) => item.seats);
 
   const seatData = data.map((item) => ({
     decks: item.decks,
-    seats: item.decks.map((item) => item.seats),
-    coordinates: item.decks.map((item) =>
-      item.seats.map((item) => item.coordinates)
+    seats: item.decks.map((deck) => deck.seats),
+    coordinates: item.decks.map((deck) =>
+      deck.seats.map((seat) => seat.coordinates),
     ),
-    characteristicsCodes: item.decks.map((item) =>
-      item.seats.map((item) => item.characteristicsCodes)
+    characteristicsCodes: item.decks.map((deck) =>
+      deck.seats.map((seat) => seat.characteristicsCodes),
     ),
   }));
 
@@ -36,7 +37,6 @@ const page = () => {
     grid[row][col] = seatData[0].seats[0][idx]; // 예: '자리'라고 채워넣기
   });
 
-  //좌석 정보 알기
   const code = seatData[0].characteristicsCodes.map((item) => item);
   console.log(code);
 
@@ -59,12 +59,13 @@ const page = () => {
                     <td className="seat_table" key={colIndex}>
                       {cell ? (
                         <button
+                          type="button"
                           className={`seat ${cell.travelerPricing[0].seatAvailabilityStatus}`}
                         >
                           {cell.number}
                         </button>
                       ) : (
-                        <span></span>
+                        <span />
                       )}
                     </td>
                   );

@@ -1,4 +1,5 @@
 "use client";
+
 import Badge from "@/components/Badge/Badge";
 
 const TicketLink = ({ id }: { id: string }) => {
@@ -11,21 +12,13 @@ const TicketLink = ({ id }: { id: string }) => {
     window.open(
       `/e-ticket/${id}`,
       "_blank",
-      "width=" +
-        popupW +
-        ",height=" +
-        popupH +
-        ",left=" +
-        left +
-        ",top=" +
-        top +
-        ""
+      `width=${popupW},height=${popupH},left=${left},top=${top}`,
     );
   };
   return (
-    <div onClick={() => handleClick()}>
+    <button type="button" onClick={() => handleClick()}>
       <Badge>티켓 확인하기</Badge>
-    </div>
+    </button>
   );
 };
 

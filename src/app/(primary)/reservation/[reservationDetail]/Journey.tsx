@@ -2,13 +2,14 @@ import { OrderItem, OrderItineraries } from "@/types";
 import React from "react";
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import "./Journery.scss";
+import Image from "next/image";
 
 const Journey = async ({ data }: { data: OrderItem }) => {
   // console.log("zzzzzzzzzzzzzata", data);
   // //공항 코드 조회
   // const {codes} = await fetchCodes();
   // console.log(codes["ICN"].value)
-  const itinerary = data?.itineraries.map((itinerary, idx) => {
+  const itinerary = data?.itineraries.map((item, idx) => {
     return (
       <div className="ticket" key={idx}>
         <div className="journey-box">
@@ -16,19 +17,27 @@ const Journey = async ({ data }: { data: OrderItem }) => {
             <div className="departure">
               <div className="circle" />
               <span className="airport-code">
-                {itinerary.segments[0].departure.iataCode}
+                {item.segments[0].departure.iataCode}
               </span>
               <span className="airport-kr">공항이름</span>
               <span className="airline-at">
-                {itinerary.segments[0].departure.at.substring(0, 10)}
+                {item.segments[0].departure.at.substring(0, 10)}
               </span>
             </div>
 
             <div className="stopover">
-              <img src="/img/icon-airline.svg" alt="airline" />
+              <div className="img-box">
+                <Image
+                  src="/img/icon-airline.svg"
+                  alt="airline"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
+              </div>
               <span className="stopover-number">
-                {itinerary.segments.length >= 2
-                  ? `경유 ${itinerary.segments.length - 1}회`
+                {item.segments.length >= 2
+                  ? `경유 ${item.segments.length - 1}회`
                   : ""}
               </span>
             </div>
@@ -37,13 +46,13 @@ const Journey = async ({ data }: { data: OrderItem }) => {
               <div className="circle" />
               <span className="airport-code">
                 {/* {itinerary.segments[0].arrival.iataCode} */}
-                {itinerary.segments.length >= 2
-                  ? itinerary.segments[1].arrival.iataCode
-                  : itinerary.segments[0].arrival.iataCode}
+                {item.segments.length >= 2
+                  ? item.segments[1].arrival.iataCode
+                  : item.segments[0].arrival.iataCode}
               </span>
               <span className="airport-kr">공항이름</span>
               <span className="airline-at">
-                {itinerary.segments[0].arrival.at.substring(0, 10)}
+                {item.segments[0].arrival.at.substring(0, 10)}
               </span>
             </div>
           </div>
@@ -68,15 +77,15 @@ const Journey = async ({ data }: { data: OrderItem }) => {
                   <td>{data.reservationId}</td>
                   <td>{data.createdAt.substring(0, 10)}</td>
                   <td>
-                    {itinerary.segments.length >= 2
-                      ? `${itinerary.segments[0].departure.iataCode} ~ ${itinerary.segments[itinerary.segments.length - 1].arrival.iataCode}`
-                      : `${itinerary.segments[0].departure.iataCode} ~ ${itinerary.segments[0].arrival.iataCode}`}
+                    {item.segments.length >= 2
+                      ? `${item.segments[0].departure.iataCode} ~ ${item.segments[item.segments.length - 1].arrival.iataCode}`
+                      : `${item.segments[0].departure.iataCode} ~ ${item.segments[0].arrival.iataCode}`}
                   </td>
-                  <td>{itinerary.segments[0].departure.at.substring(0, 10)}</td>
+                  <td>{item.segments[0].departure.at.substring(0, 10)}</td>
                   <td>{data.passengers?.length}</td>
                   <td>
                     {Number(data.totalPrice.split(".")[0]).toLocaleString(
-                      "ko-KR"
+                      "ko-KR",
                     )}{" "}
                     원
                   </td>
