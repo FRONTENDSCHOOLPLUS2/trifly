@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import OrderContext from "../orderContext";
 import Submit from "@/components/Submit/Submit";
 import Badge from "@/components/Badge/Badge";
+import Button from "@/components/Button/Button";
 
 type PaymentData = {
   purchaser:
@@ -22,6 +23,7 @@ type PaymentData = {
 const PaymentForm = ({ user }: { user: User | undefined }) => {
   const { setOrderStatus } = useContext(OrderContext);
   const passengers = usePersonalPrice();
+  const [clickedTitle, setClickedTitle] = useState(["0-0"]);
 
   const {
     register,
@@ -32,8 +34,6 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
   const handleForm = (formData: PaymentData) => {
     console.log(formData);
   };
-
-  const [isTitleClicked, setIsTitleClicked] = useState(false);
 
   useEffect(() => {
     setOrderStatus(2);
@@ -81,10 +81,6 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                 minLength: {
                   value: 8,
                   message: "생년월일 8자리를 입력해주세요.",
-                },
-                pattern: {
-                  value: /^[0-9]*$/,
-                  message: "숫자만 입력해주세요.",
                 },
               })}
               placeholder="20020101"
@@ -251,6 +247,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
           </li>
         </ul>
       </div>
+
       <div className="input-inner passenger">
         <h3 className="title">탑승자 정보</h3>
         <div className="input-toggle">
@@ -262,11 +259,21 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
 
             return item.map((_, count) => {
               const key = `[${typeEn}_${count}]`;
+              const uniqueIdx = `${idx}-${count}`;
               return (
-                <div key={`${typeEn}${count}`} className="information">
+                <div
+                  key={`${typeEn}${count}`}
+                  className={`information ${!clickedTitle.includes(uniqueIdx) ? "hide" : ""}`}
+                >
                   <h4
-                    className={`${typeEn} ${isTitleClicked ? "act" : ""}`}
-                    onClick={() => setIsTitleClicked(!isTitleClicked)}
+                    className={`${typeEn}`}
+                    onClick={() =>
+                      setClickedTitle(
+                        clickedTitle.includes(uniqueIdx)
+                          ? clickedTitle.filter((item) => item !== uniqueIdx)
+                          : [...clickedTitle, uniqueIdx]
+                      )
+                    }
                   >
                     <Badge type={type === "성인" ? "primary" : "gray"}>
                       {type}
@@ -274,9 +281,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                     탑승자 정보 <span className="count">{count + 1}</span>
                   </h4>
 
-                  <div
-                    className={`input-flex ${isTitleClicked ? "hidden" : ""}`}
-                  >
+                  <div className={`input-flex`}>
                     <input
                       type="hidden"
                       value={typeEn}
@@ -309,22 +314,27 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                           {/* {errors && errors.passengers?.[key]?.gender?.message} */}
                         </span>
                       </label>
-                      <input
-                        id="gender"
-                        type="radio"
-                        value="M"
-                        {...register(`passengers.${key}.gender`, {
-                          required: "성별을 선택하세요.",
-                        })}
-                      />
-                      <input
-                        id="gender"
-                        type="radio"
-                        value="F"
-                        {...register(`passengers.${key}.gender`, {
-                          required: "성별을 선택하세요.",
-                        })}
-                      />
+                      <div className="radio-box">
+                        <input
+                          id="genderM"
+                          type="radio"
+                          value="M"
+                          checked
+                          {...register(`passengers.${key}.gender`, {
+                            required: "성별을 선택하세요.",
+                          })}
+                        />
+                        <label htmlFor="genderM">남자</label>
+                        <input
+                          id="genderF"
+                          type="radio"
+                          value="F"
+                          {...register(`passengers.${key}.gender`, {
+                            required: "성별을 선택하세요.",
+                          })}
+                        />
+                        <label htmlFor="genderF">여자</label>
+                      </div>
                     </div>
 
                     <div className="input-box">
