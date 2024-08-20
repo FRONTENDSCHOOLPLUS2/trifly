@@ -1,12 +1,12 @@
 "use client";
+
 import { orderState } from "@/atoms/atoms";
 import usePersonalPrice from "@/hook/usePersonalPrice";
 import { useState } from "react";
 import { useRecoilValue } from "recoil";
 
 const getLocalNum = (value: string | number) => {
-  if (typeof value === "string") value = +value;
-  return value.toLocaleString();
+  return Number(value).toLocaleString();
 };
 
 const Receipt = () => {
@@ -39,7 +39,7 @@ const Receipt = () => {
           <div className="price-detail">
             {personalPrice.map((item, idx) => {
               const count = item.length;
-              if (!count) return;
+              if (!count) return null;
               const type = idx === 0 ? "성인" : idx === 1 ? "소아" : "유아";
               let YR = 0;
               let taxes = 0;
@@ -50,6 +50,7 @@ const Receipt = () => {
                 } else {
                   taxes += +tax.amount;
                 }
+                return null;
               });
 
               return (

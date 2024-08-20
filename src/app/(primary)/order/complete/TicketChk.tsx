@@ -1,4 +1,5 @@
 "use client";
+
 import Badge from "@/components/Badge/Badge";
 import Button from "@/components/Button/Button";
 import Ticket from "@/components/Ticket/Ticket";
@@ -25,7 +26,7 @@ const TicketChk = ({
       <div className="left-box">
         <h3 className="title">E-Ticket 확인하기</h3>
 
-        {data.passengers.map((item, idx) => {
+        {data?.passengers.map((item, idx) => {
           const type =
             item.type === "adult"
               ? "성인"
@@ -34,9 +35,12 @@ const TicketChk = ({
                 : "유아";
           return (
             <div
-              key={idx}
+              key={`${item.type}-${idx}`}
               className="e-ticket"
               onClick={() => setTicketNum(idx)}
+              onKeyDown={() => setTicketNum(idx)}
+              role="button"
+              tabIndex={0}
             >
               <Badge type={type === "성인" ? "primary" : "gray"}>{type}</Badge>
               <h4>{item.nameKor}</h4>

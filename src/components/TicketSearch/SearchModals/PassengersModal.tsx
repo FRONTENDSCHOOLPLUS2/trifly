@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import "./PassengersModal.scss";
 import Button from "@/components/Button/Button";
+import Image from "next/image";
 
 interface PassengersModalProps {
   handleClose: (a: boolean) => void;
@@ -34,18 +35,23 @@ const PassengersModal = ({
     setCabinType(e.target.value);
   };
 
-  const convertToKor = (cabinType: string) => {
-    if (cabinType === "") {
+  const convertToKor = (type: string) => {
+    if (type === "") {
       return "모든 클래스";
-    } else if (cabinType === "ECONOMY") {
-      return "일반석";
-    } else if (cabinType === "PREMIUM_ECONOMY") {
-      return "프리미엄 일반석";
-    } else if (cabinType === "BUSINESS") {
-      return "비즈니스석";
-    } else {
-      return "일등석";
     }
+
+    if (type === "ECONOMY") {
+      return "일반석";
+    }
+
+    if (type === "PREMIUM_ECONOMY") {
+      return "프리미엄 일반석";
+    }
+    if (type === "BUSINESS") {
+      return "비즈니스석";
+    }
+
+    return "일등석";
   };
 
   const handlePassengers = () => {
@@ -66,11 +72,17 @@ const PassengersModal = ({
   return (
     <div className="passengers-modal">
       <button
-        className="close-button"
+        className="close-button img-box"
         type="button"
         onClick={() => handleClose(false)}
       >
-        <img src="/img/icon-close-black.svg" alt="닫기" />
+        <Image
+          src="/img/icon-close-black.svg"
+          alt="닫기"
+          width={0}
+          height={0}
+          sizes="100%"
+        />
         <span className="hidden">닫기</span>
       </button>
 
@@ -85,7 +97,7 @@ const PassengersModal = ({
             <p>만 12세 이상</p>
             <div className="counter">
               <button
-                className="counter-button"
+                className="counter-button img-box"
                 type="button"
                 id="adults"
                 onClick={() => {
@@ -96,17 +108,29 @@ const PassengersModal = ({
                   }
                 }}
               >
-                <img src="/img/icon-minus.svg" alt="제외" />
+                <Image
+                  src="/img/icon-minus.svg"
+                  alt="제외"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
                 <span className="hidden">1명 제외</span>
               </button>
               <p>{adults}</p>
               <button
-                className="counter-button"
+                className="counter-button img-box"
                 type="button"
                 id="adults"
                 onClick={() => setAdults((state) => state + 1)}
               >
-                <img src="/img/icon-plus.svg" alt="추가" />
+                <Image
+                  src="/img/icon-plus.svg"
+                  alt="추가"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
                 <span className="hidden">1명 추가</span>
               </button>
             </div>
@@ -116,7 +140,7 @@ const PassengersModal = ({
             <p>만 12세 미만</p>
             <div className="counter">
               <button
-                className="counter-button"
+                className="counter-button img-box"
                 type="button"
                 id="children"
                 onClick={() => {
@@ -125,19 +149,31 @@ const PassengersModal = ({
                   }
                 }}
               >
-                <img src="/img/icon-minus.svg" alt="제외" />
+                <Image
+                  src="/img/icon-minus.svg"
+                  alt="제외"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
                 <span className="hidden">1명 제외</span>
               </button>
               <p>{children}</p>
               <button
-                className="counter-button"
+                className="counter-button img-box"
                 type="button"
                 id="children"
                 onClick={() => {
                   setChildren((state) => state + 1);
                 }}
               >
-                <img src="/img/icon-plus.svg" alt="추가" />
+                <Image
+                  src="/img/icon-plus.svg"
+                  alt="추가"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
                 <span className="hidden">1명 추가</span>
               </button>
             </div>
@@ -147,7 +183,7 @@ const PassengersModal = ({
             <p>24개월 미만</p>
             <div className="counter">
               <button
-                className="counter-button"
+                className="counter-button img-box"
                 type="button"
                 id="infants"
                 onClick={() => {
@@ -156,19 +192,31 @@ const PassengersModal = ({
                   }
                 }}
               >
-                <img src="/img/icon-minus.svg" alt="제외" />
+                <Image
+                  src="/img/icon-minus.svg"
+                  alt="제외"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
                 <span className="hidden">1명 제외</span>
               </button>
               <p>{infants}</p>
               <button
-                className="counter-button"
+                className="counter-button img-box"
                 type="button"
                 id="infants"
                 onClick={() => {
                   setInfants((state) => state + 1);
                 }}
               >
-                <img src="/img/icon-plus.svg" alt="추가" />
+                <Image
+                  src="/img/icon-plus.svg"
+                  alt="추가"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
                 <span className="hidden">1명 추가</span>
               </button>
             </div>

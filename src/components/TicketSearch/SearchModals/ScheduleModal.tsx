@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "./ScheduleModal.scss";
 import useCheckWindowWidth from "@/hook/useCheckWindowWidth";
+import Image from "next/image";
 
 interface ISchedule {
   departureDate: string;
@@ -29,7 +30,7 @@ const ScheduleModal = ({
 }: ScheduleModalProps) => {
   const isWeb = useCheckWindowWidth(1024);
   const [calendarDate, setCalendarDate] = useState<Date>(new Date());
-  const [activeStartDate, setActiveStartDate] = useState(new Date());
+  const [activeDate, setActiveDate] = useState(new Date());
 
   const [dates, setDates] = useState<Value>();
 
@@ -63,8 +64,8 @@ const ScheduleModal = ({
   /*                                 왕복 날짜 형식 수정                             */
   /* -------------------------------------------------------------------------- */
   const formatDates = (data: [Date, Date]) => {
-    let formattedDates: string[] = [];
-    let selectedDates: string[] = [];
+    const formattedDates: string[] = [];
+    const selectedDates: string[] = [];
 
     data.forEach((item) => {
       const { formattedDate, selectedDate } = formatDate(item);
@@ -84,7 +85,7 @@ const ScheduleModal = ({
         const prevMonthDate = new Date(
           calendarDate.getFullYear(),
           calendarDate.getMonth() - 2,
-          1
+          1,
         );
 
         if (
@@ -92,24 +93,22 @@ const ScheduleModal = ({
           new Date(new Date().getFullYear(), new Date().getMonth(), 1)
         ) {
           setCalendarDate(prevMonthDate);
-          setActiveStartDate(prevMonthDate);
+          setActiveDate(prevMonthDate);
         }
       }
-    } else {
-      if (calendarDate) {
-        const prevMonthDate = new Date(
-          calendarDate.getFullYear(),
-          calendarDate.getMonth() - 1,
-          1
-        );
+    } else if (calendarDate) {
+      const prevMonthDate = new Date(
+        calendarDate.getFullYear(),
+        calendarDate.getMonth() - 1,
+        1,
+      );
 
-        if (
-          prevMonthDate >=
-          new Date(new Date().getFullYear(), new Date().getMonth(), 1)
-        ) {
-          setCalendarDate(prevMonthDate);
-          setActiveStartDate(prevMonthDate);
-        }
+      if (
+        prevMonthDate >=
+        new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+      ) {
+        setCalendarDate(prevMonthDate);
+        setActiveDate(prevMonthDate);
       }
     }
   };
@@ -123,27 +122,29 @@ const ScheduleModal = ({
         const nextMonthDate = new Date(
           calendarDate.getFullYear(),
           calendarDate.getMonth() + 2,
-          1
+          1,
         );
         setCalendarDate(
-          new Date(nextMonthDate.getFullYear(), nextMonthDate.getMonth() - 1, 1)
+          new Date(
+            nextMonthDate.getFullYear(),
+            nextMonthDate.getMonth() - 1,
+            1,
+          ),
         );
         setCalendarDate(nextMonthDate);
-        setActiveStartDate(nextMonthDate);
+        setActiveDate(nextMonthDate);
       }
-    } else {
-      if (calendarDate) {
-        const nextMonthDate = new Date(
-          calendarDate.getFullYear(),
-          calendarDate.getMonth() + 1,
-          1
-        );
-        setCalendarDate(
-          new Date(nextMonthDate.getFullYear(), nextMonthDate.getMonth() - 1, 1)
-        );
-        setCalendarDate(nextMonthDate);
-        setActiveStartDate(nextMonthDate);
-      }
+    } else if (calendarDate) {
+      const nextMonthDate = new Date(
+        calendarDate.getFullYear(),
+        calendarDate.getMonth() + 1,
+        1,
+      );
+      setCalendarDate(
+        new Date(nextMonthDate.getFullYear(), nextMonthDate.getMonth() - 1, 1),
+      );
+      setCalendarDate(nextMonthDate);
+      setActiveDate(nextMonthDate);
     }
   };
 
@@ -166,21 +167,19 @@ const ScheduleModal = ({
       } else {
         handleClose(false);
       }
+    } else if (dates) {
+      const result = formatDate(dates);
+      setSchedule({
+        departureDate: result.selectedDate,
+        departureFormattedDate: result.formattedDate,
+        returnDate: "",
+        returnFormattedDate: "",
+      });
+      handleClose(false);
+    } else if (!schedule.departureDate) {
+      alert("일정 선택을 완료해주세요!");
     } else {
-      if (dates) {
-        const result = formatDate(dates);
-        setSchedule({
-          departureDate: result.selectedDate,
-          departureFormattedDate: result.formattedDate,
-          returnDate: "",
-          returnFormattedDate: "",
-        });
-        handleClose(false);
-      } else if (!schedule.departureDate) {
-        alert("일정 선택을 완료해주세요!");
-      } else {
-        handleClose(false);
-      }
+      handleClose(false);
     }
   };
 
@@ -199,7 +198,7 @@ const ScheduleModal = ({
   /* -------------------------------------------------------------------------- */
   /*                                   월 변경 방지                                  */
   /* -------------------------------------------------------------------------- */
-  const handleActiveStartDateChange = ({
+  const handleActiveDateChange = ({
     activeStartDate,
   }: {
     activeStartDate: Date | null;
@@ -209,9 +208,9 @@ const ScheduleModal = ({
         activeStartDate.getMonth() !== calendarDate.getMonth() ||
         activeStartDate.getFullYear() !== calendarDate.getFullYear()
       ) {
-        setActiveStartDate(calendarDate); // Maintain the current calendar date
+        setActiveDate(calendarDate); // Maintain the current calendar date
       } else {
-        setActiveStartDate(activeStartDate);
+        setActiveDate(activeStartDate);
       }
     }
   };
@@ -219,11 +218,17 @@ const ScheduleModal = ({
   return (
     <div className="schedule-modal">
       <button
-        className="close-button"
+        className="close-button img-box"
         type="button"
         onClick={() => handleClose(false)}
       >
-        <img src="/img/icon-close-black.svg" alt="닫기" />
+        <Image
+          src="/img/icon-close-black.svg"
+          alt="닫기"
+          width={0}
+          height={0}
+          sizes="100%"
+        />
         <span className="hidden">닫기</span>
       </button>
       <div className="calendars">
@@ -231,10 +236,16 @@ const ScheduleModal = ({
           <div className="month-navigation">
             <button
               type="button"
-              className="prev-month"
+              className="prev-month img-box"
               onClick={handlePrevClick}
             >
-              <img src="/img/icon-arrow.svg" alt="이전" />
+              <Image
+                src="/img/icon-arrow.svg"
+                alt="이전"
+                width={0}
+                height={0}
+                sizes="100%"
+              />
               <span className="hidden">이전 달로</span>
             </button>
             <p className="month month-one">
@@ -249,10 +260,16 @@ const ScheduleModal = ({
             )}
             <button
               type="button"
-              className="next-month"
+              className="next-month img-box"
               onClick={handleNextClick}
             >
-              <img src="/img/icon-arrow.svg" alt="다음" />
+              <Image
+                src="/img/icon-arrow.svg"
+                alt="다음"
+                width={0}
+                height={0}
+                sizes="100%"
+              />
               <span className="hidden">다음 달로</span>
             </button>
           </div>
@@ -263,8 +280,8 @@ const ScheduleModal = ({
             onChange={setDates}
             selectRange={tripType === "round"}
             goToRangeStartOnSelect={false}
-            activeStartDate={activeStartDate}
-            onActiveStartDateChange={handleActiveStartDateChange}
+            activeStartDate={activeDate}
+            onActiveStartDateChange={handleActiveDateChange}
             minDate={new Date()}
             formatDay={(locale, date) =>
               date.toLocaleString("en", { day: "numeric" })
@@ -283,6 +300,8 @@ const ScheduleModal = ({
                 }
                 return className.trim();
               }
+
+              return null;
             }}
             tileContent={tileContent}
           />

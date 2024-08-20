@@ -12,15 +12,15 @@ const reservationId = async ({
   const data = await FetchOrderId(params.reservationDetail);
   // console.log("xxxxxxxxxparams", data);
 
-  const passenger = data?.passengers.map((passenger, idx) => {
+  const passenger = data?.passengers.map((item, idx) => {
     return (
       <tbody key={idx}>
         <tr>
-          <td className="passport-number">{passenger.passport.number}</td>
+          <td className="passport-number">{item.passport.number}</td>
           <td>
-            {passenger.nameEng} ({passenger.nameKor})
+            {item.nameEng} ({item.nameKor})
           </td>
-          <td>{passenger.birth}</td>
+          <td>{item.birth}</td>
           <td>
             <TicketLink id={params.reservationDetail} />
           </td>
@@ -63,7 +63,7 @@ const reservationId = async ({
                 <th>여권번호</th>
                 <th>탑승객</th>
                 <th>생년월일</th>
-                <th></th>
+                <th>티켓</th>
               </tr>
             </thead>
             {passenger}

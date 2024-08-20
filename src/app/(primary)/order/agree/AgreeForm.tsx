@@ -1,4 +1,5 @@
 "use client";
+
 import { modalState } from "@/atoms/atoms";
 import Accordion from "@/components/Accordion/Accordion";
 import AccordionBody from "@/components/Accordion/AccordionBody";
@@ -145,7 +146,7 @@ const AgreeForm = () => {
           <label htmlFor="allChk">모두 동의</label>
         </div>
       </h3>
-      <form onSubmit={(e) => handleSubmit(e)} action={"post"}>
+      <form onSubmit={(e) => handleSubmit(e)} action="post">
         <Accordion>{accordions}</Accordion>
 
         <div className="btn-box">

@@ -1,4 +1,5 @@
 "use client";
+
 import Progress from "@/components/Progress/Progress";
 import { useState } from "react";
 import Agree from "./Agree";

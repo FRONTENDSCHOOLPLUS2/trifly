@@ -1,4 +1,5 @@
 "use client";
+
 import { modalState } from "@/atoms/atoms";
 import Accordion from "@/components/Accordion/Accordion";
 import AccordionBody from "@/components/Accordion/AccordionBody";

@@ -4,10 +4,11 @@ import { searchResultState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
 import RouteModal from "@/components/TicketSearch/SearchModals/RouteModal";
 import { AirportData } from "@/types";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import Button from "../Button/Button";
+import Button from "@/components/Button/Button";
 import PassengersModal from "./SearchModals/PassengersModal";
 import ScheduleModal from "./SearchModals/ScheduleModal";
 import "./TicketSearch.scss";
@@ -194,11 +195,13 @@ const TicketSearchBox = ({
 
     if (handleChange) {
       router.push(
+        // eslint-disable-next-line prettier/prettier
         `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" && `&returnDate=${schedule.returnDate}`}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`
       );
       handleChange();
     } else {
       router.push(
+        // eslint-disable-next-line prettier/prettier
         `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" && `&returnDate=${schedule.returnDate}`}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`
       );
     }
@@ -260,10 +263,16 @@ const TicketSearchBox = ({
             </button>
             <button
               type="button"
-              className={`route-switch ${destination.code ? "is-active" : "disabled"}`}
+              className={`route-switch ${destination.code ? "is-active" : "disabled"} img-box`}
               onClick={handleSwitch}
             >
-              <img src="/img/icon-switch.svg" alt="출/도착 변경" />
+              <Image
+                src="/img/icon-switch.svg"
+                alt="출/도착 변경"
+                width={0}
+                height={0}
+                sizes="100%"
+              />
               <span className="hidden">출/도착 변경</span>
             </button>
             <button

@@ -1,13 +1,9 @@
 "use client";
+
 import Anchor from "@/components/Anchor/Anchor";
 import Submit from "@/components/Submit/Submit";
 import { signInWithCredentials } from "@/data/actions/authAction";
 import { ChangeEvent, useRef } from "react";
-
-interface LoginForm {
-  email: string;
-  string: string;
-}
 
 const LoginForm = () => {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -64,7 +60,7 @@ const LoginForm = () => {
         <Submit size="full" formAction={signInWithCredentials}>
           로그인
         </Submit>
-        <Anchor bgColor="gray" href={`/signup`}>
+        <Anchor bgColor="gray" href="/signup">
           회원가입
         </Anchor>
       </div>

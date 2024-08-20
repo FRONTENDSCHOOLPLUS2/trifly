@@ -1,11 +1,10 @@
-import React from "react";
-import "./reservation.scss";
 import Button from "@/components/Button/Button";
+import Pagination from "@/components/Pagination/Pagination";
 import { FetchOrder } from "@/lib/fetchOrder";
 import OrdersItem from "./OrdersItem";
-import Pagination from "@/components/Pagination/Pagination";
+import "./reservation.scss";
 
-export const reservation = async () => {
+const reservation = async () => {
   const data = await FetchOrder();
   const reservationData = data.item;
   // console.log("resercationData", data);

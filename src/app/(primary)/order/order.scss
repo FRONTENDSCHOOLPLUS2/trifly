@@ -56,6 +56,33 @@
     }
   }
 
+  .radio-box {
+    display: flex;
+    gap: var(--title-min);
+
+    input {
+      display: none;
+
+      &:checked + label {
+        background: var(--color-primary);
+        color: #fff;
+      }
+    }
+
+    label {
+      padding: var(--title-min) var(--title-large);
+      background: var(--color-primary-30);
+      color: var(--color-primary);
+      border-radius: var(--title-min);
+      margin: 0;
+      font-weight: 500;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
   // 항공 상세
   .detail-box {
     article + article {
@@ -396,9 +423,12 @@
           align-items: center;
           font-size: var(--title-large);
           position: relative;
-          padding: var(--title-extra);
           cursor: pointer;
 
+          button {
+            padding: var(--title-extra);
+            width: 100%;
+          }
           &::after {
             content: "";
             display: block;
@@ -437,6 +467,16 @@
             width: 100%;
             height: 1px;
             background: var(--color-gray-30);
+          }
+        }
+
+        &.hide {
+          h4::after {
+            transform: translateY(-50%);
+          }
+
+          .input-flex {
+            display: none;
           }
         }
       }
