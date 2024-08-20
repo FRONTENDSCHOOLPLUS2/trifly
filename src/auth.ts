@@ -53,6 +53,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
 
+  secret: process.env.NEXT_PUBLIC_AUTHSECRET,
+
   session: {},
 
   pages: {},
