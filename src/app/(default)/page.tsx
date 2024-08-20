@@ -7,10 +7,11 @@ import "./main.scss";
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import { AirportData } from "@/types";
 import TicketSearchBox from "@/components/TicketSearch/TicketSearchBox";
+import Image from "next/image";
 
 const Home = async () => {
   const session = await auth();
-  const user = session?.user ? true : false;
+  const user = !!session?.user;
   const { code, airportCode } = await fetchCodes<AirportData>();
 
   return (
@@ -30,7 +31,15 @@ const Home = async () => {
           <h3>공지사항</h3>
           <Link href="/notice">
             <span>더보기</span>
-            <img src="img/icon-arrow.svg" alt="더보기" />
+            <div className="img-box">
+              <Image
+                src="img/icon-arrow.svg"
+                alt="더보기"
+                width={0}
+                height={0}
+                sizes="100%"
+              />
+            </div>
           </Link>
         </div>
 

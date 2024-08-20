@@ -18,7 +18,7 @@
     width: 2rem;
     height: 2rem;
 
-    & img {
+    .img-box {
       width: 2rem;
       height: 2rem;
     }
@@ -89,9 +89,9 @@
             align-items: center;
             justify-content: center;
 
-            & img {
+            &.img-box {
               width: 0.8rem;
-              aspect-ratio: 1/1;
+              height: 0.8rem;
             }
           }
         }

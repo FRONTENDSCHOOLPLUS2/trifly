@@ -72,11 +72,17 @@ const PassengersModal = ({
   return (
     <div className="passengers-modal">
       <button
-        className="close-button"
+        className="close-button img-box"
         type="button"
         onClick={() => handleClose(false)}
       >
-        <Image src="/img/icon-close-black.svg" alt="닫기" />
+        <Image
+          src="/img/icon-close-black.svg"
+          alt="닫기"
+          width={0}
+          height={0}
+          sizes="100%"
+        />
         <span className="hidden">닫기</span>
       </button>
 
@@ -91,7 +97,7 @@ const PassengersModal = ({
             <p>만 12세 이상</p>
             <div className="counter">
               <button
-                className="counter-button"
+                className="counter-button img-box"
                 type="button"
                 id="adults"
                 onClick={() => {
@@ -102,17 +108,29 @@ const PassengersModal = ({
                   }
                 }}
               >
-                <Image src="/img/icon-minus.svg" alt="제외" />
+                <Image
+                  src="/img/icon-minus.svg"
+                  alt="제외"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
                 <span className="hidden">1명 제외</span>
               </button>
               <p>{adults}</p>
               <button
-                className="counter-button"
+                className="counter-button img-box"
                 type="button"
                 id="adults"
                 onClick={() => setAdults((state) => state + 1)}
               >
-                <Image src="/img/icon-plus.svg" alt="추가" />
+                <Image
+                  src="/img/icon-plus.svg"
+                  alt="추가"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
                 <span className="hidden">1명 추가</span>
               </button>
             </div>
@@ -122,7 +140,7 @@ const PassengersModal = ({
             <p>만 12세 미만</p>
             <div className="counter">
               <button
-                className="counter-button"
+                className="counter-button img-box"
                 type="button"
                 id="children"
                 onClick={() => {
@@ -131,19 +149,31 @@ const PassengersModal = ({
                   }
                 }}
               >
-                <Image src="/img/icon-minus.svg" alt="제외" />
+                <Image
+                  src="/img/icon-minus.svg"
+                  alt="제외"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
                 <span className="hidden">1명 제외</span>
               </button>
               <p>{children}</p>
               <button
-                className="counter-button"
+                className="counter-button img-box"
                 type="button"
                 id="children"
                 onClick={() => {
                   setChildren((state) => state + 1);
                 }}
               >
-                <Image src="/img/icon-plus.svg" alt="추가" />
+                <Image
+                  src="/img/icon-plus.svg"
+                  alt="추가"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
                 <span className="hidden">1명 추가</span>
               </button>
             </div>
@@ -153,7 +183,7 @@ const PassengersModal = ({
             <p>24개월 미만</p>
             <div className="counter">
               <button
-                className="counter-button"
+                className="counter-button img-box"
                 type="button"
                 id="infants"
                 onClick={() => {
@@ -162,19 +192,31 @@ const PassengersModal = ({
                   }
                 }}
               >
-                <Image src="/img/icon-minus.svg" alt="제외" />
+                <Image
+                  src="/img/icon-minus.svg"
+                  alt="제외"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
                 <span className="hidden">1명 제외</span>
               </button>
               <p>{infants}</p>
               <button
-                className="counter-button"
+                className="counter-button img-box"
                 type="button"
                 id="infants"
                 onClick={() => {
                   setInfants((state) => state + 1);
                 }}
               >
-                <Image src="/img/icon-plus.svg" alt="추가" />
+                <Image
+                  src="/img/icon-plus.svg"
+                  alt="추가"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
                 <span className="hidden">1명 추가</span>
               </button>
             </div>

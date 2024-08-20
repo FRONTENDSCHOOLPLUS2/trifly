@@ -1,6 +1,7 @@
+import { auth } from "@/auth";
+import Image from "next/image";
 import Link from "next/link";
 import "./Header.scss";
-import { auth } from "@/auth";
 import Logout from "./Logout";
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -9,48 +10,53 @@ interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Header: React.FC<HeaderProps> = async ({ type = "default" }) => {
   const session = await auth();
-  const user = session?.user ? true : false;
+  const user = !!session?.user;
 
   return (
     <header className={`header ${type}Type`}>
       <div className="layout header-contents">
         <div className="header-logo">
-          <Link href={`/`}>
-            <img src={`/img/logo-${type}.svg`} alt="TriFly" />
+          <Link href="/">
+            <div className="img-box">
+              <Image
+                src={`/img/logo-${type}.svg`}
+                alt="TriFly"
+                width={0}
+                height={0}
+                sizes="100%"
+              />
+            </div>
             <h1 className="hidden">TriFly</h1>
           </Link>
         </div>
 
         <nav className="header-nav">
-          <Link href={`/reservation`}>예약내역</Link>
-          <Link href={`/footprint`}>발자국</Link>
+          <Link href="/reservation">예약내역</Link>
+          <Link href="/footprint">발자국</Link>
         </nav>
 
         <div className="header-user">
           {user ? (
             <Logout type={type} />
           ) : (
-            <Link href={`/login`}>
-              <img
-                src={`/img/icon-login-${type === "default" ? "black" : "white"}.svg`}
-                alt="로그인"
-              />
-              <i className="hidden">로그인</i>
+            <Link href="/login">
+              <div className="img-box">
+                <Image
+                  src={`/img/icon-login-${type === "default" ? "black" : "white"}.svg`}
+                  alt="로그인"
+                  width={0}
+                  height={0}
+                  sizes="100%"
+                />
+              </div>
+              <span className="hidden">로그인</span>
             </Link>
           )}
-
-          {/* <Link href={`/login`}>
-            <img
-              src={`/img/icon-login-${type === "default" ? "black" : "white"}.svg`}
-              alt="로그인"
-            />
-            <i className="hidden">로그인</i>
-          </Link> */}
         </div>
 
         <div className="corner">
-          <div className="left"></div>
-          <div className="right"></div>
+          <div className="left" />
+          <div className="right" />
         </div>
       </div>
     </header>

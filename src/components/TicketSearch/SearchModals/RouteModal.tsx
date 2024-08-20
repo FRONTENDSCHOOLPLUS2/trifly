@@ -121,11 +121,17 @@ const RouteModal = ({
   return (
     <div className="route-modal">
       <button
-        className="close-button"
+        className="close-button img-box"
         type="button"
         onClick={() => handleClose(false)}
       >
-        <Image src="/img/icon-close-black.svg" alt="닫기" />
+        <Image
+          src="/img/icon-close-black.svg"
+          alt="닫기"
+          width={0}
+          height={0}
+          sizes="100%"
+        />
         <span className="hidden">닫기</span>
       </button>
       <div className="area-section">

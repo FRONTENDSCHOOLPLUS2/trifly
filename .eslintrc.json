@@ -1,4 +1,3 @@
-// airbnb
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
@@ -7,6 +6,7 @@
     "project": "./tsconfig.json",
     "createDefaultProgram": true
   },
+  "files": ["next.config.mjs"],
   "env": {
     // 전역객체를 eslint가 인식하는 구간
     "browser": true, // document나 window 인식되게 함
@@ -44,6 +44,10 @@
     "lines-around-directive": "warn", // "use client" 선언 이후에 한 칸 띄우기 => 변경 예정
     "no-console": "off", // console.log 제거 => 추후 변경 예정
     "import/prefer-default-export": "off", // export 하나일 때는 default export => 추후 변경 예정
-    "no-alert": "off" // alert 제거 => 추후 변경 예정
+    "no-alert": "off", // alert 제거 => 추후 변경 예정,
+
+    // 진욱
+    "react/button-has-type": "off", // button의 type을 변수로 지정
+    "react/jsx-props-no-spreading": "off" // props에 spread 연산자 사용
   }
 }
