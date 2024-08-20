@@ -56,6 +56,33 @@
     }
   }
 
+  .radio-box {
+    display: flex;
+    gap: var(--title-min);
+
+    input {
+      display: none;
+
+      &:checked + label {
+        background: var(--color-primary);
+        color: #fff;
+      }
+    }
+
+    label {
+      padding: var(--title-min) var(--title-large);
+      background: var(--color-primary-30);
+      color: var(--color-primary);
+      border-radius: var(--title-min);
+      margin: 0;
+      font-weight: 500;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
   // 항공 상세
   .detail-box {
     article + article {

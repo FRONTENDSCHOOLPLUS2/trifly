@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import OrderContext from "../orderContext";
 import Submit from "@/components/Submit/Submit";
 import Badge from "@/components/Badge/Badge";
+import Button from "@/components/Button/Button";
 
 type PaymentData = {
   purchaser:
@@ -313,22 +314,27 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                           {/* {errors && errors.passengers?.[key]?.gender?.message} */}
                         </span>
                       </label>
-                      <input
-                        id="gender"
-                        type="radio"
-                        value="M"
-                        {...register(`passengers.${key}.gender`, {
-                          required: "성별을 선택하세요.",
-                        })}
-                      />
-                      <input
-                        id="gender"
-                        type="radio"
-                        value="F"
-                        {...register(`passengers.${key}.gender`, {
-                          required: "성별을 선택하세요.",
-                        })}
-                      />
+                      <div className="radio-box">
+                        <input
+                          id="genderM"
+                          type="radio"
+                          value="M"
+                          checked
+                          {...register(`passengers.${key}.gender`, {
+                            required: "성별을 선택하세요.",
+                          })}
+                        />
+                        <label htmlFor="genderM">남자</label>
+                        <input
+                          id="genderF"
+                          type="radio"
+                          value="F"
+                          {...register(`passengers.${key}.gender`, {
+                            required: "성별을 선택하세요.",
+                          })}
+                        />
+                        <label htmlFor="genderF">여자</label>
+                      </div>
                     </div>
 
                     <div className="input-box">
