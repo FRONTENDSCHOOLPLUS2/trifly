@@ -19,7 +19,7 @@ export default function NotFound() {
             데이터를 불러올 수 없습니다
           </p>
 
-          <Anchor href={"/"} size="sm">
+          <Anchor href="/" size="sm">
             HOME
           </Anchor>
         </div>

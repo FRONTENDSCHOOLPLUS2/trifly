@@ -44,6 +44,7 @@
 
         &:hover {
           text-decoration: underline;
+          color: var(--color-gray-90);
         }
 
         & span {
@@ -52,8 +53,10 @@
           font-weight: 500;
         }
 
-        & img {
-          width: 0.7rem;
+        .img-box {
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     }

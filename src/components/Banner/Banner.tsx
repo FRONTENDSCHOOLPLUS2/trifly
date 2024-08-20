@@ -28,7 +28,11 @@ const Banner = ({ user }: { user: boolean }) => {
   };
 
   return (
-    <section className="banner full-width" onClick={handleClick}>
+    <section
+      className="banner full-width"
+      onClick={handleClick}
+      role="presentation"
+    >
       <h3 className="hidden">포토티켓 바로가기</h3>
       <div className="banner-container">
         <div className="banner-contents">

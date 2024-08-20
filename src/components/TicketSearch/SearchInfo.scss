@@ -61,15 +61,12 @@
         box-sizing: border-box;
 
         .route-way {
-          width: 2.8rem;
-          height: 2.8rem;
-          padding: 0.5rem;
-          display: flex;
-          align-self: center;
-          justify-content: center;
+          flex-shrink: 0;
 
-          & img {
-            aspect-ratio: 1/1;
+          .img-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         }
       }

@@ -16,8 +16,9 @@
   .header-logo {
     flex-grow: 1;
 
-    & img {
+    .img-box {
       width: 9.4rem;
+      height: 3.5rem;
     }
   }
 
@@ -34,16 +35,24 @@
   }
 
   .header-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     & a {
       display: inline-block;
     }
 
-    & img {
+    .img-box {
       width: 2.4rem;
-      vertical-align: sub;
+      height: 2.4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &.logout {
         width: 2rem;
+        height: 2rem;
       }
     }
   }
@@ -122,8 +131,9 @@
 @media (max-width: 1023px) {
   .header {
     .header-logo {
-      & img {
+      .img-box {
         width: 5.6rem;
+        height: 2rem;
       }
     }
 
@@ -134,11 +144,13 @@
     }
 
     .header-user {
-      & img {
+      .img-box {
         width: 2rem;
+        height: 2rem;
 
         &.logout {
           width: 1.8rem;
+          height: 1.8rem;
         }
       }
     }

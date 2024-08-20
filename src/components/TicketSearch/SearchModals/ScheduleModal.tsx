@@ -218,11 +218,17 @@ const ScheduleModal = ({
   return (
     <div className="schedule-modal">
       <button
-        className="close-button"
+        className="close-button img-box"
         type="button"
         onClick={() => handleClose(false)}
       >
-        <Image src="/img/icon-close-black.svg" alt="닫기" />
+        <Image
+          src="/img/icon-close-black.svg"
+          alt="닫기"
+          width={0}
+          height={0}
+          sizes="100%"
+        />
         <span className="hidden">닫기</span>
       </button>
       <div className="calendars">
@@ -230,10 +236,16 @@ const ScheduleModal = ({
           <div className="month-navigation">
             <button
               type="button"
-              className="prev-month"
+              className="prev-month img-box"
               onClick={handlePrevClick}
             >
-              <Image src="/img/icon-arrow.svg" alt="이전" />
+              <Image
+                src="/img/icon-arrow.svg"
+                alt="이전"
+                width={0}
+                height={0}
+                sizes="100%"
+              />
               <span className="hidden">이전 달로</span>
             </button>
             <p className="month month-one">
@@ -248,10 +260,16 @@ const ScheduleModal = ({
             )}
             <button
               type="button"
-              className="next-month"
+              className="next-month img-box"
               onClick={handleNextClick}
             >
-              <Image src="/img/icon-arrow.svg" alt="다음" />
+              <Image
+                src="/img/icon-arrow.svg"
+                alt="다음"
+                width={0}
+                height={0}
+                sizes="100%"
+              />
               <span className="hidden">다음 달로</span>
             </button>
           </div>
