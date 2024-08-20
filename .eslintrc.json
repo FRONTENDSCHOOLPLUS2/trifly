@@ -1,4 +1,3 @@
-// airbnb
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
@@ -7,6 +6,7 @@
     "project": "./tsconfig.json",
     "createDefaultProgram": true
   },
+  "files": ["next.config.mjs"],
   "env": {
     // 전역객체를 eslint가 인식하는 구간
     "browser": true, // document나 window 인식되게 함
@@ -46,8 +46,8 @@
     "import/prefer-default-export": "off", // export 하나일 때는 default export => 추후 변경 예정
     "no-alert": "off", // alert 제거 => 추후 변경 예정
 
-    // 소정
-    "react/jsx-props-no-spreading": "off", // jsx요소에서 스프레드 연산자 사용 불가 제거 => react hook form 사용시 ...register 사용 불가피함
+    "react/jsx-props-no-spreading": "off", // jsx요소에서 props에 스프레드 연산자 사용 불가 제거 => react hook form 사용시 ...register 사용 불가피함
     "import/no-cycle": "off" // https://github.com/import-js/eslint-plugin-import/blob/v2.29.1/docs/rules/no-cycle.md
+    "react/button-has-type": "off", // button의 type을 변수로 지정
   }
 }

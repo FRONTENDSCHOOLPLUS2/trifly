@@ -120,7 +120,7 @@
         box-sizing: border-box;
         position: relative;
 
-        .route-switch {
+        .route-switch.img-box {
           width: 2rem;
           height: 2rem;
           padding: 0.5rem;
@@ -128,21 +128,18 @@
           display: flex;
           align-self: center;
           justify-content: center;
+          flex-shrink: 0;
 
           &.is-active {
             cursor: pointer;
+
+            &:focus {
+              box-shadow: inset 0 0 0 0.1rem var(--color-primary);
+            }
           }
 
           &.disabled {
             cursor: not-allowed;
-          }
-
-          & img {
-            aspect-ratio: 1/1;
-          }
-
-          &:focus {
-            box-shadow: inset 0 0 0 0.1rem var(--color-primary);
           }
         }
       }

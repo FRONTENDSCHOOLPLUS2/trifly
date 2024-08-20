@@ -27,26 +27,39 @@ const SearchInfoBox = ({ handleChange }: { handleChange: () => void }) => {
             <div className="schedule-item">
               <span className="schedule-title">출발</span>
               <span className="schedule-contents">
-                {searchResult.origin.value}
+                {searchResult.origin.value} ({searchResult.origin.code})
               </span>
             </div>
             <div className="route-way">
               {searchResult.tripType === "round" ? (
-                <>
-                  <Image src="/img/icon-roundtrip-gray.svg" alt="왕복" />
+                <div className="img-box">
+                  <Image
+                    src="/img/icon-roundtrip-gray.svg"
+                    alt="왕복"
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                  />
                   <span className="hidden">왕복</span>
-                </>
+                </div>
               ) : (
-                <>
-                  <Image src="/img/icon-oneway-gray.svg" alt="편도" />
+                <div className="img-box">
+                  <Image
+                    src="/img/icon-oneway-gray.svg"
+                    alt="편도"
+                    width={0}
+                    height={0}
+                    sizes="100%"
+                  />
                   <span className="hidden">편도</span>
-                </>
+                </div>
               )}
             </div>
             <div className="schedule-item">
               <span className="schedule-title">도착</span>
               <span className="schedule-contents">
-                {searchResult.destination.value}
+                {searchResult.destination.value} (
+                {searchResult.destination.code})
               </span>
             </div>
           </div>

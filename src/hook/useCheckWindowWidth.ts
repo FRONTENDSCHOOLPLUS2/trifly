@@ -7,7 +7,7 @@ function getWindowDimensions() {
 
 const useCheckWindowWidth = (size: number) => {
   const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
+    getWindowDimensions(),
   );
 
   useEffect(() => {
