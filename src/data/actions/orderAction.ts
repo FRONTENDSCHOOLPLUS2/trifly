@@ -44,7 +44,7 @@ const orderAction = async (
       },
     ],
     reservationId: "eJzTd9cPDjUJdPQAAAtZAlw%3D",
-    totalPrice,
+    totalPrice: `${totalPrice}`,
     itineraries,
     price,
     passengers,
