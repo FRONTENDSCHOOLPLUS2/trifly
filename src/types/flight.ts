@@ -28,7 +28,7 @@ export interface OffersSearch {
   };
 }
 
-interface OffersSearchData extends OffersData {
+export interface OffersSearchData extends OffersData {
   itineraries: {
     duration: string;
     segments: SegmentsData[];
