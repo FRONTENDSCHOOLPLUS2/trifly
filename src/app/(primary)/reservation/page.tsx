@@ -42,7 +42,7 @@ const reservation = async () => {
           </tbody>
         </table>
 
-        <Pagination />
+        {/* <Pagination /> */}
       </section>
     </>
   );
