@@ -10,7 +10,6 @@ const TicketResultItem = ({
   item: OffersSearchData;
   airline: CodeState<AirlineData>;
 }) => {
-  console.log(item);
   const { itineraries } = item;
 
   /* -------------------------------------------------------------------------- */
@@ -86,9 +85,10 @@ const TicketResultItem = ({
   function calculateDayDifference(departureTime: string, arrivalTime: string) {
     const departureDate = new Date(departureTime);
     const arrivalDate = new Date(arrivalTime);
-    const dayDifference = arrivalDate.getDate() - departureDate.getDate();
+    const timeDifference = arrivalDate.getTime() - departureDate.getTime();
+    const dayDifference = timeDifference / (1000 * 60 * 60 * 24);
 
-    return dayDifference;
+    return Math.floor(dayDifference);
   }
 
   // itinerary 만큼 반복하기!
@@ -104,6 +104,9 @@ const TicketResultItem = ({
       itinerary.segments[0].departure.at,
       itinerary.segments[stopTime].arrival.at,
     );
+
+    console.log(itinerary.segments[0].departure.at, itinerary.segments[stopTime].arrival.at);
+    console.log(dayDifference);
 
     return (
       <div key={index} className="route">

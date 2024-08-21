@@ -108,8 +108,6 @@ const TicketResult = async ({ searchParams }: IPageProps) => {
   const queryString = new URLSearchParams(searchParams).toString();
   const data = await fetchTicketSearch(queryString);
   
-  // const data: OffersSearchData[] = [];
-  
   return (
     <>
       <div className="result">
