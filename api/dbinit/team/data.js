@@ -2037,6 +2037,15 @@ export const initData = async (clientId, nextSeq) => {
             carrierType: "FSC",
           },
           {
+            code: "CL",
+            value: "루프트한자 시티라인",
+            nameKor: "루프트한자 시티라인",
+            nameEng: "Lufthansa",
+            allianceKor: "스타얼라이언스",
+            allianceEng: "Star Alliance",
+            carrierType: "FSC",
+          },
+          {
             code: "BA",
             value: "영국항공",
             nameKor: "영국항공",
