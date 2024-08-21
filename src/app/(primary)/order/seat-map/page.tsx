@@ -20,12 +20,15 @@ const page = () => {
     ),
   }));
 
-  // console.log(allDecks);
+  // console.log(allDecks[0].deckConfiguration.width);
+  // console.log(seatData[0].decks[0].deckConfiguration.width);
+  const { width } = seatData[0].decks[0].deckConfiguration;
+  const { length } = seatData[0].decks[0].deckConfiguration;
 
   // 37줄, 10칸짜리 그리드를 만들어
-  const grid = Array(37)
+  const grid = Array(length)
     .fill(null)
-    .map(() => Array(10).fill(null));
+    .map(() => Array(width).fill(null));
 
   // console.log(seatData[0].coordinates[0]);
   // 각 자리 데이터에 따라 그리드에 채워줘
@@ -37,8 +40,8 @@ const page = () => {
     grid[row][col] = seatData[0].seats[0][idx]; // 예: '자리'라고 채워넣기
   });
 
-  const code = seatData[0].characteristicsCodes.map((item) => item);
-  console.log(code);
+  // const code = seatData[0].characteristicsCodes.map((item) => item);
+  // console.log(...code);
 
   return (
     <div className="seat-box">
