@@ -1,29 +1,61 @@
 "use client";
 
+import { modalState, orderState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
 import Submit from "@/components/Submit/Submit";
+import orderAction from "@/data/actions/orderAction";
 import usePersonalPrice from "@/hook/usePersonalPrice";
-import { Passengers, Purchaser } from "@/types";
+import { countrys } from "@/lib/country";
+import { IMPData, Purchaser } from "@/types";
 import { User } from "next-auth";
+import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import OrderContext from "../orderContext";
 
-type PaymentData = {
-  purchaser:
-    | Purchaser
-    | {
-        [key: string]: string;
-      };
+export interface PaymentPassenger {
+  type: "adult" | "child" | "infant";
+  nameKor: string;
+  gender: "F" | "M";
+  nameEngLast: string;
+  nameEngFirst: string;
+  birth: string;
+  phone1: string;
+  phone2: string;
+  phone3: string;
+  passport: { number: string; expDate: string };
+  nationality: string;
+  issueCountry: string;
+  email: string;
+}
+
+interface PaymentPurchaser extends Purchaser {
+  phone1: string;
+  phone2: string;
+  phone3: string;
+  emergencyPhone1: string;
+  emergencyPhone2: string;
+  emergencyPhone3: string;
+}
+
+export type PaymentData = {
+  purchaser: PaymentPurchaser;
   passengers: {
-    [key: string]: { NameEngLast: string; NameEngFirst: string } | Passengers;
+    [key: string]: PaymentPassenger;
   };
 };
 
 const PaymentForm = ({ user }: { user: User | undefined }) => {
+  const router = useRouter();
+  const setModal = useSetRecoilState(modalState);
   const { setOrderStatus } = useContext(OrderContext);
+  const { totalPrice, itineraries, price } = useRecoilValue(orderState);
   const passengers = usePersonalPrice();
   const [clickedTitle, setClickedTitle] = useState(["0-0"]);
+  const [nameEngLast, setNameEngLast] = useState("");
+  const [nameEngFirst, setNameEngFirst] = useState("");
+  const [passportNumber, setPassportNumber] = useState("");
 
   const {
     register,
@@ -39,8 +71,68 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
     );
   };
 
+  const handleUpperCase = (str: string) =>
+    str.replace(/./g, (item) => item.toUpperCase());
+
   const handleForm = (formData: PaymentData) => {
-    console.log(formData);
+    let totalNum = 0;
+    passengers.map((item) => (totalNum += item.length));
+    const charge = totalNum * process.env.NEXT_PUBLIC_CHARGE;
+    const finalPrice = +totalPrice + charge;
+
+    // 결제
+    const { IMP } = window;
+    IMP.init(process.env.NEXT_PUBLIC_MERCHANT_CODE as string);
+    IMP.request_pay(
+      {
+        pg: "tosspayments.iamporttest_3",
+        pay_method: "card",
+        merchant_uid:
+          new Date().getTime() + Math.floor(Math.random() * 1000000),
+        name: "항공권 구매",
+        amount: finalPrice,
+        buyer_name: formData.purchaser.name,
+        buyer_tel: `${formData.purchaser.phone1}-${formData.purchaser.phone2}-${formData.purchaser.phone3}`,
+        buyer_email: formData.purchaser.email,
+      },
+
+      async (res: IMPData) => {
+        try {
+          if (res.error_code) {
+            setModal({
+              isOpen: true,
+              title: "안내",
+              content: "결제를 취소하셨습니다.",
+              buttonNum: 1,
+              handleConfirm: () => {},
+              handleCancel: () => {},
+            });
+          } else {
+            // 결제 성공 후 주문 api 통신
+            await orderAction(formData, itineraries, price, finalPrice);
+            setModal({
+              isOpen: true,
+              title: "안내",
+              content:
+                "항공권 구매가 완료되었습니다. \n좌석 선택 화면으로 이동합니다.",
+              buttonNum: 1,
+              handleConfirm: () => router.push("/order/seat-map"),
+              handleCancel: () => {},
+            });
+          }
+        } catch {
+          setModal({
+            isOpen: true,
+            title: "안내",
+            content:
+              "일시적인 오류가 발생했습니다. \n잠시 후 다시 시도해주세요.",
+            buttonNum: 1,
+            handleConfirm: () => {},
+            handleCancel: () => {},
+          });
+        }
+      },
+    );
   };
 
   useEffect(() => {
@@ -105,8 +197,8 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
               id="email"
               placeholder="이메일을 입력하세요"
               type="text"
-              name="email"
               defaultValue={user?.email || ""}
+              {...register("purchaser.email")}
             />
           </div>
           <div className="input-box">
@@ -325,7 +417,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                           id="genderM"
                           type="radio"
                           value="M"
-                          checked
+                          className="hidden"
                           {...register(`passengers.${key}.gender`, {
                             required: "성별을 선택하세요.",
                           })}
@@ -335,6 +427,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                           id="genderF"
                           type="radio"
                           value="F"
+                          className="hidden"
                           {...register(`passengers.${key}.gender`, {
                             required: "성별을 선택하세요.",
                           })}
@@ -358,6 +451,10 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                         {...register(`passengers.${key}.nameEngLast`, {
                           required: "영문 성을 입력하세요.",
                         })}
+                        value={nameEngLast}
+                        onChange={(e) =>
+                          setNameEngLast(handleUpperCase(e.target.value))
+                        }
                       />
                     </div>
                     <div className="input-box">
@@ -375,6 +472,10 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                         {...register(`passengers.${key}.nameEngFirst`, {
                           required: "영문 이름을 입력하세요.",
                         })}
+                        value={nameEngFirst}
+                        onChange={(e) =>
+                          setNameEngFirst(handleUpperCase(e.target.value))
+                        }
                       />
                     </div>
                     <div className="input-box">
@@ -473,16 +574,17 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                       <input
                         type="text"
                         placeholder="M12345678"
+                        maxLength={9}
                         {...register(`passengers.${key}.passport.number`, {
                           minLength: {
                             value: 9,
                             message: "여권 번호를 확인해주세요.",
                           },
-                          maxLength: {
-                            value: 9,
-                            message: "여권 번호를 확인해주세요.",
-                          },
                         })}
+                        value={passportNumber}
+                        onChange={(e) =>
+                          setPassportNumber(handleUpperCase(e.target.value))
+                        }
                       />
                     </div>
                     <div className="input-box">
@@ -510,7 +612,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                       />
                     </div>
                     <div className="input-box">
-                      <label htmlFor="passport.nationality">
+                      <label htmlFor={`passengers.${key}.nationality`}>
                         국적
                         <span className="errorMsg">
                           {/* {errors &&
@@ -518,12 +620,16 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                               ?.message} */}
                         </span>
                       </label>
-                      <select>
-                        <option value="대한민국">대한민국</option>
+                      <select {...register(`passengers.${key}.nationality`)}>
+                        {countrys.map((item) => (
+                          <option key={item} value={item}>
+                            {item}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     <div className="input-box">
-                      <label htmlFor="passport.issueCountry">
+                      <label htmlFor={`passengers.${key}.issueCountry`}>
                         발행 국가
                         <span className="errorMsg">
                           {/* {errors &&
@@ -531,9 +637,22 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                               ?.message} */}
                         </span>
                       </label>
-                      <select>
-                        <option value="대한민국">대한민국</option>
+                      <select {...register(`passengers.${key}.issueCountry`)}>
+                        {countrys.map((item) => (
+                          <option key={item} value={item}>
+                            {item}
+                          </option>
+                        ))}
                       </select>
+                    </div>
+                    <div className="input-box">
+                      <label htmlFor={`passengers.${key}.email`}>이메일</label>
+                      <input
+                        id="email"
+                        placeholder="이메일을 입력하세요"
+                        type="text"
+                        {...register(`passengers.${key}.email`)}
+                      />
                     </div>
                   </div>
                 </div>
@@ -541,6 +660,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
             });
           })}
         </div>
+
         <ul className="info-box">
           <li>
             <strong>
@@ -564,7 +684,14 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
       </div>
 
       <div className="btn-box">
-        <Submit size="full">다음</Submit>
+        <Submit size="full">결제</Submit>
+        <div className="info-box">
+          <ul>
+            <li>
+              <strong>테스트 결제</strong>이므로 실제로 결제되지 않습니다.
+            </li>
+          </ul>
+        </div>
       </div>
     </form>
   );
