@@ -101,6 +101,9 @@ export const orderState = atom<OrderProps>({
             },
             duration: "PT2H20M",
             id: "9",
+            operating: {
+              carrierCode: "OZ",
+            },
             numberOfStops: 0,
             co2Emissions: [
               {
@@ -160,6 +163,9 @@ export const orderState = atom<OrderProps>({
             duration: "PT11H40M",
             id: "61",
             numberOfStops: 0,
+            operating: {
+              carrierCode: "KE",
+            },
             co2Emissions: [
               {
                 weight: 359,
