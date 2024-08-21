@@ -154,17 +154,18 @@ label {
 }
 
 /* input, select style */
+select {
+  color: inherit;
+  appearance: none;
+  background: url(/img/icon-accordion-blue.svg) no-repeat center right
+    var(--title-medium) / 1rem;
+}
+
 select,
 input {
   font-family: var(--font-roboto), var(--font-noto), "sans-serif";
   letter-spacing: -0.02em;
   box-sizing: border-box;
-}
-
-select {
-  appearance: none;
-  background: url(/img/icon-accordion-blue.svg) no-repeat center right
-    var(--title-medium) / 1rem;
 }
 
 select,
