@@ -11,6 +11,9 @@ const OrdersItem = ({ item }: { item: OrderItem }) => {
     router.push(`/reservation/${_id}`);
   };
 
+  console.log(item.totalPrice);
+  console.log(typeof item.totalPrice);
+
   return (
     <tr onClick={() => handleClick(item._id)} style={{ cursor: "pointer" }}>
       <td className="reservation-number">
@@ -35,7 +38,7 @@ const OrdersItem = ({ item }: { item: OrderItem }) => {
       </td>
       <td className="personnel">{item.passengers?.length}</td>
       <td className="total">
-        {Number(item.totalPrice.split(".")[0]).toLocaleString("ko-KR")} 원
+        {Number(item.totalPrice).toLocaleString("ko-KR")} 원
       </td>
     </tr>
   );
