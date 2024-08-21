@@ -2,13 +2,13 @@
   .title-box {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 4.6rem;
+    margin-bottom: 4rem;
 
     .tag {
       display: flex;
       gap: 1rem;
       justify-content: center;
-      align-items: center;
+      align-items: start;
     }
   }
 }
@@ -25,11 +25,15 @@
     overflow: hidden;
     box-shadow: var(--box-shadow);
 
+    .mobile-passenger {
+      display: none;
+    }
+
     thead {
       background-color: var(--color-gray-30);
 
       th {
-        font-size: var(--title-big);
+        font-size: var(--title-medium);
         color: var(--color-gray-100);
         font-weight: 500;
         border-bottom: 1px solid var(--color-gray-90);
@@ -43,6 +47,26 @@
         text-align: center;
         line-height: 6.5rem;
         border-bottom: 1px solid var(--color-gray-30);
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .ticket-print {
+    .table-box {
+      table {
+        .birth {
+          display: none;
+        }
+      }
+
+      .mobile-passenger {
+        display: block;
+      }
+
+      .web-passenger {
+        display: none;
       }
     }
   }
