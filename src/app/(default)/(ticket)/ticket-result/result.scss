@@ -97,21 +97,19 @@
 
       & .no-result-message {
         text-align: center;
-        
+
         & .no-result-title {
           font-size: var(--title-extra);
           font-weight: 500;
           margin-bottom: 0.5rem;
         }
-  
+
         & .no-result-description {
           font-size: var(--title-medium);
           font-weight: 500;
           color: var(--color-gray-90);
         }
       }
-
-      
     }
   }
 
@@ -149,6 +147,7 @@
       }
 
       .search-result-list {
+        padding: unset;
         .result-list-header {
           display: block;
           margin-bottom: 2rem;

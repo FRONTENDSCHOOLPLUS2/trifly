@@ -1,7 +1,11 @@
+"use client";
+
 import { AirlineData, CodeState, OffersSearchData } from "@/types";
 import "./TicketResultItem.scss";
 import Image from "next/image";
 import Badge from "@/components/Badge/Badge";
+import { useRecoilValue } from "recoil";
+import { searchResultState } from "@/atoms/atoms";
 
 const TicketResultItem = ({
   item,
@@ -11,6 +15,7 @@ const TicketResultItem = ({
   airline: CodeState<AirlineData>;
 }) => {
   const { itineraries } = item;
+  const searchResult = useRecoilValue(searchResultState);
 
   /* -------------------------------------------------------------------------- */
   /*                              PT6H10 -> 6시간 10분                            */
@@ -80,15 +85,21 @@ const TicketResultItem = ({
   }
 
   /* -------------------------------------------------------------------------- */
-  /*                                  날짜 차이 계산                                */
+  /*                                  날짜 차이 계산                               */
   /* -------------------------------------------------------------------------- */
   function calculateDayDifference(departureTime: string, arrivalTime: string) {
     const departureDate = new Date(departureTime);
     const arrivalDate = new Date(arrivalTime);
-    const timeDifference = arrivalDate.getTime() - departureDate.getTime();
-    const dayDifference = timeDifference / (1000 * 60 * 60 * 24);
 
-    return Math.floor(dayDifference);
+    const yearDifference =
+      arrivalDate.getFullYear() - departureDate.getFullYear();
+    const monthDifference = arrivalDate.getMonth() - departureDate.getMonth();
+    const dayDifference = arrivalDate.getDate() - departureDate.getDate();
+
+    const totalDayDifference =
+      yearDifference * 365 + monthDifference * 30 + dayDifference;
+
+    return totalDayDifference;
   }
 
   // itinerary 만큼 반복하기!
@@ -105,41 +116,53 @@ const TicketResultItem = ({
       itinerary.segments[stopTime].arrival.at,
     );
 
-    console.log(itinerary.segments[0].departure.at, itinerary.segments[stopTime].arrival.at);
-    console.log(dayDifference);
+    const airlines: string[] = [];
+    itinerary.segments.forEach((segment) => {
+      airlines.push(segment.carrierCode);
+    });
+
+    const airlinesSet = [...new Set(airlines)];
 
     return (
       <div key={index} className="route">
         <div className="airline-info">
-          <div className="airline-logo img-box">
-            <Image
-              src={`https://flights.myrealtrip.com/air/wfw/imgs/mbl/logo/air/${itinerary.segments[0].carrierCode}.png`}
-              alt={
-                airline[itinerary.segments[0].carrierCode]
-                  ? airline[itinerary.segments[0].carrierCode].nameKor
-                  : itinerary.segments[0].carrierCode
-              }
-              width={0}
-              height={0}
-              sizes="100%"
-            />
+          <div className="airline">
+            <div className="airline-logo img-box">
+              <Image
+                src={`https://flights.myrealtrip.com/air/wfw/imgs/mbl/logo/air/${itinerary.segments[0].carrierCode}.png`}
+                alt={
+                  airline[itinerary.segments[0].carrierCode]
+                    ? airline[itinerary.segments[0].carrierCode].nameKor
+                    : itinerary.segments[0].carrierCode
+                }
+                width={0}
+                height={0}
+                sizes="100%"
+              />
+            </div>
+            <div className="airline-title">
+              <p className="main-airline">
+                {airline[itinerary.segments[0].carrierCode].nameKor}
+              </p>
+              {itinerary.segments[0].operating &&
+                itinerary.segments[0].operating.carrierCode !==
+                  itinerary.segments[0].carrierCode && (
+                  <p className="codeshare-airline">
+                    {`공동운항 ${
+                      airline[itinerary.segments[0].operating.carrierCode]
+                        ? airline[itinerary.segments[0].operating.carrierCode]
+                            .nameKor
+                        : "항공사 확인"
+                    } `}
+                  </p>
+                )}
+            </div>
           </div>
-          <div className="airline-title">
-            <p className="main-airline">
-              {airline[itinerary.segments[0].carrierCode]
-                ? airline[itinerary.segments[0].carrierCode].nameKor
-                : itinerary.segments[0].carrierCode}
-            </p>
-            {itinerary.segments[0].operating &&
-              itinerary.segments[0].operating.carrierCode !==
-                itinerary.segments[0].carrierCode && (
-                <p className="codeshare-airline">
-                  {`${
-                    airline[itinerary.segments[0].operating.carrierCode].nameKor
-                  } 공동운항`}
-                </p>
-              )}
-          </div>
+          {airlinesSet.length > 1 && (
+            <div className="transfer-option">
+              <Badge>타 항공사 환승 포함</Badge>
+            </div>
+          )}
         </div>
         <div className="route-info">
           <div className="airport">
@@ -175,7 +198,7 @@ const TicketResultItem = ({
             </p>
           </div>
           <div
-            className={`day-difference ${dayDifference >= 1 ? "is-active" : "disabled"}`}
+            className={`day-difference ${dayDifference > 0 ? "is-active" : "disabled"}`}
           >
             <Badge type="secondary">{`+${dayDifference}`}</Badge>
           </div>
@@ -190,9 +213,26 @@ const TicketResultItem = ({
     );
   });
 
+  const handleClick = () => {
+    const flightOfferSearch = item;
+    const duration: string[] = item.itineraries.map((item) => item.duration);
+    const totalPrice: string = item.price.total;
+    const formattedTime: string[] = [
+      searchResult.schedule.departureFormattedDate,
+      searchResult.schedule.returnFormattedDate,
+    ];
+
+    console.log(flightOfferSearch);
+    console.log(duration);
+    console.log(totalPrice);
+    console.log(formattedTime);
+
+    // flight-offers-price api 호출
+  };
+
   return (
     <>
-      <button className="ticket-item pc">
+      <button className="ticket-item" onClick={handleClick}>
         <div className="ticket-itinerary">{routeList}</div>
         <div className="ticket-pricing">
           <p className="remaining-seats">{item.numberOfBookableSeats}석 남음</p>
@@ -209,7 +249,6 @@ const TicketResultItem = ({
           </div>
         </div>
       </button>
-      {/* <div className="ticket-item mo">모바일</div> */}
     </>
   );
 };

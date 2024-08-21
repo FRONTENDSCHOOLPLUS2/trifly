@@ -1,7 +1,9 @@
-.ticket-item.pc {
+.ticket-item {
+  width: 100%;
   padding: 3rem 3.5rem;
   border-radius: 2rem;
   background-color: var(--color-white);
+  box-sizing: border-box;
 
   display: flex;
   align-items: center;
@@ -24,26 +26,44 @@
         width: 25%;
         flex-shrink: 0;
         display: flex;
-        gap: 1.2rem;
-        align-items: center;
+        flex-direction: column;
+        justify-content: center;
 
-        .airline-logo.img-box {
-          width: 2rem;
-          height: 2rem;
-        }
+        .airline {
+          display: flex;
+          gap: 1.2rem;
+          align-items: center;
 
-        .airline-title {
-          .main-airline {
-            font-size: var(--title-medium);
-            font-weight: 500;
-            white-space: nowrap;
+          .airline-logo.img-box {
+            flex-shrink: 0;
+            width: 2rem;
+            height: 2rem;
           }
 
-          .codeshare-airline {
-            margin-top: 0.5rem;
-            font-size: var(--title-small);
-            font-weight: 400;
-            color: var(--color-gray-90);
+          .airline-title {
+            .main-airline {
+              font-size: var(--title-medium);
+              font-weight: 500;
+              white-space: nowrap;
+            }
+
+            .codeshare-airline {
+              margin-top: 0.3rem;
+              font-size: var(--title-small);
+              font-weight: 400;
+              color: var(--color-gray-90);
+              white-space: nowrap;
+            }
+          }
+        }
+
+        .transfer-option {
+          margin-top: 0.5rem;
+          margin-left: 3.2rem;
+
+          & span {
+            color: var(--color-gray-100);
+            font-size: var(--title-min);
           }
         }
       }
@@ -179,5 +199,107 @@
 
 @media (max-width: 1023px) {
   .ticket-item {
+    padding: 2rem 3rem;
+    width: 100%;
+    display: block;
+
+    .ticket-itinerary {
+      width: 100%;
+      gap: 2rem;
+
+      .route {
+        gap: 1rem;
+
+        .way-type {
+          margin-left: 3rem;
+        }
+      }
+    }
+
+    .ticket-pricing {
+      width: 100%;
+      margin-top: 3rem;
+      align-items: flex-start;
+      justify-content: flex-end;
+
+      .remaining-seats {
+        line-height: 3rem;
+      }
+
+      .price-per-adults {
+        flex-grow: 0;
+        margin-left: unset;
+
+        & span {
+          line-height: 3rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .ticket-item {
+    padding: 2rem;
+
+    .ticket-itinerary {
+      gap: 2rem;
+
+      .route {
+        display: block;
+
+        .airline-info {
+          width: 100%;
+          margin-bottom: 2rem;
+          flex-direction: row;
+          justify-content: unset;
+          align-items: center;
+
+          .airline {
+            .airline-title {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+
+              .codeshare-airline {
+                margin-top: unset;
+              }
+            }
+          }
+
+          .transfer-option {
+            margin-top: unset;
+            margin-left: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            & span {
+              color: var(--color-gray-100);
+              font-size: var(--title-min);
+            }
+          }
+        }
+
+        .route-info {
+          margin-bottom: 2rem;
+          justify-content: center;
+
+          & .day-difference {
+            &.disabled {
+              visibility: unset;
+              display: none;
+            }
+          }
+        }
+
+        .way-type {
+          margin-left: unset;
+          justify-content: center;
+          flex-direction: row;
+          gap: 1rem;
+        }
+      }
+    }
   }
 }
