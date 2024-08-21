@@ -1,52 +1,65 @@
 "use client";
 
 import { seatMap } from "@/lib/seatMap";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./seat-map.scss";
 
-const page = () => {
-  const { data } = seatMap;
-  const allDecks = data.flatMap((dataItem) => dataItem.decks);
-  const allSeats = allDecks.map((item) => item.seats);
+const Page = () => {
+  const [grid, setGrid] = useState<Array<Array<any>> | null>(null);
+  const [length, setLength] = useState(0);
 
-  const seatData = data.map((item) => ({
-    decks: item.decks,
-    seats: item.decks.map((deck) => deck.seats),
-    coordinates: item.decks.map((deck) =>
-      deck.seats.map((seat) => seat.coordinates),
-    ),
-    characteristicsCodes: item.decks.map((deck) =>
-      deck.seats.map((seat) => seat.characteristicsCodes),
-    ),
-  }));
+  useEffect(() => {
+    const { data } = seatMap;
+    const seatData = data.map((item) => ({
+      decks: item.decks,
+      seats: item.decks.map((deck) => deck.seats),
+      coordinates: item.decks.map((deck) =>
+        deck.seats.map((seat) => seat.coordinates),
+      ),
+      characteristicsCodes: item.decks.map((deck) =>
+        deck.seats.map((seat) => seat.characteristicsCodes),
+      ),
+    }));
 
-  // console.log(allDecks[0].deckConfiguration.width);
-  // console.log(seatData[0].decks[0].deckConfiguration.width);
-  const { width } = seatData[0].decks[0].deckConfiguration;
-  const { length } = seatData[0].decks[0].deckConfiguration;
+    const { width, length, exitRowsX } = seatData[0].decks[0].deckConfiguration;
+    console.log(exitRowsX);
+    // 데이터 length width에 따른 그리드
+    const newGrid = Array(length)
+      .fill(null)
+      .map(() => Array(width).fill(null));
 
-  // 37줄, 10칸짜리 그리드를 만들어
-  const grid = Array(length)
-    .fill(null)
-    .map(() => Array(width).fill(null));
+    // 각 자리 데이터에 따른 그리드
+    seatData[0].coordinates[0].forEach((seat, idx) => {
+      const row = seat.x;
+      const col = seat.y;
+      newGrid[row][col] = seatData[0].seats[0][idx];
+    });
 
-  // console.log(seatData[0].coordinates[0]);
-  // 각 자리 데이터에 따라 그리드에 채워줘
-  seatData[0].coordinates[0].forEach((seat, idx) => {
-    const row = seat.x; // 줄 번호
-    const col = seat.y; // 칸 번호
+    setGrid(newGrid);
+    setLength(length); // wing 테이블에 사용할 length
+  }, []);
 
-    // if (seat.y === 2) grid[row][col] = "복도"; // 예: '자리'라고 채워넣기
-    grid[row][col] = seatData[0].seats[0][idx]; // 예: '자리'라고 채워넣기
-  });
-
-  // const code = seatData[0].characteristicsCodes.map((item) => item);
-  // console.log(...code);
+  if (!grid) {
+    return <div>엣헴</div>;
+  }
 
   return (
     <div className="seat-box">
-      {/* 세로 길이만큼(length) 박스를 두고 안보이게! 그리고 비행기 날개 지점에서 날개 모양 달기 */}
-      <div className="left-icon">날개</div>
+      <div className="wing-table-box left">
+        <table>
+          <tbody className="wing-table">
+            {Array.from({ length }).map((_, index) => (
+              <tr
+                key={index}
+                className={`wing-seat ${index >= 2 && index <= 16 ? "wing" : ""} `}
+              >
+                {/* wing 테이블의 각 열 */}
+                <td className="wing-td">{index + 1}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <section className="section">
         <table className="seat-map">
           <tbody>
@@ -56,31 +69,43 @@ const page = () => {
                 key={rowIndex}
                 style={{ display: "flex" }}
               >
-                {row.map((cell, colIndex) => {
-                  // console.log(cell);
-                  return (
-                    <td className="seat_table" key={colIndex}>
-                      {cell ? (
-                        <button
-                          type="button"
-                          className={`seat ${cell.travelerPricing[0].seatAvailabilityStatus}`}
-                        >
-                          {cell.number}
-                        </button>
-                      ) : (
-                        <span />
-                      )}
-                    </td>
-                  );
-                })}
+                {row.map((cell, colIndex) => (
+                  <td className="seat_table" key={colIndex}>
+                    {cell ? (
+                      <button
+                        type="button"
+                        className={`seat ${cell.travelerPricing[0].seatAvailabilityStatus}`}
+                      >
+                        {cell.number}
+                      </button>
+                    ) : (
+                      <span />
+                    )}
+                  </td>
+                ))}
               </tr>
             ))}
           </tbody>
         </table>
       </section>
-      <div className="right-icon">날개</div>
+
+      <div className="wing-table-box right">
+        <table>
+          <tbody className="wing-table">
+            {Array.from({ length }).map((_, index) => (
+              <tr
+                key={index}
+                className={`wing-seat ${index >= 2 && index <= 16 ? "wing" : ""} `}
+              >
+                {/* wing 테이블의 각 열 */}
+                <td className="wing-td">{index + 1}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
 
-export default page;
+export default Page;
