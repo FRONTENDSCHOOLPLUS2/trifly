@@ -1,25 +1,38 @@
-import { OrderItem, OrderItineraries } from "@/types";
+import { AirportData, CodeState, OrderItem, OrderItineraries } from "@/types";
 import React from "react";
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import "./Journery.scss";
 import Image from "next/image";
 
-const Journey = async ({ data }: { data: OrderItem }) => {
+const Journey = async ({
+  data,
+  code,
+}: {
+  data: OrderItem;
+  code: CodeState<AirportData>;
+}) => {
   // console.log("zzzzzzzzzzzzzata", data);
   // //공항 코드 조회
   // const {codes} = await fetchCodes();
   // console.log(codes["ICN"].value)
+
   const itinerary = data?.itineraries.map((item, idx) => {
+    const arrivalCode =
+      item.segments.length >= 2
+        ? item.segments[1].arrival.iataCode
+        : item.segments[0].arrival.iataCode;
+
+    const departureCode = item.segments[0].departure.iataCode;
+
+    console.log("XXSXSDSXD", item);
+    // console.log(item.segments.map((item) => item.departure));
     return (
       <div className="ticket" key={idx}>
         <div className="journey-box">
           <div className="journey">
             <div className="departure">
-              <div className="circle" />
-              <span className="airport-code">
-                {item.segments[0].departure.iataCode}
-              </span>
-              <span className="airport-kr">공항이름</span>
+              <span className="airport-code">{departureCode}</span>
+              <span className="airport-kr">{code[departureCode].value}</span>
               <span className="airline-at">
                 {item.segments[0].departure.at.substring(0, 10)}
               </span>
@@ -38,7 +51,7 @@ const Journey = async ({ data }: { data: OrderItem }) => {
               <span className="stopover-number">
                 {item.segments.length >= 2
                   ? `경유 ${item.segments.length - 1}회`
-                  : ""}
+                  : "직항"}
               </span>
             </div>
 
@@ -50,7 +63,7 @@ const Journey = async ({ data }: { data: OrderItem }) => {
                   ? item.segments[1].arrival.iataCode
                   : item.segments[0].arrival.iataCode}
               </span>
-              <span className="airport-kr">공항이름</span>
+              <span className="airport-kr">{code[arrivalCode].value}</span>
               <span className="airline-at">
                 {item.segments[0].arrival.at.substring(0, 10)}
               </span>
@@ -58,31 +71,44 @@ const Journey = async ({ data }: { data: OrderItem }) => {
           </div>
         </div>
 
-        <div>
-          <section>
+        <section className="table-box">
+          <div className="table-top">
             <table>
               <caption className="hidden">예약 내역 리스트</caption>
               <thead>
                 <tr>
                   <th>예약 번호</th>
                   <th>예약일</th>
-                  <th>여정</th>
                   <th>출발일</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{data.reservationId.substring(0, 6)}</td>
+                  <td>{data.createdAt.substring(0, 10)}</td>
+
+                  <td>{item.segments[0].departure.at.substring(0, 10)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="table-bottom">
+            <table>
+              <thead>
+                <tr>
                   <th>인원</th>
+                  <th>여정</th>
                   <th>총 금액</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>{data.reservationId}</td>
-                  <td>{data.createdAt.substring(0, 10)}</td>
+                  <td>{data.passengers?.length}</td>
                   <td>
                     {item.segments.length >= 2
-                      ? `${item.segments[0].departure.iataCode} ~ ${item.segments[item.segments.length - 1].arrival.iataCode}`
-                      : `${item.segments[0].departure.iataCode} ~ ${item.segments[0].arrival.iataCode}`}
+                      ? `${item.segments[0].departure.iataCode} - ${item.segments[item.segments.length - 1].arrival.iataCode}`
+                      : `${item.segments[0].departure.iataCode} - ${item.segments[0].arrival.iataCode}`}
                   </td>
-                  <td>{item.segments[0].departure.at.substring(0, 10)}</td>
-                  <td>{data.passengers?.length}</td>
                   <td>
                     {Number(data.totalPrice.split(".")[0]).toLocaleString(
                       "ko-KR",
@@ -92,8 +118,8 @@ const Journey = async ({ data }: { data: OrderItem }) => {
                 </tr>
               </tbody>
             </table>
-          </section>
-        </div>
+          </div>
+        </section>
       </div>
     );
   });
