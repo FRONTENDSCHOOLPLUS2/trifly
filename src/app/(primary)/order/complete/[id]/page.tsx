@@ -1,12 +1,11 @@
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import FetchOrderId from "@/lib/fetchOrder";
 import { AirportData } from "@/types";
-import Detail from "../Detail";
+import Detail from "../../Detail";
 import TicketChk from "./TicketChk";
 
-const CompletePage = async () => {
-  const orderId = "1";
-  const data = await FetchOrderId(orderId);
+const CompletePage = async ({ params: { id } }: { params: { id: string } }) => {
+  const data = await FetchOrderId(id);
   const { code } = await fetchCodes<AirportData>();
 
   return (

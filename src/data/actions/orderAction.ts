@@ -71,7 +71,7 @@ const orderAction = async (
 
   const data = await res.json();
   if (!data.ok) return data.errors ? data.errors[0].msg : data.message;
-  return data.ok;
+  return data.item;
 };
 
 export default orderAction;
