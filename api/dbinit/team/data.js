@@ -1074,6 +1074,117 @@ export const initData = async (clientId, nextSeq) => {
         },
         totalPrice: "2217900.00",
       },
+      {
+        _id: await nextSeq("order"),
+        products: [
+          {
+            _id: 1,
+            quantity: 1,
+            seller_id: 1,
+            name: "항공권",
+            image: null,
+            price: 0,
+            extra: null,
+          },
+        ],
+        reservationId: "",
+        itineraries: [
+          {
+            "duration": "PT1H10M",
+            "segments": [
+              {
+                "departure": {
+                  "iataCode": "GMP",
+                  "terminal": "D",
+                  "at": "2024-08-29T08:10:00"
+                },
+                "arrival": {
+                  "iataCode": "CJU",
+                  "at": "2024-08-29T09:20:00"
+                },
+                "carrierCode": "KE",
+                "number": "1033",
+                "aircraft": {
+                  "code": "32Q"
+                },
+                "operating": {
+                  "carrierCode": "KE"
+                },
+                "duration": "PT1H10M",
+                "id": "11",
+                "numberOfStops": 0,
+                "blacklistedInEU": false
+              }
+            ]
+          }
+        ],
+        price: [
+          {
+            "travelerId": "1",
+            "fareOption": "STANDARD",
+            "travelerType": "ADULT",
+            "price": {
+              "currency": "KRW",
+              "total": "168200.00",
+              "base": "164200.00"
+            },
+            "fareDetailsBySegment": [
+              {
+                "segmentId": "11",
+                "cabin": "ECONOMY",
+                "fareBasis": "Y",
+                "class": "Y",
+                "includedCheckedBags": {
+                  "weight": 20,
+                  "weightUnit": "KG"
+                },
+                "includedCabinBags": {
+                  "quantity": 1
+                }
+              }
+            ]
+          }
+        ],
+        passengers: [
+          {
+            nameKor: "이소정",
+            nameEng: "Lee Sojeong",
+            birth: "19951106",
+            phone: "010-1234-1234",
+            passport: {
+              number: "M212M4454",
+              expDate: "20320412",
+            },
+            nationality: "대한민국",
+            issueCountry: "대한민국",
+            email: "s0zzang@naver.com",
+          },
+        ],
+        purchaser: {
+          name: "이소정",
+          birth: "19951106",
+          phone: {
+            main: "010-1234-1234",
+            sub: "010-6789-6789",
+          },
+          email: "s0zzang@naver.com",
+        },
+        state: "OS020",
+        user_id: 1,
+        createdAt: "2024.08.07 21:04:41",
+        updatedAt: "2024.08.07 21:04:41",
+        cost: {
+          products: 0,
+          shippingFees: 0,
+          discount: {
+            products: 0,
+            shippingFees: 0,
+          },
+          total: 0,
+        },
+        totalPrice: "168200.00",
+      }
+      
     ],
     // 후기
     reply: [],
@@ -2062,7 +2173,7 @@ export const initData = async (clientId, nextSeq) => {
             carrierType: "FSC",
           },
           {
-            code: "LZ",
+            code: "LX",
             value: "스위스 국제항공",
             nameKor: "스위스 국제항공",
             nameEng: "Swiss International Airlines",
