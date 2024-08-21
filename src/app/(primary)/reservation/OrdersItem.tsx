@@ -1,5 +1,6 @@
 "use client";
 
+import Badge from "@/components/Badge/Badge";
 import { OrderItem } from "@/types";
 import { useRouter } from "next/navigation";
 
@@ -12,7 +13,9 @@ const OrdersItem = ({ item }: { item: OrderItem }) => {
 
   return (
     <tr onClick={() => handleClick(item._id)} style={{ cursor: "pointer" }}>
-      <td className="reservation-number">{item.reservationId} </td>
+      <td className="reservation-number">
+        {item.reservationId.substring(0, 6)}
+      </td>
       <td className="reservation-date">{item.createdAt.substring(0, 10)}</td>
       <td className="departure">
         {item.itineraries[0].segments[0].departure.iataCode}
@@ -21,7 +24,11 @@ const OrdersItem = ({ item }: { item: OrderItem }) => {
         {item.itineraries.slice(-1)[0].segments[0].departure.iataCode}
       </td>
       <td className="travel">
-        {item.itineraries.length === 2 ? "왕복" : "편도"}
+        {item.itineraries.length === 2 ? (
+          <Badge>왕복</Badge>
+        ) : (
+          <Badge type="secondary">편도</Badge>
+        )}
       </td>
       <td className="schedule">
         {item.itineraries[0].segments[0].departure.at.substring(0, 10)}
