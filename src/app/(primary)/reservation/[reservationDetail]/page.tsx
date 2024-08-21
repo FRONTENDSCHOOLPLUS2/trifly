@@ -1,8 +1,13 @@
 import Badge from "@/components/Badge/Badge";
 import "./reservationDetail.scss";
 import FetchOrderId from "@/lib/fetchOrder";
-import Journey from "./Journey";
+
+import { fetchCodes } from "@/data/fetch/fetchCode";
+import { AirportData } from "@/types";
+import { backgroundClip } from "html2canvas/dist/types/css/property-descriptors/background-clip";
+import { color } from "html2canvas/dist/types/css/types/color";
 import TicketLink from "./TicketLink";
+import Journey from "./Journey";
 
 const reservationId = async ({
   params,
@@ -10,19 +15,21 @@ const reservationId = async ({
   params: { reservationDetail: string };
 }) => {
   const data = await FetchOrderId(params.reservationDetail);
-  // console.log("xxxxxxxxxparams", data);
+  const { code } = await fetchCodes<AirportData>();
+  // console.log("xxxxxxxxxparams", passengerId);
 
   const passenger = data?.passengers.map((item, idx) => {
     return (
       <tbody key={idx}>
         <tr>
           <td className="passport-number">{item.passport.number}</td>
-          <td>
+          <td className="web-passenger">
             {item.nameEng} ({item.nameKor})
           </td>
-          <td>{item.birth}</td>
+          <td className="mobile-passenger">{item.nameKor}</td>
+          <td className="birth">{item.birth}</td>
           <td>
-            <TicketLink id={params.reservationDetail} />
+            <TicketLink id={params.reservationDetail} passengerId={idx} />
           </td>
         </tr>
       </tbody>
@@ -48,27 +55,30 @@ const reservationId = async ({
         </div>
         <div className="order-ticket">
           <div className="orderDetail-box">
-            <Journey data={data} />
+            <Journey data={data} code={code} />
           </div>
         </div>
       </div>
 
       <div className="ticket-print">
-        <h2 className="title">탑승객별 티켓 출력</h2>
-        <section>
-          <table>
-            <caption className="hidden">탑승객별 티켓 내역</caption>
-            <thead>
-              <tr>
-                <th>여권번호</th>
-                <th>탑승객</th>
-                <th>생년월일</th>
-                <th>티켓</th>
-              </tr>
-            </thead>
-            {passenger}
-          </table>
-        </section>
+        <h2 className="title">탑승객별 티켓</h2>
+        <div className="table-box">
+          <section>
+            <table>
+              <caption className="hidden">탑승객별 티켓 내역</caption>
+              <thead>
+                <tr>
+                  <th>여권번호</th>
+                  <th className="web-passenger">탑승객</th>
+                  <th className="mobile-passenger">탑승객</th>
+                  <th className="birth">생년월일</th>
+                  <th>티켓 목록</th>
+                </tr>
+              </thead>
+              {passenger}
+            </table>
+          </section>
+        </div>
       </div>
     </>
   );
