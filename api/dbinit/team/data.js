@@ -1087,63 +1087,63 @@ export const initData = async (clientId, nextSeq) => {
             extra: null,
           },
         ],
-        reservationId: "",
+        reservationId: "8C4WYB",
         itineraries: [
           {
-            "duration": "PT1H10M",
-            "segments": [
+            duration: "PT1H10M",
+            segments: [
               {
-                "departure": {
-                  "iataCode": "GMP",
-                  "terminal": "D",
-                  "at": "2024-08-29T08:10:00"
+                departure: {
+                  iataCode: "GMP",
+                  terminal: "D",
+                  at: "2024-08-29T08:10:00",
                 },
-                "arrival": {
-                  "iataCode": "CJU",
-                  "at": "2024-08-29T09:20:00"
+                arrival: {
+                  iataCode: "CJU",
+                  at: "2024-08-29T09:20:00",
                 },
-                "carrierCode": "KE",
-                "number": "1033",
-                "aircraft": {
-                  "code": "32Q"
+                carrierCode: "KE",
+                number: "1033",
+                aircraft: {
+                  code: "32Q",
                 },
-                "operating": {
-                  "carrierCode": "KE"
+                operating: {
+                  carrierCode: "KE",
                 },
-                "duration": "PT1H10M",
-                "id": "11",
-                "numberOfStops": 0,
-                "blacklistedInEU": false
-              }
-            ]
-          }
+                duration: "PT1H10M",
+                id: "11",
+                numberOfStops: 0,
+                blacklistedInEU: false,
+              },
+            ],
+          },
         ],
         price: [
           {
-            "travelerId": "1",
-            "fareOption": "STANDARD",
-            "travelerType": "ADULT",
-            "price": {
-              "currency": "KRW",
-              "total": "168200.00",
-              "base": "164200.00"
+            travelerId: "1",
+            fareOption: "STANDARD",
+            travelerType: "ADULT",
+            price: {
+              currency: "KRW",
+              total: "168200.00",
+              base: "164200.00",
             },
-            "fareDetailsBySegment": [
+            fareDetailsBySegment: [
               {
-                "segmentId": "11",
-                "cabin": "ECONOMY",
-                "fareBasis": "Y",
-                "class": "Y",
-                "includedCheckedBags": {
-                  "weight": 20,
-                  "weightUnit": "KG"
+                segmentId: "11",
+                cabin: "ECONOMY",
+                fareBasis: "Y",
+                class: "Y",
+                includedCheckedBags: {
+                  weight: 20,
+                  weightUnit: "KG",
                 },
-                "includedCabinBags": {
-                  "quantity": 1
-                }
-              }
-            ]
-          }
+                includedCabinBags: {
+                  quantity: 1,
+                },
+              },
+            ],
+          },
         ],
         passengers: [
           {
@@ -1183,8 +1183,7 @@ export const initData = async (clientId, nextSeq) => {
           total: 0,
         },
         totalPrice: "168200.00",
-      }
-      
+      },
     ],
     // 후기
     reply: [],
@@ -3341,7 +3340,7 @@ export const initData = async (clientId, nextSeq) => {
             cityCode: "LAX",
             countryCode: "US",
             areaCode: "미주",
-            img: `/files/${clientId}/.webp`,
+            img: `/files/${clientId}/la.webp`,
           },
           {
             code: "ORD",
@@ -3820,6 +3819,16 @@ export const initData = async (clientId, nextSeq) => {
             specEng: "Narrow Body Aircraft",
           },
           {
+            code: "32S",
+            value: "A320",
+            nameKor: "에어버스 A320 시리즈",
+            nameEng: "Airbus A320 Series",
+            manufacturerKor: "에어버스",
+            manufacturerEng: "Airbus",
+            specKor: "협동체",
+            specEng: "Narrow Body Aircraft",
+          },
+          {
             code: "318",
             value: "A318-100",
             nameKor: "에어버스 A318-100",
@@ -3890,6 +3899,16 @@ export const initData = async (clientId, nextSeq) => {
             specEng: "Narrow Body Aircraft",
           },
           {
+            code: "330",
+            value: "A330",
+            nameKor: "에어버스 A330-300",
+            nameEng: "Airbus A330=300",
+            manufacturerKor: "에어버스",
+            manufacturerEng: "Airbus",
+            specKor: "광동체",
+            specEng: "Wide Body Aircraft",
+          },
+          {
             code: "332",
             value: "A330-200",
             nameKor: "에어버스 A330-200",
@@ -3950,6 +3969,16 @@ export const initData = async (clientId, nextSeq) => {
             specEng: "Wide Body Aircraft",
           },
           {
+            code: "351",
+            value: "A350-1000",
+            nameKor: "에어버스 A350-1000",
+            nameEng: "Airbus A350-1000",
+            manufacturerKor: "에어버스",
+            manufacturerEng: "Airbus",
+            specKor: "광동체",
+            specEng: "Wide Body Aircraft",
+          },
+          {
             code: "35K",
             value: "A350-1000",
             nameKor: "에어버스 A350-1000",
@@ -3990,10 +4019,20 @@ export const initData = async (clientId, nextSeq) => {
             specEng: "Narrow Body Aircraft",
           },
           {
+            code: "73J",
+            value: "B737-900(ER)",
+            nameKor: "보잉 737-900(ER)",
+            nameEng: "Boeing 737-900(ER)",
+            manufacturerKor: "보잉",
+            manufacturerEng: "Boeing",
+            specKor: "협동체",
+            specEng: "Narrow Body Aircraft",
+          },
+          {
             code: "739",
             value: "B737-900",
-            nameKor: "보잉 737-900",
-            nameEng: "Boeing 737-900",
+            nameKor: "보잉 737-900(ER)",
+            nameEng: "Boeing 737-900(ER)",
             manufacturerKor: "보잉",
             manufacturerEng: "Boeing",
             specKor: "협동체",
@@ -4030,6 +4069,16 @@ export const initData = async (clientId, nextSeq) => {
             specEng: "Narrow Body Aircraft",
           },
           {
+            code: "7M9",
+            value: "B737-9",
+            nameKor: "보잉 737-9",
+            nameEng: "Boeing 737-9",
+            manufacturerKor: "보잉",
+            manufacturerEng: "Boeing",
+            specKor: "협동체",
+            specEng: "Narrow Body Aircraft",
+          },
+          {
             code: "744",
             value: "B747-400",
             nameKor: "보잉 747-400",
@@ -4050,7 +4099,27 @@ export const initData = async (clientId, nextSeq) => {
             specEng: "Wide Body Aircraft",
           },
           {
+            code: "74H",
+            value: "B747-8",
+            nameKor: "보잉 747-8",
+            nameEng: "Boeing 747-8",
+            manufacturerKor: "보잉",
+            manufacturerEng: "Boeing",
+            specKor: "광동체",
+            specEng: "Wide Body Aircraft",
+          },
+          {
             code: "752",
+            value: "B757-200",
+            nameKor: "보잉 757-200",
+            nameEng: "Boeing 757-200",
+            manufacturerKor: "보잉",
+            manufacturerEng: "Boeing",
+            specKor: "협동체",
+            specEng: "Narrow Body Aircraft",
+          },
+          {
+            code: "75W",
             value: "B757-200",
             nameKor: "보잉 757-200",
             nameEng: "Boeing 757-200",
@@ -4070,6 +4139,16 @@ export const initData = async (clientId, nextSeq) => {
             specEng: "Narrow Body Aircraft",
           },
           {
+            code: "767",
+            value: "B767",
+            nameKor: "보잉 767",
+            nameEng: "Boeing 767",
+            manufacturerKor: "보잉",
+            manufacturerEng: "Boeing",
+            specKor: "광동체",
+            specEng: "Wide Body Aircraft",
+          },
+          {
             code: "763",
             value: "B767-300(ER)",
             nameKor: "보잉 767-300(ER)",
@@ -4084,6 +4163,16 @@ export const initData = async (clientId, nextSeq) => {
             value: "B767-400ER",
             nameKor: "보잉 767-400ER",
             nameEng: "Boeing 767-400ER",
+            manufacturerKor: "보잉",
+            manufacturerEng: "Boeing",
+            specKor: "광동체",
+            specEng: "Wide Body Aircraft",
+          },
+          {
+            code: "777",
+            value: "B777",
+            nameKor: "보잉 777",
+            nameEng: "Boeing 777",
             manufacturerKor: "보잉",
             manufacturerEng: "Boeing",
             specKor: "광동체",
