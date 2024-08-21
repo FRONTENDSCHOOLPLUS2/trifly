@@ -5,7 +5,7 @@ import Button from "@/components/Button/Button";
 import Ticket from "@/components/Ticket/Ticket";
 import { AirportData, CodeState, OrderItem } from "@/types";
 import { useContext, useEffect, useState } from "react";
-import OrderContext from "../orderContext";
+import OrderContext from "../../orderContext";
 
 const TicketChk = ({
   data,

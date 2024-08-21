@@ -109,14 +109,19 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
             });
           } else {
             // 결제 성공 후 주문 api 통신
-            await orderAction(formData, itineraries, price, finalPrice);
+            const res = await orderAction(
+              formData,
+              itineraries,
+              price,
+              finalPrice,
+            );
             setModal({
               isOpen: true,
               title: "안내",
               content:
                 "항공권 구매가 완료되었습니다. \n좌석 선택 화면으로 이동합니다.",
               buttonNum: 1,
-              handleConfirm: () => router.push("/order/seat-map"),
+              handleConfirm: () => router.push(`/order/seat-map/${res._id}`),
               handleCancel: () => {},
             });
           }

@@ -57,18 +57,13 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
                       </span>
                       <div className="img-box">
                         <Image
-                          src={`https://flights.myrealtrip.com/air/wfw/imgs/mbl/logo/air/${segment.operating ? segment.operating.carrierCode : segment.carrierCode}.png`}
-                          alt={
-                            segment.operating
-                              ? segment.operating.carrierCode
-                              : segment.carrierCode
-                          }
+                          src={`https://flights.myrealtrip.com/air/wfw/imgs/mbl/logo/air/${segment.carrierCode}.png`}
+                          alt={segment.carrierCode}
                           width={0}
                           height={0}
                           sizes="100%"
                         />
                       </div>
-                      {/* <img src={} className="center" /> */}
                       <span className="arrival">
                         {`${arrival[0]}:${arrival[1]}`}
                       </span>
@@ -84,6 +79,17 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
                         )}
                       </ul>
                       <div className="tag-box">
+                        {segment.operating &&
+                          segment.operating.carrierCode !==
+                            segment.carrierCode && (
+                            <span className="operating">
+                              실제탑승:{" "}
+                              {code[segment.operating.carrierCode].value}
+                            </span>
+                          )}
+                        <span className="aircraft">
+                          {code[segment.aircraft.code].nameKor}
+                        </span>
                         {item.bags[idx].weight !== 0 && (
                           <span className="bags">
                             {`${item.bags[idx].weight}Kg`}
