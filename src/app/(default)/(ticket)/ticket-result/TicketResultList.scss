@@ -1,0 +1,11 @@
+.result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (max-width: 1023px) {
+  .result-list {
+    gap: 1.8rem;
+  }
+}
