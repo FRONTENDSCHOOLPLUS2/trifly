@@ -28,7 +28,7 @@ export interface OffersSearch {
   };
 }
 
-interface OffersSearchData extends OffersData {
+export interface OffersSearchData extends OffersData {
   itineraries: {
     duration: string;
     segments: SegmentsData[];
@@ -184,7 +184,7 @@ interface FlightRouteData {
   id: string;
   departure: {
     iataCode: string;
-    terminal: string;
+    terminal?: string;
     at: string;
   };
   arrival: {
