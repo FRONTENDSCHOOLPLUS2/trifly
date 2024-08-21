@@ -4,12 +4,12 @@
 
   .search-cover {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     align-items: start;
-  }
 
-  .input-cover {
-    width: 23rem;
+    .input-cover {
+      width: 23rem;
+    }
   }
 }
 
@@ -54,6 +54,25 @@
     .total {
       color: var(--color-primary);
       font-weight: 600;
+    }
+  }
+}
+
+@media (max-width: 349px) {
+  .reservation-header {
+    display: flex;
+    .search-cover {
+      display: flex;
+      gap: 1rem;
+      align-items: start;
+
+      .title {
+        margin-bottom: 2rem;
+      }
+
+      .input-cover {
+        width: 12rem;
+      }
     }
   }
 }
