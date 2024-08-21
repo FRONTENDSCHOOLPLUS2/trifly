@@ -184,7 +184,7 @@ interface FlightRouteData {
   id: string;
   departure: {
     iataCode: string;
-    terminal: string;
+    terminal?: string;
     at: string;
   };
   arrival: {
