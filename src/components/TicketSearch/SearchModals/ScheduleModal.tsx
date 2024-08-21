@@ -51,11 +51,12 @@ const ScheduleModal = ({
     const year = date.getFullYear();
     const month1 = date.getMonth() + 1;
     const month2 = (date.getMonth() + 1).toString().padStart(2, "0");
-    const day = date.getDate();
+    const day1 = date.getDate();
+    const day2 = date.getDate().toString().padStart(2, "0");
     const dayOfWeek = days[date.getDay()];
 
-    const formattedDate = `${month1}월 ${day}일 (${dayOfWeek})`;
-    const selectedDate = `${year}-${month2}-${day}`;
+    const formattedDate = `${month1}월 ${day1}일 (${dayOfWeek})`;
+    const selectedDate = `${year}-${month2}-${day2}`;
 
     return { formattedDate, selectedDate };
   };
