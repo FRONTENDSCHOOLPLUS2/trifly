@@ -61,7 +61,8 @@
     gap: var(--title-min);
 
     input {
-      display: none;
+      width: 0;
+      border: none;
 
       &:checked + label {
         background: var(--color-primary);
@@ -319,7 +320,7 @@
       }
       table {
         width: 100%;
-        font-size: var(--title-small);
+        font-size: var(--title-medium);
 
         caption {
           display: none;
@@ -476,7 +477,9 @@
           }
 
           .input-flex {
-            display: none;
+            height: 0;
+            overflow: hidden;
+            padding: 0;
           }
         }
       }

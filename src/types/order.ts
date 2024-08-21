@@ -65,35 +65,37 @@ export interface OrderData {
   reservationId: string;
   totalPrice: string;
   itineraries: OrderItineraries[];
-  price: {
-    travelerId: string;
-    fareOption: string;
-    travelerType: "ADULT" | "CHILD" | "INFANT";
-    price: {
-      currency: "KRW";
-      total: string;
-      base: string;
-      taxes: {
-        amount: string;
-        code: string;
-      }[];
-      refundableTaxes: string;
-    };
-    fareDetailsBySegment: {
-      segmentId: string;
-      cabin: string;
-      fareBasis: string;
-      brandedFare?: string;
-      class: string;
-      includedCheckedBags: {
-        weight?: number;
-        weightUnit?: "KG";
-        quantity?: number;
-      };
-    }[];
-  }[];
+  price: Price[];
   passengers: Passengers[];
   purchaser: Purchaser;
+}
+
+export interface Price {
+  travelerId: string;
+  fareOption: string;
+  travelerType: "ADULT" | "CHILD" | "INFANT";
+  price: {
+    currency: "KRW";
+    total: string;
+    base: string;
+    taxes: {
+      amount: string;
+      code: string;
+    }[];
+    refundableTaxes: string;
+  };
+  fareDetailsBySegment: {
+    segmentId: string;
+    cabin: string;
+    fareBasis: string;
+    brandedFare?: string;
+    class: string;
+    includedCheckedBags: {
+      weight?: number;
+      weightUnit?: "KG";
+      quantity?: number;
+    };
+  }[];
 }
 
 export interface Passengers {
@@ -152,4 +154,11 @@ export interface OrderItineraries {
       },
     ];
   }[];
+}
+
+export interface IMPData {
+  imp_uid: string;
+  merchant_uid: string;
+  error_code?: string;
+  error_msg?: string;
 }

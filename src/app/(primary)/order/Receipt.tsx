@@ -12,7 +12,6 @@ const getLocalNum = (value: string | number) => {
 const Receipt = () => {
   const { totalPrice } = useRecoilValue(orderState);
   const [isDetailShow, setIsDetailShow] = useState(false);
-  const charge = 10000;
   const personalPrice = usePersonalPrice();
 
   return (
@@ -60,7 +59,11 @@ const Receipt = () => {
                       {type} <strong>{count}</strong>명
                     </span>
                     <span>
-                      {getLocalNum(+item[0].total * count + charge * count)}원
+                      {getLocalNum(
+                        +item[0].total * count +
+                          process.env.NEXT_PUBLIC_CHARGE * count,
+                      )}
+                      원
                     </span>
                   </h4>
                   <table className="price-adult">
@@ -89,7 +92,8 @@ const Receipt = () => {
                         <td className="tit">발권 수수료</td>
                         <td className="count">{count}명</td>
                         <td className="price">
-                          {getLocalNum(charge * count)}원
+                          {getLocalNum(process.env.NEXT_PUBLIC_CHARGE * count)}
+                          원
                         </td>
                       </tr>
                     </tbody>
