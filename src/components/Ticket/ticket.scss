@@ -89,6 +89,25 @@
     img {
       width: 100%;
     }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      color: var(--color-white);
+      transition: all var(--transition-duration);
+      font-size: var(--title-large);
+      opacity: 0;
+      visibility: hidden;
+      z-index: 1;
+    }
+
+    &:hover a {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
   .segment-box {
@@ -167,10 +186,10 @@
       gap: 0.7em;
 
       dl:first-child {
-        width: 50%;
+        width: 47%;
       }
       dl:nth-child(2) {
-        width: 28%;
+        width: 30%;
       }
 
       .barcode {

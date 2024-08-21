@@ -3,9 +3,10 @@
 import { AirportData, CodeState, OrderItem } from "@/types";
 import "./ticket.scss";
 import Image from "next/image";
+import Link from "next/link";
 
 const Ticket = ({
-  data: { reservationId, itineraries, passengers },
+  data: { _id, reservationId, itineraries, passengers },
   code,
   passengerId,
 }: {
@@ -49,6 +50,7 @@ const Ticket = ({
           height={0}
           sizes="100%"
         />
+        <Link href={`/footprint/${_id}/${passengerId}`}>수정 및 저장하기</Link>
       </div>
       <div className="segments">
         {itineraries.map((item, idx) => (
