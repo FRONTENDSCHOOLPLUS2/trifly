@@ -2,8 +2,33 @@
   padding: 1rem;
   display: flex;
 
-  .left-icon {
-    background-color: gray;
+  .wing-table-box {
+    padding: 1rem;
+    .wing-table {
+      .wing-seat {
+        height: 4rem;
+        line-height: 4rem;
+      }
+      .wing::after {
+        content: "";
+        position: absolute;
+
+        background-image: url("/img/icon-seat-wing.svg");
+        width: 3rem;
+        height: 3rem;
+        background-repeat: no-repeat;
+      }
+
+      .wing-td {
+        height: 4rem;
+        width: 6rem;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        margin-bottom: 2rem;
+      }
+    }
   }
 
   .section {
@@ -16,9 +41,18 @@
       text-align: center;
       margin: 0 auto;
 
+      .seat-map-tr {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .seat-map-tr {
+        margin-bottom: 2rem;
+      }
+
       .seat_table {
-        width: 6rem;
-        height: 6rem;
+        width: 4rem;
+        height: 4rem;
 
         .seat {
           background-image: url("/img/seat.svg");
@@ -26,7 +60,7 @@
           width: 4rem;
           height: 4rem;
           background-size: 4rem;
-
+          display: block;
           text-align: center;
 
           &.BLOCKED {
