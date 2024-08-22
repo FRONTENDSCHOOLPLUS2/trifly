@@ -3,26 +3,32 @@
 import { seatMap } from "@/lib/seatMap";
 import React, { useEffect, useState } from "react";
 import "./seat-map.scss";
+import { type } from "os";
 
 const Page = () => {
   const [grid, setGrid] = useState<Array<Array<any>> | null>(null);
-  const [length, setLength] = useState(0);
+  // const [length, setLength] = useState(0);
+  const { data } = seatMap;
+  const seatData = data.map((item) => ({
+    decks: item.decks,
+    seats: item.decks.map((deck) => deck.seats),
+    coordinates: item.decks.map((deck) =>
+      deck.seats.map((seat) => seat.coordinates),
+    ),
+    characteristicsCodes: item.decks.map((deck) =>
+      deck.seats.map((seat) => seat.characteristicsCodes),
+    ),
+  }));
+
+  const { width, length, startWingsX, endWingsX, exitRowsX } =
+    seatData[0].decks[0].deckConfiguration;
+  console.log(exitRowsX);
 
   useEffect(() => {
-    const { data } = seatMap;
-    const seatData = data.map((item) => ({
-      decks: item.decks,
-      seats: item.decks.map((deck) => deck.seats),
-      coordinates: item.decks.map((deck) =>
-        deck.seats.map((seat) => seat.coordinates),
-      ),
-      characteristicsCodes: item.decks.map((deck) =>
-        deck.seats.map((seat) => seat.characteristicsCodes),
-      ),
-    }));
+    // console.log(exitRowsX);
 
-    const { width, length, exitRowsX } = seatData[0].decks[0].deckConfiguration;
-    console.log(exitRowsX);
+    // console.log(seatData[0].decks[0].deckConfiguration);
+
     // 데이터 length width에 따른 그리드
     const newGrid = Array(length)
       .fill(null)
@@ -35,12 +41,16 @@ const Page = () => {
       newGrid[row][col] = seatData[0].seats[0][idx];
     });
 
+    data[0].decks[0].facilities.map((item) => {
+      newGrid[item.coordinates.x][item.coordinates.y] = item;
+    });
+
     setGrid(newGrid);
-    setLength(length); // wing 테이블에 사용할 length
+    // setLength(length); // wing 테이블에 사용할 length
   }, []);
 
   if (!grid) {
-    return <div>엣헴</div>;
+    return <div>엣헴g</div>;
   }
 
   return (
@@ -51,9 +61,8 @@ const Page = () => {
             {Array.from({ length }).map((_, index) => (
               <tr
                 key={index}
-                className={`wing-seat ${index >= 2 && index <= 16 ? "wing" : ""} `}
+                className={`wing-seat ${index >= startWingsX && index <= endWingsX ? "wing" : null} ${exitRowsX.includes(index + 1) === true ? "exit" : null}`}
               >
-                {/* wing 테이블의 각 열 */}
                 <td className="wing-td">{index + 1}</td>
               </tr>
             ))}
@@ -69,18 +78,23 @@ const Page = () => {
                 key={rowIndex}
                 style={{ display: "flex" }}
               >
-                {row.map((cell, colIndex) => (
-                  <td className="seat_table" key={colIndex}>
-                    {cell ? (
-                      <button
-                        type="button"
-                        className={`seat ${cell.travelerPricing[0].seatAvailabilityStatus}`}
-                      >
-                        {cell.number}
-                      </button>
-                    ) : null}
-                  </td>
-                ))}
+                {row.map((cell, colIndex) => {
+                  // console.log(cell);
+                  return (
+                    <td className="seat_table" key={colIndex}>
+                      {cell && !cell.code && (
+                        <button
+                          type="button"
+                          className={`seat ${cell.travelerPricing[0].seatAvailabilityStatus}`}
+                        >
+                          {cell.number}
+                        </button>
+                      )}
+
+                      {cell && cell.code && <button>{cell.code}</button>}
+                    </td>
+                  );
+                })}
               </tr>
             ))}
           </tbody>
@@ -93,7 +107,7 @@ const Page = () => {
             {Array.from({ length }).map((_, index) => (
               <tr
                 key={index}
-                className={`wing-seat ${index >= 2 && index <= 16 ? "wing" : ""} `}
+                className={`wing-seat ${index >= 2 && index <= 16 ? "wing" : ""} ${exitRowsX.includes(index + 1) === true ? "exit" : null}`}
               >
                 {/* wing 테이블의 각 열 */}
                 <td className="wing-td">{index + 1}</td>
