@@ -78,9 +78,7 @@ const Page = () => {
                       >
                         {cell.number}
                       </button>
-                    ) : (
-                      <span />
-                    )}
+                    ) : null}
                   </td>
                 ))}
               </tr>
