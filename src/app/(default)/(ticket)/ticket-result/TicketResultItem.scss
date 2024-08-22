@@ -31,7 +31,7 @@
         .airline {
           display: flex;
           gap: 1.2rem;
-          align-items: center;
+          align-items: flex-start;
 
           .airline-logo.img-box {
             flex-shrink: 0;
@@ -44,14 +44,14 @@
               font-size: var(--title-medium);
               font-weight: 500;
               white-space: nowrap;
+              line-height: 2rem;
             }
 
             .codeshare-airline {
-              margin-top: 0.3rem;
               font-size: var(--title-small);
               font-weight: 400;
               color: var(--color-gray-90);
-              white-space: nowrap;
+              word-break: keep-all;
             }
           }
         }
@@ -167,7 +167,6 @@
 
         .stop-time {
           color: var(--color-gray-90);
-          white-space: nowrap;
         }
       }
     }
@@ -323,7 +322,8 @@
               }
 
               &.disabled {
-                display: unset;
+                display: none;
+                visibility: unset;
               }
             }
           }

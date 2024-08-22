@@ -86,7 +86,7 @@ export interface Price {
   };
   fareDetailsBySegment: {
     segmentId: string;
-    cabin: string;
+    cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
     fareBasis: string;
     brandedFare?: string;
     class: string;
@@ -123,11 +123,11 @@ export interface Purchaser {
 }
 
 export interface OrderItineraries {
-  duration?: string;
+  duration: string;
   segments: {
     departure: {
       iataCode: string;
-      terminal: string;
+      terminal?: string;
       at: string;
     };
     arrival: {
@@ -146,13 +146,12 @@ export interface OrderItineraries {
     duration: string;
     id: string;
     numberOfStops: number;
-    co2Emissions?: [
-      {
-        weight: number;
-        weightUnit: "KG";
-        cabin: "ECONOMY" | "BUSINESS" | "FIRST";
-      },
-    ];
+    co2Emissions?: {
+      weight: number;
+      weightUnit: "KG";
+      cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
+    }[];
+    blacklistedInEU?: boolean;
   }[];
 }
 
