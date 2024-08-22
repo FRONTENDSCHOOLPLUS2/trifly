@@ -1,0 +1,185 @@
+"use client";
+
+import saveAs from "file-saver";
+import html2canvas from "html2canvas";
+import {
+  ChangeEvent,
+  createRef,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
+const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
+  const canvasBoxRef = useRef<HTMLDivElement>(null);
+  const colorList = ["#F94141", "#F18657", "#FFA93A", "#82A571", "#527198"];
+  const [color, setColor] = useState("#F94141");
+  const [image, setImage] = useState<string | ArrayBuffer | null>("");
+  const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+
+  const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.length) return false;
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+  };
+
+  const handleDownload = async () => {
+    if (!ticketRef.current) return;
+
+    try {
+      const div = ticketRef.current;
+      const canvas = await html2canvas(div, { scale: 2 });
+      canvas.toBlob((blob) => {
+        if (blob !== null) {
+          saveAs(blob, "result.png");
+          // 수정 완료 버튼을 클릭했을 땐 blob 파일 업로드, 업로드 된 파일 포함하여 상품
+        }
+      });
+    } catch (error) {
+      console.error("Error converting div to image:", error);
+    }
+  };
+
+  let canvas: HTMLCanvasElement;
+  let canvasRef = createRef<HTMLCanvasElement>();
+  let pos = { drawable: false, X: -1, Y: -1 };
+  let ctx: CanvasRenderingContext2D;
+
+  const getPosition = (e: MouseEvent | TouchEvent) => {
+    if ("touches" in e) {
+      const rect = canvas.getBoundingClientRect();
+      const touch = e.touches[0];
+      return {
+        X: touch.clientX - rect.left,
+        Y: touch.clientY - rect.top,
+      };
+    } else return { X: e.offsetX, Y: e.offsetY };
+  };
+
+  const initDraw = (e: MouseEvent | TouchEvent) => {
+    ctx.beginPath();
+    pos = { drawable: true, ...getPosition(e) };
+    ctx.moveTo(pos.X, pos.Y);
+
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 4;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+  };
+
+  const draw = (e: MouseEvent | TouchEvent) => {
+    if (pos.drawable) {
+      pos = { ...pos, ...getPosition(e) };
+      ctx.lineTo(pos.X, pos.Y);
+      ctx.stroke();
+    }
+  };
+
+  const finishDraw = () => {
+    pos = { drawable: false, X: -1, Y: -1 };
+  };
+
+  const handleUndo = () => {};
+
+  const handleClear = () => {
+    ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
+  };
+
+  useEffect(() => {
+    canvas = canvasRef.current!;
+    ctx = canvas.getContext("2d")!;
+
+    canvas.addEventListener("mousedown", initDraw);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", finishDraw);
+    canvas.addEventListener("mouseout", finishDraw);
+    canvas.addEventListener("touchstart", initDraw);
+    canvas.addEventListener("touchmove", draw);
+    canvas.addEventListener("touchend", finishDraw);
+  });
+
+  useEffect(() => {
+    const { clientWidth, clientHeight } = canvasBoxRef.current!;
+    setCanvasSize({ width: clientWidth, height: clientHeight });
+  }, []);
+
+  return (
+    <div className="canvas-inner">
+      <div className="canvas-box" ref={canvasBoxRef}>
+        <div
+          className="attached-image"
+          style={{
+            background: `url(${image}) no-repeat center / cover`,
+          }}
+        ></div>
+        <canvas
+          ref={canvasRef}
+          width={canvasSize.width}
+          height={canvasSize.height}
+        ></canvas>
+      </div>
+      <div className="tool-box">
+        <div className="tool-inner">
+          <div className="tool-top">
+            <section className="tool color-box">
+              <h3 className="hidden">컬러 선택</h3>
+              {colorList.map((item) => (
+                <label
+                  className={item === color ? "act" : ""}
+                  key={item}
+                  style={{ background: item }}
+                >
+                  <input
+                    type="radio"
+                    name="color"
+                    value={item}
+                    onChange={(e) => setColor(e.target.value)}
+                  />
+                </label>
+              ))}
+            </section>
+            <section className="tool size-box">
+              <h3 className="hidden">사이즈 조절</h3>
+            </section>
+          </div>
+          <div className="tool-middel">
+            <button type="button" className="undo" onClick={() => handleUndo()}>
+              <span className="hidden">한 단계 이전으로</span>
+            </button>
+            <button
+              type="button"
+              className="clear"
+              onClick={() => handleClear()}
+            >
+              <span className="hidden">전체 지우기</span>
+            </button>
+          </div>
+        </div>
+        <div className="btn-box">
+          <button>이전으로</button>
+          <div className="file-box">
+            <label htmlFor="file" className="secondary-ver">
+              이미지 첨부
+            </label>
+            <input
+              type="file"
+              id="file"
+              accept="image/*"
+              onChange={(e) => handleFileUpload(e)}
+              hidden
+            />
+          </div>
+          <button className="primary-ver" onClick={handleDownload}>
+            저장하기
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Canvas;
