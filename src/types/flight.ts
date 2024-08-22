@@ -363,38 +363,8 @@ export interface SeatMapData extends FlightRouteData {
       endWingsRow: number;
       exitRowsX: number[];
     };
-    facilities: {
-      code: string;
-      column: string;
-      row?: string;
-      position: string;
-      coordinates: {
-        x: number;
-        y: number;
-      };
-    }[];
-    seats: {
-      cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
-      number: string;
-      characteristicsCodes: string[];
-      travelerPricing: {
-        travelerId: string;
-        seatAvailabilityStatus: "BLOCKED" | "AVAILABLE" | "OCCUPIED";
-        price?: {
-          currency: string;
-          total: string;
-          base: string;
-          taxes: {
-            amount: string;
-            code: string;
-          }[];
-        };
-      }[];
-      coordinates: {
-        x: number;
-        y: number;
-      };
-    }[];
+    facilities: SeatFacilities[];
+    seats: SeatData[];
   }[];
   aircraftCabinAmenities: {
     power: {
@@ -437,4 +407,40 @@ export interface SeatMapData extends FlightRouteData {
     travelerId: string;
     value: number;
   }[];
+}
+
+export interface SeatData {
+  cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
+  number: string;
+  characteristicsCodes: string[];
+  travelerPricing: SeattravelerPricing[];
+  coordinates: {
+    x: number;
+    y: number;
+  };
+}
+
+export interface SeattravelerPricing {
+  travelerId: string;
+  seatAvailabilityStatus: "BLOCKED" | "AVAILABLE" | "OCCUPIED";
+  price?: {
+    currency: string;
+    total: string;
+    base: string;
+    taxes: {
+      amount: string;
+      code: string;
+    }[];
+  };
+}
+
+export interface SeatFacilities {
+  code: string;
+  column: string;
+  row?: string;
+  position: string;
+  coordinates: {
+    x: number;
+    y: number;
+  };
 }
