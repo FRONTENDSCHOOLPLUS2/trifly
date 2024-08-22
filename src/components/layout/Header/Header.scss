@@ -116,7 +116,8 @@
   }
 
   &.transparentType {
-    background: transparent;
+    backdrop-filter: blur(3px);
+    background: rgba(0, 0, 0, 0.1);
 
     .header-nav {
       color: var(--color-white);
