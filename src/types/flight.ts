@@ -56,6 +56,8 @@ export interface OffersSearchData extends OffersData {
           quantity?: number;
         };
         includedCabinBags?: {
+          weight?: number;
+          weightUnit?: "KG";
           quantity?: number;
         };
         amenities?: {
