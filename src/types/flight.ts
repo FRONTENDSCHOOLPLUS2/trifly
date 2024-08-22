@@ -81,7 +81,7 @@ export interface OffersPrice {
     bookingRequirements: {
       emailAddressRequired: boolean;
       mobilePhoneNumberRequired: boolean;
-      travelerRequirements: {
+      travelerRequirements?: {
         travelerId: string;
         genderRequired: boolean;
         documentRequired: boolean;
@@ -105,32 +105,34 @@ export interface OffersPriceData extends OffersData {
   itineraries: {
     segments: SegmentsData[];
   }[];
-  travelerPricings: {
-    travelerId: string;
-    fareOption: string;
-    travelerType: string;
-    price: {
-      currency: "KRW";
-      total: string;
-      base: string;
-      taxes: {
-        amount: string;
-        code: string;
-      }[];
-      refundableTaxes: string;
-    };
-    fareDetailsBySegment: {
-      segmentId: string;
-      cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
-      fareBasis: string;
-      brandedFare?: string;
-      class: string;
-      includedCheckedBags: {
-        quantity?: number;
-        weight?: number;
-        weightUnit?: "KG";
-      };
+  travelerPricings: TravelerPricing[];
+}
+
+export interface TravelerPricing {
+  travelerId: string;
+  fareOption: string;
+  travelerType: "ADULT" | "CHILD" | "INFANT";
+  price: {
+    currency: "KRW";
+    total: string;
+    base: string;
+    taxes: {
+      amount: string;
+      code: string;
     }[];
+    refundableTaxes: string;
+  };
+  fareDetailsBySegment: {
+    segmentId: string;
+    cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
+    fareBasis: string;
+    brandedFare?: string;
+    class: string;
+    includedCheckedBags: {
+      quantity?: number;
+      weight?: number;
+      weightUnit?: "KG";
+    };
   }[];
 }
 
