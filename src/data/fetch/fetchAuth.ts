@@ -26,8 +26,6 @@ const fetchAuth = async (): Promise<string> => {
 
   const accessToken = resJson.access_token;
 
-  console.log(accessToken);
-
   return accessToken;
 };
 
