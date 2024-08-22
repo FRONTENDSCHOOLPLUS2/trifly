@@ -322,7 +322,8 @@
               }
 
               &.disabled {
-                display: unset;
+                display: none;
+                visibility: unset;
               }
             }
           }
