@@ -4,23 +4,31 @@ import { AirportData, CodeState, OrderItem } from "@/types";
 import "./ticket.scss";
 import Image from "next/image";
 import Link from "next/link";
+import Canvas from "./Canvas";
+import { useRef } from "react";
 
 const Ticket = ({
   data: { _id, reservationId, itineraries, passengers },
   code,
   passengerId,
+  type = "defualt",
 }: {
   data: OrderItem;
   code: CodeState<AirportData>;
   passengerId: number;
+  type?: string;
 }) => {
   const URL = process.env.NEXT_PUBLIC_MARKET_API_SERVER;
+  const ticketRef = useRef<HTMLDivElement>(null);
   const arrival =
     itineraries[0].segments[itineraries[0].segments.length - 1].arrival
       .iataCode;
 
   return (
-    <div className="ticket-box">
+    <article className={`ticket-box ${type}-ver`} ref={ticketRef}>
+      <h3 className="hidden">
+        {type === "default" ? "티켓 상세보기 " : "티켓 수정 및 저장하기"}
+      </h3>
       <div className="top-box">
         <div className="barcode">
           <Image
@@ -50,7 +58,14 @@ const Ticket = ({
           height={0}
           sizes="100%"
         />
-        <Link href={`/footprint/${_id}/${passengerId}`}>수정 및 저장하기</Link>
+
+        {type === "modify" ? (
+          <Canvas ticketRef={ticketRef} />
+        ) : (
+          <Link href={`/footprint/${_id}/${passengerId}`}>
+            수정 및 저장하기
+          </Link>
+        )}
       </div>
       <div className="segments">
         {itineraries.map((item, idx) => (
@@ -112,7 +127,7 @@ const Ticket = ({
           </div>
         ))}
       </div>
-    </div>
+    </article>
   );
 };
 

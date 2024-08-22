@@ -1,18 +1,30 @@
 .ticket-box {
-  border: 1px solid var(--color-gray-50);
   padding: calc(var(--title-max) * 1.5) var(--title-max)
-    calc(var(--title-max) * 2);
-  border-radius: clamp(2rem, 3vw, 4rem);
+    calc(var(--title-max) * 2.2);
   max-width: 41.2rem;
-  overflow: hidden;
   position: relative;
-  background: #fff;
-  mask-image: radial-gradient(
-    circle closest-corner at center bottom,
-    transparent 18%,
-    #fff 18%
-  );
 
+  &.defualt-ver {
+    overflow: hidden;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    mask-image: radial-gradient(
+      circle closest-corner at center bottom,
+      transparent 18%,
+      var(--color-gray-30) 18%,
+      #fff 18%
+    );
+    border: 1px solid var(--color-gray-50);
+    border-radius: clamp(2rem, 3vw, 4rem);
+    z-index: 0;
+    pointer-events: none;
+  }
   &::after {
     content: "";
     display: block;
@@ -24,6 +36,13 @@
     bottom: 0;
     left: 50%;
     transform: translate(-50%, calc(50% + 0.5px));
+    clip-path: circle(50% at 50% 40%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  & > div {
+    position: relative;
     z-index: 1;
   }
 
@@ -73,6 +92,7 @@
     width: calc(100% + calc(var(--title-max)) * 2);
     margin: var(--title-extra) calc(var(--title-max) * -1) var(--title-max);
     position: relative;
+    aspect-ratio: 16 / 9;
 
     &::after {
       content: "";
@@ -194,10 +214,138 @@
 
       .barcode {
         margin-top: var(--title-min);
+        aspect-ratio: 17 / 2;
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+        }
+      }
+    }
+  }
+
+  // canvas
+  .canvas-inner {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    font-size: var(--title-big);
+
+    .canvas-box {
+      aspect-ratio: inherit;
+
+      canvas {
+        position: relative;
+        z-index: 1;
+      }
+      .attached-image {
+        position: absolute;
+        inset: 0;
+        aspect-ratio: inherit;
+      }
+    }
+
+    .tool-box {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateX(calc(100% + 5rem));
+
+      .tool-inner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--title-medium);
+
+        & > div {
+          display: flex;
+          gap: var(--title-medium);
+        }
+
+        .tool {
+          display: flex;
+          flex-direction: column;
+          padding: calc(var(--title-max) * 3) var(--title-medium)
+            var(--title-max);
+          border: 1px solid var(--color-gray-50);
+          border-radius: var(--title-small);
+          background: #fff url(/img/icon-ticket-color.svg) no-repeat center top
+            var(--title-large) / auto calc(var(--title-big) * 2);
+          min-width: 5rem;
+        }
+
+        .color-box {
+          gap: var(--title-big);
+
+          label {
+            width: calc(var(--title-medium) * 2);
+            aspect-ratio: 1/1;
+            border-radius: 0.3em;
+
+            &.act {
+              outline-color: var(--color-primary);
+            }
+          }
+
+          input {
+            opacity: 0;
+          }
+        }
+
+        .size-box {
+          background-image: url(/img/icon-ticket-size.svg);
+        }
+
+        .tool-middel {
+          button {
+            width: 5rem;
+            aspect-ratio: 1/1;
+            background: var(--color-white) url(/img/icon-ticket-undo.svg)
+              no-repeat center / calc(var(--title-big) * 2);
+            border-radius: var(--title-small);
+            border: 1px solid var(--color-gray-50);
+
+            &.clear {
+              background-image: url(/img/icon-ticket-clear.svg);
+            }
+          }
+        }
+      }
+
+      .btn-box {
+        margin-top: var(--title-large);
+        display: flex;
+        flex-direction: column;
+        gap: var(--title-medium);
+
+        button,
+        label {
+          display: block;
+          width: calc(5rem * 2 + var(--title-medium));
+          padding: 0.7em 0;
+          background: var(--color-gray-30);
+          color: var(--color-blue-100);
+          border-radius: var(--title-small);
+          text-align: center;
+
+          &.primary-ver {
+            background: var(--color-primary);
+            color: var(--color-white);
+          }
+          &.secondary-ver {
+            background: var(--color-primary-30);
+            color: var(--color-primary);
+          }
+        }
+      }
+
+      button,
+      label {
+        transition: all var(--transition-duration);
+        outline: 2px solid transparent;
+
+        &:hover {
+          outline-color: var(--color-primary);
         }
       }
     }
