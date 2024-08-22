@@ -15,6 +15,7 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
   const canvasBoxRef = useRef<HTMLDivElement>(null);
   const colorList = ["#F94141", "#F18657", "#FFA93A", "#82A571", "#527198"];
   const [color, setColor] = useState("#F94141");
+  const [brushSize, setBrushSize] = useState(4);
   const [image, setImage] = useState<string | ArrayBuffer | null>("");
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
   const [history, setHistory] = useState<string[]>([]);
@@ -68,7 +69,7 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
     ctx.moveTo(pos.X, pos.Y);
 
     ctx.strokeStyle = color;
-    ctx.lineWidth = 4;
+    ctx.lineWidth = brushSize;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
   };
@@ -143,13 +144,13 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
 
   return (
     <div className="canvas-inner">
-      <div className="canvas-box" ref={canvasBoxRef}>
-        <div
-          className="attached-image"
-          style={{
-            background: `url(${image}) no-repeat center / cover`,
-          }}
-        ></div>
+      <div
+        className="canvas-box"
+        ref={canvasBoxRef}
+        style={{
+          background: `url(${image}) no-repeat center / cover`,
+        }}
+      >
         <canvas
           ref={canvasRef}
           width={canvasSize.width}
@@ -178,6 +179,19 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
             </section>
             <section className="tool size-box">
               <h3 className="hidden">사이즈 조절</h3>
+              <input
+                type="range"
+                className="input-range"
+                min={1}
+                max={10}
+                value={brushSize}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  const { value, attributes, style } = e.target;
+                  setBrushSize(+value);
+                  const percent = 90 / attributes.max.value;
+                  style.background = `linear-gradient(to bottom, var(--color-primary) 0%, var(--color-primary) ${percent * +value}%, var(--color-gray-50) ${percent * +value}%, var(--color-gray-50) 100%`;
+                }}
+              />
             </section>
           </div>
           <div className="tool-middel">
