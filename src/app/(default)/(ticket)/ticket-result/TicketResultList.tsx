@@ -9,8 +9,6 @@ const TicketResultList = ({
   data: OffersSearchData[];
   airline: CodeState<AirlineData>;
 }) => {
-  console.log(data);
-
   const resultList = data.map((item) => (
     <TicketResultItem key={item.id} item={item} airline={airline} />
   ));

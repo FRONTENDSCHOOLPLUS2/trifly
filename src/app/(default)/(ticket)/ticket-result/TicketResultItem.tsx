@@ -6,6 +6,8 @@ import Image from "next/image";
 import Badge from "@/components/Badge/Badge";
 import { useRecoilValue } from "recoil";
 import { searchResultState } from "@/atoms/atoms";
+import useCheckWindowWidth from "@/hook/useCheckWindowWidth";
+import { useEffect, useState } from "react";
 
 const TicketResultItem = ({
   item,
@@ -166,41 +168,42 @@ const TicketResultItem = ({
         </div>
         <div className="route-info">
           <div className="airport">
-            <p className="time">
-              {formatTime(itinerary.segments[0].departure.at)}
-            </p>
-            <p className="airport-code">
-              {itinerary.segments[0].departure.iataCode}
-            </p>
+            <div className="time">
+              <p className="time-detail">
+                {formatTime(itinerary.segments[0].departure.at)}
+              </p>
+              <p className="airport-code">
+                {itinerary.segments[0].departure.iataCode}
+              </p>
+            </div>
           </div>
           <div className="to">
-            <div className="arrow">
-              <div className="img-box">
-                <Image
-                  src="/img/icon-from-to.svg"
-                  alt="to"
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                />
-              </div>
+            <div className="from-to">
+              <div className="arrow" />
+              <p className="duration">
+                {parseDurationFormat(itinerary.duration)}
+                {stopTime >= 1 && (
+                  <span>
+                    <Badge type="gray">{`경유 ${stopTime}`}</Badge>
+                  </span>
+                )}
+              </p>
             </div>
-            <p className="duration">
-              {parseDurationFormat(itinerary.duration)}
-            </p>
           </div>
           <div className="airport">
-            <p className="time">
-              {formatTime(itinerary.segments[stopTime].arrival.at)}
-            </p>
-            <p className="airport-code">
-              {itinerary.segments[stopTime].arrival.iataCode}
-            </p>
-          </div>
-          <div
-            className={`day-difference ${dayDifference > 0 ? "is-active" : "disabled"}`}
-          >
-            <Badge type="secondary">{`+${dayDifference}`}</Badge>
+            <div className="time">
+              <p className="time-detail">
+                {formatTime(itinerary.segments[stopTime].arrival.at)}
+              </p>
+              <p className="airport-code">
+                {itinerary.segments[stopTime].arrival.iataCode}
+              </p>
+            </div>
+            <div
+              className={`day-difference ${dayDifference > 0 ? "is-active" : "disabled"}`}
+            >
+              <Badge type="secondary">{`+${dayDifference}`}</Badge>
+            </div>
           </div>
         </div>
         <div className="way-type">

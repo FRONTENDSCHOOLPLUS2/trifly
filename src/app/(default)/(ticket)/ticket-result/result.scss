@@ -142,15 +142,20 @@
     }
 
     .search-result {
+      .search-result-layout {
+        display: block;
+      }
+
       .search-filter {
         display: none;
       }
 
       .search-result-list {
         padding: unset;
+        flex-shrink: 1;
+
         .result-list-header {
           display: block;
-          margin-bottom: 2rem;
 
           .result-list-text {
             width: 100%;

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 
 function getWindowDimensions() {
-  const { innerWidth: width } = window;
-  return width;
+  if (typeof window !== "undefined") {
+    const { innerWidth: width } = window;
+    return width;
+  }
+  return 0;
 }
 
 const useCheckWindowWidth = (size: number) => {
