@@ -57,6 +57,7 @@ const Ticket = ({
           width={0}
           height={0}
           sizes="100%"
+          onLoadingComplete={(img) => (img.srcset = "")}
         />
 
         {type === "modify" ? (

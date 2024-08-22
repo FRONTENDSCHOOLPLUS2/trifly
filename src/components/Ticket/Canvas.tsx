@@ -15,8 +15,10 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
   const canvasBoxRef = useRef<HTMLDivElement>(null);
   const colorList = ["#F94141", "#F18657", "#FFA93A", "#82A571", "#527198"];
   const [color, setColor] = useState("#F94141");
+  const [brushSize, setBrushSize] = useState(4);
   const [image, setImage] = useState<string | ArrayBuffer | null>("");
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+  const [history, setHistory] = useState<string[]>([]);
 
   const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.length) return false;
@@ -29,16 +31,10 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
 
   const handleDownload = async () => {
     if (!ticketRef.current) return;
-
     try {
       const div = ticketRef.current;
       const canvas = await html2canvas(div, { scale: 2 });
-      canvas.toBlob((blob) => {
-        if (blob !== null) {
-          saveAs(blob, "result.png");
-          // 수정 완료 버튼을 클릭했을 땐 blob 파일 업로드, 업로드 된 파일 포함하여 상품
-        }
-      });
+      canvas.toBlob((blob) => blob !== null && saveAs(blob, "result.png"));
     } catch (error) {
       console.error("Error converting div to image:", error);
     }
@@ -48,6 +44,11 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
   let canvasRef = createRef<HTMLCanvasElement>();
   let pos = { drawable: false, X: -1, Y: -1 };
   let ctx: CanvasRenderingContext2D;
+
+  const saveState = () => {
+    const dataUrl = canvas.toDataURL();
+    setHistory((prevHistory) => [...prevHistory, dataUrl]);
+  };
 
   const getPosition = (e: MouseEvent | TouchEvent) => {
     if ("touches" in e) {
@@ -61,12 +62,14 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
   };
 
   const initDraw = (e: MouseEvent | TouchEvent) => {
+    if (history.length === 0) saveState();
+
     ctx.beginPath();
     pos = { drawable: true, ...getPosition(e) };
     ctx.moveTo(pos.X, pos.Y);
 
     ctx.strokeStyle = color;
-    ctx.lineWidth = 4;
+    ctx.lineWidth = brushSize;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
   };
@@ -80,26 +83,58 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
   };
 
   const finishDraw = () => {
+    if (!pos.drawable) return;
     pos = { drawable: false, X: -1, Y: -1 };
+    saveState();
   };
 
-  const handleUndo = () => {};
+  const handleUndo = () => {
+    history.pop();
+    setHistory([...history]);
+    redrawCanvas();
+  };
+
+  const redrawCanvas = () => {
+    const previousState = history[history.length - 1];
+    const img = new Image();
+    img.src = previousState;
+    img.onload = () => {
+      ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
+      ctx.drawImage(img, 0, 0);
+    };
+  };
 
   const handleClear = () => {
     ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
+    setHistory([]);
   };
 
   useEffect(() => {
     canvas = canvasRef.current!;
     ctx = canvas.getContext("2d")!;
 
-    canvas.addEventListener("mousedown", initDraw);
-    canvas.addEventListener("mousemove", draw);
-    canvas.addEventListener("mouseup", finishDraw);
-    canvas.addEventListener("mouseout", finishDraw);
-    canvas.addEventListener("touchstart", initDraw);
-    canvas.addEventListener("touchmove", draw);
-    canvas.addEventListener("touchend", finishDraw);
+    const handleMouseDown = (e: MouseEvent | TouchEvent) => initDraw(e);
+    const handleMouseMove = (e: MouseEvent | TouchEvent) => draw(e);
+    const handleMouseUp = () => finishDraw();
+    const handleMouseOut = () => finishDraw();
+
+    canvas.addEventListener("mousedown", handleMouseDown);
+    canvas.addEventListener("mousemove", handleMouseMove);
+    canvas.addEventListener("mouseup", handleMouseUp);
+    canvas.addEventListener("mouseout", handleMouseOut);
+    canvas.addEventListener("touchstart", handleMouseDown);
+    canvas.addEventListener("touchmove", handleMouseMove);
+    canvas.addEventListener("touchend", handleMouseUp);
+
+    return () => {
+      canvas.removeEventListener("mousedown", handleMouseDown);
+      canvas.removeEventListener("mousemove", handleMouseMove);
+      canvas.removeEventListener("mouseup", handleMouseUp);
+      canvas.removeEventListener("mouseout", handleMouseOut);
+      canvas.removeEventListener("touchstart", handleMouseDown);
+      canvas.removeEventListener("touchmove", handleMouseMove);
+      canvas.removeEventListener("touchend", handleMouseUp);
+    };
   });
 
   useEffect(() => {
@@ -109,13 +144,13 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
 
   return (
     <div className="canvas-inner">
-      <div className="canvas-box" ref={canvasBoxRef}>
-        <div
-          className="attached-image"
-          style={{
-            background: `url(${image}) no-repeat center / cover`,
-          }}
-        ></div>
+      <div
+        className="canvas-box"
+        ref={canvasBoxRef}
+        style={{
+          background: `url(${image}) no-repeat center / cover`,
+        }}
+      >
         <canvas
           ref={canvasRef}
           width={canvasSize.width}
@@ -144,6 +179,19 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
             </section>
             <section className="tool size-box">
               <h3 className="hidden">사이즈 조절</h3>
+              <input
+                type="range"
+                className="input-range"
+                min={1}
+                max={10}
+                value={brushSize}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  const { value, max, style } = e.target;
+                  setBrushSize(+value);
+                  const percent = 90 / +max;
+                  style.background = `linear-gradient(to bottom, var(--color-primary) 0%, var(--color-primary) ${percent * +value}%, var(--color-gray-50) ${percent * +value}%, var(--color-gray-50) 100%`;
+                }}
+              />
             </section>
           </div>
           <div className="tool-middel">
