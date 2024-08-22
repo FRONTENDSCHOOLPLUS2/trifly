@@ -186,9 +186,9 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
                 max={10}
                 value={brushSize}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  const { value, attributes, style } = e.target;
+                  const { value, max, style } = e.target;
                   setBrushSize(+value);
-                  const percent = 90 / attributes.max.value;
+                  const percent = 90 / +max;
                   style.background = `linear-gradient(to bottom, var(--color-primary) 0%, var(--color-primary) ${percent * +value}%, var(--color-gray-50) ${percent * +value}%, var(--color-gray-50) 100%`;
                 }}
               />
