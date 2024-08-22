@@ -7,12 +7,12 @@
 
   display: flex;
   align-items: center;
-  gap: 2.5rem;
   transition: all var(--transition-duration);
 
   .ticket-itinerary {
     width: 75%;
     flex-grow: 1;
+    flex-shrink: 0;
 
     display: flex;
     flex-direction: column;
@@ -20,10 +20,9 @@
 
     .route {
       display: flex;
-      gap: 3rem;
 
       .airline-info {
-        width: 25%;
+        width: 27%;
         flex-shrink: 0;
         display: flex;
         flex-direction: column;
@@ -63,72 +62,97 @@
 
           & span {
             color: var(--color-gray-100);
-            font-size: var(--title-min);
+            font-size: var(--title-small);
           }
         }
       }
 
       .route-info {
+        width: 50%;
         flex-shrink: 0;
         display: flex;
-        gap: 2rem;
+        gap: 2.5rem;
         align-items: center;
+        padding: 0 1rem;
+        box-sizing: border-box;
 
         & .airport {
           text-align: center;
+          display: flex;
+          gap: 1rem;
 
           & .time {
-            font-size: var(--title-big);
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            line-height: 2rem;
+            & .time-detail {
+              font-size: var(--title-big);
+              font-weight: 700;
+              margin-bottom: 0.3rem;
+              line-height: 2rem;
+            }
+
+            & .airport-code {
+              font-size: var(--title-small);
+              font-weight: 500;
+              color: var(--color-gray-90);
+            }
           }
 
-          & .airport-code {
-            font-size: var(--title-small);
-            font-weight: 500;
-            color: var(--color-gray-90);
-          }
-        }
+          & .day-difference {
+            &.is-active {
+              visibility: unset;
+            }
 
-        & .day-difference {
-          &.is-active {
-            visibility: unset;
-          }
-
-          &.disabled {
-            visibility: hidden;
+            &.disabled {
+              visibility: hidden;
+            }
           }
         }
 
         & .to {
-          text-align: center;
-          & .arrow {
-            width: 8rem;
-            height: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 0.3rem;
+          flex-grow: 1;
 
-            & .img-box {
-              width: 8rem;
-              height: 0.5rem;
-              display: flex;
-              justify-self: center;
-              align-items: center;
+          .from-to {
+            text-align: center;
+
+            & .arrow {
+              position: relative;
+              width: 100%;
+              height: 0.1rem;
+              border-bottom: 0.1rem solid var(--color-gray-90);
+              box-sizing: border-box;
+              margin-top: 0.95rem;
+              margin-bottom: 1.25rem;
+
+              &::after {
+                content: "";
+                display: block;
+                width: 0.8rem;
+
+                border-top: 0.1rem solid var(--color-gray-90);
+                position: absolute;
+                top: 0rem;
+                right: -0.13rem;
+                transform: translateY(-300%) rotate(45deg);
+              }
             }
-          }
 
-          & .duration {
-            font-size: var(--title-small);
-            font-weight: 500;
-            color: var(--color-gray-90);
+            & .duration {
+              font-size: var(--title-small);
+              font-weight: 500;
+              color: var(--color-gray-90);
+
+              & > span {
+                display: none;
+              }
+            }
           }
         }
       }
 
       .way-type {
+        width: 22%;
+        padding-right: 2rem;
+        box-sizing: border-box;
+        flex-shrink: 0;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
@@ -200,7 +224,6 @@
 @media (max-width: 1023px) {
   .ticket-item {
     padding: 2rem 3rem;
-    width: 100%;
     display: block;
 
     .ticket-itinerary {
@@ -208,10 +231,13 @@
       gap: 2rem;
 
       .route {
-        gap: 1rem;
+        .route-info {
+          padding: 0 2rem;
+        }
 
         .way-type {
-          margin-left: 3rem;
+          padding: unset;
+          padding-left: 2rem;
         }
       }
     }
@@ -240,11 +266,10 @@
 
 @media (max-width: 767px) {
   .ticket-item {
-    padding: 2rem;
+    padding: 2rem 3rem;
+    gap: 2rem;
 
     .ticket-itinerary {
-      gap: 2rem;
-
       .route {
         display: block;
 
@@ -253,53 +278,80 @@
           margin-bottom: 2rem;
           flex-direction: row;
           justify-content: unset;
-          align-items: center;
-
-          .airline {
-            .airline-title {
-              display: flex;
-              align-items: center;
-              gap: 1rem;
-
-              .codeshare-airline {
-                margin-top: unset;
-              }
-            }
-          }
 
           .transfer-option {
-            margin-top: unset;
+            margin: unset;
             margin-left: auto;
             display: flex;
-            justify-content: center;
-            align-items: center;
-
-            & span {
-              color: var(--color-gray-100);
-              font-size: var(--title-min);
-            }
+            align-items: flex-end;
           }
         }
 
         .route-info {
+          padding: unset;
+          width: 100%;
+          justify-content: space-around;
           margin-bottom: 2rem;
-          justify-content: center;
 
-          & .day-difference {
-            &.disabled {
-              visibility: unset;
-              display: none;
+          & .airport {
+            text-align: center;
+            display: flex;
+            gap: 1rem;
+
+            & .time {
+              order: 1;
+
+              & .time-detail {
+                font-size: var(--title-big);
+                font-weight: 700;
+                margin-bottom: 0.3rem;
+                line-height: 2rem;
+              }
+
+              & .airport-code {
+                font-size: var(--title-small);
+                font-weight: 500;
+                color: var(--color-gray-90);
+              }
+            }
+
+            & .day-difference {
+              order: 0;
+
+              &.is-active {
+                display: unset;
+              }
+
+              &.disabled {
+                display: unset;
+              }
+            }
+          }
+
+          & .to {
+            .from-to {
+              & .duration {
+                display: flex;
+                gap: 0.5rem;
+                justify-content: center;
+                align-items: center;
+
+                & > span {
+                  display: unset;
+                }
+              }
             }
           }
         }
 
         .way-type {
-          margin-left: unset;
-          justify-content: center;
-          flex-direction: row;
-          gap: 1rem;
+          display: none;
         }
       }
+    }
+
+    .ticket-pricing {
+      margin-top: 2rem;
     }
   }
 }
