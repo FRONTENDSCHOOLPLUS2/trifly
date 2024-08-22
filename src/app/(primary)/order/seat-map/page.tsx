@@ -91,7 +91,11 @@ const Page = () => {
                         </button>
                       )}
 
-                      {cell && cell.code && <button>{cell.code}</button>}
+                      {cell && cell.code && (
+                        <button
+                          className={` facility ${cell.code == "LA" ? "toilet" : null} ${cell.code == "G" ? "galley" : null} `}
+                        />
+                      )}
                     </td>
                   );
                 })}
