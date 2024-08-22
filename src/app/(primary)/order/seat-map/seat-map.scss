@@ -119,9 +119,33 @@
 
           &.BLOCKED {
             background-image: url(/img/seat-unselect.svg);
+            pointer-events: none;
           }
           &.OCCUPIED {
             background-image: url(/img/seat-unselect.svg);
+            pointer-events: none;
+          }
+        }
+
+        .facility {
+          display: none;
+          pointer-events: none;
+          &.toilet {
+            display: block;
+            background-image: url("/img/icon-seat-toilet.svg");
+            background-position: center;
+            width: 4rem;
+            height: 4rem;
+            background-repeat: no-repeat;
+          }
+
+          &.galley {
+            display: block;
+            background-image: url("/img/icon-seat-galley.svg");
+            background-position: center;
+            width: 4rem;
+            height: 4rem;
+            background-repeat: no-repeat;
           }
         }
       }
