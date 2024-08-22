@@ -1,23 +1,37 @@
 "use client";
 
-import { AirlineData, CodeState, OffersSearchData } from "@/types";
-import "./TicketResultItem.scss";
-import Image from "next/image";
+import { modalState, orderState, searchResultState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
-import { useRecoilValue } from "recoil";
-import { searchResultState } from "@/atoms/atoms";
-import useCheckWindowWidth from "@/hook/useCheckWindowWidth";
-import { useEffect, useState } from "react";
+import { AirlineData, CodeState, OffersSearchData } from "@/types";
+import Image from "next/image";
+import { useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import "./TicketResultItem.scss";
+import flightPriceAction from "@/data/actions/flightPriceAction";
+import { useRouter } from "next/navigation";
 
 const TicketResultItem = ({
+  user,
   item,
   airline,
 }: {
+  user: boolean;
   item: OffersSearchData;
   airline: CodeState<AirlineData>;
 }) => {
   const { itineraries } = item;
   const searchResult = useRecoilValue(searchResultState);
+  const setOrderState = useSetRecoilState(orderState);
+  const setModal = useSetRecoilState(modalState);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const fetchPrice = async (data: OffersSearchData) => {
+    setIsLoading(true);
+    const flightPrice = await flightPriceAction(data);
+    setIsLoading(false);
+    return flightPrice;
+  };
 
   /* -------------------------------------------------------------------------- */
   /*                              PT6H10 -> 6시간 10분                            */
@@ -92,19 +106,21 @@ const TicketResultItem = ({
   function calculateDayDifference(departureTime: string, arrivalTime: string) {
     const departureDate = new Date(departureTime);
     const arrivalDate = new Date(arrivalTime);
+    const startOfDepartureDay = new Date(departureDate);
+    startOfDepartureDay.setHours(0, 0, 0, 0);
 
-    const yearDifference =
-      arrivalDate.getFullYear() - departureDate.getFullYear();
-    const monthDifference = arrivalDate.getMonth() - departureDate.getMonth();
-    const dayDifference = arrivalDate.getDate() - departureDate.getDate();
+    const startOfArrivalDay = new Date(arrivalDate);
+    startOfArrivalDay.setHours(0, 0, 0, 0);
 
-    const totalDayDifference =
-      yearDifference * 365 + monthDifference * 30 + dayDifference;
+    // 출발일과 도착일 간의 날짜 차이를 계산
+    const dayDifference = Math.ceil(
+      (startOfArrivalDay.getTime() - startOfDepartureDay.getTime()) /
+        (1000 * 60 * 60 * 24),
+    );
 
-    return totalDayDifference;
+    return dayDifference > 0 ? dayDifference : 0;
   }
 
-  // itinerary 만큼 반복하기!
   const routeList = itineraries.map((itinerary, index) => {
     const stopTime = itinerary.segments.length - 1;
     const totalTime = itinerary.duration;
@@ -216,21 +232,45 @@ const TicketResultItem = ({
     );
   });
 
-  const handleClick = () => {
-    const flightOfferSearch = item;
-    const duration: string[] = item.itineraries.map((item) => item.duration);
+  const handleClick = async () => {
+    const flightOffers = item;
     const totalPrice: string = item.price.total;
-    const formattedTime: string[] = [
-      searchResult.schedule.departureFormattedDate,
-      searchResult.schedule.returnFormattedDate,
-    ];
+    const departureDate: string = searchResult.schedule.departureFormattedDate;
+    const returnDate: string = searchResult.schedule.returnFormattedDate;
 
-    console.log(flightOfferSearch);
-    console.log(duration);
-    console.log(totalPrice);
-    console.log(formattedTime);
+    if (user) {
+      const price = await fetchPrice(flightOffers);
 
-    // flight-offers-price api 호출
+      console.log({
+        departureDate,
+        returnDate,
+        totalPrice,
+        itineraries,
+        price,
+      });
+
+      setOrderState({
+        departureDate,
+        returnDate,
+        totalPrice,
+        itineraries,
+        price,
+      });
+
+      router.push("/order/agree");
+    } else {
+      setModal({
+        isOpen: true,
+        title: "로그인 필요",
+        content:
+          "항공권을 구매하려면 로그인이 필요합니다.\n로그인 페이지로 이동하시겠습니까?",
+        buttonNum: 2,
+        handleConfirm: () => {
+          router.push("/login");
+        },
+        handleCancel: () => {},
+      });
+    }
   };
 
   return (
