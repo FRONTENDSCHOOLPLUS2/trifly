@@ -1,0 +1,131 @@
+.seat-select-box {
+  display: flex;
+  justify-content: space-between;
+
+  // 오른쪽 박스
+  .seat-select-right-box {
+    .seat-map-guid {
+      padding: var(--layout-padding);
+      box-shadow: var(--box-shadow);
+      border-radius: var(--title-extra);
+
+      h3 {
+        font-size: var(--title-large);
+        margin-bottom: 3rem;
+      }
+      .seat-title-flex {
+        display: flex;
+        gap: 4rem;
+
+        .seat-title-box {
+          .seat-title {
+            display: flex;
+            text-align: center;
+            align-items: center;
+
+            .seat-icon {
+              width: 3rem;
+              height: 3rem;
+              margin-right: 2rem;
+            }
+
+            p {
+              font-size: var(--title-medium);
+              color: var(--color-gray-100);
+              font-weight: 600;
+            }
+          }
+
+          .seat-title + .seat-title {
+            margin-top: 2rem;
+          }
+        }
+      }
+      .line {
+        border-top: 2px solid var(--color-gray-30);
+        margin: 3rem 0;
+      }
+      .facility-box-flex {
+        display: flex;
+        gap: 5.5rem;
+        .facility-box {
+          .facility {
+            display: flex;
+            text-align: center;
+            align-items: center;
+
+            .facility-icon {
+              width: 3rem;
+              height: 3rem;
+              margin-right: 2rem;
+            }
+
+            p {
+              font-size: var(--title-medium);
+              color: var(--color-gray-100);
+              font-weight: 600;
+            }
+          }
+
+          .facility + .facility {
+            margin-top: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 349px) {
+  .seat-select-right-box {
+    display: none;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 767px) {
+  .seat-select-box {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .seat-select-box {
+    flex-direction: column-reverse;
+
+    .seat-select-right-box {
+      margin-bottom: 3rem;
+      .seat-map-guid {
+        display: flex;
+        justify-content: space-between;
+
+        h3 {
+          margin: 3rem 0 3rem 1rem;
+        }
+
+        .icon-box {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          margin-right: 3rem;
+
+          .facility-box-flex,
+          seat-title-flex {
+            gap: 3rem;
+            .facility-box .facility .facility-icon,
+            .seat-title-box .seat-title .seat-icon {
+              width: 3rem;
+              height: 3rem;
+              margin-right: 1rem;
+            }
+          }
+
+          .line {
+            border-right: 2px solid var(--color-gray-30);
+            margin: 0 2rem;
+            height: 8rem;
+          }
+        }
+      }
+    }
+  }
+}

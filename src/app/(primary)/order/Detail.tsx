@@ -2,31 +2,32 @@
 
 import { orderState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
-import { AirportData, CodeState } from "@/types";
+import { AirportData, CodeState, FareDetailsBySegment } from "@/types";
 import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { cabinKor } from "./orderContext";
 
+interface FareDetails {
+  [key: string]: FareDetailsBySegment;
+}
+
 const Detail = ({ code }: { code: CodeState<AirportData> }) => {
-  const { itineraries, price } = useRecoilValue(orderState);
-  const bags = price.map((bag) =>
-    bag.fareDetailsBySegment.map((item) => item.includedCheckedBags),
-  );
-  const cabins = price.map((cabin) =>
-    cabin.fareDetailsBySegment.map((item) => item.cabin),
-  );
-  const data = itineraries.map((item, idx) => ({
-    date: item.segments[idx].departure.at,
+  const { itineraries, price, departureDate, returnDate } =
+    useRecoilValue(orderState);
+  const data = itineraries.map((item) => ({
     duration: item.duration,
     segments: item.segments,
-    bags: bags[idx],
-    cabin: cabins[idx],
   }));
+  const fareDetails = price.reduce((acc, bag) => {
+    bag.fareDetailsBySegment.forEach((item) => {
+      acc[item.segmentId] = item;
+    });
+    return acc;
+  }, {} as FareDetails);
 
   return (
     <div className="detail-box">
       {data.map((item, idx) => {
-        const date = item.date.split("T")[0];
         const duration = item.duration!.split("PT")[1].split("H");
         const hour = duration[0];
         const minute = duration[1].split("M")[0];
@@ -38,7 +39,9 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
                 <Badge>{idx === 0 ? "가는편" : "오는편"}</Badge>
               </h4>
               <div className="detail-info">
-                <span className="date">{date}</span>
+                <span className="date">
+                  {idx === 0 ? departureDate : returnDate}
+                </span>
                 <span className="duration">
                   소요시간 <span>{`${hour}시간 ${minute}분`}</span>
                 </span>
@@ -47,31 +50,24 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
 
             <div className="detail-cont">
               {item.segments.map((segment, segmentIdx) => {
-                const departure = segment.departure.at.split("T")[1].split(":");
-                const arrival = segment.departure.at.split("T")[1].split(":");
+                const segmentDetail = fareDetails[segment.id];
+                const departure = segment.departure.at.split("T")[1];
+                const arrival = segment.arrival.at.split("T")[1];
+
                 return (
                   <div key={segmentIdx} className="detail-segment">
                     <div className="segment left-box">
-                      <span className="departure">
-                        {`${departure[0]}:${departure[1]}`}
-                      </span>
+                      <span className="departure">{departure.slice(0, 5)}</span>
                       <div className="img-box">
                         <Image
-                          src={`https://flights.myrealtrip.com/air/wfw/imgs/mbl/logo/air/${segment.operating ? segment.operating.carrierCode : segment.carrierCode}.png`}
-                          alt={
-                            segment.operating
-                              ? segment.operating.carrierCode
-                              : segment.carrierCode
-                          }
+                          src={`https://flights.myrealtrip.com/air/wfw/imgs/mbl/logo/air/${segment.carrierCode}.png`}
+                          alt={segment.carrierCode}
                           width={0}
                           height={0}
                           sizes="100%"
                         />
                       </div>
-                      {/* <img src={} className="center" /> */}
-                      <span className="arrival">
-                        {`${arrival[0]}:${arrival[1]}`}
-                      </span>
+                      <span className="arrival">{arrival.slice(0, 5)}</span>
                     </div>
                     <div className="segment right-box">
                       <ul className="departure">
@@ -84,13 +80,27 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
                         )}
                       </ul>
                       <div className="tag-box">
-                        {item.bags[idx].weight !== 0 && (
-                          <span className="bags">
-                            {`${item.bags[idx].weight}Kg`}
-                          </span>
-                        )}
+                        {segment.operating &&
+                          segment.operating.carrierCode !==
+                            segment.carrierCode && (
+                            <span className="operating">
+                              실제탑승:{" "}
+                              {code[segment.operating.carrierCode].value}
+                            </span>
+                          )}
+                        <span className="aircraft">
+                          {code[segment.aircraft.code]?.nameKor ||
+                            segment.aircraft.code}
+                        </span>
+                        {segmentDetail.includedCheckedBags.weight &&
+                          segmentDetail.includedCheckedBags.weight !== 0 && (
+                            <span className="bags">
+                              {`${segmentDetail.includedCheckedBags.weight}Kg`}
+                            </span>
+                          )}
+
                         <span className="class">
-                          {cabinKor[item.cabin[idx]]}
+                          {cabinKor[segmentDetail.cabin]}
                         </span>
                       </div>
                       <ul className="arrival">

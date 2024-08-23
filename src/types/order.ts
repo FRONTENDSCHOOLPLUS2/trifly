@@ -65,35 +65,39 @@ export interface OrderData {
   reservationId: string;
   totalPrice: string;
   itineraries: OrderItineraries[];
-  price: {
-    travelerId: string;
-    fareOption: string;
-    travelerType: "ADULT" | "CHILD" | "INFANT";
-    price: {
-      currency: "KRW";
-      total: string;
-      base: string;
-      taxes: {
-        amount: string;
-        code: string;
-      }[];
-      refundableTaxes: string;
-    };
-    fareDetailsBySegment: {
-      segmentId: string;
-      cabin: string;
-      fareBasis: string;
-      brandedFare?: string;
-      class: string;
-      includedCheckedBags: {
-        weight?: number;
-        weightUnit?: "KG";
-        quantity?: number;
-      };
-    }[];
-  }[];
+  price: Price[];
   passengers: Passengers[];
   purchaser: Purchaser;
+}
+
+export interface Price {
+  travelerId: string;
+  fareOption: string;
+  travelerType: "ADULT" | "CHILD" | "INFANT";
+  price: {
+    currency: "KRW";
+    total: string;
+    base: string;
+    taxes: {
+      amount: string;
+      code: string;
+    }[];
+    refundableTaxes: string;
+  };
+  fareDetailsBySegment: FareDetailsBySegment[];
+}
+
+export interface FareDetailsBySegment {
+  segmentId: string;
+  cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
+  fareBasis: string;
+  brandedFare?: string;
+  class: string;
+  includedCheckedBags: {
+    weight?: number;
+    weightUnit?: "KG";
+    quantity?: number;
+  };
 }
 
 export interface Passengers {
@@ -121,11 +125,11 @@ export interface Purchaser {
 }
 
 export interface OrderItineraries {
-  duration?: string;
+  duration: string;
   segments: {
     departure: {
       iataCode: string;
-      terminal: string;
+      terminal?: string;
       at: string;
     };
     arrival: {
@@ -144,12 +148,18 @@ export interface OrderItineraries {
     duration: string;
     id: string;
     numberOfStops: number;
-    co2Emissions?: [
-      {
-        weight: number;
-        weightUnit: "KG";
-        cabin: "ECONOMY" | "BUSINESS" | "FIRST";
-      },
-    ];
+    co2Emissions?: {
+      weight: number;
+      weightUnit: "KG";
+      cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
+    }[];
+    blacklistedInEU?: boolean;
   }[];
+}
+
+export interface IMPData {
+  imp_uid: string;
+  merchant_uid: string;
+  error_code?: string;
+  error_msg?: string;
 }

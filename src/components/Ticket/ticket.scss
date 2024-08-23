@@ -1,18 +1,34 @@
 .ticket-box {
-  border: 1px solid var(--color-gray-50);
   padding: calc(var(--title-max) * 1.5) var(--title-max)
-    calc(var(--title-max) * 2);
-  border-radius: clamp(2rem, 3vw, 4rem);
+    calc(var(--title-max) * 2.2);
   max-width: 41.2rem;
-  overflow: hidden;
   position: relative;
-  background: #fff;
-  mask-image: radial-gradient(
-    circle closest-corner at center bottom,
-    transparent 18%,
-    #fff 18%
-  );
 
+  &.defualt-ver {
+    overflow: hidden;
+  }
+  &.modify-ver {
+    margin: 0 auto;
+    left: -8.2rem;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    mask-image: radial-gradient(
+      circle closest-corner at center bottom,
+      transparent 18%,
+      var(--color-gray-30) 18%,
+      #fff 18%
+    );
+    border: 1px solid var(--color-gray-50);
+    border-radius: clamp(2rem, 3vw, 4rem);
+    z-index: 0;
+    pointer-events: none;
+  }
   &::after {
     content: "";
     display: block;
@@ -24,6 +40,13 @@
     bottom: 0;
     left: 50%;
     transform: translate(-50%, calc(50% + 0.5px));
+    clip-path: circle(50% at 50% 40%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  & > div {
+    position: relative;
     z-index: 1;
   }
 
@@ -73,6 +96,8 @@
     width: calc(100% + calc(var(--title-max)) * 2);
     margin: var(--title-extra) calc(var(--title-max) * -1) var(--title-max);
     position: relative;
+    aspect-ratio: 16 / 9;
+    z-index: 2;
 
     &::after {
       content: "";
@@ -87,7 +112,26 @@
       opacity: 0.2;
     }
     img {
-      width: 100%;
+      object-fit: scale-down;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      color: var(--color-white);
+      transition: all var(--transition-duration);
+      font-size: var(--title-large);
+      opacity: 0;
+      visibility: hidden;
+      z-index: 1;
+    }
+
+    &:hover a {
+      opacity: 1;
+      visibility: visible;
     }
   }
 
@@ -167,18 +211,223 @@
       gap: 0.7em;
 
       dl:first-child {
-        width: 50%;
+        width: 47%;
       }
       dl:nth-child(2) {
-        width: 28%;
+        width: 30%;
       }
 
       .barcode {
         margin-top: var(--title-min);
+        aspect-ratio: 17 / 2;
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+        }
+      }
+    }
+  }
+
+  // canvas
+  .canvas-inner {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    font-size: var(--title-big);
+
+    .canvas-box {
+      aspect-ratio: inherit;
+
+      canvas {
+        position: relative;
+        z-index: 1;
+      }
+      .attached-image {
+        position: absolute;
+        inset: 0;
+        aspect-ratio: inherit;
+      }
+    }
+
+    .tool-box {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateX(calc(100% + 5rem));
+
+      .tool-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem;
+
+        & > div {
+          display: flex;
+          gap: 1.4rem;
+        }
+
+        .tool {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-top: calc(var(--title-max) * 3);
+          padding-bottom: var(--title-max);
+          border: 1px solid var(--color-gray-50);
+          border-radius: var(--title-small);
+          background: #fff url(/img/icon-ticket-color.svg) no-repeat center top
+            var(--title-large) / auto calc(var(--title-big) * 2);
+          width: 5rem;
+        }
+
+        .color-box {
+          gap: var(--title-big);
+
+          label {
+            width: calc(var(--title-medium) * 2);
+            aspect-ratio: 1/1;
+            border-radius: 0.3em;
+
+            &.act {
+              outline-color: var(--color-primary);
+            }
+          }
+
+          input {
+            opacity: 0;
+          }
+        }
+
+        .size-box {
+          background-image: url(/img/icon-ticket-size.svg);
+          align-items: center;
+
+          input {
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+            height: calc(var(--title-medium) * 9.6 + var(--title-big) * 4);
+          }
+        }
+
+        .tool-middel {
+          button {
+            box-sizing: border-box;
+            width: 5rem;
+            aspect-ratio: 1/1;
+            background: var(--color-white) url(/img/icon-ticket-undo.svg)
+              no-repeat center / calc(var(--title-big) * 2);
+            border-radius: var(--title-small);
+            border: 1px solid var(--color-gray-50);
+
+            &.clear {
+              background-image: url(/img/icon-ticket-clear.svg);
+            }
+          }
+        }
+      }
+
+      .btn-box {
+        margin-top: var(--title-large);
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem;
+
+        button,
+        label {
+          display: block;
+          width: calc(5rem * 2 + var(--title-medium));
+          padding: 0.7em 0;
+          background: var(--color-gray-30);
+          color: var(--color-blue-100);
+          border-radius: var(--title-small);
+          text-align: center;
+
+          &.primary-ver {
+            background: var(--color-primary);
+            color: var(--color-white);
+          }
+          &.secondary-ver {
+            background: var(--color-primary-30);
+            color: var(--color-primary);
+          }
+        }
+      }
+
+      button,
+      label {
+        transition: all var(--transition-duration);
+        outline: 2px solid transparent;
+
+        &:hover {
+          outline-color: var(--color-primary);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1023px) {
+    &.modify-ver {
+      left: auto;
+    }
+
+    .canvas-inner {
+      .tool-box {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        padding: 3rem 1.8rem;
+        transform: none;
+        background: #fff;
+        z-index: 1;
+        border-radius: 1.8rem 1.8rem 0 0;
+
+        .tool-inner {
+          flex-direction: row;
+
+          & > div {
+            flex-direction: column;
+
+            &.tool-top {
+              width: calc(100% - 5rem);
+            }
+
+            &.tool-middel {
+              button {
+                width: 4.8rem;
+              }
+            }
+          }
+
+          .size-box {
+            input {
+              writing-mode: lr;
+              transform: none;
+              height: auto;
+              width: calc(var(--title-medium) * 14.5);
+              height: 3px;
+              background: var(--color-primary) !important;
+            }
+          }
+
+          .tool {
+            flex-direction: row;
+            width: 100%;
+            padding: 0;
+            padding-left: 7rem;
+            height: 4.8rem;
+            background-position: center left 2rem;
+          }
+        }
+
+        .btn-box {
+          flex-direction: row;
+
+          button,
+          & > div,
+          label {
+            width: 100%;
+          }
         }
       }
     }

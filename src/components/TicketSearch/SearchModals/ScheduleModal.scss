@@ -7,11 +7,10 @@
   background-color: var(--color-white);
   position: absolute;
   border-radius: 2rem;
-  padding: 4.5rem;
+  padding: 3rem 5rem;
 
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 
   & .close-button {
     position: absolute;
@@ -121,7 +120,11 @@
         }
 
         &:nth-child(n + 36) {
-          display: none;
+          visibility: hidden;
+
+          &::not(:empty) {
+            visibility: visible;
+          }
         }
 
         &:disabled {

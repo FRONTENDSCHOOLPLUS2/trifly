@@ -57,6 +57,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <script defer src="https://cdn.iamport.kr/v1/iamport.js" />
+      </head>
       <body
         className={`${roboto.variable} ${noto.variable} ${dohyeon.variable}`}
       >

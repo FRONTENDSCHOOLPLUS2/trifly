@@ -1,0 +1,49 @@
+.footprint {
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100svh;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url(/img/img-footprint-bg1.jpg) no-repeat center / cover;
+  }
+
+  .lottie-box {
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      //   width: 100vw;
+      width: 110%;
+      height: 100%;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+    }
+  }
+
+  // 발자국 상세
+  &.detail {
+    margin-top: 3rem;
+
+    &::before {
+      background-image: url(/img/img-footprint-bg2.jpg);
+    }
+
+    .detail-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}

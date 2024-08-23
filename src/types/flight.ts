@@ -28,7 +28,7 @@ export interface OffersSearch {
   };
 }
 
-interface OffersSearchData extends OffersData {
+export interface OffersSearchData extends OffersData {
   itineraries: {
     duration: string;
     segments: SegmentsData[];
@@ -56,6 +56,8 @@ interface OffersSearchData extends OffersData {
           quantity?: number;
         };
         includedCabinBags?: {
+          weight?: number;
+          weightUnit?: "KG";
           quantity?: number;
         };
         amenities?: {
@@ -81,7 +83,7 @@ export interface OffersPrice {
     bookingRequirements: {
       emailAddressRequired: boolean;
       mobilePhoneNumberRequired: boolean;
-      travelerRequirements: {
+      travelerRequirements?: {
         travelerId: string;
         genderRequired: boolean;
         documentRequired: boolean;
@@ -105,32 +107,34 @@ export interface OffersPriceData extends OffersData {
   itineraries: {
     segments: SegmentsData[];
   }[];
-  travelerPricings: {
-    travelerId: string;
-    fareOption: string;
-    travelerType: string;
-    price: {
-      currency: "KRW";
-      total: string;
-      base: string;
-      taxes: {
-        amount: string;
-        code: string;
-      }[];
-      refundableTaxes: string;
-    };
-    fareDetailsBySegment: {
-      segmentId: string;
-      cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
-      fareBasis: string;
-      brandedFare?: string;
-      class: string;
-      includedCheckedBags: {
-        quantity?: number;
-        weight?: number;
-        weightUnit?: "KG";
-      };
+  travelerPricings: TravelerPricing[];
+}
+
+export interface TravelerPricing {
+  travelerId: string;
+  fareOption: string;
+  travelerType: "ADULT" | "CHILD" | "INFANT";
+  price: {
+    currency: "KRW";
+    total: string;
+    base: string;
+    taxes: {
+      amount: string;
+      code: string;
     }[];
+    refundableTaxes: string;
+  };
+  fareDetailsBySegment: {
+    segmentId: string;
+    cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
+    fareBasis: string;
+    brandedFare?: string;
+    class: string;
+    includedCheckedBags: {
+      quantity?: number;
+      weight?: number;
+      weightUnit?: "KG";
+    };
   }[];
 }
 
@@ -184,7 +188,7 @@ interface FlightRouteData {
   id: string;
   departure: {
     iataCode: string;
-    terminal: string;
+    terminal?: string;
     at: string;
   };
   arrival: {
@@ -363,38 +367,8 @@ export interface SeatMapData extends FlightRouteData {
       endWingsRow: number;
       exitRowsX: number[];
     };
-    facilities: {
-      code: string;
-      column: string;
-      row?: string;
-      position: string;
-      coordinates: {
-        x: number;
-        y: number;
-      };
-    }[];
-    seats: {
-      cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
-      number: string;
-      characteristicsCodes: string[];
-      travelerPricing: {
-        travelerId: string;
-        seatAvailabilityStatus: "BLOCKED" | "AVAILABLE" | "OCCUPIED";
-        price?: {
-          currency: string;
-          total: string;
-          base: string;
-          taxes: {
-            amount: string;
-            code: string;
-          }[];
-        };
-      }[];
-      coordinates: {
-        x: number;
-        y: number;
-      };
-    }[];
+    facilities: SeatFacilities[];
+    seats: SeatData[];
   }[];
   aircraftCabinAmenities: {
     power: {
@@ -437,4 +411,40 @@ export interface SeatMapData extends FlightRouteData {
     travelerId: string;
     value: number;
   }[];
+}
+
+export interface SeatData {
+  cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
+  number: string;
+  characteristicsCodes: string[];
+  travelerPricing: SeattravelerPricing[];
+  coordinates: {
+    x: number;
+    y: number;
+  };
+}
+
+export interface SeattravelerPricing {
+  travelerId: string;
+  seatAvailabilityStatus: "BLOCKED" | "AVAILABLE" | "OCCUPIED";
+  price?: {
+    currency: string;
+    total: string;
+    base: string;
+    taxes: {
+      amount: string;
+      code: string;
+    }[];
+  };
+}
+
+export interface SeatFacilities {
+  code: string;
+  column: string;
+  row?: string;
+  position: string;
+  coordinates: {
+    x: number;
+    y: number;
+  };
 }

@@ -1,0 +1,296 @@
+.seat-box {
+  display: flex;
+  justify-content: center;
+
+  .wing-table-box {
+    padding: 1rem 0;
+    .wing-table {
+      .wing-seat {
+        height: 4rem;
+        line-height: 4rem;
+        position: relative;
+      }
+    }
+
+    &.right {
+      padding-left: 1rem;
+      .wing-table .wing-seat {
+        .wing-td {
+          height: 4rem;
+          width: 5rem;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: start;
+          margin-bottom: 1.5rem;
+        }
+
+        &.wing::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 6px;
+          background-image: url("/img/icon-seat-wing.svg");
+          background-position: center;
+          width: 3rem;
+          height: 3rem;
+          background-repeat: no-repeat;
+        }
+
+        &.exit::before {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 6px;
+          width: 3rem;
+          height: 3rem;
+          background-image: url("/img/icon-seat-exit.svg");
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
+
+    &.left {
+      padding-right: 1rem;
+      .wing-table .wing-seat {
+        .wing-td {
+          height: 4rem;
+          width: 5rem;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: end;
+          margin-bottom: 1.5rem;
+        }
+
+        &.wing::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 6px;
+          background-image: url("/img/icon-seat-wing.svg");
+          background-position: center;
+          width: 3rem;
+          height: 3rem;
+          background-repeat: no-repeat;
+        }
+
+        &.exit::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 6px;
+          width: 3rem;
+          height: 3rem;
+          background-image: url("/img/icon-seat-exit.svg");
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
+  }
+
+  .section {
+    padding: 1rem;
+    background-color: var(--color-gray-10);
+    border-radius: 1rem;
+    width: 52rem;
+
+    .seat-map {
+      text-align: center;
+      margin: 0 auto;
+
+      .seat-map-tr {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .seat-map-tr {
+        margin-bottom: 1.5rem;
+      }
+
+      .seat_table {
+        width: 4rem;
+        height: 4rem;
+
+        .seat {
+          background-image: url("/img/seat.svg");
+          background-repeat: no-repeat;
+          width: 4rem;
+          height: 4rem;
+          background-size: 4rem;
+          display: block;
+          text-align: center;
+          font-size: var(--title-medium);
+          font-weight: 500;
+          color: var(--color-gray-100);
+
+          &.BLOCKED {
+            background-image: url(/img/seat-unselect.svg);
+            pointer-events: none;
+          }
+          &.OCCUPIED {
+            background-image: url(/img/seat-unselect.svg);
+            pointer-events: none;
+          }
+        }
+
+        .facility {
+          display: none;
+          pointer-events: none;
+          &.toilet {
+            display: block;
+            background-image: url("/img/icon-seat-toilet.svg");
+            background-position: center;
+            width: 4rem;
+            height: 4rem;
+            background-repeat: no-repeat;
+          }
+
+          &.galley {
+            display: block;
+            background-image: url("/img/icon-seat-galley.svg");
+            background-position: center;
+            width: 4rem;
+            height: 4rem;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) and (max-width: 767px) {
+  .seat-box {
+    justify-content: center;
+
+    .wing-table-box {
+      .wing-table {
+        .wing-seat {
+          height: 3rem;
+          line-height: 3rem;
+        }
+      }
+
+      &.right {
+        // padding-left: 1rem;
+        .wing-table .wing-seat {
+          .wing-td {
+            background-color: rgb(255, 171, 171);
+            height: 3.5rem;
+            width: 4rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            margin-bottom: 1.5rem;
+          }
+
+          &.wing::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 6px;
+            background-image: url("/img/icon-seat-wing.svg");
+            background-position: center;
+            width: 3rem;
+            height: 3rem;
+            background-repeat: no-repeat;
+          }
+
+          &.exit::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 6px;
+            width: 3rem;
+            height: 3rem;
+            background-image: url("/img/icon-seat-exit.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+      }
+
+      &.left {
+        padding-right: 1rem;
+        .wing-table .wing-seat {
+          .wing-td {
+            height: 3.5rem;
+            width: 4rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            margin-bottom: 1.5rem;
+          }
+
+          &.wing::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            background-image: url("/img/icon-seat-wing.svg");
+            background-position: center;
+            width: 3rem;
+            height: 3rem;
+            background-repeat: no-repeat;
+          }
+
+          &.exit::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 3rem;
+            height: 3rem;
+            background-image: url("/img/icon-seat-exit.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+      }
+    }
+
+    .section {
+      .seat-map {
+        .seat-map-tr {
+          display: flex;
+          gap: 1rem;
+        }
+
+        .seat-map-tr {
+          margin-bottom: 1.5rem;
+        }
+
+        .seat_table {
+          width: 3.5rem;
+          height: 3.5rem;
+
+          .seat {
+            background-image: url("/img/seat.svg");
+            background-repeat: no-repeat;
+            width: 3.5rem;
+            height: 3.5rem;
+            background-size: 3.5rem;
+            display: block;
+            text-align: center;
+            font-size: var(--title-medium);
+            font-weight: 500;
+            color: var(--color-gray-100);
+          }
+
+          .facility {
+            &.toilet,
+            &.galley {
+              width: 3rem;
+              height: 3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

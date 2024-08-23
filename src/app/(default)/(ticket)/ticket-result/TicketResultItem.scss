@@ -1,0 +1,359 @@
+.ticket-item {
+  width: 100%;
+  padding: 3rem 3.5rem;
+  border-radius: 2rem;
+  background-color: var(--color-white);
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  transition: all var(--transition-duration);
+
+  .ticket-itinerary {
+    width: 75%;
+    flex-grow: 1;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    .route {
+      display: flex;
+
+      .airline-info {
+        width: 27%;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .airline {
+          display: flex;
+          gap: 1.2rem;
+          align-items: flex-start;
+
+          .airline-logo.img-box {
+            flex-shrink: 0;
+            width: 2rem;
+            height: 2rem;
+          }
+
+          .airline-title {
+            .main-airline {
+              font-size: var(--title-medium);
+              font-weight: 500;
+              white-space: nowrap;
+              line-height: 2rem;
+            }
+
+            .codeshare-airline {
+              font-size: var(--title-small);
+              font-weight: 400;
+              color: var(--color-gray-90);
+              word-break: keep-all;
+            }
+          }
+        }
+
+        .transfer-option {
+          margin-top: 0.5rem;
+          margin-left: 3.2rem;
+
+          & span {
+            color: var(--color-gray-100);
+            font-size: var(--title-small);
+          }
+        }
+      }
+
+      .route-info {
+        width: 50%;
+        flex-shrink: 0;
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+        padding: 0 1rem;
+        box-sizing: border-box;
+
+        & .airport {
+          text-align: center;
+          display: flex;
+          gap: 1rem;
+
+          & .time {
+            & .time-detail {
+              font-size: var(--title-big);
+              font-weight: 700;
+              margin-bottom: 0.3rem;
+              line-height: 2rem;
+            }
+
+            & .airport-code {
+              font-size: var(--title-small);
+              font-weight: 500;
+              color: var(--color-gray-90);
+            }
+          }
+
+          & .day-difference {
+            &.is-active {
+              visibility: unset;
+            }
+
+            &.disabled {
+              visibility: hidden;
+            }
+          }
+        }
+
+        & .to {
+          flex-grow: 1;
+
+          .from-to {
+            text-align: center;
+
+            & .arrow {
+              position: relative;
+              width: 100%;
+              height: 0.1rem;
+              border-bottom: 0.1rem solid var(--color-gray-90);
+              box-sizing: border-box;
+              margin-top: 0.95rem;
+              margin-bottom: 1.25rem;
+
+              &::after {
+                content: "";
+                display: block;
+                width: 0.8rem;
+
+                border-top: 0.1rem solid var(--color-gray-90);
+                position: absolute;
+                top: 0rem;
+                right: -0.13rem;
+                transform: translateY(-300%) rotate(45deg);
+              }
+            }
+
+            & .duration {
+              font-size: var(--title-small);
+              font-weight: 500;
+              color: var(--color-gray-90);
+
+              & > span {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      .way-type {
+        width: 22%;
+        padding-right: 2rem;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: center;
+
+        font-size: var(--title-small);
+        font-weight: 500;
+
+        .stop-number {
+          color: var(--color-gray-100);
+        }
+
+        .stop-time {
+          color: var(--color-gray-90);
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  .ticket-pricing {
+    width: 25%;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .remaining-seats {
+      flex-shrink: 0;
+      font-size: var(--title-medium);
+      font-weight: 500;
+      color: var(--color-blue-100);
+    }
+
+    .price-per-adults {
+      flex-shrink: 0;
+      flex-grow: 1;
+      margin-left: auto;
+      text-align: right;
+
+      & .price {
+        margin-bottom: 0.5rem;
+        font-size: var(--title-medium);
+        font-weight: 400;
+        color: var(--color-primary);
+
+        & span {
+          font-size: var(--title-extra);
+          font-weight: 700;
+          color: var(--color-primary);
+        }
+      }
+
+      & .price-info {
+        font-size: var(--title-small);
+        font-weight: 400;
+        color: var(--color-gray-90);
+      }
+    }
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: inset 0 0 0 0.2rem var(--color-primary);
+  }
+}
+
+@media (max-width: 1023px) {
+  .ticket-item {
+    padding: 2rem 3rem;
+    display: block;
+
+    .ticket-itinerary {
+      width: 100%;
+      gap: 2rem;
+
+      .route {
+        .route-info {
+          padding: 0 2rem;
+        }
+
+        .way-type {
+          padding: unset;
+          padding-left: 2rem;
+        }
+      }
+    }
+
+    .ticket-pricing {
+      width: 100%;
+      margin-top: 3rem;
+      align-items: flex-start;
+      justify-content: flex-end;
+
+      .remaining-seats {
+        line-height: 3rem;
+      }
+
+      .price-per-adults {
+        flex-grow: 0;
+        margin-left: unset;
+
+        & span {
+          line-height: 3rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .ticket-item {
+    padding: 2rem 3rem;
+    gap: 2rem;
+
+    .ticket-itinerary {
+      .route {
+        display: block;
+
+        .airline-info {
+          width: 100%;
+          margin-bottom: 2rem;
+          flex-direction: row;
+          justify-content: unset;
+
+          .transfer-option {
+            margin: unset;
+            margin-left: auto;
+            display: flex;
+            align-items: flex-end;
+          }
+        }
+
+        .route-info {
+          padding: unset;
+          width: 100%;
+          justify-content: space-around;
+          margin-bottom: 2rem;
+
+          & .airport {
+            text-align: center;
+            display: flex;
+            gap: 1rem;
+
+            & .time {
+              order: 1;
+
+              & .time-detail {
+                font-size: var(--title-big);
+                font-weight: 700;
+                margin-bottom: 0.3rem;
+                line-height: 2rem;
+              }
+
+              & .airport-code {
+                font-size: var(--title-small);
+                font-weight: 500;
+                color: var(--color-gray-90);
+              }
+            }
+
+            & .day-difference {
+              order: 0;
+
+              &.is-active {
+                display: unset;
+              }
+
+              &.disabled {
+                display: none;
+                visibility: unset;
+              }
+            }
+          }
+
+          & .to {
+            .from-to {
+              & .duration {
+                display: flex;
+                gap: 0.5rem;
+                justify-content: center;
+                align-items: center;
+                white-space: nowrap;
+
+                & > span {
+                  display: unset;
+                }
+              }
+            }
+          }
+        }
+
+        .way-type {
+          display: none;
+        }
+      }
+    }
+
+    .ticket-pricing {
+      margin-top: 2rem;
+    }
+  }
+}

@@ -61,7 +61,8 @@
     gap: var(--title-min);
 
     input {
-      display: none;
+      width: 0;
+      border: none;
 
       &:checked + label {
         background: var(--color-primary);
@@ -112,7 +113,6 @@
         white-space: nowrap;
       }
       .date {
-        letter-spacing: 0.02em;
         position: relative;
         padding-right: var(--title-max);
         &::after {
@@ -157,6 +157,7 @@
           align-items: center;
           padding-right: calc(var(--title-extra) * 3);
           font-weight: 500;
+          justify-content: space-between;
 
           &::before,
           &::after {
@@ -200,17 +201,22 @@
           gap: calc(var(--title-small) / 2);
         }
 
-        img {
-          width: var(--title-max);
+        .img-box {
+          width: calc(var(--title-max) * 1.1);
           aspect-ratio: 1/1;
-          margin: auto;
+
+          img {
+            object-fit: scale-down;
+          }
         }
 
         .tag-box {
           font-size: var(--title-small);
           font-weight: normal;
           display: flex;
+          flex-wrap: wrap;
           gap: var(--title-min);
+          max-width: 32rem;
 
           span {
             background: var(--color-gray-30) url(./) no-repeat center left
@@ -221,11 +227,19 @@
 
             &.bags {
               background-image: url(/img/icon-bags.svg);
-              background-position: center left var(--title-medium);
+              background-position: center left calc(var(--title-small) - 1px);
               letter-spacing: 0.06em;
             }
             &.class {
               background-image: url(/img/icon-class.svg);
+            }
+            &.aircraft {
+              background-image: url(/img/icon-craft.svg);
+              letter-spacing: 0.02em;
+            }
+            &.operating {
+              background-image: url(/img/icon-warning-darkgray.svg);
+              background-color: var(--color-primary-30);
             }
           }
         }
@@ -319,7 +333,7 @@
       }
       table {
         width: 100%;
-        font-size: var(--title-small);
+        font-size: var(--title-medium);
 
         caption {
           display: none;
@@ -476,7 +490,9 @@
           }
 
           .input-flex {
-            display: none;
+            height: 0;
+            overflow: hidden;
+            padding: 0;
           }
         }
       }
@@ -581,6 +597,10 @@
           }
           &.right-box {
             padding-left: calc(var(--title-extra) * 1.5);
+          }
+
+          .tag-box {
+            max-width: none;
           }
         }
       }

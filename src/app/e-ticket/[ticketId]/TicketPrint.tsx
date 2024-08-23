@@ -1,12 +1,22 @@
 "use client";
+
 import { modalState } from "@/atoms/atoms";
 import Button from "@/components/Button/Button";
-import { OrderItem } from "@/types";
+import Ticket from "@/components/Ticket/Ticket";
+import { AirportData, CodeState, OrderItem } from "@/types";
 import React, { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { useSetRecoilState } from "recoil";
 
-const TicketPrint = ({ data }: { data: OrderItem }) => {
+const TicketPrint = ({
+  data,
+  code,
+  passengerId,
+}: {
+  data: OrderItem;
+  code: CodeState<AirportData>;
+  passengerId: number;
+}) => {
   const componentRef = useRef<HTMLInputElement>(null);
   const setModal = useSetRecoilState(modalState);
 
@@ -30,8 +40,7 @@ const TicketPrint = ({ data }: { data: OrderItem }) => {
         <Button onClick={() => handlePrint()}>E-Ticket 저장</Button>
       </div>
       <div ref={componentRef}>
-        <div>탑승자명</div>
-        <div className="test">{data.passengers[0].nameEng}</div>
+        <Ticket data={data} code={code} passengerId={passengerId} />
       </div>
     </>
   );
