@@ -82,9 +82,8 @@ const TicketResult = async ({ searchParams }: IPageProps) => {
   const { code: airline } = await fetchCodes<AirlineData>();
   const queryString = new URLSearchParams(searchParams).toString();
   // const data = await fetchTicketSearch(queryString);
-  // console.log(await fetchTicketSearch(queryString));
-
-  const data: OffersSearchData[] = [
+  
+  const data1: OffersSearchData[] = [
     {
       type: "flight-offer",
       id: "1",
@@ -64456,10 +64455,17173 @@ const TicketResult = async ({ searchParams }: IPageProps) => {
     },
   ];
 
+  const data2: OffersSearchData[] = [
+    {
+      type: "flight-offer",
+      id: "1",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:50:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-24T11:20:00",
+              },
+              carrierCode: "YP",
+              number: "731",
+              aircraft: {
+                code: "789",
+              },
+              operating: {
+                carrierCode: "YP",
+              },
+              duration: "PT2H30M",
+              id: "132",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "126100.00",
+        base: "80300.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "126100.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["HR"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "126100.00",
+            base: "80300.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "132",
+              cabin: "ECONOMY",
+              fareBasis: "KOKA",
+              class: "K",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "2",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 8,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T10:35:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T12:55:00",
+              },
+              carrierCode: "7C",
+              number: "1106",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "7C",
+              },
+              duration: "PT2H20M",
+              id: "81",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "127500.00",
+        base: "65000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "127500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["7C"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "127500.00",
+            base: "65000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "81",
+              cabin: "ECONOMY",
+              fareBasis: "LV3OKR",
+              class: "L",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "3",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T15:05:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T17:30:00",
+              },
+              carrierCode: "7C",
+              number: "1104",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "7C",
+              },
+              duration: "PT2H25M",
+              id: "112",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "127500.00",
+        base: "65000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "127500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["7C"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "127500.00",
+            base: "65000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "112",
+              cabin: "ECONOMY",
+              fareBasis: "LV3OKR",
+              class: "L",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "4",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H35M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T13:20:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T15:55:00",
+              },
+              carrierCode: "7C",
+              number: "1114",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "7C",
+              },
+              duration: "PT2H35M",
+              id: "152",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "127500.00",
+        base: "65000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "127500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["7C"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "127500.00",
+            base: "65000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "152",
+              cabin: "ECONOMY",
+              fareBasis: "LV3OKR",
+              class: "L",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "5",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 7,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:30:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T11:00:00",
+              },
+              carrierCode: "7C",
+              number: "1102",
+              aircraft: {
+                code: "7M8",
+              },
+              operating: {
+                carrierCode: "7C",
+              },
+              duration: "PT2H30M",
+              id: "130",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "127500.00",
+        base: "65000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "127500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["7C"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "127500.00",
+            base: "65000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "130",
+              cabin: "ECONOMY",
+              fareBasis: "LV3OKR",
+              class: "L",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "6",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 2,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T07:45:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-24T10:15:00",
+              },
+              carrierCode: "TW",
+              number: "211",
+              aircraft: {
+                code: "737",
+              },
+              operating: {
+                carrierCode: "TW",
+              },
+              duration: "PT2H30M",
+              id: "129",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "129900.00",
+        base: "80000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "129900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["TW"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "129900.00",
+            base: "80000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "129",
+              cabin: "ECONOMY",
+              fareBasis: "HKJ",
+              class: "H",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "7",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 6,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T10:20:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-24T12:50:00",
+              },
+              carrierCode: "TW",
+              number: "213",
+              aircraft: {
+                code: "737",
+              },
+              operating: {
+                carrierCode: "TW",
+              },
+              duration: "PT2H30M",
+              id: "135",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "129900.00",
+        base: "80000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "129900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["TW"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "129900.00",
+            base: "80000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "135",
+              cabin: "ECONOMY",
+              fareBasis: "HKJ",
+              class: "H",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "8",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-23",
+      lastTicketingDateTime: "2024-08-23",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T10:35:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T12:55:00",
+              },
+              carrierCode: "H1",
+              number: "9805",
+              aircraft: {
+                code: "737",
+              },
+              operating: {
+                carrierCode: "7C",
+              },
+              duration: "PT2H20M",
+              id: "82",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "148100.00",
+        base: "95000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "148100.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["HR"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "148100.00",
+            base: "95000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "82",
+              cabin: "ECONOMY",
+              fareBasis: "LOW7C",
+              class: "L",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "9",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-23",
+      lastTicketingDateTime: "2024-08-23",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T15:05:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T17:30:00",
+              },
+              carrierCode: "H1",
+              number: "9803",
+              aircraft: {
+                code: "737",
+              },
+              operating: {
+                carrierCode: "7C",
+              },
+              duration: "PT2H25M",
+              id: "113",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "148100.00",
+        base: "95000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "148100.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["HR"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "148100.00",
+            base: "95000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "113",
+              cabin: "ECONOMY",
+              fareBasis: "LOW7C",
+              class: "L",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "10",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-23",
+      lastTicketingDateTime: "2024-08-23",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:30:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T11:00:00",
+              },
+              carrierCode: "H1",
+              number: "9801",
+              aircraft: {
+                code: "737",
+              },
+              operating: {
+                carrierCode: "7C",
+              },
+              duration: "PT2H30M",
+              id: "131",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "148100.00",
+        base: "95000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "148100.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["HR"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "148100.00",
+            base: "95000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "131",
+              cabin: "ECONOMY",
+              fareBasis: "LOW7C",
+              class: "L",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "11",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-23",
+      lastTicketingDateTime: "2024-08-23",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H35M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T13:20:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T15:55:00",
+              },
+              carrierCode: "H1",
+              number: "9768",
+              aircraft: {
+                code: "737",
+              },
+              operating: {
+                carrierCode: "7C",
+              },
+              duration: "PT2H35M",
+              id: "153",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "148100.00",
+        base: "95000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "148100.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["HR"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "148100.00",
+            base: "95000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "153",
+              cabin: "ECONOMY",
+              fareBasis: "LOW7C",
+              class: "L",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "12",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 5,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T09:00:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T11:20:00",
+              },
+              carrierCode: "OZ",
+              number: "102",
+              aircraft: {
+                code: "388",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H20M",
+              id: "77",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "195500.00",
+        base: "140000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "195500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "195500.00",
+            base: "140000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "77",
+              cabin: "ECONOMY",
+              fareBasis: "VHOKJ0Z",
+              class: "V",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "13",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT2H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T12:15:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T14:40:00",
+              },
+              carrierCode: "OZ",
+              number: "104",
+              aircraft: {
+                code: "77L",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H25M",
+              id: "108",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "195500.00",
+        base: "140000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "195500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "195500.00",
+            base: "140000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "108",
+              cabin: "ECONOMY",
+              fareBasis: "VHOKJ0Z",
+              class: "V",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "14",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T16:00:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T18:30:00",
+              },
+              carrierCode: "OZ",
+              number: "106",
+              aircraft: {
+                code: "77L",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H30M",
+              id: "136",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "195500.00",
+        base: "140000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "195500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "195500.00",
+            base: "140000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "136",
+              cabin: "ECONOMY",
+              fareBasis: "VHOKJ0Z",
+              class: "V",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "15",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 1,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T18:30:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T21:00:00",
+              },
+              carrierCode: "OZ",
+              number: "108",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H30M",
+              id: "138",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "195500.00",
+        base: "140000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "195500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "195500.00",
+            base: "140000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "138",
+              cabin: "ECONOMY",
+              fareBasis: "VHOKJ0Z",
+              class: "V",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "16",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T13:00:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T15:25:00",
+              },
+              carrierCode: "KE",
+              number: "711",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H25M",
+              id: "110",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "237200.00",
+        base: "180000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "237200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "237200.00",
+            base: "180000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "110",
+              cabin: "ECONOMY",
+              fareBasis: "UHEV0FKJ",
+              class: "U",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "17",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T10:10:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T12:40:00",
+              },
+              carrierCode: "KE",
+              number: "703",
+              aircraft: {
+                code: "781",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H30M",
+              id: "133",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "237200.00",
+        base: "180000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "237200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "237200.00",
+            base: "180000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "133",
+              cabin: "ECONOMY",
+              fareBasis: "UHEV0FKJ",
+              class: "U",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "18",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 8,
+      itineraries: [
+        {
+          duration: "PT2H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T16:05:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T18:30:00",
+              },
+              carrierCode: "7C",
+              number: "1108",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "7C",
+              },
+              duration: "PT2H25M",
+              id: "114",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "252500.00",
+        base: "190000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "252500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["7C"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "252500.00",
+            base: "190000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "114",
+              cabin: "ECONOMY",
+              fareBasis: "MV3OKR",
+              class: "M",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "19",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-23",
+      lastTicketingDateTime: "2024-08-23",
+      numberOfBookableSeats: 8,
+      itineraries: [
+        {
+          duration: "PT2H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T16:05:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T18:30:00",
+              },
+              carrierCode: "H1",
+              number: "9806",
+              aircraft: {
+                code: "737",
+              },
+              operating: {
+                carrierCode: "7C",
+              },
+              duration: "PT2H25M",
+              id: "115",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "264100.00",
+        base: "204300.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "264100.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["HR"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "264100.00",
+            base: "204300.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "115",
+              cabin: "ECONOMY",
+              fareBasis: "VOW7C",
+              class: "V",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "20",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 7,
+      itineraries: [
+        {
+          duration: "PT2H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T17:40:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T20:05:00",
+              },
+              carrierCode: "ET",
+              number: "672",
+              aircraft: {
+                code: "788",
+              },
+              operating: {
+                carrierCode: "ET",
+              },
+              duration: "PT2H25M",
+              id: "116",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "294100.00",
+        base: "198200.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "294100.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["ET"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "294100.00",
+            base: "198200.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "116",
+              cabin: "ECONOMY",
+              fareBasis: "HOWKR",
+              class: "H",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "21",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T07:40:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                at: "2024-08-24T09:50:00",
+              },
+              carrierCode: "NH",
+              number: "862",
+              aircraft: {
+                code: "788",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT2H10M",
+              id: "31",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "316300.00",
+        base: "264000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "316300.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "316300.00",
+            base: "264000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "31",
+              cabin: "ECONOMY",
+              fareBasis: "HFA4WDJH",
+              brandedFare: "ECOSTD",
+              brandedFareLabel: "ECO I STANDARD 2F",
+              class: "H",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "22",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T18:35:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T21:05:00",
+              },
+              carrierCode: "KE",
+              number: "705",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H30M",
+              id: "140",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "333200.00",
+        base: "276000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "333200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "333200.00",
+            base: "276000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "140",
+              cabin: "ECONOMY",
+              fareBasis: "EHEV0RKN",
+              class: "E",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "23",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 1,
+      itineraries: [
+        {
+          duration: "PT2H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T07:50:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T10:00:00",
+              },
+              carrierCode: "JL",
+              number: "90",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT2H10M",
+              id: "33",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "339000.00",
+        base: "288600.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "339000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "339000.00",
+            base: "288600.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "33",
+              cabin: "ECONOMY",
+              fareBasis: "MNN0OGDE",
+              class: "M",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "24",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 1,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T21:10:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T23:30:00",
+              },
+              carrierCode: "OZ",
+              number: "178",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H20M",
+              id: "91",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "343500.00",
+        base: "288000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "343500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "343500.00",
+            base: "288000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "91",
+              cabin: "ECONOMY",
+              fareBasis: "QHOKJ",
+              class: "Q",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "25",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 1,
+      itineraries: [
+        {
+          duration: "PT2H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T12:40:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                at: "2024-08-24T14:55:00",
+              },
+              carrierCode: "NH",
+              number: "864",
+              aircraft: {
+                code: "763",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT2H15M",
+              id: "52",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "371300.00",
+        base: "319000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "371300.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "371300.00",
+            base: "319000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "52",
+              cabin: "ECONOMY",
+              fareBasis: "MFA4WDJM",
+              brandedFare: "ECOSTD",
+              brandedFareLabel: "ECO I STANDARD 2F",
+              class: "M",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "26",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 6,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T17:25:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T19:45:00",
+              },
+              carrierCode: "KE",
+              number: "713",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H20M",
+              id: "84",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "381200.00",
+        base: "324000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "381200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "381200.00",
+            base: "324000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "84",
+              cabin: "ECONOMY",
+              fareBasis: "SHE00RKN",
+              class: "S",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "27",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT4H35M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "D",
+                at: "2024-08-24T07:00:00",
+              },
+              arrival: {
+                iataCode: "PUS",
+                terminal: "D",
+                at: "2024-08-24T08:05:00",
+              },
+              carrierCode: "KE",
+              number: "1803",
+              aircraft: {
+                code: "73J",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H5M",
+              id: "154",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PUS",
+                terminal: "I",
+                at: "2024-08-24T09:20:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T11:35:00",
+              },
+              carrierCode: "KE",
+              number: "2129",
+              aircraft: {
+                code: "73J",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H15M",
+              id: "155",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "381900.00",
+        base: "325700.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "381900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "381900.00",
+            base: "325700.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "154",
+              cabin: "ECONOMY",
+              fareBasis: "YKE",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "155",
+              cabin: "ECONOMY",
+              fareBasis: "EHEV0RKJ",
+              class: "E",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "28",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT16H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "D",
+                at: "2024-08-24T19:25:00",
+              },
+              arrival: {
+                iataCode: "PUS",
+                terminal: "D",
+                at: "2024-08-24T20:30:00",
+              },
+              carrierCode: "KE",
+              number: "1831",
+              aircraft: {
+                code: "223",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H5M",
+              id: "50",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PUS",
+                terminal: "I",
+                at: "2024-08-25T09:20:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-25T11:35:00",
+              },
+              carrierCode: "KE",
+              number: "2129",
+              aircraft: {
+                code: "73J",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H15M",
+              id: "51",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "393900.00",
+        base: "337700.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "393900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "393900.00",
+            base: "337700.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "50",
+              cabin: "ECONOMY",
+              fareBasis: "YKE",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "51",
+              cabin: "ECONOMY",
+              fareBasis: "HKE00RKJ",
+              class: "H",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "29",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 6,
+      itineraries: [
+        {
+          duration: "PT15H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "D",
+                at: "2024-08-24T18:40:00",
+              },
+              arrival: {
+                iataCode: "PUS",
+                terminal: "D",
+                at: "2024-08-24T19:45:00",
+              },
+              carrierCode: "OZ",
+              number: "8823",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "BX",
+              },
+              duration: "PT1H5M",
+              id: "102",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PUS",
+                terminal: "I",
+                at: "2024-08-25T07:50:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-25T10:00:00",
+              },
+              carrierCode: "OZ",
+              number: "9712",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "BX",
+              },
+              duration: "PT2H10M",
+              id: "103",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "397500.00",
+        base: "343000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "397500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "397500.00",
+            base: "343000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "102",
+              cabin: "ECONOMY",
+              fareBasis: "YOZ",
+              class: "Y",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+            {
+              segmentId: "103",
+              cabin: "ECONOMY",
+              fareBasis: "EKOKJBX",
+              class: "E",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "30",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 6,
+      itineraries: [
+        {
+          duration: "PT17H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "D",
+                at: "2024-08-24T16:40:00",
+              },
+              arrival: {
+                iataCode: "PUS",
+                terminal: "D",
+                at: "2024-08-24T17:45:00",
+              },
+              carrierCode: "OZ",
+              number: "8821",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "BX",
+              },
+              duration: "PT1H5M",
+              id: "104",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PUS",
+                terminal: "I",
+                at: "2024-08-25T07:50:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-25T10:00:00",
+              },
+              carrierCode: "OZ",
+              number: "9712",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "BX",
+              },
+              duration: "PT2H10M",
+              id: "105",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "397500.00",
+        base: "343000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "397500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "397500.00",
+            base: "343000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "104",
+              cabin: "ECONOMY",
+              fareBasis: "YOZ",
+              class: "Y",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+            {
+              segmentId: "105",
+              cabin: "ECONOMY",
+              fareBasis: "EKOKJBX",
+              class: "E",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "31",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 6,
+      itineraries: [
+        {
+          duration: "PT18H40M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "D",
+                at: "2024-08-24T15:20:00",
+              },
+              arrival: {
+                iataCode: "PUS",
+                terminal: "D",
+                at: "2024-08-24T16:30:00",
+              },
+              carrierCode: "OZ",
+              number: "8819",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "BX",
+              },
+              duration: "PT1H10M",
+              id: "178",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PUS",
+                terminal: "I",
+                at: "2024-08-25T07:50:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-25T10:00:00",
+              },
+              carrierCode: "OZ",
+              number: "9712",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "BX",
+              },
+              duration: "PT2H10M",
+              id: "179",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "397500.00",
+        base: "343000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "397500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "397500.00",
+            base: "343000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "178",
+              cabin: "ECONOMY",
+              fareBasis: "YOZ",
+              class: "Y",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+            {
+              segmentId: "179",
+              cabin: "ECONOMY",
+              fareBasis: "EKOKJBX",
+              class: "E",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "32",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 6,
+      itineraries: [
+        {
+          duration: "PT21H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "D",
+                at: "2024-08-24T12:40:00",
+              },
+              arrival: {
+                iataCode: "PUS",
+                terminal: "D",
+                at: "2024-08-24T13:40:00",
+              },
+              carrierCode: "OZ",
+              number: "8813",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "BX",
+              },
+              duration: "PT1H",
+              id: "106",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PUS",
+                terminal: "I",
+                at: "2024-08-25T07:50:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-25T10:00:00",
+              },
+              carrierCode: "OZ",
+              number: "9712",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "BX",
+              },
+              duration: "PT2H10M",
+              id: "107",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "397500.00",
+        base: "343000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "397500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "397500.00",
+            base: "343000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "106",
+              cabin: "ECONOMY",
+              fareBasis: "YOZ",
+              class: "Y",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+            {
+              segmentId: "107",
+              cabin: "ECONOMY",
+              fareBasis: "EKOKJBX",
+              class: "E",
+              includedCheckedBags: {
+                weight: 15,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "33",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H5M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T08:40:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T10:45:00",
+              },
+              carrierCode: "OZ",
+              number: "1085",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H5M",
+              id: "21",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "402000.00",
+        base: "346500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "402000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "402000.00",
+            base: "346500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "21",
+              cabin: "ECONOMY",
+              fareBasis: "MHOKJ",
+              class: "M",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "34",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H5M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T15:45:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T17:50:00",
+              },
+              carrierCode: "OZ",
+              number: "1045",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H5M",
+              id: "23",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "402000.00",
+        base: "346500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "402000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "402000.00",
+            base: "346500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "23",
+              cabin: "ECONOMY",
+              fareBasis: "MHOKJ",
+              class: "M",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "35",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T19:50:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T22:00:00",
+              },
+              carrierCode: "OZ",
+              number: "1065",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H10M",
+              id: "34",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "402000.00",
+        base: "346500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "402000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "402000.00",
+            base: "346500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "34",
+              cabin: "ECONOMY",
+              fareBasis: "MHOKJ",
+              class: "M",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "36",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 7,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T20:30:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T22:50:00",
+              },
+              carrierCode: "KE",
+              number: "719",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H20M",
+              id: "89",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "404700.00",
+        base: "347500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "404700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "404700.00",
+            base: "347500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "89",
+              cabin: "ECONOMY",
+              fareBasis: "MHE00RKB",
+              class: "M",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "37",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T09:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T11:20:00",
+              },
+              carrierCode: "KE",
+              number: "2101",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H20M",
+              id: "78",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "414700.00",
+        base: "357500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "414700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "414700.00",
+            base: "357500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "78",
+              cabin: "ECONOMY",
+              fareBasis: "BHE00RKA",
+              class: "B",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "38",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T18:40:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T21:00:00",
+              },
+              carrierCode: "KE",
+              number: "2105",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H20M",
+              id: "86",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "414700.00",
+        base: "357500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "414700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "414700.00",
+            base: "357500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "86",
+              cabin: "ECONOMY",
+              fareBasis: "BHE00RKA",
+              class: "B",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "39",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T09:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T11:20:00",
+              },
+              carrierCode: "JL",
+              number: "5234",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H20M",
+              id: "79",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "418900.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "418900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "418900.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "79",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "40",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T18:40:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T21:00:00",
+              },
+              carrierCode: "JL",
+              number: "5244",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H20M",
+              id: "87",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "418900.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "418900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "418900.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "87",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "41",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T13:00:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T15:25:00",
+              },
+              carrierCode: "JL",
+              number: "5250",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H25M",
+              id: "111",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "418900.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "418900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "418900.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "111",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "42",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T10:10:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T12:40:00",
+              },
+              carrierCode: "JL",
+              number: "5202",
+              aircraft: {
+                code: "781",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H30M",
+              id: "134",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "418900.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "418900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "418900.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "134",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "43",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T18:35:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T21:05:00",
+              },
+              carrierCode: "JL",
+              number: "5206",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H30M",
+              id: "141",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "418900.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "418900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "418900.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "141",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "44",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 6,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T17:25:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T19:45:00",
+              },
+              carrierCode: "JL",
+              number: "5252",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H20M",
+              id: "85",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "418900.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "418900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "418900.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "85",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "45",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 6,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T20:30:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T22:50:00",
+              },
+              carrierCode: "JL",
+              number: "5256",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H20M",
+              id: "90",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "418900.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "418900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "418900.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "90",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "46",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT2H5M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T08:40:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T10:45:00",
+              },
+              carrierCode: "NH",
+              number: "6968",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H5M",
+              id: "22",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "420800.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "420800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "420800.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "22",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "47",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT2H5M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T15:45:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T17:50:00",
+              },
+              carrierCode: "NH",
+              number: "6970",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H5M",
+              id: "24",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "420800.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "420800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "420800.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "24",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "48",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT2H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T19:50:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T22:00:00",
+              },
+              carrierCode: "NH",
+              number: "6984",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H10M",
+              id: "35",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "420800.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "420800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "420800.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "35",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "49",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T09:00:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T11:20:00",
+              },
+              carrierCode: "NH",
+              number: "6972",
+              aircraft: {
+                code: "388",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H20M",
+              id: "80",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "420800.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "420800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "420800.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "80",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "50",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT2H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T12:15:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T14:40:00",
+              },
+              carrierCode: "NH",
+              number: "6974",
+              aircraft: {
+                code: "77L",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H25M",
+              id: "109",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "420800.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "420800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "420800.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "109",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "51",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T16:00:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T18:30:00",
+              },
+              carrierCode: "NH",
+              number: "6976",
+              aircraft: {
+                code: "77L",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H30M",
+              id: "137",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "420800.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "420800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "420800.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "137",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "52",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT2H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T18:30:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T21:00:00",
+              },
+              carrierCode: "NH",
+              number: "6978",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT2H30M",
+              id: "139",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "420800.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "420800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "420800.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "139",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "53",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 8,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T19:55:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                at: "2024-08-24T22:15:00",
+              },
+              carrierCode: "NH",
+              number: "868",
+              aircraft: {
+                code: "763",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT2H20M",
+              id: "88",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "420800.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "420800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "420800.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "88",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WDOY",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "54",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT5H50M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "D",
+                at: "2024-08-24T12:25:00",
+              },
+              arrival: {
+                iataCode: "PUS",
+                terminal: "D",
+                at: "2024-08-24T13:30:00",
+              },
+              carrierCode: "KE",
+              number: "1815",
+              aircraft: {
+                code: "223",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H5M",
+              id: "194",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PUS",
+                terminal: "I",
+                at: "2024-08-24T16:00:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T18:15:00",
+              },
+              carrierCode: "KE",
+              number: "2131",
+              aircraft: {
+                code: "73J",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H15M",
+              id: "195",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "424700.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "424700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "424700.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "194",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "195",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "55",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT7H50M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "D",
+                at: "2024-08-24T10:25:00",
+              },
+              arrival: {
+                iataCode: "PUS",
+                terminal: "D",
+                at: "2024-08-24T11:30:00",
+              },
+              carrierCode: "KE",
+              number: "1811",
+              aircraft: {
+                code: "73J",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H5M",
+              id: "204",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PUS",
+                terminal: "I",
+                at: "2024-08-24T16:00:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T18:15:00",
+              },
+              carrierCode: "KE",
+              number: "2131",
+              aircraft: {
+                code: "73J",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H15M",
+              id: "205",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "424700.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "424700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "424700.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "204",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "205",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "56",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT9H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "D",
+                at: "2024-08-24T09:00:00",
+              },
+              arrival: {
+                iataCode: "PUS",
+                terminal: "D",
+                at: "2024-08-24T10:05:00",
+              },
+              carrierCode: "KE",
+              number: "1809",
+              aircraft: {
+                code: "223",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H5M",
+              id: "63",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PUS",
+                terminal: "I",
+                at: "2024-08-24T16:00:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T18:15:00",
+              },
+              carrierCode: "KE",
+              number: "2131",
+              aircraft: {
+                code: "73J",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H15M",
+              id: "64",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "424700.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "424700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "424700.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "63",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "64",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "57",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT10H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "D",
+                at: "2024-08-24T08:05:00",
+              },
+              arrival: {
+                iataCode: "PUS",
+                terminal: "D",
+                at: "2024-08-24T09:10:00",
+              },
+              carrierCode: "KE",
+              number: "1807",
+              aircraft: {
+                code: "223",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H5M",
+              id: "48",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PUS",
+                terminal: "I",
+                at: "2024-08-24T16:00:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T18:15:00",
+              },
+              carrierCode: "KE",
+              number: "2131",
+              aircraft: {
+                code: "73J",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H15M",
+              id: "49",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "424700.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "424700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "424700.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "48",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "49",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "58",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT11H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "D",
+                at: "2024-08-24T07:00:00",
+              },
+              arrival: {
+                iataCode: "PUS",
+                terminal: "D",
+                at: "2024-08-24T08:05:00",
+              },
+              carrierCode: "KE",
+              number: "1803",
+              aircraft: {
+                code: "73J",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H5M",
+              id: "67",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PUS",
+                terminal: "I",
+                at: "2024-08-24T16:00:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T18:15:00",
+              },
+              carrierCode: "KE",
+              number: "2131",
+              aircraft: {
+                code: "73J",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H15M",
+              id: "68",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "424700.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "424700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "424700.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "67",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "68",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "59",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 2,
+      itineraries: [
+        {
+          duration: "PT2H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T16:10:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T18:30:00",
+              },
+              carrierCode: "KE",
+              number: "2103",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H20M",
+              id: "83",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "425700.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "425700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "425700.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "83",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "60",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT5H50M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T16:30:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T18:25:00",
+              },
+              carrierCode: "JL",
+              number: "5150",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H55M",
+              id: "198",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T21:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T22:20:00",
+              },
+              carrierCode: "JL",
+              number: "228",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H20M",
+              id: "199",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "426400.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "426400.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "426400.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "198",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "199",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "61",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT7H5M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T15:15:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T17:15:00",
+              },
+              carrierCode: "JL",
+              number: "5212",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H",
+              id: "27",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T21:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T22:20:00",
+              },
+              carrierCode: "JL",
+              number: "228",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H20M",
+              id: "28",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "426400.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "426400.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "426400.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "27",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "28",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "62",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 2,
+      itineraries: [
+        {
+          duration: "PT6H45M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T09:35:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T11:20:00",
+              },
+              carrierCode: "JL",
+              number: "5210",
+              aircraft: {
+                code: "77W",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H45M",
+              id: "186",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T15:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T16:20:00",
+              },
+              carrierCode: "JL",
+              number: "224",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H20M",
+              id: "187",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "426400.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "426400.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "426400.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "186",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "187",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "63",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 2,
+      itineraries: [
+        {
+          duration: "PT7H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T09:00:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T10:45:00",
+              },
+              carrierCode: "JL",
+              number: "5246",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H45M",
+              id: "100",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T15:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T16:20:00",
+              },
+              carrierCode: "JL",
+              number: "224",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H20M",
+              id: "101",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "426400.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "426400.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "426400.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "100",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "101",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "64",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT5H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T09:35:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T11:20:00",
+              },
+              carrierCode: "JL",
+              number: "5210",
+              aircraft: {
+                code: "77W",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H45M",
+              id: "36",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T13:15:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T14:45:00",
+              },
+              carrierCode: "JL",
+              number: "6006",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "GK",
+              },
+              duration: "PT1H30M",
+              id: "37",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "426600.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "426600.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "426600.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "36",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "37",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "B",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "65",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT5H45M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T09:00:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T10:45:00",
+              },
+              carrierCode: "JL",
+              number: "5246",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H45M",
+              id: "182",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T13:15:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T14:45:00",
+              },
+              carrierCode: "JL",
+              number: "6006",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "GK",
+              },
+              duration: "PT1H30M",
+              id: "183",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "426600.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "426600.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "426600.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "182",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "183",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "B",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "66",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT6H",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T16:30:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T18:25:00",
+              },
+              carrierCode: "JL",
+              number: "5150",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H55M",
+              id: "3",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T20:55:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T22:30:00",
+              },
+              carrierCode: "JL",
+              number: "6036",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "GK",
+              },
+              duration: "PT1H35M",
+              id: "4",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "426600.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "426600.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "426600.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "3",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "4",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "H",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "67",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT7H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T15:15:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T17:15:00",
+              },
+              carrierCode: "JL",
+              number: "5212",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT2H",
+              id: "59",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T20:55:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T22:30:00",
+              },
+              carrierCode: "JL",
+              number: "6036",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "GK",
+              },
+              duration: "PT1H35M",
+              id: "60",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "426600.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "426600.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "426600.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "59",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "60",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "H",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "68",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT5H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T10:45:00",
+              },
+              arrival: {
+                iataCode: "NGO",
+                terminal: "1",
+                at: "2024-08-24T12:40:00",
+              },
+              carrierCode: "JL",
+              number: "5216",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H55M",
+              id: "38",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "NGO",
+                terminal: "1",
+                at: "2024-08-24T14:40:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-24T15:55:00",
+              },
+              carrierCode: "JL",
+              number: "3084",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H15M",
+              id: "39",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "427200.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "427200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "427200.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "38",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "39",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "69",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 1,
+      itineraries: [
+        {
+          duration: "PT4H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T07:55:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T09:40:00",
+              },
+              carrierCode: "NH",
+              number: "6952",
+              aircraft: {
+                code: "359",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H45M",
+              id: "92",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T11:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T12:15:00",
+              },
+              carrierCode: "NH",
+              number: "3822",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "7G",
+              },
+              duration: "PT1H15M",
+              id: "93",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "428300.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "428300.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "428300.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "92",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "93",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "70",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT4H35M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T17:40:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T19:20:00",
+              },
+              carrierCode: "NH",
+              number: "6980",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H40M",
+              id: "156",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T21:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T22:15:00",
+              },
+              carrierCode: "NH",
+              number: "98",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "EH",
+              },
+              duration: "PT1H15M",
+              id: "157",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "428300.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "428300.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "428300.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "156",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "157",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "71",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT8H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T14:05:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T15:50:00",
+              },
+              carrierCode: "NH",
+              number: "6954",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H45M",
+              id: "44",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T21:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T22:15:00",
+              },
+              carrierCode: "NH",
+              number: "98",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "EH",
+              },
+              duration: "PT1H15M",
+              id: "45",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "428300.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "428300.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "428300.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "44",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "45",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "72",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT8H50M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T08:10:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T09:50:00",
+              },
+              carrierCode: "NH",
+              number: "6958",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H40M",
+              id: "206",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T15:40:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T17:00:00",
+              },
+              carrierCode: "NH",
+              number: "992",
+              aircraft: {
+                code: "788",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT1H20M",
+              id: "207",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "428300.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "428300.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "428300.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "206",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "207",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "73",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT7H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:15:00",
+              },
+              arrival: {
+                iataCode: "NGO",
+                terminal: "1",
+                at: "2024-08-24T10:05:00",
+              },
+              carrierCode: "NH",
+              number: "6964",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H50M",
+              id: "55",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "NGO",
+                terminal: "1",
+                at: "2024-08-24T14:10:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T15:30:00",
+              },
+              carrierCode: "NH",
+              number: "494",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "EH",
+              },
+              duration: "PT1H20M",
+              id: "56",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "429100.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "429100.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "429100.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "55",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "56",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "74",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT4H35M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T17:40:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T19:20:00",
+              },
+              carrierCode: "OZ",
+              number: "1165",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H40M",
+              id: "158",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T21:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T22:15:00",
+              },
+              carrierCode: "NH",
+              number: "98",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "EH",
+              },
+              duration: "PT1H15M",
+              id: "159",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "431000.00",
+        base: "368000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "431000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "431000.00",
+            base: "368000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "158",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "159",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "K",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "75",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT8H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T14:05:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T15:50:00",
+              },
+              carrierCode: "OZ",
+              number: "114",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H45M",
+              id: "46",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T21:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T22:15:00",
+              },
+              carrierCode: "NH",
+              number: "98",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "EH",
+              },
+              duration: "PT1H15M",
+              id: "47",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "431000.00",
+        base: "368000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "431000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "431000.00",
+            base: "368000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "46",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "47",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "K",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "76",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT8H50M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T08:10:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T09:50:00",
+              },
+              carrierCode: "OZ",
+              number: "1145",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H40M",
+              id: "208",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T15:40:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T17:00:00",
+              },
+              carrierCode: "NH",
+              number: "992",
+              aircraft: {
+                code: "788",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT1H20M",
+              id: "209",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "431000.00",
+        base: "368000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "431000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "431000.00",
+            base: "368000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "208",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "209",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "K",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "77",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT9H5M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T07:55:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T09:40:00",
+              },
+              carrierCode: "OZ",
+              number: "112",
+              aircraft: {
+                code: "359",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H45M",
+              id: "29",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T15:40:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T17:00:00",
+              },
+              carrierCode: "NH",
+              number: "992",
+              aircraft: {
+                code: "788",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT1H20M",
+              id: "30",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "431000.00",
+        base: "368000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "431000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "431000.00",
+            base: "368000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "29",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "30",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "K",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "78",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT4H40M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T17:40:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T19:20:00",
+              },
+              carrierCode: "OZ",
+              number: "1165",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H40M",
+              id: "166",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T21:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T22:20:00",
+              },
+              carrierCode: "JL",
+              number: "228",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H20M",
+              id: "167",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "431000.00",
+        base: "368000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "431000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "431000.00",
+            base: "368000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "166",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "167",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "79",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT8H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T14:05:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T15:50:00",
+              },
+              carrierCode: "OZ",
+              number: "114",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H45M",
+              id: "61",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T21:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T22:20:00",
+              },
+              carrierCode: "JL",
+              number: "228",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H20M",
+              id: "62",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "431000.00",
+        base: "368000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "431000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "431000.00",
+            base: "368000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "61",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "62",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "80",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT6H",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T16:00:00",
+              },
+              arrival: {
+                iataCode: "NGO",
+                terminal: "1",
+                at: "2024-08-24T17:50:00",
+              },
+              carrierCode: "OZ",
+              number: "124",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H50M",
+              id: "1",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "NGO",
+                terminal: "1",
+                at: "2024-08-24T20:55:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T22:00:00",
+              },
+              carrierCode: "JL",
+              number: "208",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H5M",
+              id: "2",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "431000.00",
+        base: "368000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "431000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "431000.00",
+            base: "368000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "1",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "2",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "81",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 2,
+      itineraries: [
+        {
+          duration: "PT8H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T08:10:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T09:50:00",
+              },
+              carrierCode: "OZ",
+              number: "1145",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H40M",
+              id: "42",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T15:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T16:20:00",
+              },
+              carrierCode: "JL",
+              number: "224",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H20M",
+              id: "43",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "431000.00",
+        base: "368000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "431000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "431000.00",
+            base: "368000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "42",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "43",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "82",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 2,
+      itineraries: [
+        {
+          duration: "PT8H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T07:55:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T09:40:00",
+              },
+              carrierCode: "OZ",
+              number: "112",
+              aircraft: {
+                code: "359",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H45M",
+              id: "119",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T15:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T16:20:00",
+              },
+              carrierCode: "JL",
+              number: "224",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H20M",
+              id: "120",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "431000.00",
+        base: "368000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "431000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "431000.00",
+            base: "368000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "119",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "120",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "83",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT7H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:15:00",
+              },
+              arrival: {
+                iataCode: "NGO",
+                terminal: "1",
+                at: "2024-08-24T10:05:00",
+              },
+              carrierCode: "OZ",
+              number: "122",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H50M",
+              id: "57",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "NGO",
+                terminal: "1",
+                at: "2024-08-24T14:10:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T15:30:00",
+              },
+              carrierCode: "NH",
+              number: "494",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "EH",
+              },
+              duration: "PT1H20M",
+              id: "58",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "431800.00",
+        base: "368000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "431800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "431800.00",
+            base: "368000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "57",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "58",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "K",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "84",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT7H40M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:15:00",
+              },
+              arrival: {
+                iataCode: "NGO",
+                terminal: "1",
+                at: "2024-08-24T10:05:00",
+              },
+              carrierCode: "OZ",
+              number: "122",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H50M",
+              id: "176",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "NGO",
+                terminal: "1",
+                at: "2024-08-24T14:40:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-24T15:55:00",
+              },
+              carrierCode: "JL",
+              number: "3084",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H15M",
+              id: "177",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "431800.00",
+        base: "368000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "431800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "431800.00",
+            base: "368000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "176",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "177",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "85",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT5H45M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T16:30:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T18:25:00",
+              },
+              carrierCode: "KE",
+              number: "2119",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H55M",
+              id: "184",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T21:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T22:15:00",
+              },
+              carrierCode: "NH",
+              number: "98",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "EH",
+              },
+              duration: "PT1H15M",
+              id: "185",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "433200.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "433200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "433200.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "184",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "185",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "K",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "86",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT5H50M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T16:30:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T18:25:00",
+              },
+              carrierCode: "KE",
+              number: "2119",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H55M",
+              id: "200",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T21:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T22:20:00",
+              },
+              carrierCode: "JL",
+              number: "228",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H20M",
+              id: "201",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "433200.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "433200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "433200.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "200",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "201",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "S",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "87",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT4H45M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T10:45:00",
+              },
+              arrival: {
+                iataCode: "NGO",
+                terminal: "1",
+                at: "2024-08-24T12:40:00",
+              },
+              carrierCode: "KE",
+              number: "741",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H55M",
+              id: "180",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "NGO",
+                terminal: "1",
+                at: "2024-08-24T14:10:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-24T15:30:00",
+              },
+              carrierCode: "NH",
+              number: "494",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "EH",
+              },
+              duration: "PT1H20M",
+              id: "181",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "434000.00",
+        base: "368500.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "434000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "434000.00",
+            base: "368500.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "180",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "181",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "K",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "88",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT5H50M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:45:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T10:15:00",
+              },
+              carrierCode: "OZ",
+              number: "132",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H30M",
+              id: "192",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T12:50:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T14:35:00",
+              },
+              carrierCode: "JL",
+              number: "314",
+              aircraft: {
+                code: "359",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H45M",
+              id: "193",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "436700.00",
+        base: "386400.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "436700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "436700.00",
+            base: "386400.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "192",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "193",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "89",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 3,
+      itineraries: [
+        {
+          duration: "PT11H",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:45:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T10:15:00",
+              },
+              carrierCode: "OZ",
+              number: "132",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H30M",
+              id: "15",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T18:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T19:45:00",
+              },
+              carrierCode: "JL",
+              number: "326",
+              aircraft: {
+                code: "767",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H45M",
+              id: "16",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "436700.00",
+        base: "386400.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "436700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "436700.00",
+            base: "386400.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "15",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "16",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "90",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT11H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:45:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T10:15:00",
+              },
+              carrierCode: "OZ",
+              number: "132",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H30M",
+              id: "150",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T18:30:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T20:15:00",
+              },
+              carrierCode: "NH",
+              number: "266",
+              aircraft: {
+                code: "772",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT1H45M",
+              id: "151",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "436700.00",
+        base: "386400.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "436700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "436700.00",
+            base: "386400.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "150",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "151",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "K",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "91",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT7H40M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T08:00:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T09:25:00",
+              },
+              carrierCode: "KE",
+              number: "787",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H25M",
+              id: "172",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T13:50:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T15:40:00",
+              },
+              carrierCode: "TN",
+              number: "1805",
+              aircraft: {
+                code: "359",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H50M",
+              id: "173",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "438400.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "438400.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["KE"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "438400.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "172",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "173",
+              cabin: "ECONOMY",
+              fareBasis: "YOW",
+              class: "V",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "92",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT5H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T13:50:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T15:20:00",
+              },
+              carrierCode: "JL",
+              number: "5222",
+              aircraft: {
+                code: "772",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H30M",
+              id: "96",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T17:15:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T19:10:00",
+              },
+              carrierCode: "JL",
+              number: "324",
+              aircraft: {
+                code: "73H",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H55M",
+              id: "97",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "441900.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "441900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "441900.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "96",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "97",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "93",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT6H35M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T08:00:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T09:25:00",
+              },
+              carrierCode: "JL",
+              number: "5220",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H25M",
+              id: "160",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T12:50:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T14:35:00",
+              },
+              carrierCode: "JL",
+              number: "314",
+              aircraft: {
+                code: "359",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H45M",
+              id: "161",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "441900.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "441900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "441900.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "160",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "161",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "94",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT7H40M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T08:00:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T09:25:00",
+              },
+              carrierCode: "JL",
+              number: "5220",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H25M",
+              id: "174",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T13:50:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T15:40:00",
+              },
+              carrierCode: "JL",
+              number: "316",
+              aircraft: {
+                code: "359",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H50M",
+              id: "175",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "441900.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "441900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "441900.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "174",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "175",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "95",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT7H55M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T13:50:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T15:20:00",
+              },
+              carrierCode: "JL",
+              number: "5222",
+              aircraft: {
+                code: "772",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H30M",
+              id: "214",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T20:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T21:45:00",
+              },
+              carrierCode: "JL",
+              number: "330",
+              aircraft: {
+                code: "767",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H45M",
+              id: "215",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "441900.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "441900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "441900.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "214",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "215",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "96",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT5H40M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T08:00:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T09:25:00",
+              },
+              carrierCode: "JL",
+              number: "5220",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H25M",
+              id: "168",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T11:50:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T13:40:00",
+              },
+              carrierCode: "JL",
+              number: "312",
+              aircraft: {
+                code: "788",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H50M",
+              id: "169",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "441900.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "441900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "441900.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "168",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "169",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "97",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 3,
+      itineraries: [
+        {
+          duration: "PT5H55M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T13:50:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T15:20:00",
+              },
+              carrierCode: "JL",
+              number: "5222",
+              aircraft: {
+                code: "772",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H30M",
+              id: "210",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T18:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T19:45:00",
+              },
+              carrierCode: "JL",
+              number: "326",
+              aircraft: {
+                code: "767",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H45M",
+              id: "211",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "441900.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "441900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "441900.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "210",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "211",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "98",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 5,
+      itineraries: [
+        {
+          duration: "PT6H50M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T13:50:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T15:20:00",
+              },
+              carrierCode: "JL",
+              number: "5222",
+              aircraft: {
+                code: "772",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H30M",
+              id: "202",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T18:55:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T20:40:00",
+              },
+              carrierCode: "JL",
+              number: "328",
+              aircraft: {
+                code: "767",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT1H45M",
+              id: "203",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "441900.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "441900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "441900.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "202",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "203",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "99",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT6H40M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T13:50:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T15:20:00",
+              },
+              carrierCode: "JL",
+              number: "5222",
+              aircraft: {
+                code: "772",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H30M",
+              id: "170",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T18:40:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T20:30:00",
+              },
+              carrierCode: "JL",
+              number: "6054",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "GK",
+              },
+              duration: "PT1H50M",
+              id: "171",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "442100.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "442100.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "442100.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "170",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "171",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "B",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "100",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT7H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T08:00:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T09:25:00",
+              },
+              carrierCode: "JL",
+              number: "5220",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H25M",
+              id: "144",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T13:40:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T15:30:00",
+              },
+              carrierCode: "JL",
+              number: "6048",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "GK",
+              },
+              duration: "PT1H50M",
+              id: "145",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "442100.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "442100.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "442100.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "144",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "145",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "B",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "101",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT7H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T13:50:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T15:20:00",
+              },
+              carrierCode: "JL",
+              number: "5222",
+              aircraft: {
+                code: "772",
+              },
+              operating: {
+                carrierCode: "KE",
+              },
+              duration: "PT1H30M",
+              id: "146",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T19:30:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "3",
+                at: "2024-08-24T21:20:00",
+              },
+              carrierCode: "JL",
+              number: "6056",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "GK",
+              },
+              duration: "PT1H50M",
+              id: "147",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "442100.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "442100.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["JL"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "442100.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "146",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "147",
+              cabin: "ECONOMY",
+              fareBasis: "YNN0OG4A",
+              class: "B",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "102",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT5H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T12:30:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T13:50:00",
+              },
+              carrierCode: "NH",
+              number: "6960",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H20M",
+              id: "53",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T15:55:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T17:45:00",
+              },
+              carrierCode: "NH",
+              number: "3850",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "7G",
+              },
+              duration: "PT1H50M",
+              id: "54",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "443800.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "443800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "443800.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "53",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "54",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "103",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT5H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:45:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T10:15:00",
+              },
+              carrierCode: "NH",
+              number: "6962",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H30M",
+              id: "117",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T12:20:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T14:10:00",
+              },
+              carrierCode: "NH",
+              number: "252",
+              aircraft: {
+                code: "781",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT1H50M",
+              id: "118",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "443800.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "443800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "443800.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "117",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "118",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "104",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT5H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T12:30:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T13:50:00",
+              },
+              carrierCode: "NH",
+              number: "6960",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H20M",
+              id: "142",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T16:10:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T18:00:00",
+              },
+              carrierCode: "NH",
+              number: "260",
+              aircraft: {
+                code: "787",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT1H50M",
+              id: "143",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "443800.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "443800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "443800.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "142",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "143",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "105",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT6H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:45:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T10:15:00",
+              },
+              carrierCode: "NH",
+              number: "6962",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H30M",
+              id: "40",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T13:10:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T14:55:00",
+              },
+              carrierCode: "NH",
+              number: "254",
+              aircraft: {
+                code: "789",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT1H45M",
+              id: "41",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "443800.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "443800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "443800.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "40",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "41",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "106",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT6H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T12:30:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T13:50:00",
+              },
+              carrierCode: "NH",
+              number: "6960",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H20M",
+              id: "98",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T17:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T18:50:00",
+              },
+              carrierCode: "NH",
+              number: "262",
+              aircraft: {
+                code: "787",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT1H50M",
+              id: "99",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "443800.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "443800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "443800.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "98",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "99",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "107",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT6H55M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T12:30:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T13:50:00",
+              },
+              carrierCode: "NH",
+              number: "6960",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H20M",
+              id: "212",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T17:35:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T19:25:00",
+              },
+              carrierCode: "NH",
+              number: "264",
+              aircraft: {
+                code: "781",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT1H50M",
+              id: "213",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "443800.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "443800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "443800.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "212",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "213",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "108",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT7H5M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:45:00",
+              },
+              arrival: {
+                iataCode: "FUK",
+                terminal: "I",
+                at: "2024-08-24T10:15:00",
+              },
+              carrierCode: "NH",
+              number: "6962",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H30M",
+              id: "25",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "FUK",
+                terminal: "D",
+                at: "2024-08-24T14:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-24T15:50:00",
+              },
+              carrierCode: "NH",
+              number: "256",
+              aircraft: {
+                code: "787",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT1H50M",
+              id: "26",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "443800.00",
+        base: "387000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "443800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["NH"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "443800.00",
+            base: "387000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "25",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "26",
+              cabin: "ECONOMY",
+              fareBasis: "YFA0WD0Y",
+              brandedFare: "ECOFULFLX",
+              brandedFareLabel: "ECO I FULLFLEX 2F",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 2 PCS 23 KG EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "PRE SEAT ASSIGNMENT",
+                  isChargeable: false,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGE AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND BEFORE DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUND AFTER DEPARTURE",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "109",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT2H10M",
+          segments: [
+            {
+              departure: {
+                iataCode: "GMP",
+                terminal: "I",
+                at: "2024-08-24T07:40:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                at: "2024-08-24T09:50:00",
+              },
+              carrierCode: "OZ",
+              number: "9128",
+              aircraft: {
+                code: "788",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT2H10M",
+              id: "32",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "451500.00",
+        base: "396000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "451500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "451500.00",
+            base: "396000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "32",
+              cabin: "ECONOMY",
+              fareBasis: "EHOKJNH",
+              class: "E",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "110",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT4H50M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T14:05:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T15:50:00",
+              },
+              carrierCode: "OZ",
+              number: "114",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H45M",
+              id: "190",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T17:30:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T18:55:00",
+              },
+              carrierCode: "NH",
+              number: "3826",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "7G",
+              },
+              duration: "PT1H25M",
+              id: "191",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "487300.00",
+        base: "424300.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "487300.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "487300.00",
+            base: "424300.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "190",
+              cabin: "ECONOMY",
+              fareBasis: "WHOKJ0Z",
+              class: "W",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "191",
+              cabin: "ECONOMY",
+              fareBasis: "YHNHI",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "111",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 7,
+      itineraries: [
+        {
+          duration: "PT5H50M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T14:05:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T15:50:00",
+              },
+              carrierCode: "OZ",
+              number: "114",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H45M",
+              id: "196",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T18:35:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T19:55:00",
+              },
+              carrierCode: "NH",
+              number: "3828",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "7G",
+              },
+              duration: "PT1H20M",
+              id: "197",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "487300.00",
+        base: "424300.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "487300.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "487300.00",
+            base: "424300.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "196",
+              cabin: "ECONOMY",
+              fareBasis: "WHOKJ0Z",
+              class: "W",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "197",
+              cabin: "ECONOMY",
+              fareBasis: "YHNHI",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "112",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT24H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T13:30:00",
+              },
+              arrival: {
+                iataCode: "XMN",
+                terminal: "3",
+                at: "2024-08-24T15:15:00",
+              },
+              carrierCode: "MF",
+              number: "872",
+              aircraft: {
+                code: "738",
+              },
+              operating: {
+                carrierCode: "MF",
+              },
+              duration: "PT2H45M",
+              id: "73",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "XMN",
+                terminal: "3",
+                at: "2024-08-25T08:30:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-25T13:45:00",
+              },
+              carrierCode: "MF",
+              number: "815",
+              aircraft: {
+                code: "788",
+              },
+              operating: {
+                carrierCode: "MF",
+              },
+              duration: "PT4H15M",
+              id: "74",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "493800.00",
+        base: "336700.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "493800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["MF"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "493800.00",
+            base: "336700.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "73",
+              cabin: "ECONOMY",
+              fareBasis: "PN00RGSK",
+              brandedFare: "YSTANDARD",
+              brandedFareLabel: "ECONOMY STANDARD",
+              class: "P",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 1PC OF 23KG 158CM",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUNDABLE  TICKET",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGEABLE  TICKET",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "74",
+              cabin: "ECONOMY",
+              fareBasis: "RN00RGS5",
+              brandedFare: "YSTANDARD",
+              brandedFareLabel: "ECONOMY STANDARD",
+              class: "R",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "CHECKED BAG 1PC OF 23KG 158CM",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUNDABLE  TICKET",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGEABLE  TICKET",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "113",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT27H35M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T21:25:00",
+              },
+              arrival: {
+                iataCode: "SGN",
+                terminal: "2",
+                at: "2024-08-25T00:40:00",
+              },
+              carrierCode: "VJ",
+              number: "861",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "VJ",
+              },
+              duration: "PT5H15M",
+              id: "164",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "SGN",
+                terminal: "2",
+                at: "2024-08-25T16:30:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-26T01:00:00",
+              },
+              carrierCode: "VJ",
+              number: "820",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "VJ",
+              },
+              duration: "PT6H30M",
+              id: "165",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "552900.00",
+        base: "431600.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "552900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["GP"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "552900.00",
+            base: "431600.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "164",
+              cabin: "ECONOMY",
+              fareBasis: "ESP",
+              class: "E",
+              includedCheckedBags: {
+                weight: 20,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+            {
+              segmentId: "165",
+              cabin: "ECONOMY",
+              fareBasis: "MSP",
+              class: "M",
+              includedCheckedBags: {
+                weight: 20,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "114",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT8H",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T12:55:00",
+              },
+              arrival: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T14:10:00",
+              },
+              carrierCode: "MU",
+              number: "5042",
+              aircraft: {
+                code: "332",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT2H15M",
+              id: "9",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T16:55:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-24T20:55:00",
+              },
+              carrierCode: "MU",
+              number: "271",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT3H",
+              id: "10",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "583200.00",
+        base: "412900.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "583200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["MU"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "583200.00",
+            base: "412900.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "9",
+              cabin: "ECONOMY",
+              fareBasis: "TSE0WOS8",
+              class: "T",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "10",
+              cabin: "ECONOMY",
+              fareBasis: "ZSP0WCS4",
+              class: "Z",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "115",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT8H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T12:55:00",
+              },
+              arrival: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T14:10:00",
+              },
+              carrierCode: "MU",
+              number: "5042",
+              aircraft: {
+                code: "332",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT2H15M",
+              id: "121",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T17:15:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T21:20:00",
+              },
+              carrierCode: "MU",
+              number: "575",
+              aircraft: {
+                code: "77W",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT3H5M",
+              id: "122",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "583200.00",
+        base: "412900.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "583200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["MU"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "583200.00",
+            base: "412900.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "121",
+              cabin: "ECONOMY",
+              fareBasis: "TSE0WOS8",
+              class: "T",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "122",
+              cabin: "ECONOMY",
+              fareBasis: "ZSP0WCS4",
+              class: "Z",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "116",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT14H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T21:35:00",
+              },
+              arrival: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T22:25:00",
+              },
+              carrierCode: "MU",
+              number: "5012",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT1H50M",
+              id: "127",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-25T07:55:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-25T12:00:00",
+              },
+              carrierCode: "MU",
+              number: "727",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT3H5M",
+              id: "128",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "583200.00",
+        base: "412900.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "583200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["MU"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "583200.00",
+            base: "412900.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "127",
+              cabin: "ECONOMY",
+              fareBasis: "TSE0WOS8",
+              class: "T",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "128",
+              cabin: "ECONOMY",
+              fareBasis: "ZSP0WCS4",
+              class: "Z",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "117",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 1,
+      itineraries: [
+        {
+          duration: "PT4H20M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T07:55:00",
+              },
+              arrival: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T09:40:00",
+              },
+              carrierCode: "OZ",
+              number: "112",
+              aircraft: {
+                code: "359",
+              },
+              operating: {
+                carrierCode: "OZ",
+              },
+              duration: "PT1H45M",
+              id: "94",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "KIX",
+                terminal: "1",
+                at: "2024-08-24T11:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "1",
+                at: "2024-08-24T12:15:00",
+              },
+              carrierCode: "NH",
+              number: "3822",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "7G",
+              },
+              duration: "PT1H15M",
+              id: "95",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "597300.00",
+        base: "534300.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "597300.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["OZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "597300.00",
+            base: "534300.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "94",
+              cabin: "ECONOMY",
+              fareBasis: "KHOKJ",
+              class: "K",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "95",
+              cabin: "ECONOMY",
+              fareBasis: "YHNHI",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "118",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT20H",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T11:40:00",
+              },
+              arrival: {
+                iataCode: "SGN",
+                terminal: "2",
+                at: "2024-08-24T14:55:00",
+              },
+              carrierCode: "VJ",
+              number: "863",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "VJ",
+              },
+              duration: "PT5H15M",
+              id: "19",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "SGN",
+                terminal: "2",
+                at: "2024-08-24T23:20:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-25T07:40:00",
+              },
+              carrierCode: "VJ",
+              number: "822",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "VJ",
+              },
+              duration: "PT6H20M",
+              id: "20",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "599900.00",
+        base: "478600.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "599900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["GP"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "599900.00",
+            base: "478600.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "19",
+              cabin: "ECONOMY",
+              fareBasis: "ESP",
+              class: "E",
+              includedCheckedBags: {
+                weight: 20,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+            {
+              segmentId: "20",
+              cabin: "ECONOMY",
+              fareBasis: "NSP",
+              class: "N",
+              includedCheckedBags: {
+                weight: 20,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "119",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT24H55M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T06:45:00",
+              },
+              arrival: {
+                iataCode: "SGN",
+                terminal: "2",
+                at: "2024-08-24T09:55:00",
+              },
+              carrierCode: "VJ",
+              number: "865",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "VJ",
+              },
+              duration: "PT5H10M",
+              id: "218",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "SGN",
+                terminal: "2",
+                at: "2024-08-24T23:20:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-25T07:40:00",
+              },
+              carrierCode: "VJ",
+              number: "822",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "VJ",
+              },
+              duration: "PT6H20M",
+              id: "219",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "599900.00",
+        base: "478600.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "599900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["GP"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "599900.00",
+            base: "478600.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "218",
+              cabin: "ECONOMY",
+              fareBasis: "ESP",
+              class: "E",
+              includedCheckedBags: {
+                weight: 20,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+            {
+              segmentId: "219",
+              cabin: "ECONOMY",
+              fareBasis: "NSP",
+              class: "N",
+              includedCheckedBags: {
+                weight: 20,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "120",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT34H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T21:25:00",
+              },
+              arrival: {
+                iataCode: "SGN",
+                terminal: "2",
+                at: "2024-08-25T00:40:00",
+              },
+              carrierCode: "VJ",
+              number: "861",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "VJ",
+              },
+              duration: "PT5H15M",
+              id: "75",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "SGN",
+                terminal: "2",
+                at: "2024-08-25T23:20:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-26T07:40:00",
+              },
+              carrierCode: "VJ",
+              number: "822",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "VJ",
+              },
+              duration: "PT6H20M",
+              id: "76",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "599900.00",
+        base: "478600.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "599900.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["GP"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "599900.00",
+            base: "478600.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "75",
+              cabin: "ECONOMY",
+              fareBasis: "ESP",
+              class: "E",
+              includedCheckedBags: {
+                weight: 20,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+            {
+              segmentId: "76",
+              cabin: "ECONOMY",
+              fareBasis: "NSP",
+              class: "N",
+              includedCheckedBags: {
+                weight: 20,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                weight: 7,
+                weightUnit: "KG",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "121",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 8,
+      itineraries: [
+        {
+          duration: "PT7H",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:55:00",
+              },
+              arrival: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T10:10:00",
+              },
+              carrierCode: "MU",
+              number: "5052",
+              aircraft: {
+                code: "332",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT2H15M",
+              id: "5",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T11:40:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-24T15:55:00",
+              },
+              carrierCode: "MU",
+              number: "521",
+              aircraft: {
+                code: "359",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT3H15M",
+              id: "6",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "750200.00",
+        base: "579900.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "750200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["MU"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "750200.00",
+            base: "579900.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "5",
+              cabin: "ECONOMY",
+              fareBasis: "LSE0WCS8",
+              class: "L",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "6",
+              cabin: "ECONOMY",
+              fareBasis: "ZSP0WCS4",
+              class: "Z",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "122",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 2,
+      itineraries: [
+        {
+          duration: "PT9H",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T10:45:00",
+              },
+              arrival: {
+                iataCode: "CAN",
+                terminal: "2",
+                at: "2024-08-24T13:40:00",
+              },
+              carrierCode: "CZ",
+              number: "340",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "CZ",
+              },
+              duration: "PT3H55M",
+              id: "13",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "CAN",
+                terminal: "2",
+                at: "2024-08-24T14:40:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T19:45:00",
+              },
+              carrierCode: "CZ",
+              number: "3085",
+              aircraft: {
+                code: "32Q",
+              },
+              operating: {
+                carrierCode: "CZ",
+              },
+              duration: "PT4H5M",
+              id: "14",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "793800.00",
+        base: "639100.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "793800.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["CZ"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "793800.00",
+            base: "639100.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "13",
+              cabin: "ECONOMY",
+              fareBasis: "V2KSRYKR",
+              class: "V",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "14",
+              cabin: "ECONOMY",
+              fareBasis: "U2HSRYQJ",
+              class: "U",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "123",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT8H",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T12:55:00",
+              },
+              arrival: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T14:10:00",
+              },
+              carrierCode: "FM",
+              number: "3068",
+              aircraft: {
+                code: "332",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT2H15M",
+              id: "11",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T16:55:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-24T20:55:00",
+              },
+              carrierCode: "FM",
+              number: "3043",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT3H",
+              id: "12",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "830000.00",
+        base: "662000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "830000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["MU"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "830000.00",
+            base: "662000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "11",
+              cabin: "ECONOMY",
+              fareBasis: "NSE0WCS8",
+              class: "N",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "12",
+              cabin: "ECONOMY",
+              fareBasis: "THE0WCS4",
+              class: "T",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "124",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT8H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T12:55:00",
+              },
+              arrival: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T14:10:00",
+              },
+              carrierCode: "FM",
+              number: "3068",
+              aircraft: {
+                code: "332",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT2H15M",
+              id: "123",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T17:15:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T21:20:00",
+              },
+              carrierCode: "FM",
+              number: "3037",
+              aircraft: {
+                code: "77W",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT3H5M",
+              id: "124",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "830000.00",
+        base: "662000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "830000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["MU"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "830000.00",
+            base: "662000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "123",
+              cabin: "ECONOMY",
+              fareBasis: "NSE0WCS8",
+              class: "N",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "124",
+              cabin: "ECONOMY",
+              fareBasis: "THE0WCS4",
+              class: "T",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "125",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT12H",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:55:00",
+              },
+              arrival: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T10:10:00",
+              },
+              carrierCode: "FM",
+              number: "3070",
+              aircraft: {
+                code: "332",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT2H15M",
+              id: "17",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T16:55:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-24T20:55:00",
+              },
+              carrierCode: "FM",
+              number: "3043",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT3H",
+              id: "18",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "862000.00",
+        base: "694000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "862000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["MU"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "862000.00",
+            base: "694000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "17",
+              cabin: "ECONOMY",
+              fareBasis: "LSE0WCS8",
+              class: "L",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "18",
+              cabin: "ECONOMY",
+              fareBasis: "THE0WCS4",
+              class: "T",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "126",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT12H25M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T08:55:00",
+              },
+              arrival: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T10:10:00",
+              },
+              carrierCode: "FM",
+              number: "3070",
+              aircraft: {
+                code: "332",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT2H15M",
+              id: "125",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PVG",
+                terminal: "1",
+                at: "2024-08-24T17:15:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T21:20:00",
+              },
+              carrierCode: "FM",
+              number: "3037",
+              aircraft: {
+                code: "77W",
+              },
+              operating: {
+                carrierCode: "MU",
+              },
+              duration: "PT3H5M",
+              id: "126",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "862000.00",
+        base: "694000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "862000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["MU"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "862000.00",
+            base: "694000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "125",
+              cabin: "ECONOMY",
+              fareBasis: "LSE0WCS8",
+              class: "L",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "126",
+              cabin: "ECONOMY",
+              fareBasis: "THE0WCS4",
+              class: "T",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "127",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT17H35M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T14:45:00",
+              },
+              arrival: {
+                iataCode: "HKG",
+                terminal: "1",
+                at: "2024-08-24T17:35:00",
+              },
+              carrierCode: "HX",
+              number: "629",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "HX",
+              },
+              duration: "PT3H50M",
+              id: "162",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "HKG",
+                terminal: "1",
+                at: "2024-08-25T02:35:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "1",
+                at: "2024-08-25T08:20:00",
+              },
+              carrierCode: "HX",
+              number: "606",
+              aircraft: {
+                code: "320",
+              },
+              operating: {
+                carrierCode: "HX",
+              },
+              duration: "PT4H45M",
+              id: "163",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "877200.00",
+        base: "795700.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "877200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["HR"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "877200.00",
+            base: "795700.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "162",
+              cabin: "ECONOMY",
+              fareBasis: "QA3FOKR",
+              class: "Q",
+              includedCheckedBags: {
+                weight: 30,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "163",
+              cabin: "ECONOMY",
+              fareBasis: "LA3FOHS",
+              class: "L",
+              includedCheckedBags: {
+                weight: 30,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "128",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT7H",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T10:25:00",
+              },
+              arrival: {
+                iataCode: "PEK",
+                terminal: "3",
+                at: "2024-08-24T11:25:00",
+              },
+              carrierCode: "CA",
+              number: "710",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "CA",
+              },
+              duration: "PT2H",
+              id: "7",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "PEK",
+                terminal: "3",
+                at: "2024-08-24T12:40:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T17:25:00",
+              },
+              carrierCode: "CA",
+              number: "167",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "CA",
+              },
+              duration: "PT3H45M",
+              id: "8",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "1142200.00",
+        base: "1036100.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "1142200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["CA"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "1142200.00",
+            base: "1036100.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "7",
+              cabin: "ECONOMY",
+              fareBasis: "QKORCKR",
+              class: "Q",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "8",
+              cabin: "ECONOMY",
+              fareBasis: "QHORCTT",
+              class: "Q",
+              includedCheckedBags: {
+                quantity: 2,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "129",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT20H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T10:35:00",
+              },
+              arrival: {
+                iataCode: "CGK",
+                terminal: "3",
+                at: "2024-08-24T15:40:00",
+              },
+              carrierCode: "GA",
+              number: "879",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "GA",
+              },
+              duration: "PT7H5M",
+              id: "69",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "CGK",
+                terminal: "3",
+                at: "2024-08-24T21:25:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "2",
+                at: "2024-08-25T06:50:00",
+              },
+              carrierCode: "GA",
+              number: "9352",
+              aircraft: {
+                code: "789",
+              },
+              operating: {
+                carrierCode: "NH",
+              },
+              duration: "PT7H25M",
+              id: "70",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "1316500.00",
+        base: "1099100.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "1316500.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["GA"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "1316500.00",
+            base: "1099100.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "69",
+              cabin: "ECONOMY",
+              fareBasis: "N6MKR",
+              class: "N",
+              includedCheckedBags: {
+                weight: 46,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "70",
+              cabin: "ECONOMY",
+              fareBasis: "N6MCNHID",
+              class: "N",
+              includedCheckedBags: {
+                weight: 46,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "130",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT20H55M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T10:35:00",
+              },
+              arrival: {
+                iataCode: "CGK",
+                terminal: "3",
+                at: "2024-08-24T15:40:00",
+              },
+              carrierCode: "GA",
+              number: "879",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "GA",
+              },
+              duration: "PT7H5M",
+              id: "216",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "CGK",
+                terminal: "3",
+                at: "2024-08-24T21:55:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-25T07:30:00",
+              },
+              carrierCode: "GA",
+              number: "9152",
+              aircraft: {
+                code: "789",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT7H35M",
+              id: "217",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "1331400.00",
+        base: "1114000.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "1331400.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["GA"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "1331400.00",
+            base: "1114000.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "216",
+              cabin: "ECONOMY",
+              fareBasis: "N6MKR",
+              class: "N",
+              includedCheckedBags: {
+                weight: 46,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "217",
+              cabin: "ECONOMY",
+              fareBasis: "N6MCJLID",
+              class: "N",
+              includedCheckedBags: {
+                weight: 46,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "131",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT22H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "2",
+                at: "2024-08-24T10:35:00",
+              },
+              arrival: {
+                iataCode: "CGK",
+                terminal: "3",
+                at: "2024-08-24T15:40:00",
+              },
+              carrierCode: "GA",
+              number: "879",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "GA",
+              },
+              duration: "PT7H5M",
+              id: "71",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "CGK",
+                terminal: "3",
+                at: "2024-08-24T23:25:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-25T08:50:00",
+              },
+              carrierCode: "GA",
+              number: "874",
+              aircraft: {
+                code: "339",
+              },
+              operating: {
+                carrierCode: "GA",
+              },
+              duration: "PT7H25M",
+              id: "72",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "1378700.00",
+        base: "1161300.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "1378700.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["GA"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "1378700.00",
+            base: "1161300.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "71",
+              cabin: "ECONOMY",
+              fareBasis: "M6MKR",
+              class: "M",
+              includedCheckedBags: {
+                weight: 46,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "72",
+              cabin: "ECONOMY",
+              fareBasis: "K6MID",
+              class: "K",
+              includedCheckedBags: {
+                weight: 46,
+                weightUnit: "KG",
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "132",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-23",
+      lastTicketingDateTime: "2024-08-23",
+      numberOfBookableSeats: 4,
+      itineraries: [
+        {
+          duration: "PT10H45M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T14:35:00",
+              },
+              arrival: {
+                iataCode: "HKG",
+                terminal: "1",
+                at: "2024-08-24T17:20:00",
+              },
+              carrierCode: "UO",
+              number: "631",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "UO",
+              },
+              duration: "PT3H45M",
+              id: "188",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "HKG",
+                terminal: "1",
+                at: "2024-08-24T20:00:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-25T01:20:00",
+              },
+              carrierCode: "UO",
+              number: "628",
+              aircraft: {
+                code: "321",
+              },
+              operating: {
+                carrierCode: "UO",
+              },
+              duration: "PT4H20M",
+              id: "189",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "1416200.00",
+        base: "1303100.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "1416200.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["W2"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "1416200.00",
+            base: "1303100.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "188",
+              cabin: "ECONOMY",
+              fareBasis: "VVGDD",
+              class: "V",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+            {
+              segmentId: "189",
+              cabin: "ECONOMY",
+              fareBasis: "YGDD",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "133",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 2,
+      itineraries: [
+        {
+          duration: "PT10H15M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T10:10:00",
+              },
+              arrival: {
+                iataCode: "HKG",
+                terminal: "1",
+                at: "2024-08-24T13:00:00",
+              },
+              carrierCode: "CX",
+              number: "417",
+              aircraft: {
+                code: "359",
+              },
+              operating: {
+                carrierCode: "CX",
+              },
+              duration: "PT3H50M",
+              id: "65",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "HKG",
+                terminal: "1",
+                at: "2024-08-24T15:15:00",
+              },
+              arrival: {
+                iataCode: "HND",
+                terminal: "3",
+                at: "2024-08-24T20:25:00",
+              },
+              carrierCode: "CX",
+              number: "6320",
+              aircraft: {
+                code: "789",
+              },
+              operating: {
+                carrierCode: "JL",
+              },
+              duration: "PT4H10M",
+              id: "66",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "2054000.00",
+        base: "1936700.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "2054000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["CX"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "2054000.00",
+            base: "1936700.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "65",
+              cabin: "ECONOMY",
+              fareBasis: "YQ21KRAO",
+              brandedFare: "ECONLIGHT",
+              brandedFareLabel: "ECONOMY LIGHT",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "1PC MAX 23KG 158LCM EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "1PC MAX 15LB 7KG 115LCM",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "SEAT ASSIGNMENT",
+                  isChargeable: true,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUNDABLE TICKET",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "MILEAGE ACCRUAL",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGEABLE TICKET",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "66",
+              cabin: "ECONOMY",
+              fareBasis: "YQ21HKAO",
+              brandedFare: "ECONLIGHT",
+              brandedFareLabel: "ECONOMY LIGHT",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "1PC MAX 23KG 158LCM EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "1PC MAX 15LB 7KG 115LCM",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "SEAT ASSIGNMENT",
+                  isChargeable: true,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUNDABLE TICKET",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "MILEAGE ACCRUAL",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGEABLE TICKET",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "flight-offer",
+      id: "134",
+      source: "GDS",
+      instantTicketingRequired: false,
+      nonHomogeneous: false,
+      oneWay: false,
+      isUpsellOffer: false,
+      lastTicketingDate: "2024-08-24",
+      lastTicketingDateTime: "2024-08-24",
+      numberOfBookableSeats: 9,
+      itineraries: [
+        {
+          duration: "PT10H30M",
+          segments: [
+            {
+              departure: {
+                iataCode: "ICN",
+                terminal: "1",
+                at: "2024-08-24T20:15:00",
+              },
+              arrival: {
+                iataCode: "HKG",
+                terminal: "1",
+                at: "2024-08-24T23:00:00",
+              },
+              carrierCode: "CX",
+              number: "419",
+              aircraft: {
+                code: "333",
+              },
+              operating: {
+                carrierCode: "CX",
+              },
+              duration: "PT3H45M",
+              id: "148",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+            {
+              departure: {
+                iataCode: "HKG",
+                terminal: "1",
+                at: "2024-08-25T01:20:00",
+              },
+              arrival: {
+                iataCode: "NRT",
+                terminal: "2",
+                at: "2024-08-25T06:45:00",
+              },
+              carrierCode: "CX",
+              number: "524",
+              aircraft: {
+                code: "359",
+              },
+              operating: {
+                carrierCode: "CX",
+              },
+              duration: "PT4H25M",
+              id: "149",
+              numberOfStops: 0,
+              blacklistedInEU: false,
+            },
+          ],
+        },
+      ],
+      price: {
+        currency: "KRW",
+        total: "2054000.00",
+        base: "1936700.00",
+        fees: [
+          {
+            amount: "0.00",
+            type: "SUPPLIER",
+          },
+          {
+            amount: "0.00",
+            type: "TICKETING",
+          },
+        ],
+        grandTotal: "2054000.00",
+      },
+      pricingOptions: {
+        fareType: ["PUBLISHED"],
+        includedCheckedBagsOnly: true,
+      },
+      validatingAirlineCodes: ["CX"],
+      travelerPricings: [
+        {
+          travelerId: "1",
+          fareOption: "STANDARD",
+          travelerType: "ADULT",
+          price: {
+            currency: "KRW",
+            total: "2054000.00",
+            base: "1936700.00",
+          },
+          fareDetailsBySegment: [
+            {
+              segmentId: "148",
+              cabin: "ECONOMY",
+              fareBasis: "YQ21KRAO",
+              brandedFare: "ECONLIGHT",
+              brandedFareLabel: "ECONOMY LIGHT",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "1PC MAX 23KG 158LCM EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "1PC MAX 15LB 7KG 115LCM",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "SEAT ASSIGNMENT",
+                  isChargeable: true,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUNDABLE TICKET",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "MILEAGE ACCRUAL",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGEABLE TICKET",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+            {
+              segmentId: "149",
+              cabin: "ECONOMY",
+              fareBasis: "YQ21HKAO",
+              brandedFare: "ECONLIGHT",
+              brandedFareLabel: "ECONOMY LIGHT",
+              class: "Y",
+              includedCheckedBags: {
+                quantity: 1,
+              },
+              includedCabinBags: {
+                quantity: 1,
+              },
+              amenities: [
+                {
+                  description: "1PC MAX 23KG 158LCM EACH",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "1PC MAX 15LB 7KG 115LCM",
+                  isChargeable: false,
+                  amenityType: "BAGGAGE",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "SEAT ASSIGNMENT",
+                  isChargeable: true,
+                  amenityType: "PRE_RESERVED_SEAT",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "REFUNDABLE TICKET",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "MILEAGE ACCRUAL",
+                  isChargeable: false,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+                {
+                  description: "CHANGEABLE TICKET",
+                  isChargeable: true,
+                  amenityType: "BRANDED_FARES",
+                  amenityProvider: {
+                    name: "BrandedFare",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ];
+
   /* -------------------------------------------------------------------------- */
   /*                 carrierCode가 validCarrierCodes에 포함된 객체만 필터링           */
   /* -------------------------------------------------------------------------- */
-  const filteredData = data.filter((offer) =>
+  const filteredData = data2.filter((offer) =>
     offer.itineraries.some((itinerary) =>
       itinerary.segments.some((segment) =>
         Object.keys(airline).includes(segment.carrierCode),
