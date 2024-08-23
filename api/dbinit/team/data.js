@@ -3878,6 +3878,16 @@ export const initData = async (clientId, nextSeq) => {
             specEng: "Narrow Body Aircraft",
           },
           {
+            code: "32N",
+            value: "A320 Neo",
+            nameKor: "에어버스 A320 Neo",
+            nameEng: "Airbus A320 Neo",
+            manufacturerKor: "에어버스",
+            manufacturerEng: "Airbus",
+            specKor: "협동체",
+            specEng: "Narrow Body Aircraft",
+          },
+          {
             code: "321",
             value: "A321-200",
             nameKor: "에어버스 A321-200",
