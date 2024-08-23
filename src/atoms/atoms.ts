@@ -71,10 +71,6 @@ export const modalState = atom<ModalProps>({
   },
 });
 
-export const orderState = atom<OrderProps>({
-  key: "orderState",
-});
-
 export const dateState = atom<DateProps>({
   key: "dateState",
   default: {
@@ -84,38 +80,45 @@ export const dateState = atom<DateProps>({
 });
 
 const { persistAtom } = recoilPersist({
-  key: "searchResult",
+  key: "globalState",
   storage: sessionStorage,
 });
 
+export const defaultSearchResult = {
+  tripType: "round",
+  nonStop: false,
+  origin: {
+    code: "SEL",
+    value: "서울",
+  },
+  destination: {
+    code: "",
+    value: "",
+  },
+  schedule: {
+    departureDate: "",
+    departureFormattedDate: "",
+    returnDate: "",
+    returnFormattedDate: "",
+  },
+  passengers: {
+    adults: 1,
+    children: 0,
+    infants: 0,
+  },
+  cabin: {
+    cabin: "",
+    cabinKor: "모든 클래스",
+  },
+};
+
 export const searchResultState = atom<SearchResultProps>({
   key: "searchResultState",
-  default: {
-    tripType: "round",
-    nonStop: false,
-    origin: {
-      code: "SEL",
-      value: "서울",
-    },
-    destination: {
-      code: "",
-      value: "",
-    },
-    schedule: {
-      departureDate: "",
-      departureFormattedDate: "",
-      returnDate: "",
-      returnFormattedDate: "",
-    },
-    passengers: {
-      adults: 1,
-      children: 0,
-      infants: 0,
-    },
-    cabin: {
-      cabin: "",
-      cabinKor: "모든 클래스",
-    },
-  },
+  default: defaultSearchResult,
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const orderState = atom<OrderProps>({
+  key: "orderState",
   effects_UNSTABLE: [persistAtom],
 });
