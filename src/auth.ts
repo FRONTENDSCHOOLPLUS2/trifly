@@ -1,8 +1,8 @@
-import NextAuth from "next-auth";
+import NextAuth, { CredentialsSignin, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import google from "next-auth/providers/google";
 import kakao from "next-auth/providers/kakao";
 import naver from "next-auth/providers/naver";
-import google from "next-auth/providers/google";
 
 const SERVER = process.env.NEXT_PUBLIC_MARKET_API_SERVER;
 const CLIENT_ID = process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID as string;
@@ -23,8 +23,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         if (resJson.ok) {
           const user = resJson.item;
-          return {
-            id: user._id,
+          const userObject: User = {
+            id: String(user._id),
             name: user.name,
             email: user.email,
             phone: user.phone,
@@ -33,7 +33,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             accessToken: user.token.accessToken,
             refreshToken: user.token.refreshToken,
           };
-        } else return null;
+          return userObject;
+        }
+        throw new CredentialsSignin(resJson.message, { cause: resJson });
       },
     }),
 

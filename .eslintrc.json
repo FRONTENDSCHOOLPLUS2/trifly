@@ -48,6 +48,7 @@
 
     "react/jsx-props-no-spreading": "off", // jsx요소에서 props에 스프레드 연산자 사용 불가 제거 => react hook form 사용시 ...register 사용 불가피함
     "import/no-cycle": "off", // https://github.com/import-js/eslint-plugin-import/blob/v2.29.1/docs/rules/no-cycle.md
-    "react/button-has-type": "off" // button의 type을 변수로 지정
+    "react/button-has-type": "off", // button의 type을 변수로 지정
+    "no-param-reassign": "off" // 매개변수 재할당 가능하도록 변경
   }
 }

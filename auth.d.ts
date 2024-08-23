@@ -1,5 +1,6 @@
 export declare module "@auth/core/types" {
   interface User {
+    type?: string;
     birth: string;
     phone: string;
     accessToken: string;
