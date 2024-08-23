@@ -21,7 +21,7 @@ const FootPrint = async () => {
         <div className="tickets">
           {item.map((ticket) =>
             ticket.passengers.map((_, idx) => (
-              <Ticket data={ticket} code={code} passengerId={idx} />
+              <Ticket key={idx} data={ticket} code={code} passengerId={idx} />
             )),
           )}
         </div>

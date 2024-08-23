@@ -1,11 +1,11 @@
 "use client";
 
 import { AirportData, CodeState, OrderItem } from "@/types";
-import "./ticket.scss";
 import Image from "next/image";
 import Link from "next/link";
-import Canvas from "./Canvas";
 import { useRef } from "react";
+import Canvas from "./Canvas";
+import "./ticket.scss";
 
 const Ticket = ({
   data: { _id, reservationId, itineraries, passengers },
@@ -53,13 +53,12 @@ const Ticket = ({
       <div className="img-box">
         <Image
           src={`${URL}${code[arrival].img}`}
+          overrideSrc={`${URL}${code[arrival].img}`}
           alt={code[arrival].value}
           width={0}
           height={0}
           sizes="100%"
-          onLoadingComplete={(img) => (img.srcset = "")}
         />
-
         {type === "modify" ? (
           <Canvas ticketRef={ticketRef} />
         ) : (

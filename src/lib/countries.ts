@@ -1,4 +1,4 @@
-export const countrys = [
+export const countries = [
   "대한민국",
   "가나",
   "가봉",

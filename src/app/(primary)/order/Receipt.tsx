@@ -13,6 +13,10 @@ const Receipt = () => {
   const { totalPrice } = useRecoilValue(orderState);
   const [isDetailShow, setIsDetailShow] = useState(false);
   const personalPrice = usePersonalPrice();
+  const charge = +process.env.NEXT_PUBLIC_CHARGE!;
+  const totalCount = personalPrice.reduce((acc, cur) => {
+    return acc + cur.length;
+  }, 0);
 
   return (
     <article className="receipt">
@@ -20,7 +24,7 @@ const Receipt = () => {
       <dl>
         <dt>결제 예정 금액</dt>
         <dd>
-          {getLocalNum(totalPrice)}원
+          {getLocalNum(+totalPrice + totalCount * charge)}원
           <span className="sub">유류할증료 및 제세공과금 포함</span>
         </dd>
       </dl>
@@ -59,11 +63,7 @@ const Receipt = () => {
                       {type} <strong>{count}</strong>명
                     </span>
                     <span>
-                      {getLocalNum(
-                        +item[0].total * count +
-                          process.env.NEXT_PUBLIC_CHARGE * count,
-                      )}
-                      원
+                      {getLocalNum(+item[0].total * count + charge)}원
                     </span>
                   </h4>
                   <table className="price-adult">
@@ -91,10 +91,7 @@ const Receipt = () => {
                       <tr>
                         <td className="tit">발권 수수료</td>
                         <td className="count">{count}명</td>
-                        <td className="price">
-                          {getLocalNum(process.env.NEXT_PUBLIC_CHARGE * count)}
-                          원
-                        </td>
+                        <td className="price">{getLocalNum(charge)}원</td>
                       </tr>
                     </tbody>
                   </table>

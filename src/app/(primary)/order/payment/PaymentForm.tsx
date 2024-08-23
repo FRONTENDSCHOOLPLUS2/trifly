@@ -5,7 +5,7 @@ import Badge from "@/components/Badge/Badge";
 import Submit from "@/components/Submit/Submit";
 import orderAction from "@/data/actions/orderAction";
 import usePersonalPrice from "@/hook/usePersonalPrice";
-import { countrys } from "@/lib/country";
+import { countries } from "@/lib/countries";
 import { IMPData, Purchaser } from "@/types";
 import { User } from "next-auth";
 import { useRouter } from "next/navigation";
@@ -76,8 +76,11 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
 
   const handleForm = (formData: PaymentData) => {
     let totalNum = 0;
-    passengers.map((item) => (totalNum += item.length));
-    const charge = totalNum * process.env.NEXT_PUBLIC_CHARGE;
+    passengers.map((item) => {
+      totalNum += item.length;
+      return null;
+    });
+    const charge = totalNum * +process.env.NEXT_PUBLIC_CHARGE!;
     const finalPrice = +totalPrice + charge;
 
     // 결제
@@ -109,7 +112,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
             });
           } else {
             // 결제 성공 후 주문 api 통신
-            const res = await orderAction(
+            const result = await orderAction(
               formData,
               itineraries,
               price,
@@ -121,7 +124,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
               content:
                 "항공권 구매가 완료되었습니다. \n좌석 선택 화면으로 이동합니다.",
               buttonNum: 1,
-              handleConfirm: () => router.push(`/order/seat-map/${res._id}`),
+              handleConfirm: () => router.push(`/order/seat-map/${result._id}`),
               handleCancel: () => {},
             });
           }
@@ -626,9 +629,9 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                         </span>
                       </label>
                       <select {...register(`passengers.${key}.nationality`)}>
-                        {countrys.map((item) => (
-                          <option key={item} value={item}>
-                            {item}
+                        {countries.map((country) => (
+                          <option key={country} value={country}>
+                            {country}
                           </option>
                         ))}
                       </select>
@@ -643,9 +646,9 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
                         </span>
                       </label>
                       <select {...register(`passengers.${key}.issueCountry`)}>
-                        {countrys.map((item) => (
-                          <option key={item} value={item}>
-                            {item}
+                        {countries.map((country) => (
+                          <option key={country} value={country}>
+                            {country}
                           </option>
                         ))}
                       </select>
