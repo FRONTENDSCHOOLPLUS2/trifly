@@ -1,4 +1,5 @@
 "use client";
+
 import { modalState } from "@/atoms/atoms";
 import Button from "@/components/Button/Button";
 import Ticket from "@/components/Ticket/Ticket";

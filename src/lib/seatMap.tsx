@@ -21190,29 +21190,29 @@ export const seatMap: SeatMap = {
       G: "Galley",
     },
     seatCharacteristics: {
-      "1": "Restricted seat - General", //일반좌석
-      "9": "Center seat (not window, not aisle)", //중앙 좌석(통로쪽이나 창가가 아님)
-      A: "Aisle seat", //통로좌석
-      RS: "Right side of aircraft", //항공기의 오른쪽
-      B: "Seat with bassinet facility", //유아용 침대가 있는 좌석
-      CH: "Chargeable seats", //유료좌석
-      E: "Exit row seat", //비상구 좌석
-      "1W": "Window seat without window", //창문이 없는 창가좌석
-      LS: "Left side of aircraft", //항공기의 왼쪽
-      H: "Seat with facilities for handicapped/incapacitated passenger", //장애인 승객을 위한 시설을 갖춘 좌석
-      I: "Seat suitable for adult with an infant", //유아를 동반한 성인에게 적합한 좌석
-      K: "Bulkhead seat", //벌크 좌석 여객기 객실 좌석 열에서 맨 첫번째 열 (앞이 벽임)
-      AL: "Seat adjacent to lavatory", //화장실 옆 좌석
-      L: "Leg space seat", //다리 공간이 있는 좌석
-      O: "Preferential seat", //우대석
-      "1A": "Seat not allowed for infant", //유아 탑승 불가 좌석
-      Q: "Seat in a quiet zone", //조용한 구역
-      "1B": "Seat not allowed for medical", //의료용으로는 비적합
-      PC: "Pet cabin", //반려동물
-      V: "Seat to be left vacant or offered last", //비워두거나 마지막으로 제공되는 좌석
-      W: "Window seat", //창가좌석
-      "1M": "Seat with movie view", //영화스크린
-      IE: "Seat not suitable for child", //어린이에게 적합하지 않은 좌석
+      "1": "Restricted seat - General", // 일반좌석
+      "9": "Center seat (not window, not aisle)", // 중앙 좌석(통로쪽이나 창가가 아님)
+      A: "Aisle seat", // 통로좌석
+      RS: "Right side of aircraft", // 항공기의 오른쪽
+      B: "Seat with bassinet facility", // 유아용 침대가 있는 좌석
+      CH: "Chargeable seats", // 유료좌석
+      E: "Exit row seat", // 비상구 좌석
+      "1W": "Window seat without window", // 창문이 없는 창가좌석
+      LS: "Left side of aircraft", // 항공기의 왼쪽
+      H: "Seat with facilities for handicapped/incapacitated passenger", // 장애인 승객을 위한 시설을 갖춘 좌석
+      I: "Seat suitable for adult with an infant", // 유아를 동반한 성인에게 적합한 좌석
+      K: "Bulkhead seat", // 벌크 좌석 여객기 객실 좌석 열에서 맨 첫번째 열 (앞이 벽임)
+      AL: "Seat adjacent to lavatory", // 화장실 옆 좌석
+      L: "Leg space seat", // 다리 공간이 있는 좌석
+      O: "Preferential seat", // 우대석
+      "1A": "Seat not allowed for infant", // 유아 탑승 불가 좌석
+      Q: "Seat in a quiet zone", // 조용한 구역
+      "1B": "Seat not allowed for medical", // 의료용으로는 비적합
+      PC: "Pet cabin", // 반려동물
+      V: "Seat to be left vacant or offered last", // 비워두거나 마지막으로 제공되는 좌석
+      W: "Window seat", // 창가좌석
+      "1M": "Seat with movie view", // 영화스크린
+      IE: "Seat not suitable for child", // 어린이에게 적합하지 않은 좌석
     },
   },
 };
