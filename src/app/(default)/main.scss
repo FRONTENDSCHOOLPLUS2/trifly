@@ -106,6 +106,7 @@
       transform: unset;
       margin-left: calc(var(--layout-padding) * -1);
       margin-right: calc(var(--layout-padding) * -1);
+      width: calc(100% + calc(var(--layout-padding) * 2));
     }
 
     .search-container {
