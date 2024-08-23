@@ -31,7 +31,7 @@ const Modal = () => {
         .querySelector("html")!
         .setAttribute("style", "overflow: hidden;");
     } else {
-      document.querySelector("html")!.setAttribute("style", "overflow: unset;");
+      document.querySelector("html")!.removeAttribute("style");
     }
   }, [isOpen]);
 
