@@ -87,7 +87,7 @@ const SeatmapGrid = () => {
                 style={{ display: "flex" }}
               >
                 {row.map((cell, colIndex) => {
-                  console.log(cell);
+                  // console.log(cell);
                   return (
                     <td className="seat_table" key={colIndex}>
                       {cell && !("code" in cell) && (
