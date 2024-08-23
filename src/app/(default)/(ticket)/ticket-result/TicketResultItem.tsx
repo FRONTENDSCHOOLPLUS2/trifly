@@ -2,13 +2,12 @@
 
 import { modalState, orderState, searchResultState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
+import flightPriceAction from "@/data/actions/flightPriceAction";
 import { AirlineData, CodeState, OffersSearchData } from "@/types";
 import Image from "next/image";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import "./TicketResultItem.scss";
-import flightPriceAction from "@/data/actions/flightPriceAction";
-import { useRouter } from "next/navigation";
 
 const TicketResultItem = ({
   user,
@@ -23,13 +22,11 @@ const TicketResultItem = ({
   const searchResult = useRecoilValue(searchResultState);
   const setOrderState = useSetRecoilState(orderState);
   const setModal = useSetRecoilState(modalState);
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const fetchPrice = async (data: OffersSearchData) => {
-    setIsLoading(true);
     const flightPrice = await flightPriceAction(data);
-    setIsLoading(false);
+
     return flightPrice;
   };
 
@@ -239,25 +236,41 @@ const TicketResultItem = ({
     const returnDate: string = searchResult.schedule.returnFormattedDate;
 
     if (user) {
-      const price = await fetchPrice(flightOffers);
-
-      console.log({
-        departureDate,
-        returnDate,
-        totalPrice,
-        itineraries,
-        price,
+      setModal({
+        isOpen: true,
+        closeButton: false,
+        title: "항공편 조회",
+        content: "선택하신 항공편을 조회 중입니다.",
+        buttonNum: 0,
+        handleConfirm: () => {},
+        handleCancel: () => {},
       });
 
-      setOrderState({
-        departureDate,
-        returnDate,
-        totalPrice,
-        itineraries,
-        price,
-      });
+      try {
+        const price = await fetchPrice(flightOffers);
 
-      router.push("/order/agree");
+        console.log({
+          departureDate,
+          returnDate,
+          totalPrice,
+          itineraries,
+          price,
+        });
+
+        setOrderState({
+          departureDate,
+          returnDate,
+          totalPrice,
+          itineraries,
+          price,
+        });
+
+        router.push("/order/agree");
+      } catch (error) {
+        console.error("항공편 조회 중 오류가 발생했습니다.", error);
+      } finally {
+        setModal({ isOpen: false }); // 모달 닫기
+      }
     } else {
       setModal({
         isOpen: true,
