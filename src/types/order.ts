@@ -84,18 +84,20 @@ export interface Price {
     }[];
     refundableTaxes: string;
   };
-  fareDetailsBySegment: {
-    segmentId: string;
-    cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
-    fareBasis: string;
-    brandedFare?: string;
-    class: string;
-    includedCheckedBags: {
-      weight?: number;
-      weightUnit?: "KG";
-      quantity?: number;
-    };
-  }[];
+  fareDetailsBySegment: FareDetailsBySegment[];
+}
+
+export interface FareDetailsBySegment {
+  segmentId: string;
+  cabin: "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
+  fareBasis: string;
+  brandedFare?: string;
+  class: string;
+  includedCheckedBags: {
+    weight?: number;
+    weightUnit?: "KG";
+    quantity?: number;
+  };
 }
 
 export interface Passengers {
