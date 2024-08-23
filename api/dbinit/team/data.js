@@ -1444,8 +1444,8 @@ export const initData = async (clientId, nextSeq) => {
           },
           {
             code: "JL",
-            value: "일본항공",
-            nameKor: "일본항공",
+            value: "JAL(일본항공)",
+            nameKor: "JAL(일본항공)",
             nameEng: "Japan Airlines",
             allianceKor: "원월드",
             allianceEng: "oneworld",
@@ -1453,8 +1453,8 @@ export const initData = async (clientId, nextSeq) => {
           },
           {
             code: "NH",
-            value: "전일본공수",
-            nameKor: "전일본공수",
+            value: "ANA(전일본공수)",
+            nameKor: "ANA(전일본공수)",
             nameEng: "All Nippon Airlines",
             allianceKor: "스타얼라이언스",
             allianceEng: "Star Alliance",
