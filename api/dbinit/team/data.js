@@ -2911,7 +2911,7 @@ export const initData = async (clientId, nextSeq) => {
             img: `/files/${clientId}/kualalumpur.webp`,
           },
           {
-            code: "KUL",
+            code: "BKI",
             value: "코타키나발루",
             nameKor: "코타키나발루 국제공항",
             nameEng: "Kota Kinabalu International Airport",
