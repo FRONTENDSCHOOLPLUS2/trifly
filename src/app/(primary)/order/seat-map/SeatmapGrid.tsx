@@ -1,6 +1,6 @@
 "use client";
 
-import { seatMap } from "@/lib/seatMap";
+import { seatMapb777 } from "@/lib/seatMapb777";
 import React, { useEffect, useState } from "react";
 import "./seatmapGrid.scss";
 import {
@@ -16,7 +16,7 @@ const SeatmapGrid = () => {
   // const [grid, setGrid] = useState<Array<Array<SeatMapData>>>([]);
   const [grid, setGrid] = useState<IGrid>();
   // const [length, setLength] = useState(0);
-  const { data } = seatMap;
+  const { data } = seatMapb777;
   const seatData = data.map((item) => ({
     decks: item.decks,
     seats: item.decks.map((deck) => deck.seats),
