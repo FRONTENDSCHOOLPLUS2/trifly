@@ -19,6 +19,10 @@ const Filter = ({
   handleFilterChange: (filter: IFilterProps) => void;
 }) => {
   const [isNonStop, setIsNonStop] = useState(false);
+  const [originDepTime, setOriginDepTime] = useState<number[]>([6, 12, 18, 24]);
+  const [originArrTime, setOriginArrTime] = useState<number[]>([6, 12, 18, 24]);
+  const [returnDepTime, setReturnDepTime] = useState<number[]>([6, 12, 18, 24]);
+  const [returnArrTime, setReturnArrTime] = useState<number[]>([6, 12, 18, 24]);
   const [maxPrice, setMaxPrice] = useState(5000000);
 
   useEffect(() => {
@@ -30,37 +34,119 @@ const Filter = ({
     handleFilterChange({ nonStop: !isNonStop });
   };
 
+  useEffect(() => {
+    handleFilterChange({ originDepTime });
+  }, [originDepTime]);
+
+  const handleOriginDepChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+
+    setOriginDepTime((prev) => {
+      if (!prev) {
+        return [value];
+      }
+
+      if (e.target.checked) {
+        return [...prev, value];
+      } else {
+        return prev.filter((time) => time !== value);
+      }
+    });
+  };
+
+  useEffect(() => {
+    handleFilterChange({ returnDepTime });
+  }, [returnDepTime]);
+
+  const handleReturnDepChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+
+    setReturnDepTime((prev) => {
+      if (!prev) {
+        return [value];
+      }
+
+      if (e.target.checked) {
+        return [...prev, value];
+      } else {
+        return prev.filter((time) => time !== value);
+      }
+    });
+  };
+
+  useEffect(() => {
+    handleFilterChange({ originArrTime });
+  }, [originArrTime]);
+
+  const handleOriginArrChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+
+    setOriginArrTime((prev) => {
+      if (!prev) {
+        return [value];
+      }
+
+      if (e.target.checked) {
+        return [...prev, value];
+      } else {
+        return prev.filter((time) => time !== value);
+      }
+    });
+  };
+
+  useEffect(() => {
+    handleFilterChange({ returnArrTime });
+  }, [returnArrTime]);
+  const handleReturnArrChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+
+    setReturnArrTime((prev) => {
+      if (!prev) {
+        return [value];
+      }
+
+      if (e.target.checked) {
+        return [...prev, value];
+      } else {
+        return prev.filter((time) => time !== value);
+      }
+    });
+  };
+
   const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, style, max } = e.target;
-    setMaxPrice(parseInt(value, 10));
+    setMaxPrice(Number(value));
+    handleFilterChange({ maxPrice: Number(value) });
     const percent = 100 / +max;
     style.background = `linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) ${percent * +value}%, var(--color-gray-50) ${percent * +value}%, var(--color-gray-50) 100%`;
   };
 
   return (
     <div className="filter">
-      {/* 직항 경유 필터링 */}
-      <Accordion type="small">
-        <AccordionItem eventKey={1}>
-          <AccordionHeader>
-            <p className="filter-title">경유</p>
-          </AccordionHeader>
-          <AccordionBody>
-            <div className="filter-contents nonstop">
-              <input
-                type="checkbox"
-                id="nonstop"
-                name="nonstop"
-                checked={isNonStop}
-                onChange={handleNonStopChange}
-              />
-              <label htmlFor="nonstop">
-                <Badge selected={isNonStop}>직항</Badge>
-              </label>
-            </div>
-          </AccordionBody>
-        </AccordionItem>
-      </Accordion>
+      {/* 경유 포함 검색했을 시 필터링 */}
+      {!nonStop && (
+        <Accordion type="small">
+          <AccordionItem eventKey={1}>
+            <AccordionHeader>
+              <p className="filter-title">경유</p>
+            </AccordionHeader>
+            <AccordionBody>
+              <div className="filter-contents nonstop">
+                <input
+                  type="checkbox"
+                  id="nonstop-filter"
+                  name="nonstop"
+                  checked={isNonStop}
+                  onChange={handleNonStopChange}
+                />
+                <label htmlFor="nonstop-filter">
+                  <Badge selected={isNonStop}>직항</Badge>
+                </label>
+              </div>
+            </AccordionBody>
+          </AccordionItem>
+        </Accordion>
+      )}
 
       {/* 출발 시간 필터링 */}
       <Accordion type="small">
@@ -73,28 +159,52 @@ const Filter = ({
               <p className="filter-subtitle">가는 날</p>
               <ul className="filter-contents time">
                 <li className="time-selection">
-                  <input type="checkbox" id="origin-depTime-0006" />
+                  <input
+                    type="checkbox"
+                    id="origin-depTime-0006"
+                    value={6}
+                    onChange={handleOriginDepChange}
+                    checked={originDepTime.includes(6)}
+                  />
                   <label htmlFor="origin-depTime-0006">
                     <span />
                   </label>
                   <p className="time-legend first">0시</p>
                 </li>
                 <li className="time-selection">
-                  <input type="checkbox" id="origin-depTime-0612" />
+                  <input
+                    type="checkbox"
+                    id="origin-depTime-0612"
+                    value={12}
+                    onChange={handleOriginDepChange}
+                    checked={originDepTime.includes(12)}
+                  />
                   <label htmlFor="origin-depTime-0612">
                     <span />
                   </label>
                   <p className="time-legend">6시</p>
                 </li>
                 <li className="time-selection">
-                  <input type="checkbox" id="origin-depTime-1218" />
+                  <input
+                    type="checkbox"
+                    id="origin-depTime-1218"
+                    value={18}
+                    onChange={handleOriginDepChange}
+                    checked={originDepTime.includes(18)}
+                  />
                   <label htmlFor="origin-depTime-1218">
                     <span />
                   </label>
                   <p className="time-legend">12시</p>
                 </li>
                 <li className="time-selection">
-                  <input type="checkbox" id="origin-depTime-1824" />
+                  <input
+                    type="checkbox"
+                    id="origin-depTime-1824"
+                    value={24}
+                    onChange={handleOriginDepChange}
+                    checked={originDepTime.includes(24)}
+                  />
                   <label htmlFor="origin-depTime-1824">
                     <span />
                   </label>
@@ -108,28 +218,52 @@ const Filter = ({
                 <p className="filter-subtitle">오는 날</p>
                 <ul className="filter-contents time">
                   <li className="time-selection">
-                    <input type="checkbox" id="return-depTime-0006" />
+                    <input
+                      type="checkbox"
+                      id="return-depTime-0006"
+                      value={6}
+                      checked={returnDepTime.includes(6)}
+                      onChange={handleReturnDepChange}
+                    />
                     <label htmlFor="return-depTime-0006">
                       <span />
                       <p className="time-legend first">0시</p>
                     </label>
                   </li>
                   <li className="time-selection">
-                    <input type="checkbox" id="return-depTime-0612" />
+                    <input
+                      type="checkbox"
+                      id="return-depTime-0612"
+                      value={12}
+                      checked={returnDepTime.includes(12)}
+                      onChange={handleReturnDepChange}
+                    />
                     <label htmlFor="return-depTime-0612">
                       <span />
                       <p className="time-legend">6시</p>
                     </label>
                   </li>
                   <li className="time-selection">
-                    <input type="checkbox" id="return-depTime-1218" />
+                    <input
+                      type="checkbox"
+                      id="return-depTime-1218"
+                      value={18}
+                      checked={returnDepTime.includes(18)}
+                      onChange={handleReturnDepChange}
+                    />
                     <label htmlFor="return-depTime-1218">
                       <span />
                       <p className="time-legend">12시</p>
                     </label>
                   </li>
                   <li className="time-selection">
-                    <input type="checkbox" id="return-depTime-1824" />
+                    <input
+                      type="checkbox"
+                      id="return-depTime-1824"
+                      value={24}
+                      checked={returnDepTime.includes(24)}
+                      onChange={handleReturnDepChange}
+                    />
                     <label htmlFor="return-depTime-1824">
                       <span />
                       <p className="time-legend">18시</p>
@@ -154,28 +288,52 @@ const Filter = ({
               <p className="filter-subtitle">가는 날</p>
               <ul className="filter-contents time">
                 <li className="time-selection">
-                  <input type="checkbox" id="origin-arrTime-0006" />
+                  <input
+                    type="checkbox"
+                    id="origin-arrTime-0006"
+                    value={6}
+                    checked={originArrTime.includes(6)}
+                    onChange={handleOriginArrChange}
+                  />
                   <label htmlFor="origin-arrTime-0006">
                     <span />
                     <p className="time-legend first">0시</p>
                   </label>
                 </li>
                 <li className="time-selection">
-                  <input type="checkbox" id="origin-arrTime-0612" />
+                  <input
+                    type="checkbox"
+                    id="origin-arrTime-0612"
+                    value={12}
+                    checked={originArrTime.includes(12)}
+                    onChange={handleOriginArrChange}
+                  />
                   <label htmlFor="origin-arrTime-0612">
                     <span />
                     <p className="time-legend">6시</p>
                   </label>
                 </li>
                 <li className="time-selection">
-                  <input type="checkbox" id="origin-arrTime-1218" />
+                  <input
+                    type="checkbox"
+                    id="origin-arrTime-1218"
+                    value={18}
+                    checked={originArrTime.includes(18)}
+                    onChange={handleOriginArrChange}
+                  />
                   <label htmlFor="origin-arrTime-1218">
                     <span />
                     <p className="time-legend">12시</p>
                   </label>
                 </li>
                 <li className="time-selection">
-                  <input type="checkbox" id="origin-arrTime-1824" />
+                  <input
+                    type="checkbox"
+                    id="origin-arrTime-1824"
+                    value={24}
+                    checked={originArrTime.includes(24)}
+                    onChange={handleOriginArrChange}
+                  />
                   <label htmlFor="origin-arrTime-1824">
                     <span />
                     <p className="time-legend">18시</p>
@@ -189,28 +347,52 @@ const Filter = ({
                 <p className="filter-subtitle">오는 날</p>
                 <ul className="filter-contents time">
                   <li className="time-selection">
-                    <input type="checkbox" id="return-arrTime-0006" />
+                    <input
+                      type="checkbox"
+                      id="return-arrTime-0006"
+                      value={6}
+                      checked={returnArrTime.includes(6)}
+                      onChange={handleReturnArrChange}
+                    />
                     <label htmlFor="return-arrTime-0006">
                       <span />
                       <p className="time-legend first">0시</p>
                     </label>
                   </li>
                   <li className="time-selection">
-                    <input type="checkbox" id="return-arrTime-0612" />
+                    <input
+                      type="checkbox"
+                      id="return-arrTime-0612"
+                      value={12}
+                      checked={returnArrTime.includes(12)}
+                      onChange={handleReturnArrChange}
+                    />
                     <label htmlFor="return-arrTime-0612">
                       <span />
                       <p className="time-legend">6시</p>
                     </label>
                   </li>
                   <li className="time-selection">
-                    <input type="checkbox" id="return-arrTime-1218" />
+                    <input
+                      type="checkbox"
+                      id="return-arrTime-1218"
+                      value={18}
+                      checked={returnArrTime.includes(18)}
+                      onChange={handleReturnArrChange}
+                    />
                     <label htmlFor="return-arrTime-1218">
                       <span />
                       <p className="time-legend">12시</p>
                     </label>
                   </li>
                   <li className="time-selection">
-                    <input type="checkbox" id="return-arrTime-1824" />
+                    <input
+                      type="checkbox"
+                      id="return-arrTime-1824"
+                      value={24}
+                      checked={returnArrTime.includes(24)}
+                      onChange={handleReturnArrChange}
+                    />
                     <label htmlFor="return-arrTime-1824">
                       <span />
                       <p className="time-legend">18시</p>
@@ -326,7 +508,9 @@ const Filter = ({
           <AccordionBody>
             <div className="filter-contents maxPrice">
               <label htmlFor="max-price">
-                {maxPrice.toLocaleString()}원 미만
+                {maxPrice === 5000000
+                  ? "전체"
+                  : `${maxPrice.toLocaleString()}원 미만`}
               </label>
               <input
                 type="range"

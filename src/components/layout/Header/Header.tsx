@@ -19,6 +19,7 @@ const Header: React.FC<HeaderProps> = async ({ type = "default" }) => {
           <Link href="/">
             <div className="img-box">
               <Image
+                priority
                 src={`/img/logo-${type}.svg`}
                 alt="TriFly"
                 width={0}

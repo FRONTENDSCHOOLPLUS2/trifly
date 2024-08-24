@@ -10,12 +10,12 @@ import TicketResultList from "./TicketResultList";
 
 export interface IFilterProps {
   nonStop?: boolean;
-  originDepTime?: string;
-  originArrTime?: string;
-  returnDepTime?: string;
-  returnArrTime?: string;
+  originDepTime?: number[];
+  originArrTime?: number[];
+  returnDepTime?: number[];
+  returnArrTime?: number[];
   airline?: string;
-  maxPrice?: string;
+  maxPrice?: number;
 }
 
 const Result = ({
@@ -40,8 +40,102 @@ const Result = ({
     }));
   }, []);
 
+  const applyFilters = () => {
+    let newFilteredData = [...data];
+
+    if (filters) {
+      // 직항 필터
+      if (filters.nonStop) {
+        newFilteredData = newFilteredData.filter((offer) =>
+          offer.itineraries.every(
+            (itinerary) => itinerary.segments.length === 1,
+          ),
+        );
+      }
+
+      // 시간 필터
+      if (filters.originDepTime) {
+        const originDepTime = filters.originDepTime;
+
+        newFilteredData = newFilteredData.filter((offer) => {
+          const departureTime = new Date(
+            offer.itineraries[0].segments[0].departure.at,
+          ).getHours();
+
+          return originDepTime.some(
+            (timeRange) =>
+              departureTime >= timeRange - 6 && departureTime < timeRange,
+          );
+        });
+      }
+
+      if (searchResult.tripType === "round") {
+        if (filters.returnDepTime) {
+          const returnDepTime = filters.returnDepTime;
+
+          newFilteredData = newFilteredData.filter((offer) => {
+            const departureTime = new Date(
+              offer.itineraries[1].segments[0].departure.at,
+            ).getHours();
+
+            return returnDepTime.some(
+              (timeRange) =>
+                departureTime >= timeRange - 6 && departureTime < timeRange,
+            );
+          });
+        }
+      }
+
+      if (filters.originArrTime) {
+        const originArrTime = filters.originArrTime;
+
+        newFilteredData = newFilteredData.filter((offer) => {
+          const segmentsLength = offer.itineraries[0].segments.length;
+          const arrTime = new Date(
+            offer.itineraries[0].segments[segmentsLength - 1].arrival.at,
+          ).getHours();
+
+          return originArrTime.some(
+            (timeRange) => arrTime >= timeRange - 6 && arrTime < timeRange,
+          );
+        });
+      }
+
+      if (searchResult.tripType === "round") {
+        if (filters.returnArrTime) {
+          const returnArrTime = filters.returnArrTime;
+          newFilteredData = newFilteredData.filter((offer) => {
+            const segmentsLength = offer.itineraries[1].segments.length;
+            const arrTime = new Date(
+              offer.itineraries[1].segments[segmentsLength - 1].arrival.at,
+            ).getHours();
+
+            return returnArrTime.some(
+              (timeRange) => arrTime >= timeRange - 6 && arrTime < timeRange,
+            );
+          });
+        }
+      }
+
+      // 항공사 필터
+
+      // 가격 필터
+      if (filters.maxPrice) {
+        const maxPrice = filters.maxPrice;
+
+        if (filters.maxPrice < 5000000) {
+          newFilteredData = newFilteredData.filter(
+            (offer) => Number(offer.price.grandTotal) < maxPrice,
+          );
+        }
+      }
+
+      setFilteredData(newFilteredData);
+    }
+  };
+
   useEffect(() => {
-    console.log(filters);
+    applyFilters();
   }, [filters]);
 
   return (
@@ -58,7 +152,7 @@ const Result = ({
             />
           </div>
         </div>
-        {data.length ? (
+        {filteredData.length ? (
           <div className="search-result-list">
             <h3 className="hidden">{filteredData.length}개의 검색 결과</h3>
 

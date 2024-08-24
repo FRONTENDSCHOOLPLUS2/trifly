@@ -81621,7 +81621,7 @@ const TicketResult = async ({ searchParams }: IPageProps) => {
   /* -------------------------------------------------------------------------- */
   /*                 carrierCode가 validCarrierCodes에 포함된 객체만 필터링           */
   /* -------------------------------------------------------------------------- */
-  const filteredData = data2.filter((offer) =>
+  const filteredData = data1.filter((offer) =>
     offer.itineraries.some((itinerary) =>
       itinerary.segments.some((segment) =>
         Object.keys(airline).includes(segment.carrierCode),
