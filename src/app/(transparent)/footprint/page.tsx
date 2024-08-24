@@ -1,20 +1,15 @@
 import Ticket from "@/components/Ticket/Ticket";
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import { FetchOrder } from "@/lib/fetchOrder";
-import { AirportData } from "@/types";
-import Image from "next/image";
+import { AirportData, OrderItem } from "@/types";
 import Animation from "./Animation";
+import Chart from "./Chart";
 import "./footprint.scss";
+import TicketBox from "./TicketBox";
 
 interface DataType {
-  areaCode: string;
-  duration: number | string;
-  img: string;
-}
-
-interface ChartType {
-  name: string;
-  value: number;
+  year: string;
+  data: OrderItem[];
 }
 
 const FootPrint = async () => {
@@ -37,13 +32,6 @@ const FootPrint = async () => {
     return `PT${hours}H${remainingMinutes}M`;
   };
 
-  /* 통계에서 보여줄 데이터
-  - 비행 횟수 (숫자)
-  - 비행 시간 (경유 시간 포함) (숫자)
-  - 탑승한 항공사 (차트)
-  - 방문 대륙 (차트)
-    */
-
   // 총 비행 횟수
   const flightCount = item.length;
 
@@ -57,61 +45,76 @@ const FootPrint = async () => {
     flightTimeArr.reduce((acc, cur) => acc + cur, 0),
   );
 
-  // 탑승한 항공사
-  const topAirlines = item.reduce((arr, data) => {
-    data.itineraries.forEach((itinerary) => {
-      itinerary.segments.forEach(({ carrierCode }) => {
-        const existItem = arr.find(
-          (arrItem) => arrItem.name === code[carrierCode].value,
-        );
+  // 연도별로 묶인 티켓 데이터
+  const dataByYear = item.reduce((arr, data) => {
+    const itemYear = data.createdAt.slice(0, 4);
+    const existItem = arr.find((arrData) => arrData.year === itemYear);
 
-        if (existItem) existItem.value += 1;
-        else
-          arr.push({
-            name: code[carrierCode].value,
-            value: 1,
-          });
+    if (existItem) existItem.data.push(data);
+    else
+      arr.push({
+        year: itemYear,
+        data: [data],
       });
-    });
-    return arr;
-  }, [] as ChartType[]);
 
-  // 방문 대륙
-  const topAreas = item.reduce((arr, data) => {
-    data.itineraries.forEach((itinerary) => {
-      const { iataCode } =
-        itinerary.segments[itinerary.segments.length - 1].arrival;
-      const existItem = arr.find(
-        (arrItem) => arrItem.name === code[iataCode].value,
-      );
-
-      if (existItem) existItem.value += 1;
-      else
-        arr.push({
-          name: code[iataCode].value,
-          value: 1,
-        });
-    });
     return arr;
-  }, [] as ChartType[]);
+  }, [] as DataType[]);
 
   return (
     <div className="footprint">
       <section className="animation-box">
-        <h2 className="hidden">대륙 별 여행 기록</h2>
+        <h2 className="hidden">여행 통계</h2>
         <Animation />
-        <div className="data-box">d</div>
+        <div className="data-box">
+          <div className="left-box">
+            <dl>
+              <dt className="data-title">
+                <h3>비행횟수</h3>
+              </dt>
+              <dd>
+                <strong>{flightCount}</strong>flights
+              </dd>
+            </dl>
+            <dl>
+              <dt className="data-title">
+                <h3>비행시간</h3>
+              </dt>
+              <dd>
+                <strong>{flightTime.split("H")[0].slice(2)}</strong>h
+                <strong>{flightTime.split("H")[1].slice(0, 2)}</strong>min
+              </dd>
+            </dl>
+          </div>
+          <div className="right-box">
+            <Chart item={item} />
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2 className="hidden">포토티켓 모음</h2>
-        <div className="tickets">
-          {item.map((ticket) =>
-            ticket.passengers.map((_, idx) => (
-              <Ticket key={idx} data={ticket} code={code} passengerId={idx} />
-            )),
-          )}
-        </div>
+      <section className="tickets-box">
+        <h2 className="hidden">여행 티켓</h2>
+        {dataByYear.map((yearData, index) => {
+          console.log(yearData);
+          return (
+            <div key={index} className="tickets-inner">
+              <h4 className="year">{yearData.year}</h4>
+              <div className="tickets">
+                {yearData.data.map((ticket) =>
+                  ticket.passengers.map((_, idx) => (
+                    <div key={ticket._id} className="ticket-inner">
+                      <Ticket
+                        key={idx}
+                        data={ticket}
+                        code={code}
+                        passengerId={idx}
+                      />
+                    </div>
+                  )),
+                )}
+              </div>
+            </div>
+          );
+        })}
       </section>
     </div>
   );
