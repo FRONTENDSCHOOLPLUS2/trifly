@@ -287,7 +287,7 @@ const TicketResultItem = ({
   };
 
   return (
-    <>
+    <li>
       <button className="ticket-item" onClick={handleClick}>
         <div className="ticket-itinerary">{routeList}</div>
         <div className="ticket-pricing">
@@ -305,7 +305,7 @@ const TicketResultItem = ({
           </div>
         </div>
       </button>
-    </>
+    </li>
   );
 };
 
