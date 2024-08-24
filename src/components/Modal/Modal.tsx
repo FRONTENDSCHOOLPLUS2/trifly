@@ -35,8 +35,6 @@ const Modal = () => {
     }
   }, [isOpen]);
 
-  console.log(buttonNum);
-
   return (
     <>
       {isOpen && (

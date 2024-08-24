@@ -42,15 +42,21 @@
   &.small {
     .accordion-header {
       font-size: var(--title-medium);
-      padding: var(--title-medium) 0;
+      padding: var(--title-min) 0;
+      border-bottom: unset;
+      align-items: center;
 
       &::after {
         background-image: url(/img/icon-accordion-blue.svg);
+        background-size: 1.2rem;
       }
     }
 
     .accordion-body {
       font-size: var(--title-small);
+      padding: unset;
+      padding-bottom: var(--title-min);
+      margin-bottom: 1.4rem;
     }
   }
 }
