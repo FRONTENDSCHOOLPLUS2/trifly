@@ -15,7 +15,7 @@
       }
       .seat-title-flex {
         display: flex;
-        gap: 4rem;
+        gap: 2rem;
 
         .seat-title-box {
           .seat-title {
@@ -26,11 +26,11 @@
             .seat-icon {
               width: 3rem;
               height: 3rem;
-              margin-right: 2rem;
+              margin-right: 1rem;
             }
 
             p {
-              font-size: var(--title-medium);
+              font-size: var(--title-small);
               color: var(--color-gray-100);
               font-weight: 600;
             }
@@ -47,7 +47,7 @@
       }
       .facility-box-flex {
         display: flex;
-        gap: 5.5rem;
+        gap: 3.5rem;
         .facility-box {
           .facility {
             display: flex;
@@ -57,11 +57,11 @@
             .facility-icon {
               width: 3rem;
               height: 3rem;
-              margin-right: 2rem;
+              margin-right: 1rem;
             }
 
             p {
-              font-size: var(--title-medium);
+              font-size: var(--title-small);
               color: var(--color-gray-100);
               font-weight: 600;
             }
@@ -77,14 +77,75 @@
 }
 
 @media (max-width: 349px) {
-  .seat-select-right-box {
-    display: none;
+  .seat-select-box {
+    flex-direction: column-reverse;
+    .seat-select-right-box {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+@media (min-width: 349px) and (max-width: 499px) {
+  .seat-select-box {
+    flex-direction: column-reverse;
+
+    .seat-select-right-box {
+      margin-bottom: 3rem;
+      .seat-map-guid {
+        display: flex;
+
+        .icon-box {
+          margin-left: 3rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+
+          .facility-box-flex {
+            gap: 2.5rem;
+            .facility-box .facility .facility-icon {
+              width: 2rem;
+              height: 2rem;
+              margin-right: 1rem;
+            }
+          }
+          .seat-title-flex {
+            gap: 1rem;
+
+            .seat-title-box .seat-title .seat-icon {
+              width: 2rem;
+              height: 2rem;
+              margin-right: 1rem;
+            }
+          }
+
+          .line {
+            border-top: 2px solid var(--color-gray-30);
+            margin: 2rem 0;
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }
 
 @media (min-width: 500px) and (max-width: 767px) {
   .seat-select-box {
-    flex-direction: column;
+    flex-direction: column-reverse;
+
+    .seat-select-right-box {
+      margin-bottom: 3rem;
+      .seat-map-guid {
+        display: flex;
+        align-items: center;
+        gap: 8rem;
+
+        .icon-box {
+          width: 60%;
+        }
+      }
+    }
   }
 }
 
@@ -107,17 +168,6 @@
           align-items: flex-start;
           justify-content: center;
           margin-right: 3rem;
-
-          .facility-box-flex,
-          seat-title-flex {
-            gap: 3rem;
-            .facility-box .facility .facility-icon,
-            .seat-title-box .seat-title .seat-icon {
-              width: 3rem;
-              height: 3rem;
-              margin-right: 1rem;
-            }
-          }
 
           .line {
             border-right: 2px solid var(--color-gray-30);
