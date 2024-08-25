@@ -94,7 +94,7 @@
 
   .img-box {
     width: calc(100% + calc(var(--title-max)) * 2);
-    margin: var(--title-extra) calc(var(--title-max) * -1) var(--title-max);
+    margin: var(--title-extra) calc(var(--title-max) * -1) 3rem;
     position: relative;
     aspect-ratio: 16 / 9;
     z-index: 2;
@@ -257,6 +257,8 @@
       top: 0;
       right: 0;
       transform: translateX(calc(100% + 5rem));
+      transition-delay: 1s;
+
       transition: all var(--transition-duration);
 
       .tool-inner {
@@ -372,8 +374,9 @@
       left: auto;
     }
     &.saving .canvas-inner .tool-box {
-      transform: translateY(100%);
-      transition-delay: 1s;
+      opacity: 0;
+      visibility: hidden;
+      transition-delay: 0;
     }
 
     .canvas-inner {
