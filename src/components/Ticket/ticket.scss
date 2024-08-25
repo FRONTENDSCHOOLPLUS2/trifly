@@ -1,6 +1,7 @@
 .ticket-box {
   padding: calc(var(--title-max) * 1.5) var(--title-max)
     calc(var(--title-max) * 2.2);
+  width: 100%;
   max-width: 41.2rem;
   position: relative;
 
@@ -114,6 +115,7 @@
       aspect-ratio: 240/228;
       opacity: 0.2;
       pointer-events: none;
+      z-index: -1;
     }
     img {
       object-fit: scale-down;
