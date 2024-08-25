@@ -358,6 +358,7 @@ export const initData = async (clientId, nextSeq) => {
         totalPrice: "221600.00",
         itineraries: [
           {
+            duration: "PT1H25M",
             segments: [
               {
                 departure: {
@@ -392,6 +393,7 @@ export const initData = async (clientId, nextSeq) => {
             ],
           },
           {
+            duration: "PT1H25M",
             segments: [
               {
                 departure: {
@@ -600,6 +602,7 @@ export const initData = async (clientId, nextSeq) => {
         totalPrice: "1037400.00",
         itineraries: [
           {
+            duration: "PT1H35M",
             segments: [
               {
                 departure: {
@@ -631,6 +634,7 @@ export const initData = async (clientId, nextSeq) => {
             ],
           },
           {
+            duration: "PT1H25M",
             segments: [
               {
                 departure: {
@@ -831,6 +835,7 @@ export const initData = async (clientId, nextSeq) => {
         reservationId: "CKDFL9",
         itineraries: [
           {
+            duration: "PT15H15M",
             segments: [
               {
                 departure: {
@@ -888,6 +893,7 @@ export const initData = async (clientId, nextSeq) => {
             ],
           },
           {
+            duration: "PT17H45M",
             segments: [
               {
                 departure: {
