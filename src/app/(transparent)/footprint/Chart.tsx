@@ -69,8 +69,8 @@ const Chart = ({ item }: { item: OrderItem[] }) => {
     } = props;
     const sin = Math.sin(-RADIAN * midAngle!);
     const cos = Math.cos(-RADIAN * midAngle!);
-    const mx = cx! + (outerRadius! + 18) * cos;
-    const my = cy! + (outerRadius! + 25) * sin;
+    const mx = cx! + (outerRadius! + 17) * cos;
+    const my = cy! + (outerRadius! + 23) * sin;
     const textAnchor = cos >= 0 ? "start" : "end";
 
     return (
@@ -107,7 +107,7 @@ const Chart = ({ item }: { item: OrderItem[] }) => {
           x={mx}
           y={my}
           textAnchor={textAnchor}
-          fill="var(--color-gray-50)"
+          fill="var(--color-gray-30)"
           fontSize={14}
         >
           {`${(percent! * 100).toFixed()}%`}
