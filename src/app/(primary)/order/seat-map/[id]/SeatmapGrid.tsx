@@ -8,9 +8,9 @@ import { SeatData, SeatFacilities } from "@/types";
 type IGrid = Array<SeatData | SeatFacilities | null>[];
 
 const SeatmapGrid = () => {
-  // const [grid, setGrid] = useState<Array<Array<SeatMapData>>>([]);
   const [grid, setGrid] = useState<IGrid>();
-  // const [length, setLength] = useState(0);
+  const [clickedCells, setClickedCells] = useState<Array<[number, number]>>([]);
+
   const { data } = seatMapb747;
   const seatData = data.map((item) => ({
     decks: item.decks,
@@ -25,19 +25,12 @@ const SeatmapGrid = () => {
 
   const { width, length, startWingsX, endWingsX, exitRowsX } =
     seatData[0].decks[0].deckConfiguration;
-  console.log(exitRowsX);
 
   useEffect(() => {
-    // console.log(exitRowsX);
-
-    // console.log(seatData[0].decks[0].deckConfiguration);
-
-    // 데이터 length width에 따른 그리드
     const newGrid = Array(length)
       .fill(null)
       .map(() => Array(width).fill(null));
 
-    // 각 자리 데이터에 따른 그리드
     seatData[0].coordinates[0].forEach((seat, idx) => {
       const row = seat.x;
       const col = seat.y;
@@ -49,8 +42,37 @@ const SeatmapGrid = () => {
     });
 
     setGrid(newGrid);
-    // setLength(length); // wing 테이블에 사용할 length
   }, []);
+
+  const handleButtonClick = (rowIndex: number, colIndex: number) => {
+    console.log(`좌표 (${rowIndex}, ${colIndex})`);
+    // 이미 클릭된 셀인지 확인하는거임
+    const isAlreadyClicked = clickedCells.some(
+      ([clickedRow, clickedCol]) =>
+        clickedRow === rowIndex && clickedCol === colIndex,
+    );
+
+    if (isAlreadyClicked) {
+      // 이미 클릭된 셀이라면요 선택 해제잉
+      setClickedCells((item) =>
+        item.filter(
+          ([clickedRow, clickedCol]) =>
+            !(clickedRow === rowIndex && clickedCol === colIndex),
+        ),
+      );
+    } else {
+      // 클릭된 셀이 아니면 선택 가넝~
+      setClickedCells((item) => [...item, [rowIndex, colIndex]]);
+    }
+  };
+
+  const isClicked = (rowIndex: number, colIndex: number) => {
+    // 해당 좌표가 클릭된 상태 여부 확인하는 부분
+    return clickedCells.some(
+      ([clickedRow, clickedCol]) =>
+        clickedRow === rowIndex && clickedCol === colIndex,
+    );
+  };
 
   if (!grid) {
     return <div>엣헴g</div>;
@@ -64,7 +86,9 @@ const SeatmapGrid = () => {
             {Array.from({ length }).map((_, index) => (
               <tr
                 key={index}
-                className={`wing-seat ${index >= startWingsX && index <= endWingsX ? "wing" : null} ${exitRowsX.includes(index + 1) === true ? "exit" : null}`}
+                className={`wing-seat ${
+                  index >= startWingsX && index <= endWingsX ? "wing" : null
+                } ${exitRowsX.includes(index + 1) === true ? "exit" : null}`}
               >
                 <td className="wing-td" />
               </tr>
@@ -82,13 +106,16 @@ const SeatmapGrid = () => {
                 style={{ display: "flex" }}
               >
                 {row.map((cell, colIndex) => {
-                  // console.log(cell);
+                  const clicked = isClicked(rowIndex, colIndex); // 셀 클릭 했는지 안했는지
                   return (
                     <td className="seat_table" key={colIndex}>
                       {cell && !("code" in cell) && (
                         <button
                           type="button"
-                          className={`seat ${cell.travelerPricing[0].seatAvailabilityStatus} `}
+                          className={`seat ${
+                            clicked ? "clicked-seat" : ""
+                          } ${cell.travelerPricing[0].seatAvailabilityStatus}`}
+                          onClick={() => handleButtonClick(rowIndex, colIndex)}
                         >
                           {cell.travelerPricing[0].seatAvailabilityStatus ===
                           "AVAILABLE"
@@ -100,7 +127,12 @@ const SeatmapGrid = () => {
                       {cell && "code" in cell && (
                         <button
                           aria-label="facility icon"
-                          className={` facility ${cell.code === "LA" ? "toilet" : null} ${cell.code === "G" ? "galley" : null} `}
+                          className={`facility ${
+                            clicked ? "clicked-facility" : ""
+                          } ${cell.code === "LA" ? "toilet" : ""} ${
+                            cell.code === "G" ? "galley" : ""
+                          }`}
+                          onClick={() => handleButtonClick(rowIndex, colIndex)}
                         />
                       )}
                     </td>
@@ -118,7 +150,9 @@ const SeatmapGrid = () => {
             {Array.from({ length }).map((_, index) => (
               <tr
                 key={index}
-                className={`wing-seat ${index >= startWingsX && index <= endWingsX ? "wing" : null} ${exitRowsX.includes(index + 1) === true ? "exit" : null}`}
+                className={`wing-seat ${
+                  index >= startWingsX && index <= endWingsX ? "wing" : ""
+                } ${exitRowsX.includes(index + 1) === true ? "exit" : ""}`}
               >
                 <td className="wing-td" />
               </tr>

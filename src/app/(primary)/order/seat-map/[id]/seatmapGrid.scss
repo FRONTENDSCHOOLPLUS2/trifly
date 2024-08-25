@@ -128,6 +128,7 @@
           font-size: var(--title-medium);
           font-weight: 500;
           color: var(--color-gray-100);
+          transition: all var(--transition-duration);
 
           &.BLOCKED {
             background-image: url(/img/seat-unselect.svg);
@@ -137,6 +138,11 @@
             background-image: url(/img/seat-unselect.svg);
             pointer-events: none;
           }
+        }
+        .clicked-seat {
+          background-image: url("/img/seat-selected.svg");
+          color: var(--color-primary-30);
+          transition: all var(--transition-duration);
         }
 
         .facility {

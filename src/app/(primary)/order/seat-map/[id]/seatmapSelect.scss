@@ -4,10 +4,12 @@
 
   // 오른쪽 박스
   .seat-select-right-box {
-    .seat-map-guid {
+    //좌석안내
+    .seat-map-guide {
       padding: var(--layout-padding);
       box-shadow: var(--box-shadow);
       border-radius: var(--title-extra);
+      margin-bottom: 3rem;
 
       h3 {
         font-size: var(--title-large);
@@ -73,6 +75,47 @@
         }
       }
     }
+
+    //탑승자 좌석
+    .passenger-seat {
+      padding: var(--layout-padding);
+      box-shadow: var(--box-shadow);
+      border-radius: var(--title-extra);
+      font-size: var(--title-medium);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+
+      .passenger-name {
+        font-weight: 600;
+      }
+
+      .selected-seat {
+        color: var(--color-primary);
+        font-size: var(--title-medium);
+        font-weight: 500;
+      }
+
+      .unselected-seat {
+        color: var(--color-gray-100);
+        font-size: var(--title-medium);
+
+        font-weight: 500;
+      }
+    }
+
+    a {
+      display: flex;
+      padding: 1rem;
+      border-radius: 1rem;
+      align-items: center;
+      justify-content: center;
+      inset: 0;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      transition: all var(--transition-duration);
+      font-size: var(--title-medium);
+    }
   }
 }
 
@@ -91,7 +134,7 @@
 
     .seat-select-right-box {
       margin-bottom: 3rem;
-      .seat-map-guid {
+      .seat-map-guide {
         display: flex;
 
         .icon-box {
@@ -100,7 +143,6 @@
           flex-direction: column;
           align-items: flex-start;
           justify-content: center;
-
 
           .facility-box-flex {
             gap: 2.5rem;
@@ -112,7 +154,6 @@
           }
           .seat-title-flex {
             gap: 1rem;
-
 
             .seat-title-box .seat-title .seat-icon {
               width: 2rem;
@@ -138,14 +179,13 @@
 
     .seat-select-right-box {
       margin-bottom: 3rem;
-      .seat-map-guid {
+      .seat-map-guide {
         display: flex;
         align-items: center;
         gap: 8rem;
 
         .icon-box {
           width: 60%;
-
         }
       }
     }
@@ -158,7 +198,7 @@
 
     .seat-select-right-box {
       margin-bottom: 3rem;
-      .seat-map-guid {
+      .seat-map-guide {
         display: flex;
         justify-content: space-between;
 
