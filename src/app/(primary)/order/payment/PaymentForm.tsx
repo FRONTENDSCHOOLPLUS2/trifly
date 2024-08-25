@@ -6,7 +6,7 @@ import Submit from "@/components/Submit/Submit";
 import orderAction from "@/data/actions/orderAction";
 import usePersonalPrice from "@/hook/usePersonalPrice";
 import { countries } from "@/lib/countries";
-import { IMPData, Purchaser } from "@/types";
+import { AirportData, CodeState, IMPData, Purchaser } from "@/types";
 import { User } from "next-auth";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
@@ -46,7 +46,13 @@ export type PaymentData = {
   };
 };
 
-const PaymentForm = ({ user }: { user: User | undefined }) => {
+const PaymentForm = ({
+  user,
+  code,
+}: {
+  user: User | undefined;
+  code: CodeState<AirportData>;
+}) => {
   const router = useRouter();
   const setModal = useSetRecoilState(modalState);
   const { setOrderStatus } = useContext(OrderContext);
@@ -82,6 +88,10 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
     });
     const charge = totalNum * +process.env.NEXT_PUBLIC_CHARGE!;
     const finalPrice = +totalPrice + charge;
+    const arrival =
+      itineraries[0].segments[itineraries[0].segments.length - 1].arrival
+        .iataCode;
+    const image = code[arrival].img;
 
     // 결제
     const { IMP } = window;
@@ -117,6 +127,7 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
               itineraries,
               price,
               finalPrice,
+              image,
             );
             setModal({
               isOpen: true,

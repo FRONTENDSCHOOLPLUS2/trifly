@@ -8,7 +8,7 @@ import Canvas from "./Canvas";
 import "./ticket.scss";
 
 const Ticket = ({
-  data: { _id, reservationId, itineraries, passengers },
+  data: { _id, reservationId, itineraries, passengers, image, history },
   code,
   passengerId,
   type = "defualt",
@@ -23,6 +23,7 @@ const Ticket = ({
   const arrival =
     itineraries[0].segments[itineraries[0].segments.length - 1].arrival
       .iataCode;
+  const imagePath = history ? history[history.length - 1].updated.image : image;
 
   return (
     <article className={`ticket-box ${type}-ver`} ref={ticketRef}>
@@ -52,15 +53,15 @@ const Ticket = ({
       </div>
       <div className="img-box">
         <Image
-          src={`${URL}${code[arrival].img}`}
-          overrideSrc={`${URL}${code[arrival].img}`}
+          src={`${URL}${imagePath}`}
+          overrideSrc={`${URL}${imagePath}`}
           alt={code[arrival].value}
           width={0}
           height={0}
           sizes="100%"
         />
         {type === "modify" ? (
-          <Canvas ticketRef={ticketRef} />
+          <Canvas ticketRef={ticketRef} id={_id} />
         ) : (
           <Link href={`/footprint/${_id}/${passengerId}`}>
             수정 및 저장하기

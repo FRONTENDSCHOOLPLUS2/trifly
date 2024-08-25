@@ -110,6 +110,7 @@
       width: calc(var(--title-max) * 10);
       aspect-ratio: 240/228;
       opacity: 0.2;
+      pointer-events: none;
     }
     img {
       object-fit: scale-down;
@@ -256,6 +257,7 @@
       top: 0;
       right: 0;
       transform: translateX(calc(100% + 5rem));
+      transition: all var(--transition-duration);
 
       .tool-inner {
         display: flex;
@@ -369,6 +371,10 @@
     &.modify-ver {
       left: auto;
     }
+    &.saving .canvas-inner .tool-box {
+      transform: translateY(100%);
+      transition-delay: 1s;
+    }
 
     .canvas-inner {
       .tool-box {
@@ -376,7 +382,7 @@
         top: auto;
         bottom: 0;
         left: 0;
-        padding: 3rem 1.8rem;
+        padding: 2rem 1.8rem;
         transform: none;
         background: #fff;
         z-index: 1;
@@ -394,7 +400,8 @@
 
             &.tool-middel {
               button {
-                width: 4.8rem;
+                width: 4.2rem;
+                background-size: 2.4rem;
               }
             }
           }
@@ -415,8 +422,9 @@
             width: 100%;
             padding: 0;
             padding-left: 7rem;
-            height: 4.8rem;
+            height: 4.2rem;
             background-position: center left 2rem;
+            background-size: 2rem;
           }
         }
 
