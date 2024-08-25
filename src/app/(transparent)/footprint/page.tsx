@@ -93,18 +93,21 @@ const FootPrint = async () => {
       <section className="tickets-box">
         <h2 className="hidden">여행 티켓</h2>
 
-        {dataByYear.map((yearData, index) => (
-          <div key={index} className="tickets-inner">
+        {dataByYear.map((yearData, yearIdx) => (
+          <div key={`연도별-${yearIdx}`} className="tickets-inner">
             <h4 className="year">{yearData.year}</h4>
             <div className="tickets">
               {yearData.data.map((ticket) =>
-                ticket.passengers.map((_, idx) => (
-                  <div key={ticket._id} className="ticket-inner">
+                ticket.passengers.map((_, passengerIdx) => (
+                  <div
+                    key={`티켓-${ticket._id}-${Math.random()}`}
+                    className="ticket-inner"
+                  >
                     <Ticket
-                      key={idx}
+                      key={`승객-${passengerIdx}`}
                       data={ticket}
                       code={code}
-                      passengerId={idx}
+                      passengerId={passengerIdx}
                     />
                   </div>
                 )),
