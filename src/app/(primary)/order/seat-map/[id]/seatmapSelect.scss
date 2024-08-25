@@ -1,0 +1,224 @@
+.seat-select-box {
+  display: flex;
+  justify-content: space-between;
+
+  // 오른쪽 박스
+  .seat-select-right-box {
+    //좌석안내
+    .seat-map-guide {
+      padding: var(--layout-padding);
+      box-shadow: var(--box-shadow);
+      border-radius: var(--title-extra);
+      margin-bottom: 3rem;
+
+      h3 {
+        font-size: var(--title-large);
+        margin-bottom: 3rem;
+      }
+      .seat-title-flex {
+        display: flex;
+        gap: 2rem;
+
+        .seat-title-box {
+          .seat-title {
+            display: flex;
+            text-align: center;
+            align-items: center;
+
+            .seat-icon {
+              width: 3rem;
+              height: 3rem;
+              margin-right: 1rem;
+            }
+
+            p {
+              font-size: var(--title-small);
+              color: var(--color-gray-100);
+              font-weight: 600;
+            }
+          }
+
+          .seat-title + .seat-title {
+            margin-top: 2rem;
+          }
+        }
+      }
+      .line {
+        border-top: 2px solid var(--color-gray-30);
+        margin: 3rem 0;
+      }
+      .facility-box-flex {
+        display: flex;
+        gap: 3.5rem;
+        .facility-box {
+          .facility {
+            display: flex;
+            text-align: center;
+            align-items: center;
+
+            .facility-icon {
+              width: 3rem;
+              height: 3rem;
+              margin-right: 1rem;
+            }
+
+            p {
+              font-size: var(--title-small);
+              color: var(--color-gray-100);
+              font-weight: 600;
+            }
+          }
+
+          .facility + .facility {
+            margin-top: 2rem;
+          }
+        }
+      }
+    }
+
+    //탑승자 좌석
+    .passenger-seat {
+      padding: var(--layout-padding);
+      box-shadow: var(--box-shadow);
+      border-radius: var(--title-extra);
+      font-size: var(--title-medium);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+
+      .passenger-name {
+        font-weight: 600;
+      }
+
+      .selected-seat {
+        color: var(--color-primary);
+        font-size: var(--title-medium);
+        font-weight: 500;
+      }
+
+      .unselected-seat {
+        color: var(--color-gray-100);
+        font-size: var(--title-medium);
+
+        font-weight: 500;
+      }
+    }
+
+    a {
+      display: flex;
+      padding: 1rem;
+      border-radius: 1rem;
+      align-items: center;
+      justify-content: center;
+      inset: 0;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      transition: all var(--transition-duration);
+      font-size: var(--title-medium);
+    }
+  }
+}
+
+@media (max-width: 349px) {
+  .seat-select-box {
+    flex-direction: column-reverse;
+    .seat-select-right-box {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+@media (min-width: 349px) and (max-width: 499px) {
+  .seat-select-box {
+    flex-direction: column-reverse;
+
+    .seat-select-right-box {
+      margin-bottom: 3rem;
+      .seat-map-guide {
+        display: flex;
+
+        .icon-box {
+          margin-left: 3rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+
+          .facility-box-flex {
+            gap: 2.5rem;
+            .facility-box .facility .facility-icon {
+              width: 2rem;
+              height: 2rem;
+              margin-right: 1rem;
+            }
+          }
+          .seat-title-flex {
+            gap: 1rem;
+
+            .seat-title-box .seat-title .seat-icon {
+              width: 2rem;
+              height: 2rem;
+              margin-right: 1rem;
+            }
+          }
+
+          .line {
+            border-top: 2px solid var(--color-gray-30);
+            margin: 2rem 0;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) and (max-width: 767px) {
+  .seat-select-box {
+    flex-direction: column-reverse;
+
+    .seat-select-right-box {
+      margin-bottom: 3rem;
+      .seat-map-guide {
+        display: flex;
+        align-items: center;
+        gap: 8rem;
+
+        .icon-box {
+          width: 60%;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .seat-select-box {
+    flex-direction: column-reverse;
+
+    .seat-select-right-box {
+      margin-bottom: 3rem;
+      .seat-map-guide {
+        display: flex;
+        justify-content: space-between;
+
+        h3 {
+          margin: 3rem 0 3rem 1rem;
+        }
+
+        .icon-box {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          margin-right: 3rem;
+
+          .line {
+            border-right: 2px solid var(--color-gray-30);
+            margin: 0 2rem;
+            height: 8rem;
+          }
+        }
+      }
+    }
+  }
+}
