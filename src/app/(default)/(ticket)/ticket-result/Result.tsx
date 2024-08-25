@@ -47,7 +47,9 @@ const Result = ({
   };
 
   // carrierCodes 배열
-  const carrierCodes = [...new Set(extractCarrierCodes(data))];
+  const carrierCodes = [...new Set(extractCarrierCodes(data))].sort((a, b) =>
+    airline[a].nameKor.localeCompare(airline[b].nameKor),
+  );
 
   const handleFilterChange = useCallback((newFilters: IFilterProps) => {
     setFilters((prevFilters) => ({
@@ -134,6 +136,16 @@ const Result = ({
       }
 
       // 항공사 필터
+      if (filters.airline) {
+        const airlines = filters.airline;
+        newFilteredData = newFilteredData.filter((offer) =>
+          offer.itineraries.every((itinerary) =>
+            itinerary.segments.every((segment) =>
+              airlines.includes(segment.carrierCode),
+            ),
+          ),
+        );
+      }
 
       // 가격 필터
       if (filters.maxPrice) {

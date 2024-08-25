@@ -185,8 +185,6 @@ const Filter = ({
   useEffect(() => {
     const updatedAirlines: string[] = [];
 
-    console.log(allianceCheck);
-
     allianceCheck.forEach((alliance) => {
       if (alliance.checked) {
         carrierCodes.forEach((carrierCode) => {
@@ -218,6 +216,26 @@ const Filter = ({
     </li>
   ));
 
+  useEffect(() => {
+    handleFilterChange({ airline: selectedAirlines });
+  }, [selectedAirlines]);
+
+  const handleAirlineChk = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    setSelectedAirlines((prev) => {
+      if (!prev) {
+        return [value];
+      }
+
+      if (e.target.checked) {
+        return [...prev, value];
+      } else {
+        return prev.filter((time) => time !== value);
+      }
+    });
+  };
+
   const airlines = carrierCodes.map((item, idx) => (
     <li key={idx}>
       <input
@@ -226,7 +244,7 @@ const Filter = ({
         id={item}
         value={item}
         checked={selectedAirlines.includes(item)}
-        onChange={() => {}}
+        onChange={handleAirlineChk}
       />
       <label htmlFor={item}>{airline[item].value}</label>
     </li>
