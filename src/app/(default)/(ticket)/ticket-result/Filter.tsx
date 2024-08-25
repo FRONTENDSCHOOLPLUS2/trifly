@@ -5,21 +5,19 @@ import AccordionBody from "@/components/Accordion/AccordionBody";
 import AccordionHeader from "@/components/Accordion/AccordionHeader";
 import AccordionItem from "@/components/Accordion/AccordionItem";
 import Badge from "@/components/Badge/Badge";
+import useAllChecked from "@/hook/useAllChecked";
+import { AirlineData, CodeState } from "@/types";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import "./Filter.scss";
 import { IFilterProps } from "./Result";
-import useAllChecked from "@/hook/useAllChecked";
-import { AirlineData, CodeState, OffersSearchData } from "@/types";
 
 const Filter = ({
-  data,
   airline,
   carrierCodes,
   tripType,
   nonStop,
   handleFilterChange,
 }: {
-  data: OffersSearchData[];
   airline: CodeState<AirlineData>;
   carrierCodes: string[];
   tripType: string;
@@ -65,9 +63,8 @@ const Filter = ({
 
       if (e.target.checked) {
         return [...prev, value];
-      } else {
-        return prev.filter((time) => time !== value);
       }
+      return prev.filter((time) => time !== value);
     });
   };
 
@@ -85,9 +82,8 @@ const Filter = ({
 
       if (e.target.checked) {
         return [...prev, value];
-      } else {
-        return prev.filter((time) => time !== value);
       }
+      return prev.filter((time) => time !== value);
     });
   };
 
@@ -105,9 +101,8 @@ const Filter = ({
 
       if (e.target.checked) {
         return [...prev, value];
-      } else {
-        return prev.filter((time) => time !== value);
       }
+      return prev.filter((time) => time !== value);
     });
   };
 
@@ -125,9 +120,8 @@ const Filter = ({
 
       if (e.target.checked) {
         return [...prev, value];
-      } else {
-        return prev.filter((time) => time !== value);
       }
+      return prev.filter((time) => time !== value);
     });
   };
 
@@ -221,7 +215,7 @@ const Filter = ({
   }, [selectedAirlines]);
 
   const handleAirlineChk = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const { value } = e.target;
 
     setSelectedAirlines((prev) => {
       if (!prev) {
@@ -230,9 +224,8 @@ const Filter = ({
 
       if (e.target.checked) {
         return [...prev, value];
-      } else {
-        return prev.filter((time) => time !== value);
       }
+      return prev.filter((time) => time !== value);
     });
   };
 
