@@ -5,15 +5,23 @@ import AccordionBody from "@/components/Accordion/AccordionBody";
 import AccordionHeader from "@/components/Accordion/AccordionHeader";
 import AccordionItem from "@/components/Accordion/AccordionItem";
 import Badge from "@/components/Badge/Badge";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import "./Filter.scss";
 import { IFilterProps } from "./Result";
+import useAllChecked from "@/hook/useAllChecked";
+import { AirlineData, CodeState, OffersSearchData } from "@/types";
 
 const Filter = ({
+  data,
+  airline,
+  carrierCodes,
   tripType,
   nonStop,
   handleFilterChange,
 }: {
+  data: OffersSearchData[];
+  airline: CodeState<AirlineData>;
+  carrierCodes: string[];
   tripType: string;
   nonStop: boolean;
   handleFilterChange: (filter: IFilterProps) => void;
@@ -24,7 +32,13 @@ const Filter = ({
   const [returnDepTime, setReturnDepTime] = useState<number[]>([6, 12, 18, 24]);
   const [returnArrTime, setReturnArrTime] = useState<number[]>([6, 12, 18, 24]);
   const [maxPrice, setMaxPrice] = useState(5000000);
+  const [selectedAirlines, setSelectedAirlines] =
+    useState<string[]>(carrierCodes);
+  const airlineRef = useRef(null);
 
+  /* -------------------------------------------------------------------------- */
+  /*                          경유 선택 시 직항 경유 변경 처리                         */
+  /* -------------------------------------------------------------------------- */
   useEffect(() => {
     setIsNonStop(nonStop);
   }, []);
@@ -34,6 +48,9 @@ const Filter = ({
     handleFilterChange({ nonStop: !isNonStop });
   };
 
+  /* -------------------------------------------------------------------------- */
+  /*                             출도착 시간 변경 처리                               */
+  /* -------------------------------------------------------------------------- */
   useEffect(() => {
     handleFilterChange({ originDepTime });
   }, [originDepTime]);
@@ -97,6 +114,7 @@ const Filter = ({
   useEffect(() => {
     handleFilterChange({ returnArrTime });
   }, [returnArrTime]);
+
   const handleReturnArrChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
 
@@ -120,6 +138,117 @@ const Filter = ({
     const percent = 100 / +max;
     style.background = `linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) ${percent * +value}%, var(--color-gray-50) ${percent * +value}%, var(--color-gray-50) 100%`;
   };
+
+  const allianceCont = [
+    {
+      name: "Skyteam",
+      title: "스카이팀",
+      content: "",
+      checked: true,
+    },
+    {
+      name: "Star Alliance",
+      title: "스타얼라이언스",
+      content: "",
+      checked: true,
+    },
+    {
+      name: "oneworld",
+      title: "원월드",
+      content: "",
+      checked: true,
+    },
+    {
+      name: "",
+      title: "기타",
+      content: "",
+      checked: true,
+    },
+  ];
+
+  const [allianceCheck, setAllianceCheck] = useState(allianceCont);
+  const { setCheck } = useAllChecked(allianceCheck, setAllianceCheck);
+
+  const handleSelectAll = () => {
+    setAllianceCheck(allianceCheck.map((item) => ({ ...item, checked: true })));
+  };
+
+  const handleDeselectAll = () => {
+    setAllianceCheck(
+      allianceCheck.map((item) => ({ ...item, checked: false })),
+    );
+  };
+
+  /* -------------------------------------------------------------------------- */
+  /*                                  동맹체 체크 여부                              */
+  /* -------------------------------------------------------------------------- */
+  useEffect(() => {
+    const updatedAirlines: string[] = [];
+
+    allianceCheck.forEach((alliance) => {
+      if (alliance.checked) {
+        carrierCodes.forEach((carrierCode) => {
+          if (airline[carrierCode].allianceEng === alliance.name) {
+            updatedAirlines.push(carrierCode);
+          }
+        });
+      }
+    });
+
+    setSelectedAirlines(updatedAirlines);
+  }, [allianceCheck]);
+
+  const handleAllianceChk = (e: ChangeEvent<HTMLInputElement>) => {
+    setCheck(e);
+  };
+
+  const alliances = allianceCheck.map((item) => (
+    <li key={item.title}>
+      <input
+        type="checkbox"
+        name={item.name}
+        id={item.name}
+        value={item.title}
+        checked={item.checked}
+        onChange={handleAllianceChk}
+      />
+      <label htmlFor={item.name}>{item.title}</label>
+    </li>
+  ));
+
+  useEffect(() => {
+    handleFilterChange({ airline: selectedAirlines });
+  }, [selectedAirlines]);
+
+  const handleAirlineChk = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    setSelectedAirlines((prev) => {
+      if (!prev) {
+        return [value];
+      }
+
+      if (e.target.checked) {
+        return [...prev, value];
+      } else {
+        return prev.filter((time) => time !== value);
+      }
+    });
+  };
+
+  const airlines = carrierCodes.map((item, idx) => (
+    <li key={idx}>
+      <input
+        ref={airlineRef}
+        type="checkbox"
+        id={item}
+        value={item}
+        checked={selectedAirlines.includes(item)}
+        onChange={handleAirlineChk}
+      />
+      <label htmlFor={item}>{airline[item].value}</label>
+    </li>
+  ));
 
   return (
     <div className="filter">
@@ -417,83 +546,43 @@ const Filter = ({
               <ul className="all-check">
                 <li>
                   <input
-                    type="radio"
+                    type="checkbox"
                     id="allChk"
                     name="allChk"
                     value="allChk"
+                    disabled={
+                      allianceCheck.filter((item) => item.checked !== true)
+                        .length < 1
+                    }
+                    checked={
+                      allianceCheck.filter((item) => item.checked !== true)
+                        .length >= 1
+                    }
+                    onChange={handleSelectAll}
                   />
                   <label htmlFor="allChk">모두 선택</label>
                 </li>
                 <li>
                   <input
-                    type="radio"
+                    type="checkbox"
                     id="allCancel"
                     name="allChk"
                     value="allCancel"
+                    disabled={
+                      allianceCheck.filter((item) => item.checked !== true)
+                        .length >= 1
+                    }
+                    checked={
+                      allianceCheck.filter((item) => item.checked !== true)
+                        .length < 1
+                    }
+                    onChange={handleDeselectAll}
                   />
                   <label htmlFor="allCancel">모두 해제</label>
                 </li>
               </ul>
-              <ul className="alliance">
-                <li>
-                  <input type="checkbox" id="skyteam" value="Skyteam" />
-                  <label htmlFor="skyteam">스카이팀</label>
-                </li>
-                <li>
-                  <input
-                    type="checkbox"
-                    id="starAlliance"
-                    value="Star Alliance"
-                  />
-                  <label htmlFor="starAlliance">스타얼라이언스</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="oneworld" value="oneworld" />
-                  <label htmlFor="oneworld">원월드</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="allianceEtc" value="" />
-                  <label htmlFor="allianceEtc">기타</label>
-                </li>
-              </ul>
-              <ul className="airline">
-                <li>
-                  <input type="checkbox" id="KE" value="KE" />
-                  <label htmlFor="KE">대한항공</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="OZ" value="OZ" />
-                  <label htmlFor="OZ">아시아나항공</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="BX" value="BX" />
-                  <label htmlFor="BX">에어부산</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="RS" value="RS" />
-                  <label htmlFor="RS">에어서울</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="YP" value="YP" />
-                  <label htmlFor="YP">에어프레미아</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="ZE" value="ZE" />
-                  <label htmlFor="ZE">이스타항공</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="7C" value="7C" />
-                  <label htmlFor="7C">제주항공</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="LJ" value="LJ" />
-                  <label htmlFor="LJ">진에어</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="TW" value="TW" />
-                  <label htmlFor="TW">티웨이항공</label>
-                </li>
-              </ul>
+              <ul className="alliance">{alliances}</ul>
+              <ul className="airline">{airlines}</ul>
             </div>
           </AccordionBody>
         </AccordionItem>

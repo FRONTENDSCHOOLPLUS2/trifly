@@ -238,7 +238,7 @@
     font-size: var(--title-big);
 
     .canvas-box {
-      aspect-ratio: inherit;
+      aspect-ratio: 16/9;
 
       canvas {
         position: relative;

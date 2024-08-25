@@ -27,6 +27,8 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
     reader.onloadend = () => {
       setImage(reader.result);
     };
+
+    return null;
   };
 
   const handleDownload = async () => {
@@ -40,8 +42,8 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
     }
   };
 
+  const canvasRef = createRef<HTMLCanvasElement>();
   let canvas: HTMLCanvasElement;
-  let canvasRef = createRef<HTMLCanvasElement>();
   let pos = { drawable: false, X: -1, Y: -1 };
   let ctx: CanvasRenderingContext2D;
 
@@ -58,10 +60,23 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
         X: touch.clientX - rect.left,
         Y: touch.clientY - rect.top,
       };
-    } else return { X: e.offsetX, Y: e.offsetY };
+    }
+    return { X: e.offsetX, Y: e.offsetY };
+  };
+
+  const redrawCanvas = () => {
+    const previousState = history[history.length - 1];
+    const img = new Image();
+    img.src = previousState;
+    img.onload = () => {
+      ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
+      ctx.drawImage(img, 0, 0);
+    };
   };
 
   const initDraw = (e: MouseEvent | TouchEvent) => {
+    if ("touches" in e) e.preventDefault();
+
     if (history.length === 0) saveState();
 
     ctx.beginPath();
@@ -92,16 +107,6 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
     history.pop();
     setHistory([...history]);
     redrawCanvas();
-  };
-
-  const redrawCanvas = () => {
-    const previousState = history[history.length - 1];
-    const img = new Image();
-    img.src = previousState;
-    img.onload = () => {
-      ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
-      ctx.drawImage(img, 0, 0);
-    };
   };
 
   const handleClear = () => {
@@ -155,7 +160,7 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
           ref={canvasRef}
           width={canvasSize.width}
           height={canvasSize.height}
-        ></canvas>
+        />
       </div>
       <div className="tool-box">
         <div className="tool-inner">

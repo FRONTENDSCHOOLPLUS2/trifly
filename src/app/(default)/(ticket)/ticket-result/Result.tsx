@@ -14,7 +14,7 @@ export interface IFilterProps {
   originArrTime?: number[];
   returnDepTime?: number[];
   returnArrTime?: number[];
-  airline?: string;
+  airline?: string[];
   maxPrice?: number;
 }
 
@@ -32,6 +32,24 @@ const Result = ({
   const searchResult = useRecoilValue(searchResultState);
   const [filteredData, setFilteredData] = useState(data);
   const [filters, setFilters] = useState<IFilterProps>();
+
+  /* -------------------------------------------------------------------------- */
+  /*                           항공편 조회 결과에 해당하는 항공사만 추출                  */
+  /* -------------------------------------------------------------------------- */
+  const extractCarrierCodes = (offers: OffersSearchData[]) => {
+    if (offers) {
+      return offers.flatMap((offer) =>
+        offer.itineraries.flatMap((itinerary) =>
+          itinerary.segments.map((segment) => segment.carrierCode),
+        ),
+      );
+    }
+  };
+
+  // carrierCodes 배열
+  const carrierCodes = [...new Set(extractCarrierCodes(data))].sort((a, b) =>
+    airline[a].nameKor.localeCompare(airline[b].nameKor),
+  );
 
   const handleFilterChange = useCallback((newFilters: IFilterProps) => {
     setFilters((prevFilters) => ({
@@ -118,6 +136,16 @@ const Result = ({
       }
 
       // 항공사 필터
+      if (filters.airline) {
+        const airlines = filters.airline;
+        newFilteredData = newFilteredData.filter((offer) =>
+          offer.itineraries.every((itinerary) =>
+            itinerary.segments.every((segment) =>
+              airlines.includes(segment.carrierCode),
+            ),
+          ),
+        );
+      }
 
       // 가격 필터
       if (filters.maxPrice) {
@@ -146,6 +174,9 @@ const Result = ({
           <h3 className="hidden">필터</h3>
           <div>
             <Filter
+              data={data}
+              airline={airline}
+              carrierCodes={carrierCodes}
               tripType={searchResult.tripType}
               nonStop={searchResult.nonStop}
               handleFilterChange={handleFilterChange}
