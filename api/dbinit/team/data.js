@@ -89,12 +89,12 @@ export const initData = async (clientId, nextSeq) => {
                 departure: {
                   iataCode: "ICN",
                   terminal: "2",
-                  at: "2024-08-20T10:55:00",
+                  at: "2022-08-20T10:55:00",
                 },
                 arrival: {
                   iataCode: "DAD",
                   terminal: "2",
-                  at: "2024-08-20T13:40:00",
+                  at: "2022-08-20T13:40:00",
                 },
                 carrierCode: "KE",
                 number: "457",
@@ -118,12 +118,12 @@ export const initData = async (clientId, nextSeq) => {
                 departure: {
                   iataCode: "DAD",
                   terminal: "2",
-                  at: "2024-08-25T15:40:00",
+                  at: "2022-08-25T15:40:00",
                 },
                 arrival: {
                   iataCode: "ICN",
                   terminal: "2",
-                  at: "2024-08-25T22:15:00",
+                  at: "2022-08-25T22:15:00",
                 },
                 carrierCode: "KE",
                 number: "458",
@@ -141,6 +141,7 @@ export const initData = async (clientId, nextSeq) => {
             ],
           },
         ],
+        image: "/files/01-TriFly/danang.webp",
         price: [
           {
             travelerId: "1",
@@ -281,8 +282,8 @@ export const initData = async (clientId, nextSeq) => {
         },
         state: "OS020",
         user_id: 1,
-        createdAt: "2024.08.17 12:30:01",
-        updatedAt: "2024.08.17 12:30:01",
+        createdAt: "2022.08.17 12:30:01",
+        updatedAt: "2022.08.17 12:30:01",
         cost: {
           products: 0,
           shippingFees: 0,
@@ -362,12 +363,12 @@ export const initData = async (clientId, nextSeq) => {
                 departure: {
                   iataCode: "ICN",
                   terminal: "1",
-                  at: "2024-08-16T10:05:00",
+                  at: "2023-08-16T10:05:00",
                 },
                 arrival: {
                   iataCode: "FUK",
                   terminal: "I",
-                  at: "2024-08-16T11:30:00",
+                  at: "2023-08-16T11:30:00",
                 },
                 carrierCode: "TW",
                 number: "291",
@@ -396,12 +397,12 @@ export const initData = async (clientId, nextSeq) => {
                 departure: {
                   iataCode: "FUK",
                   terminal: "I",
-                  at: "2024-08-18T12:30:00",
+                  at: "2023-08-18T12:30:00",
                 },
                 arrival: {
                   iataCode: "ICN",
                   terminal: "1",
-                  at: "2024-08-18T13:55:00",
+                  at: "2023-08-18T13:55:00",
                 },
                 carrierCode: "TW",
                 number: "292",
@@ -425,6 +426,7 @@ export const initData = async (clientId, nextSeq) => {
             ],
           },
         ],
+        image: "/files/01-TriFly/fukuoka.webp",
         price: [
           {
             travelerId: "1",
@@ -537,8 +539,8 @@ export const initData = async (clientId, nextSeq) => {
         },
         state: "OS020",
         user_id: 1,
-        createdAt: "2024.08.13 14:42:43",
-        updatedAt: "2024.08.13 14:42:43",
+        createdAt: "2023.08.13 14:42:43",
+        updatedAt: "2023.08.13 14:42:43",
         cost: {
           products: 0,
           shippingFees: 0,
@@ -603,12 +605,12 @@ export const initData = async (clientId, nextSeq) => {
                 departure: {
                   iataCode: "ICN",
                   terminal: "1",
-                  at: "2024-08-16T08:55:00",
+                  at: "2023-08-16T08:55:00",
                 },
                 arrival: {
                   iataCode: "FUK",
                   terminal: "I",
-                  at: "2024-08-16T10:30:00",
+                  at: "2023-08-16T10:30:00",
                 },
                 carrierCode: "OZ",
                 number: "132",
@@ -634,12 +636,12 @@ export const initData = async (clientId, nextSeq) => {
                 departure: {
                   iataCode: "FUK",
                   terminal: "I",
-                  at: "2024-08-18T10:35:00",
+                  at: "2023-08-18T10:35:00",
                 },
                 arrival: {
                   iataCode: "ICN",
                   terminal: "2",
-                  at: "2024-08-18T12:00:00",
+                  at: "2023-08-18T12:00:00",
                 },
                 carrierCode: "KE",
                 number: "788",
@@ -660,6 +662,7 @@ export const initData = async (clientId, nextSeq) => {
             ],
           },
         ],
+        image: "/files/01-TriFly/fukuoka.webp",
         price: [
           {
             travelerId: "1",
@@ -768,8 +771,8 @@ export const initData = async (clientId, nextSeq) => {
         },
         state: "OS020",
         user_id: 1,
-        createdAt: "2024.08.13 14:38:04",
-        updatedAt: "2024.08.13 14:38:04",
+        createdAt: "2023.08.13 14:38:04",
+        updatedAt: "2023.08.13 14:38:04",
         cost: {
           products: 0,
           shippingFees: 0,
@@ -942,6 +945,7 @@ export const initData = async (clientId, nextSeq) => {
             ],
           },
         ],
+        image: "/files/01-TriFly/la.webp",
         price: [
           {
             travelerId: "1",
@@ -1118,6 +1122,7 @@ export const initData = async (clientId, nextSeq) => {
             ],
           },
         ],
+        image: "/files/01-TriFly/jeju.webp",
         price: [
           {
             travelerId: "1",
@@ -3920,8 +3925,8 @@ export const initData = async (clientId, nextSeq) => {
           {
             code: "330",
             value: "A330",
-            nameKor: "에어버스 A330-300",
-            nameEng: "Airbus A330=300",
+            nameKor: "에어버스 A330",
+            nameEng: "Airbus A330",
             manufacturerKor: "에어버스",
             manufacturerEng: "Airbus",
             specKor: "광동체",
@@ -4022,6 +4027,16 @@ export const initData = async (clientId, nextSeq) => {
             value: "B737-700",
             nameKor: "보잉 737-700",
             nameEng: "Boeing 737-700",
+            manufacturerKor: "보잉",
+            manufacturerEng: "Boeing",
+            specKor: "협동체",
+            specEng: "Narrow Body Aircraft",
+          },
+          {
+            code: "73H",
+            value: "B737-800",
+            nameKor: "보잉 737-800",
+            nameEng: "Boeing 737-800",
             manufacturerKor: "보잉",
             manufacturerEng: "Boeing",
             specKor: "협동체",
@@ -4169,6 +4184,16 @@ export const initData = async (clientId, nextSeq) => {
           },
           {
             code: "763",
+            value: "B767-300(ER)",
+            nameKor: "보잉 767-300(ER)",
+            nameEng: "Boeing 767-300(ER)",
+            manufacturerKor: "보잉",
+            manufacturerEng: "Boeing",
+            specKor: "광동체",
+            specEng: "Wide Body Aircraft",
+          },
+          {
+            code: "76W",
             value: "B767-300(ER)",
             nameKor: "보잉 767-300(ER)",
             nameEng: "Boeing 767-300(ER)",

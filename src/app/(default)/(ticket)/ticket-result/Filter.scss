@@ -110,7 +110,7 @@
         margin-bottom: 2rem;
         border-bottom: 0.1rem solid var(--color-gray-30);
 
-        & input[type="radio"] {
+        & input[type="checkbox"] {
           display: none;
         }
 
@@ -118,10 +118,12 @@
           font-size: var(--title-small);
           font-weight: 500;
           color: var(--color-gray-90);
+          cursor: not-allowed;
         }
 
-        & input[type="radio"]:checked + label {
+        & input[type="checkbox"]:checked + label {
           color: var(--color-primary);
+          cursor: pointer;
         }
 
         & li:first-child {
@@ -171,6 +173,10 @@
           width: 50%;
           flex-grow: 1;
           flex-shrink: 0;
+          padding-right: 1rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
 
           & label {
             color: var(--color-black);
