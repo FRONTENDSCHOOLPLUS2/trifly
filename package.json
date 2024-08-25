@@ -25,6 +25,7 @@
     "react-hook-form": "^7.51.5",
     "react-lottie-player": "^2.1.0",
     "react-to-print": "^2.15.1",
+    "recharts": "^2.12.7",
     "recoil": "^0.7.7",
     "recoil-persist": "^5.1.0",
     "sass": "^1.77.4",

@@ -3,6 +3,8 @@
   // font-family: var(--font-roboto), var(--font-noto), "sans-serif";
   padding-top: 5.6rem;
   padding-bottom: 8.6rem;
+  position: relative;
+  z-index: 1;
 }
 
 .footer_infobox {
