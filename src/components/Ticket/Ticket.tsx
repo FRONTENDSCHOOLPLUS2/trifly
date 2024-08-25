@@ -20,6 +20,7 @@ const Ticket = ({
 }) => {
   const URL = process.env.NEXT_PUBLIC_MARKET_API_SERVER;
   const ticketRef = useRef<HTMLDivElement>(null);
+  const imgBoxRef = useRef<HTMLDivElement>(null);
   const arrival =
     itineraries[0].segments[itineraries[0].segments.length - 1].arrival
       .iataCode;
@@ -51,7 +52,7 @@ const Ticket = ({
           </dl>
         </div>
       </div>
-      <div className="img-box">
+      <div className="img-box" ref={imgBoxRef}>
         <Image
           src={`${URL}${imagePath}`}
           overrideSrc={`${URL}${imagePath}`}
@@ -61,7 +62,7 @@ const Ticket = ({
           sizes="100%"
         />
         {type === "modify" ? (
-          <Canvas ticketRef={ticketRef} id={_id} />
+          <Canvas ticketRef={ticketRef} imgBoxRef={imgBoxRef} id={_id} />
         ) : (
           <Link href={`/footprint/${_id}/${passengerId}`}>
             수정 및 저장하기

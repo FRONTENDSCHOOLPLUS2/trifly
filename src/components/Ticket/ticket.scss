@@ -11,6 +11,9 @@
     margin: 0 auto;
     left: -8.2rem;
   }
+  &.imgUploading .img-box img {
+    opacity: 0;
+  }
 
   &::before {
     content: "";

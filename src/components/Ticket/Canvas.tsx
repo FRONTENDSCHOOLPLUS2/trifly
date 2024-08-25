@@ -15,9 +15,11 @@ import {
 
 const Canvas = ({
   ticketRef,
+  imgBoxRef,
   id,
 }: {
   ticketRef: RefObject<HTMLDivElement>;
+  imgBoxRef: RefObject<HTMLDivElement>;
   id: number;
 }) => {
   const canvasBoxRef = useRef<HTMLDivElement>(null);
@@ -27,39 +29,47 @@ const Canvas = ({
   const [image, setImage] = useState<string | ArrayBuffer | null>("");
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
   const [history, setHistory] = useState<string[]>([]);
-  const [file, setFile] = useState<FileList>();
 
   const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.length) return false;
     const reader = new FileReader();
-    setFile(e.target.files);
     reader.readAsDataURL(e.target.files[0]);
     reader.onloadend = () => {
       setImage(reader.result);
+      if (ticketRef.current) ticketRef.current.classList.add("imgUploading");
     };
 
     return null;
   };
 
   const handleDownload = async () => {
-    if (!ticketRef.current) return;
+    if (!ticketRef.current || !imgBoxRef.current) return;
 
     // 모바일 툴박스 안보이도록 클래스 추가
     ticketRef.current.classList.add("saving");
 
-    // 수정된 이미지를 구매 내역 이미지로 저장
-    if (file) {
-      const formData = new FormData();
-      formData.append("attach", file[0]);
-      const uploadedFile = await fileUploadAction(formData);
-      await orderFatchAction(id, uploadedFile);
-    }
-
     // 이미지 다운로드
     try {
-      const div = ticketRef.current;
-      const canvas = await html2canvas(div, { scale: 2 });
-      canvas.toBlob((blob) => blob !== null && saveAs(blob, "result.png"));
+      const ticketArea = ticketRef.current;
+      const imgBoxArea = imgBoxRef.current;
+      const ticket = await html2canvas(ticketArea, { scale: 2 });
+      const canvas = await html2canvas(imgBoxArea, { scale: 2 });
+
+      // 꾸며진 이미지를 구매 내역 이미지에 반영
+      canvas.toBlob(async (blob) => {
+        if (blob) {
+          const formData = new FormData();
+          formData.append("attach", blob, "result.png");
+
+          const uploadedFile = await fileUploadAction(formData);
+          await orderFatchAction(id, uploadedFile);
+        } else {
+          console.error("img Blob 생성 실패");
+        }
+      }, "image/png");
+
+      // 티켓 저장
+      ticket.toBlob((blob) => blob !== null && saveAs(blob, "result.png"));
     } catch (error) {
       console.error("Error converting div to image:", error);
     }
