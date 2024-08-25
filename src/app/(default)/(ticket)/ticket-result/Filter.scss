@@ -1,6 +1,4 @@
 .filter {
-  height: 100%;
-
   .filter-title {
     font-size: var(--title-medium);
     font-weight: 500;
@@ -167,7 +165,6 @@
         row-gap: 1rem;
         padding-bottom: var(--title-min);
         margin-bottom: 2rem;
-        border-bottom: 0.1rem solid var(--color-gray-30);
 
         & li {
           width: 50%;
@@ -197,6 +194,20 @@
         font-size: var(--title-small);
         font-weight: 500;
         color: var(--color-black);
+      }
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .filter {
+    padding: 0 var(--layout-padding);
+    margin-bottom: 3rem;
+
+    .filter-contents {
+      &.time {
+        padding-right: unset;
+        margin-bottom: 5rem;
       }
     }
   }
