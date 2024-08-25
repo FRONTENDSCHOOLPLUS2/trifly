@@ -29,8 +29,6 @@ const Ticket = ({
       ? history[history.length - 1].updated.image
       : image;
 
-  console.log(history?.length);
-
   return (
     <article className={`ticket-box ${type}-ver`} ref={ticketRef}>
       <h3 className="hidden">

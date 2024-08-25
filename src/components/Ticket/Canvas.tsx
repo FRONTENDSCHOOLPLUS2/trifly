@@ -29,6 +29,7 @@ const Canvas = ({
   const [image, setImage] = useState<string | ArrayBuffer | null>("");
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
   const [history, setHistory] = useState<string[]>([]);
+  const [isCanvasChange, setIsCanvasChange] = useState(false);
 
   const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.length) return false;
@@ -36,6 +37,7 @@ const Canvas = ({
     reader.readAsDataURL(e.target.files[0]);
     reader.onloadend = () => {
       setImage(reader.result);
+      setIsCanvasChange(true);
       if (ticketRef.current) ticketRef.current.classList.add("imgUploading");
     };
 
@@ -56,17 +58,19 @@ const Canvas = ({
       const canvas = await html2canvas(imgBoxArea, { scale: 2 });
 
       // 꾸며진 이미지를 구매 내역 이미지에 반영
-      canvas.toBlob(async (blob) => {
-        if (blob) {
-          const formData = new FormData();
-          formData.append("attach", blob, "result.png");
+      if (isCanvasChange) {
+        canvas.toBlob(async (blob) => {
+          if (blob) {
+            const formData = new FormData();
+            formData.append("attach", blob, "result.png");
 
-          const uploadedFile = await fileUploadAction(formData);
-          await orderFatchAction(id, uploadedFile);
-        } else {
-          console.error("img Blob 생성 실패");
-        }
-      }, "image/png");
+            const uploadedFile = await fileUploadAction(formData);
+            await orderFatchAction(id, uploadedFile);
+          } else {
+            console.error("img Blob 생성 실패");
+          }
+        }, "image/png");
+      }
 
       // 티켓 저장
       ticket.toBlob((blob) => blob !== null && saveAs(blob, "result.png"));
@@ -114,6 +118,7 @@ const Canvas = ({
     if ("touches" in e) e.preventDefault();
     if (history.length === 0) saveState();
 
+    setIsCanvasChange(true);
     ctx.beginPath();
     pos = { drawable: true, ...getPosition(e) };
     ctx.moveTo(pos.X, pos.Y);
