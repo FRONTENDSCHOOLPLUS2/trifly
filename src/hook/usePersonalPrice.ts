@@ -1,5 +1,6 @@
 import { orderState } from "@/atoms/atoms";
-import { useRecoilValue } from "recoil";
+import { OrderData } from "@/types";
+import { useRecoilValueLoadable } from "recoil";
 
 type PersonalPrice = {
   currency: "KRW";
@@ -12,17 +13,20 @@ type PersonalPrice = {
   refundableTaxes: string;
 }[];
 
-const usePersonalPrice = () => {
-  const { price, totalPrice } = useRecoilValue(orderState);
-  const charge = 10000;
+const usePersonalPrice = (): PersonalPrice[] => {
+  const { state, contents } = useRecoilValueLoadable(orderState);
+  if (state === "loading" || state === "hasError") return [[], [], []];
+
+  const { price } = contents;
   const personalPrice: PersonalPrice[] = [[], [], []];
   const personalIdx = {
     ADULT: 0,
     CHILD: 1,
     INFANT: 2,
   };
-  price.map((item) =>
-    personalPrice[personalIdx[item.travelerType]].push(item.price)
+
+  price.forEach((item) =>
+    personalPrice[personalIdx[item.travelerType]].push(item.price),
   );
 
   return personalPrice;
