@@ -1,14 +1,9 @@
 "use client";
 
-import { seatMapb777 } from "@/lib/seatMapb777";
+import { seatMapb747 } from "@/lib/seatMapb747";
 import React, { useEffect, useState } from "react";
 import "./seatmapGrid.scss";
-import {
-  SeatData,
-  SeatFacilities,
-  SeatMapData,
-  SeattravelerPricing,
-} from "@/types";
+import { SeatData, SeatFacilities } from "@/types";
 
 type IGrid = Array<SeatData | SeatFacilities | null>[];
 
@@ -16,7 +11,7 @@ const SeatmapGrid = () => {
   // const [grid, setGrid] = useState<Array<Array<SeatMapData>>>([]);
   const [grid, setGrid] = useState<IGrid>();
   // const [length, setLength] = useState(0);
-  const { data } = seatMapb777;
+  const { data } = seatMapb747;
   const seatData = data.map((item) => ({
     decks: item.decks,
     seats: item.decks.map((deck) => deck.seats),
@@ -71,7 +66,7 @@ const SeatmapGrid = () => {
                 key={index}
                 className={`wing-seat ${index >= startWingsX && index <= endWingsX ? "wing" : null} ${exitRowsX.includes(index + 1) === true ? "exit" : null}`}
               >
-                <td className="wing-td">{index + 1}</td>
+                <td className="wing-td" />
               </tr>
             ))}
           </tbody>
@@ -93,7 +88,7 @@ const SeatmapGrid = () => {
                       {cell && !("code" in cell) && (
                         <button
                           type="button"
-                          className={`seat ${cell.travelerPricing[0].seatAvailabilityStatus}`}
+                          className={`seat ${cell.travelerPricing[0].seatAvailabilityStatus} `}
                         >
                           {cell.travelerPricing[0].seatAvailabilityStatus ===
                           "AVAILABLE"
@@ -123,9 +118,9 @@ const SeatmapGrid = () => {
             {Array.from({ length }).map((_, index) => (
               <tr
                 key={index}
-                className={`wing-seat ${index >= 2 && index <= 16 ? "wing" : ""} ${exitRowsX.includes(index + 1) === true ? "exit" : null}`}
+                className={`wing-seat ${index >= startWingsX && index <= endWingsX ? "wing" : null} ${exitRowsX.includes(index + 1) === true ? "exit" : null}`}
               >
-                <td className="wing-td">{index + 1}</td>
+                <td className="wing-td" />
               </tr>
             ))}
           </tbody>

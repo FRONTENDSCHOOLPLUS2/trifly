@@ -17,7 +17,7 @@
       .wing-table .wing-seat {
         .wing-td {
           height: 4rem;
-          width: 5rem;
+
           text-align: center;
           display: flex;
           align-items: center;
@@ -57,7 +57,7 @@
       .wing-table .wing-seat {
         .wing-td {
           height: 4rem;
-          width: 5rem;
+
           text-align: center;
           display: flex;
           align-items: center;
@@ -94,6 +94,7 @@
   }
 
   .section {
+    margin: 0 3rem;
     padding: 1rem;
     background-color: var(--color-gray-10);
     border-radius: 1rem;
