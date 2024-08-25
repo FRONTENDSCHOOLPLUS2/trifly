@@ -24,7 +24,12 @@ const Ticket = ({
   const arrival =
     itineraries[0].segments[itineraries[0].segments.length - 1].arrival
       .iataCode;
-  const imagePath = history ? history[history.length - 1].updated.image : image;
+  const imagePath =
+    history && history.length >= 2
+      ? history[history.length - 1].updated.image
+      : image;
+
+  console.log(history?.length);
 
   return (
     <article className={`ticket-box ${type}-ver`} ref={ticketRef}>
