@@ -1,6 +1,7 @@
 .ticket-box {
   padding: calc(var(--title-max) * 1.5) var(--title-max)
     calc(var(--title-max) * 2.2);
+  width: 100%;
   max-width: 41.2rem;
   position: relative;
 
@@ -10,6 +11,9 @@
   &.modify-ver {
     margin: 0 auto;
     left: -8.2rem;
+  }
+  &.imgUploading .img-box img {
+    opacity: 0;
   }
 
   &::before {
@@ -94,7 +98,7 @@
 
   .img-box {
     width: calc(100% + calc(var(--title-max)) * 2);
-    margin: var(--title-extra) calc(var(--title-max) * -1) var(--title-max);
+    margin: var(--title-extra) calc(var(--title-max) * -1) 3rem;
     position: relative;
     aspect-ratio: 16 / 9;
     z-index: 2;
@@ -110,6 +114,8 @@
       width: calc(var(--title-max) * 10);
       aspect-ratio: 240/228;
       opacity: 0.2;
+      pointer-events: none;
+      z-index: -1;
     }
     img {
       object-fit: scale-down;
@@ -256,6 +262,9 @@
       top: 0;
       right: 0;
       transform: translateX(calc(100% + 5rem));
+      transition-delay: 1s;
+
+      transition: all var(--transition-duration);
 
       .tool-inner {
         display: flex;
@@ -369,6 +378,11 @@
     &.modify-ver {
       left: auto;
     }
+    &.saving .canvas-inner .tool-box {
+      opacity: 0;
+      visibility: hidden;
+      transition-delay: 0;
+    }
 
     .canvas-inner {
       .tool-box {
@@ -376,7 +390,7 @@
         top: auto;
         bottom: 0;
         left: 0;
-        padding: 3rem 1.8rem;
+        padding: 2rem 1.8rem;
         transform: none;
         background: #fff;
         z-index: 1;
@@ -394,7 +408,8 @@
 
             &.tool-middel {
               button {
-                width: 4.8rem;
+                width: 4.2rem;
+                background-size: 2.4rem;
               }
             }
           }
@@ -415,8 +430,9 @@
             width: 100%;
             padding: 0;
             padding-left: 7rem;
-            height: 4.8rem;
+            height: 4.2rem;
             background-position: center left 2rem;
+            background-size: 2rem;
           }
         }
 

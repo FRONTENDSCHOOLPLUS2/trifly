@@ -15,6 +15,7 @@ const orderAction = async (
   itineraries: OrderItineraries[],
   price: Price[],
   totalPrice: number,
+  image: string,
 ) => {
   const session = await auth();
   const token = session?.accessToken as string;
@@ -33,6 +34,7 @@ const orderAction = async (
     nationality: item.nationality,
     issueCountry: item.issueCountry,
     email: item.email,
+    image,
     seat: "",
   }));
 

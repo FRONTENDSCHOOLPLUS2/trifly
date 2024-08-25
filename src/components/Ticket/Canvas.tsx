@@ -1,5 +1,7 @@
 "use client";
 
+import fileUploadAction from "@/data/actions/fileUploadAction";
+import orderFatchAction from "@/data/actions/orderPatchAction";
 import saveAs from "file-saver";
 import html2canvas from "html2canvas";
 import {
@@ -11,7 +13,15 @@ import {
   useState,
 } from "react";
 
-const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
+const Canvas = ({
+  ticketRef,
+  imgBoxRef,
+  id,
+}: {
+  ticketRef: RefObject<HTMLDivElement>;
+  imgBoxRef: RefObject<HTMLDivElement>;
+  id: number;
+}) => {
   const canvasBoxRef = useRef<HTMLDivElement>(null);
   const colorList = ["#F94141", "#F18657", "#FFA93A", "#82A571", "#527198"];
   const [color, setColor] = useState("#F94141");
@@ -19,6 +29,7 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
   const [image, setImage] = useState<string | ArrayBuffer | null>("");
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
   const [history, setHistory] = useState<string[]>([]);
+  const [isCanvasChange, setIsCanvasChange] = useState(false);
 
   const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.length) return false;
@@ -26,20 +37,49 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
     reader.readAsDataURL(e.target.files[0]);
     reader.onloadend = () => {
       setImage(reader.result);
+      setIsCanvasChange(true);
+      if (ticketRef.current) ticketRef.current.classList.add("imgUploading");
     };
 
     return null;
   };
 
   const handleDownload = async () => {
-    if (!ticketRef.current) return;
+    if (!ticketRef.current || !imgBoxRef.current) return;
+
+    // 모바일 툴박스 안보이도록 클래스 추가
+    ticketRef.current.classList.add("saving");
+
+    // 이미지 다운로드
     try {
-      const div = ticketRef.current;
-      const canvas = await html2canvas(div, { scale: 2 });
-      canvas.toBlob((blob) => blob !== null && saveAs(blob, "result.png"));
+      const ticketArea = ticketRef.current;
+      const imgBoxArea = imgBoxRef.current;
+      const ticket = await html2canvas(ticketArea, { scale: 2 });
+      const canvas = await html2canvas(imgBoxArea, { scale: 2 });
+
+      // 꾸며진 이미지를 구매 내역 이미지에 반영
+      if (isCanvasChange) {
+        canvas.toBlob(async (blob) => {
+          if (blob) {
+            const formData = new FormData();
+            formData.append("attach", blob, "result.png");
+
+            const uploadedFile = await fileUploadAction(formData);
+            await orderFatchAction(id, uploadedFile);
+          } else {
+            console.error("img Blob 생성 실패");
+          }
+        }, "image/png");
+      }
+
+      // 티켓 저장
+      ticket.toBlob((blob) => blob !== null && saveAs(blob, "result.png"));
     } catch (error) {
       console.error("Error converting div to image:", error);
     }
+
+    // 모바일 툴박스 안보이도록 추가했던 클래스 삭제
+    ticketRef.current.classList.remove("saving");
   };
 
   const canvasRef = createRef<HTMLCanvasElement>();
@@ -76,9 +116,9 @@ const Canvas = ({ ticketRef }: { ticketRef: RefObject<HTMLDivElement> }) => {
 
   const initDraw = (e: MouseEvent | TouchEvent) => {
     if ("touches" in e) e.preventDefault();
-
     if (history.length === 0) saveState();
 
+    setIsCanvasChange(true);
     ctx.beginPath();
     pos = { drawable: true, ...getPosition(e) };
     ctx.moveTo(pos.X, pos.Y);
