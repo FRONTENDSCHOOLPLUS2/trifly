@@ -66,7 +66,7 @@ const Ticket = ({
         />
         {type === "modify" ? (
           <Canvas ticketRef={ticketRef} imgBoxRef={imgBoxRef} id={_id} />
-        ) : (
+        ) : type === "pdf" ? null : (
           <Link href={`/footprint/${_id}/${passengerId}`}>
             수정 및 저장하기
           </Link>
