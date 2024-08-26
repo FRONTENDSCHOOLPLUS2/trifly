@@ -11,9 +11,6 @@ const OrdersItem = ({ item }: { item: OrderItem }) => {
     router.push(`/reservation/${_id}`);
   };
 
-  console.log(item.totalPrice);
-  console.log(typeof item.totalPrice);
-
   return (
     <tr onClick={() => handleClick(item._id)} style={{ cursor: "pointer" }}>
       <td className="reservation-number">

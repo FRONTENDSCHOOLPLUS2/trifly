@@ -1,15 +1,41 @@
 import Image from "next/image";
 import SeatmapGrid from "./SeatmapGrid";
 import "./seatmapSelect.scss";
+import { FetchOrder } from "@/lib/fetchOrder";
+import Link from "next/link";
 
-const Page = () => {
+const Page = async ({ params: { id } }: { params: { id: string } }) => {
+  const dataList = await FetchOrder();
+  const data = dataList.item.find((item) => item.reservationId === id);
+  console.log(data?.passengers.map((item) => item));
+  console.log(
+    "sssssseatpassenger",
+    data?.passengers.map((item) => item.nameKor),
+  );
+  console.log(
+    "sssssseatpassengerseat",
+    data?.passengers.map((item) => item.seat),
+  );
+
+  const passengerData = data?.passengers.map((item, birth) => {
+    return (
+      <div key={birth} className="passenger-seat">
+        <p className="passenger-name">{item.nameKor}</p>
+        <p
+          className={`${item.seat === undefined ? "unselected-seat" : "selected-seat"}`}
+        >
+          {item.seat === undefined ? "선택된 좌석 없음" : item.seat}
+        </p>
+      </div>
+    );
+  });
   return (
     <div className="seat-select-box">
       <div className="seat-select-left-box">
-        <SeatmapGrid />
+        <SeatmapGrid passengerLength={data?.passengers.length} />
       </div>
       <div className="seat-select-right-box">
-        <div className="seat-map-guid">
+        <div className="seat-map-guide">
           <h3>이코노미</h3>
           <div className="icon-box">
             <div className="seat-title-flex">
@@ -120,6 +146,9 @@ const Page = () => {
             </div>
           </div>
         </div>
+        {passengerData}
+
+        <Link href={`/order/complete/${id}`}>선택 완료</Link>
       </div>
     </div>
   );

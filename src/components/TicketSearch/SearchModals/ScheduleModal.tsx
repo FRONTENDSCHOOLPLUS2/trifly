@@ -4,6 +4,8 @@ import Calendar from "react-calendar";
 import "./ScheduleModal.scss";
 import useCheckWindowWidth from "@/hook/useCheckWindowWidth";
 import Image from "next/image";
+import { useSetRecoilState } from "recoil";
+import { modalState } from "@/atoms/atoms";
 
 interface ISchedule {
   departureDate: string;
@@ -31,14 +33,13 @@ const ScheduleModal = ({
   const isWeb = useCheckWindowWidth(1024);
   const [calendarDate, setCalendarDate] = useState<Date>(new Date());
   const [activeDate, setActiveDate] = useState(new Date());
-
   const [dates, setDates] = useState<Value>();
+  const setModal = useSetRecoilState(modalState);
 
   /* -------------------------------------------------------------------------- */
   /*                              왕복/편도 변경 시 선택 초기화                        */
   /* -------------------------------------------------------------------------- */
   useEffect(() => {
-    // 편도 -> 왕복으로 갈 때는 초기화가 안 되는 문제 해결하기
     setDates(tripType === "round" ? [null, null] : null);
   }, [tripType]);
 
@@ -164,7 +165,13 @@ const ScheduleModal = ({
         });
         handleClose(false);
       } else if (!schedule.departureDate) {
-        alert("일정 선택을 완료해주세요!");
+        setModal({
+          isOpen: true,
+          title: "안내",
+          content: "왕복 일정을 선택하셨습니다.\n출발일과 도착일을 선택하세요!",
+          buttonNum: 1,
+          handleConfirm: () => {},
+        });
       } else {
         handleClose(false);
       }
@@ -178,7 +185,13 @@ const ScheduleModal = ({
       });
       handleClose(false);
     } else if (!schedule.departureDate) {
-      alert("일정 선택을 완료해주세요!");
+      setModal({
+        isOpen: true,
+        title: "안내",
+        content: "편도 일정을 선택하셨습니다.\n출발일을 선택하세요!",
+        buttonNum: 1,
+        handleConfirm: () => {},
+      });
     } else {
       handleClose(false);
     }

@@ -1,13 +1,13 @@
 "use client";
 
-import { searchResultState } from "@/atoms/atoms";
+import { modalState, searchResultState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
 import RouteModal from "@/components/TicketSearch/SearchModals/RouteModal";
-import { AirportData } from "@/types";
+import { AirportData, CodeState } from "@/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import Button from "@/components/Button/Button";
 import PassengersModal from "./SearchModals/PassengersModal";
 import ScheduleModal from "./SearchModals/ScheduleModal";
@@ -18,9 +18,7 @@ const TicketSearchBox = ({
   airport,
   handleChange,
 }: {
-  code: {
-    [key: string]: AirportData;
-  };
+  code: CodeState<AirportData>;
   airport: AirportData[];
   handleChange?: () => void;
 }) => {
@@ -55,34 +53,37 @@ const TicketSearchBox = ({
     cabinKor: "모든 클래스",
   });
   const [passengersModal, setPassengersModal] = useState(false);
+  const setModal = useSetRecoilState(modalState);
 
   useEffect(() => {
-    setTripType(searchResult.tripType);
-    setNonStop(searchResult.nonStop);
-    setOrigin({
-      code: searchResult.origin.code,
-      value: searchResult.origin.value,
-    });
-    setDestination({
-      code: searchResult.destination.code,
-      value: searchResult.destination.value,
-    });
-    setSchedule({
-      departureDate: searchResult.schedule.departureDate,
-      departureFormattedDate: searchResult.schedule.departureFormattedDate,
-      returnDate: searchResult.schedule.returnDate,
-      returnFormattedDate: searchResult.schedule.returnFormattedDate,
-    });
-    setPassengers({
-      adults: searchResult.passengers.adults,
-      children: searchResult.passengers.children,
-      infants: searchResult.passengers.infants,
-    });
-    setCabin({
-      cabin: searchResult.cabin.cabin,
-      cabinKor: searchResult.cabin.cabinKor,
-    });
-  }, [searchResult]);
+    if (searchResult) {
+      setTripType(searchResult.tripType);
+      setNonStop(searchResult.nonStop);
+      setOrigin({
+        code: searchResult.origin.code,
+        value: searchResult.origin.value,
+      });
+      setDestination({
+        code: searchResult.destination.code,
+        value: searchResult.destination.value,
+      });
+      setSchedule({
+        departureDate: searchResult.schedule.departureDate,
+        departureFormattedDate: searchResult.schedule.departureFormattedDate,
+        returnDate: searchResult.schedule.returnDate,
+        returnFormattedDate: searchResult.schedule.returnFormattedDate,
+      });
+      setPassengers({
+        adults: searchResult.passengers.adults,
+        children: searchResult.passengers.children,
+        infants: searchResult.passengers.infants,
+      });
+      setCabin({
+        cabin: searchResult.cabin.cabin,
+        cabinKor: searchResult.cabin.cabinKor,
+      });
+    }
+  }, []);
 
   const handleTripType = (e: ChangeEvent<HTMLInputElement>) => {
     setTripType(e.target.value);
@@ -142,7 +143,7 @@ const TicketSearchBox = ({
     }
   };
 
-  const handleSwitch = () => {
+  const handleSwitch = useCallback(() => {
     if (destination.code) {
       setOrigin({
         code: destination.code,
@@ -154,21 +155,39 @@ const TicketSearchBox = ({
         value: origin.value,
       });
     }
-  };
+  }, [origin, destination]);
 
   const handleClick = () => {
     if (!origin.code) {
-      alert("출발 공항을 선택하세요!");
+      setModal({
+        isOpen: true,
+        title: "안내",
+        content: "출발 공항이 선택되지 않았습니다.\n출발 공항을 선택하세요!",
+        buttonNum: 1,
+        handleConfirm: () => {},
+      });
       return;
     }
 
     if (!destination.code) {
-      alert("도착 공항을 선택하세요!");
+      setModal({
+        isOpen: true,
+        title: "안내",
+        content: "도착 공항이 선택되지 않았습니다.\n도착 공항을 선택하세요!",
+        buttonNum: 1,
+        handleConfirm: () => {},
+      });
       return;
     }
 
     if (!schedule.departureDate) {
-      alert("일정을 선택하세요!");
+      setModal({
+        isOpen: true,
+        title: "안내",
+        content: "여행 일정이 선택되지 않았습니다.\n여행 일정을 선택하세요!",
+        buttonNum: 1,
+        handleConfirm: () => {},
+      });
       return;
     }
 
@@ -176,9 +195,33 @@ const TicketSearchBox = ({
     const destinationAirport = code[destination.code] as AirportData;
 
     if (originAirport.cityCode === destinationAirport.cityCode) {
-      alert("다른 도시로만 여행할 수 있습니다! 다시 선택해주세요.");
+      setModal({
+        isOpen: true,
+        title: "안내",
+        content: "같은 도시로 여행할 수 없습니다!\n공항을 다시 선택하세요!",
+        buttonNum: 1,
+        handleConfirm: () => {},
+      });
       return;
     }
+
+    console.log({
+      tripType,
+      nonStop,
+      origin,
+      destination,
+      schedule,
+      passengers,
+      cabin,
+    });
+
+    router.push(
+      `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" ? `&returnDate=${schedule.returnDate}` : ""}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`,
+    );
+
+    // if (handleChange) {
+    //   handleChange();
+    // }
 
     /* -------------------------------------------------------------------------- */
     /*                             검색정보로 넘겨줄 날짜 형식 저장                       */
@@ -192,20 +235,29 @@ const TicketSearchBox = ({
       passengers,
       cabin,
     });
-
-    if (handleChange) {
-      router.push(
-        // eslint-disable-next-line prettier/prettier
-        `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" && `&returnDate=${schedule.returnDate}`}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`
-      );
-      handleChange();
-    } else {
-      router.push(
-        // eslint-disable-next-line prettier/prettier
-        `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" && `&returnDate=${schedule.returnDate}`}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`
-      );
-    }
   };
+
+  const originText = useMemo(
+    () => (origin.code ? `${origin.value} (${origin.code})` : "공항 선택"),
+    [origin],
+  );
+  const destinationText = useMemo(
+    () =>
+      destination.code
+        ? `${destination.value} (${destination.code})`
+        : "공항 선택",
+    [destination],
+  );
+  const scheduleText = useMemo(() => {
+    if (!schedule.departureDate) return "여행 일정 선택";
+    return tripType === "round"
+      ? `${schedule.departureFormattedDate} ~ ${schedule.returnFormattedDate}`
+      : `${schedule.departureFormattedDate}`;
+  }, [schedule, tripType]);
+
+  const passengerText = useMemo(() => {
+    return `성인 ${passengers.adults}명${passengers.children ? `, 소아 ${passengers.children}명` : ""}${passengers.infants ? `, 유아 ${passengers.infants}명` : ""}, ${cabin.cabinKor}`;
+  }, [passengers, cabin]);
 
   return (
     <div className="search-layout">
@@ -258,7 +310,7 @@ const TicketSearchBox = ({
               <span
                 className={`schedule-contents ${origin.code ? "selected" : ""}`}
               >
-                {origin.code ? `${origin.value} (${origin.code})` : "공항 선택"}
+                {originText}
               </span>
             </button>
             <button
@@ -284,9 +336,7 @@ const TicketSearchBox = ({
               <span
                 className={`schedule-contents ${destination.code ? "selected" : ""}`}
               >
-                {destination.code
-                  ? `${destination.value} (${destination.code})`
-                  : "공항 선택"}
+                {destinationText}
               </span>
             </button>
           </div>
@@ -305,11 +355,7 @@ const TicketSearchBox = ({
               <span
                 className={`schedule-contents ${schedule.departureDate ? "selected" : ""}`}
               >
-                {schedule.departureDate
-                  ? tripType === "round"
-                    ? `${schedule.departureFormattedDate} ~ ${schedule.returnFormattedDate}`
-                    : `${schedule.departureFormattedDate}`
-                  : "여행 일정 선택"}
+                {scheduleText}
               </span>
             </button>
           </div>
@@ -323,7 +369,7 @@ const TicketSearchBox = ({
               <span
                 className={`schedule-contents ${passengers.adults && cabin ? "selected" : ""}`}
               >
-                {`성인 ${passengers.adults}명${passengers.children ? `, 소아 ${passengers.children}명` : ""}${passengers.infants ? `, 유아 ${passengers.infants}명` : ""}, ${cabin.cabinKor}`}
+                {passengerText}
               </span>
             </button>
           </div>

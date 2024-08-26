@@ -16,7 +16,7 @@ interface ModalProps {
   handleCancel?: () => void;
 }
 
-interface OrderProps
+export interface OrderProps
   extends Pick<OrderData, "totalPrice" | "itineraries" | "price"> {
   departureDate: string;
   returnDate: string;

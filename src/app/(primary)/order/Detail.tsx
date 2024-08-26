@@ -1,19 +1,35 @@
 "use client";
 
-import { orderState } from "@/atoms/atoms";
+import { OrderProps, orderState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
 import { AirportData, CodeState, FareDetailsBySegment } from "@/types";
 import Image from "next/image";
-import { useRecoilValue } from "recoil";
-import { cabinKor } from "./orderContext";
+import { useEffect, useState } from "react";
+import { useRecoilValueLoadable } from "recoil";
 
 interface FareDetails {
   [key: string]: FareDetailsBySegment;
 }
 
+interface CabinType {
+  [index: string]: string;
+}
+
 const Detail = ({ code }: { code: CodeState<AirportData> }) => {
+  const [isClient, setIsClient] = useState(false);
+  const { state, contents } = useRecoilValueLoadable(orderState);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return null;
+  if (state === "loading") return <div>Loading...</div>;
+  if (state === "hasError") return <div>Error loading state</div>;
+
+  // 로딩이 완료된 상태에서만 상태를 사용
   const { itineraries, price, departureDate, returnDate } =
-    useRecoilValue(orderState);
+    contents as OrderProps;
   const data = itineraries.map((item) => ({
     duration: item.duration,
     segments: item.segments,
@@ -24,6 +40,12 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
     });
     return acc;
   }, {} as FareDetails);
+
+  const cabinKor: CabinType = {
+    ECONOMY: "일반석",
+    BUSINESS: "비즈니스석",
+    FIRST: "일등석",
+  };
 
   return (
     <div className="detail-box">
@@ -92,12 +114,11 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
                           {code[segment.aircraft.code]?.nameKor ||
                             segment.aircraft.code}
                         </span>
-                        {segmentDetail.includedCheckedBags.weight &&
-                          segmentDetail.includedCheckedBags.weight !== 0 && (
-                            <span className="bags">
-                              {`${segmentDetail.includedCheckedBags.weight}Kg`}
-                            </span>
-                          )}
+                        {segmentDetail.includedCheckedBags.weight! > 0 && (
+                          <span className="bags">
+                            {`${segmentDetail.includedCheckedBags.weight}Kg`}
+                          </span>
+                        )}
 
                         <span className="class">
                           {cabinKor[segmentDetail.cabin]}

@@ -1,6 +1,7 @@
 .seat-box {
   display: flex;
   justify-content: center;
+  max-width: 70rem;
 
   .wing-table-box {
     padding: 1rem 0;
@@ -17,12 +18,13 @@
       .wing-table .wing-seat {
         .wing-td {
           height: 4rem;
-          width: 5rem;
+
           text-align: center;
           display: flex;
           align-items: center;
           justify-content: start;
           margin-bottom: 1.5rem;
+          font-size: var(--title-big);
         }
 
         &.wing::after {
@@ -56,12 +58,13 @@
       .wing-table .wing-seat {
         .wing-td {
           height: 4rem;
-          width: 5rem;
+
           text-align: center;
           display: flex;
           align-items: center;
           justify-content: end;
           margin-bottom: 1.5rem;
+          font-size: var(--title-bih);
         }
 
         &.wing::after {
@@ -92,10 +95,11 @@
   }
 
   .section {
+    margin: 0 3rem;
     padding: 1rem;
     background-color: var(--color-gray-10);
     border-radius: 1rem;
-    width: 52rem;
+    width: 100%;
 
     .seat-map {
       text-align: center;
@@ -125,6 +129,7 @@
           font-size: var(--title-medium);
           font-weight: 500;
           color: var(--color-gray-100);
+          transition: all var(--transition-duration);
 
           &.BLOCKED {
             background-image: url(/img/seat-unselect.svg);
@@ -134,6 +139,11 @@
             background-image: url(/img/seat-unselect.svg);
             pointer-events: none;
           }
+        }
+        .clicked-seat {
+          background-image: url("/img/seat-selected.svg");
+          color: var(--color-primary-30);
+          transition: all var(--transition-duration);
         }
 
         .facility {
@@ -162,106 +172,28 @@
   }
 }
 
+@media (max-width: 349px) {
+  .seat-box .section {
+    overflow-x: auto;
+  }
+}
+
+@media (min-width: 349px) and (max-width: 499px) {
+  .section {
+    overflow-x: auto;
+  }
+}
+
 @media (min-width: 500px) and (max-width: 767px) {
   .seat-box {
     justify-content: center;
 
-    .wing-table-box {
-      .wing-table {
-        .wing-seat {
-          height: 3rem;
-          line-height: 3rem;
-        }
-      }
-
-      &.right {
-        // padding-left: 1rem;
-        .wing-table .wing-seat {
-          .wing-td {
-            background-color: rgb(255, 171, 171);
-            height: 3.5rem;
-            width: 4rem;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: start;
-            margin-bottom: 1.5rem;
-          }
-
-          &.wing::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            top: 6px;
-            background-image: url("/img/icon-seat-wing.svg");
-            background-position: center;
-            width: 3rem;
-            height: 3rem;
-            background-repeat: no-repeat;
-          }
-
-          &.exit::before {
-            content: "";
-            position: absolute;
-            right: 0;
-            top: 6px;
-            width: 3rem;
-            height: 3rem;
-            background-image: url("/img/icon-seat-exit.svg");
-            background-repeat: no-repeat;
-            background-position: center;
-          }
-        }
-      }
-
-      &.left {
-        padding-right: 1rem;
-        .wing-table .wing-seat {
-          .wing-td {
-            height: 3.5rem;
-            width: 4rem;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: end;
-            margin-bottom: 1.5rem;
-          }
-
-          &.wing::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 6px;
-            background-image: url("/img/icon-seat-wing.svg");
-            background-position: center;
-            width: 3rem;
-            height: 3rem;
-            background-repeat: no-repeat;
-          }
-
-          &.exit::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 6px;
-            width: 3rem;
-            height: 3rem;
-            background-image: url("/img/icon-seat-exit.svg");
-            background-repeat: no-repeat;
-            background-position: center;
-          }
-        }
-      }
-    }
-
     .section {
+      overflow-x: auto;
       .seat-map {
         .seat-map-tr {
           display: flex;
           gap: 1rem;
-        }
-
-        .seat-map-tr {
           margin-bottom: 1.5rem;
         }
 
@@ -270,16 +202,10 @@
           height: 3.5rem;
 
           .seat {
-            background-image: url("/img/seat.svg");
-            background-repeat: no-repeat;
             width: 3.5rem;
             height: 3.5rem;
             background-size: 3.5rem;
-            display: block;
-            text-align: center;
-            font-size: var(--title-medium);
-            font-weight: 500;
-            color: var(--color-gray-100);
+            font-size: var(--title-small);
           }
 
           .facility {
@@ -292,5 +218,11 @@
         }
       }
     }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .seat-map .section {
+    overflow-x: auto;
   }
 }

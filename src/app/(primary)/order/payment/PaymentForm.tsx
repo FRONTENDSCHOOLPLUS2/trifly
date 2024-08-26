@@ -1,18 +1,17 @@
 "use client";
 
-import { modalState, orderState } from "@/atoms/atoms";
+import { modalState, orderState, searchResultState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
 import Submit from "@/components/Submit/Submit";
 import orderAction from "@/data/actions/orderAction";
 import usePersonalPrice from "@/hook/usePersonalPrice";
 import { countries } from "@/lib/countries";
-import { IMPData, Purchaser } from "@/types";
+import { AirportData, CodeState, IMPData, Purchaser } from "@/types";
 import { User } from "next-auth";
 import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import OrderContext from "../orderContext";
+import { useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
 
 export interface PaymentPassenger {
   type: "adult" | "child" | "infant";
@@ -46,16 +45,46 @@ export type PaymentData = {
   };
 };
 
-const PaymentForm = ({ user }: { user: User | undefined }) => {
+const PaymentForm = ({
+  user,
+  code,
+}: {
+  user: User | undefined;
+  code: CodeState<AirportData>;
+}) => {
   const router = useRouter();
   const setModal = useSetRecoilState(modalState);
-  const { setOrderStatus } = useContext(OrderContext);
   const { totalPrice, itineraries, price } = useRecoilValue(orderState);
   const passengers = usePersonalPrice();
   const [clickedTitle, setClickedTitle] = useState(["0-0"]);
   const [nameEngLast, setNameEngLast] = useState("");
   const [nameEngFirst, setNameEngFirst] = useState("");
   const [passportNumber, setPassportNumber] = useState("");
+  const resetSearchResultData = useResetRecoilState(searchResultState);
+
+  const generateRandomStr = () => {
+    let letters = "";
+    let numbers = "";
+    const lettersCondition = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const numbersCondition = "0123456789";
+
+    for (let i = 0; i < 3; i++) {
+      letters += lettersCondition.charAt(
+        Math.floor(Math.random() * lettersCondition.length),
+      );
+      numbers += numbersCondition.charAt(
+        Math.floor(Math.random() * numbersCondition.length),
+      );
+    }
+    const combined = (letters + numbers).split("");
+    for (let i = combined.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [combined[i], combined[j]] = [combined[j], combined[i]];
+    }
+
+    return combined.join("");
+  };
+  const reservationId = generateRandomStr();
 
   const {
     register,
@@ -76,12 +105,16 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
 
   const handleForm = (formData: PaymentData) => {
     let totalNum = 0;
-    passengers.map((item) => {
+    passengers.forEach((item) => {
       totalNum += item.length;
       return null;
     });
     const charge = totalNum * +process.env.NEXT_PUBLIC_CHARGE!;
     const finalPrice = +totalPrice + charge;
+    const arrival =
+      itineraries[0].segments[itineraries[0].segments.length - 1].arrival
+        .iataCode;
+    const image = code[arrival].img;
 
     // 결제
     const { IMP } = window;
@@ -112,11 +145,14 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
             });
           } else {
             // 결제 성공 후 주문 api 통신
+            resetSearchResultData();
             const result = await orderAction(
               formData,
               itineraries,
               price,
               finalPrice,
+              image,
+              reservationId,
             );
             setModal({
               isOpen: true,
@@ -124,7 +160,8 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
               content:
                 "항공권 구매가 완료되었습니다. \n좌석 선택 화면으로 이동합니다.",
               buttonNum: 1,
-              handleConfirm: () => router.push(`/order/seat-map/${result._id}`),
+              handleConfirm: () =>
+                router.push(`/order/seat-map/${reservationId}`),
               handleCancel: () => {},
             });
           }
@@ -142,10 +179,6 @@ const PaymentForm = ({ user }: { user: User | undefined }) => {
       },
     );
   };
-
-  useEffect(() => {
-    setOrderStatus(2);
-  }, []);
 
   return (
     <form className="input-form" onSubmit={handleSubmit(handleForm)}>

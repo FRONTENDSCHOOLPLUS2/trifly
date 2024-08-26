@@ -1,18 +1,29 @@
 "use client";
 
-import { orderState } from "@/atoms/atoms";
+import { OrderProps, orderState } from "@/atoms/atoms";
 import usePersonalPrice from "@/hook/usePersonalPrice";
-import { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useEffect, useState } from "react";
+import { useRecoilValueLoadable } from "recoil";
 
 const getLocalNum = (value: string | number) => {
   return Number(value).toLocaleString();
 };
 
 const Receipt = () => {
-  const { totalPrice } = useRecoilValue(orderState);
+  const [isClient, setIsClient] = useState(false);
   const [isDetailShow, setIsDetailShow] = useState(false);
+  const { state, contents } = useRecoilValueLoadable(orderState);
   const personalPrice = usePersonalPrice();
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return null;
+  if (state === "loading") <div>Loading...</div>;
+  if (state === "hasError") <div>Error loading state</div>;
+
+  const { totalPrice } = contents as OrderProps;
   const charge = +process.env.NEXT_PUBLIC_CHARGE!;
   const totalCount = personalPrice.reduce((acc, cur) => {
     return acc + cur.length;

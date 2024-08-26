@@ -56,6 +56,14 @@ export interface OrderItem extends OrderData {
     };
     total: number;
   };
+  image: string;
+  history?: {
+    actor: number;
+    updated: {
+      image: string;
+    };
+    createdAt: string;
+  }[];
 }
 
 /* ---------------------------------------------------------------- */

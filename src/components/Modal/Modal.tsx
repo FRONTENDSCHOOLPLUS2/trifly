@@ -35,8 +35,6 @@ const Modal = () => {
     }
   }, [isOpen]);
 
-  console.log(buttonNum);
-
   return (
     <>
       {isOpen && (
@@ -53,8 +51,7 @@ const Modal = () => {
                     sizes="100%"
                   />
                 </div>
-
-                <i className="hidden">모달 닫기</i>
+                <span className="hidden">모달 닫기</span>
               </button>
             )}
             <h3 className="modal-title">{title}</h3>

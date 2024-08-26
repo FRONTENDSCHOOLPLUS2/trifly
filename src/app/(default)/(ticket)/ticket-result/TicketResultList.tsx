@@ -15,7 +15,7 @@ const TicketResultList = ({
     <TicketResultItem key={item.id} user={user} item={item} airline={airline} />
   ));
 
-  return <div className="result-list">{resultList}</div>;
+  return <ul className="result-list">{resultList}</ul>;
 };
 
 export default TicketResultList;

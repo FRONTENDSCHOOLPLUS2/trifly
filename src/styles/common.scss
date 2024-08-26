@@ -133,6 +133,16 @@
     cursor: pointer;
     transition: all var(--transition-duration);
   }
+
+  &.horizontal {
+    background: linear-gradient(
+      to right,
+      var(--color-primary) 0%,
+      var(--color-primary) 100%,
+      var(--color-gray-50) 0%,
+      var(--color-gray-50) 0%
+    );
+  }
 }
 
 /* 반응형 고려 - 지금은 mobile first */
