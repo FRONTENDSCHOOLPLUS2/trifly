@@ -34,8 +34,6 @@ const orderAction = async (
     nationality: item.nationality,
     issueCountry: item.issueCountry,
     email: item.email,
-    image,
-    seat: "",
   }));
 
   const orderData = {
@@ -59,6 +57,8 @@ const orderAction = async (
       },
       email: formData.purchaser.email,
     },
+    image,
+    seat: [],
   };
 
   const res = await fetch(`${SERVER}/orders`, {
