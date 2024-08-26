@@ -13,7 +13,7 @@ import "./result.scss";
 
 const AMADEUS_API_SERVER = process.env.NEXT_PUBLIC_AMADEUS_API_SERVER;
 
-interface IPageProps {
+export interface IPageProps {
   searchParams: {
     originLocationCode: string;
     destinationLocationCode: string;
