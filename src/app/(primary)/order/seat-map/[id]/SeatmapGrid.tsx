@@ -5,12 +5,68 @@ import React, { useEffect, useState } from "react";
 import "./seatmapGrid.scss";
 import { SeatData, SeatFacilities } from "@/types";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
+import { useSetRecoilState } from "recoil";
+import { modalState } from "@/atoms/atoms";
 
 type IGrid = Array<SeatData | SeatFacilities | null>[];
 
-const SeatmapGrid = () => {
+const SeatmapGrid = ({
+  passengerLength,
+}: {
+  passengerLength: number | undefined;
+}) => {
   const [grid, setGrid] = useState<IGrid>();
-  const [clickedCells, setClickedCells] = useState<Array<[number, number]>>([]);
+  const [seatArr, setSeatArr] = useState<Array<[number, number] | string>>([]);
+  const setModal = useSetRecoilState(modalState);
+  // console.log("좌석", seatArr);
+  //cell number들이 담긴 배열로 수정하기
+  //class 생성을 막아주는 상태관리 만들기
+
+  // 1. clickedCells안에 좌표 말고 number 넘기기
+  // 2. 넘긴 number들을 배열로 보내기
+  // 3. 탑승자 비열의 length만큼 선택 할 수 있도록 length 와 비교하기
+  // 4. 탑승자 배열의 길이만큼 선택이 되었다면 선택 완료 모달 띄우기
+  // 5. 탑승자 배열의 길이보다 초과해서 선택 했다면 모달을 띄우고 추가 선택 할 수 없도록 막기
+  // 5. 선택된 좌석을 재선택 했을 때 재 선택 된 좌석의 number를 indexof 를 통해 선택된 배열의 index 파악 후 해당 index를 ""비워두기
+  // 6.
+
+  /**
+   *
+   * 버튼 클릭
+   *
+   * 1. 좌석을 선택한다
+   * 2. 좌석 선택을 하면 배열에 cell.number가 쌓이고
+   * 3. 탑승자 배열의 length와 비교해서
+   *  - 좌석 배열에 담긴 length와 탑승자 배열 length가 일치한다면
+   *       -> 선택완료 모달
+   *       -> if(선택했던 좌석을 재선택한 경우라면)
+   *                    -> true -> 재 선택한 좌석의 인덱스를 확인하고 해당 인덱스를 ''로 비운다
+   *
+   *                    -> false -> 모달 (선택이 완료되었습니다.)
+   *       ->else if( 기존 선택 좌석이 아닌 다른 좌석을 추가로 선택 했을 때 ) -> 이미 모두 선택했습니다 모달
+   *
+   *
+   *
+   *
+   *
+   * 1. 탑승자 배열(3)의 길이만큼 선택이 되었다면
+   *
+   *  - true -> if(선택했던 좌석을 재선택한 경우라면)
+   *                -> true -> 선택한 좌석의 인덱스를 확인하고 해당 인덱스를 ''로 비운다
+   *                -> false -> 모달 (선택이 완료되었습니다.)
+   *
+   *  - false : 배열 다음 요소에 선택된 cell.number 담기
+   *
+   * -> if(선택했던 좌석을 재선택한 경우라면)
+   *                -> true -> 선택한 좌석의 인덱스를 확인하고 해당 인덱스를 ''로 비운다
+   *                -> false -> 모달 (선택이 완료되었습니다.)
+   *
+   *
+   * 2. 탑승자 배열(3) 길이보다 초과로 선택되었다면  -> 모달 (선택이 완료되었습니다.)
+   *
+   *
+   *
+   */
 
   const { data } = seatMapb747;
   const seatData = data.map((item) => ({
@@ -23,6 +79,8 @@ const SeatmapGrid = () => {
       deck.seats.map((seat) => seat.characteristicsCodes),
     ),
   }));
+
+  // console.log("dddddd", ...seatData);
 
   const { width, length, startWingsX, endWingsX, exitRowsX } =
     seatData[0].decks[0].deckConfiguration;
@@ -43,33 +101,55 @@ const SeatmapGrid = () => {
     });
 
     setGrid(newGrid);
+
+    // 탑승객 수만큼 배열 "" 채우기
+    if (passengerLength) {
+      for (let i = 0; i < passengerLength; i++) {
+        seatArr.push("");
+      }
+    }
   }, []);
 
-  const handleButtonClick = (rowIndex: number, colIndex: number) => {
-    console.log(`좌표 (${rowIndex}, ${colIndex})`);
-    // 이미 클릭된 셀인지 확인하는거임
-    const isAlreadyClicked = clickedCells.some(
-      ([clickedRow, clickedCol]) =>
-        clickedRow === rowIndex && clickedCol === colIndex,
-    );
+  const handleButtonClick = (cellNumber: string) => {
+    const isAlreadyClicked = seatArr.find((item) => item === cellNumber);
 
     if (isAlreadyClicked) {
-      // 이미 클릭된 셀이라면요 선택 해제잉
-      setClickedCells((item) =>
-        item.filter(
-          ([clickedRow, clickedCol]) =>
-            !(clickedRow === rowIndex && clickedCol === colIndex),
-        ),
-      );
+      setSeatArr((prevSeatArr) => {
+        const targetIdx = prevSeatArr.findIndex((item) => item === cellNumber);
+        if (targetIdx >= 0) {
+          const newSeatArr = [...prevSeatArr];
+          newSeatArr[targetIdx] = "";
+          return newSeatArr;
+        }
+        return prevSeatArr;
+      });
     } else {
-      // 클릭된 셀이 아니면 선택 가넝~
-      setClickedCells((item) => [...item, [rowIndex, colIndex]]);
+      setSeatArr((prevSeatArr) => {
+        const isSeatArrEmpty = prevSeatArr.findIndex((item) => item === "");
+        if (isSeatArrEmpty >= 0) {
+          const targetIdx = prevSeatArr.findIndex((item) => item === "");
+          const newSeatArr = [...prevSeatArr];
+          newSeatArr[targetIdx] = cellNumber;
+          return newSeatArr;
+        } else {
+          console.log("배열 꽉 참 모달 띄워");
+          setModal({
+            isOpen: true,
+            title: "",
+            content: "이미 모든 탑승객의 좌석을 선택 하였습니다",
+            buttonNum: 1,
+            handleConfirm: () => {},
+            handleCancel: () => {},
+          });
+          return prevSeatArr;
+        }
+      });
     }
   };
 
   const isClicked = (rowIndex: number, colIndex: number) => {
     // 해당 좌표가 클릭된 상태 여부 확인하는 부분
-    return clickedCells.some(
+    return seatArr.some(
       ([clickedRow, clickedCol]) =>
         clickedRow === rowIndex && clickedCol === colIndex,
     );
@@ -78,6 +158,8 @@ const SeatmapGrid = () => {
   if (!grid) {
     return <LoadingSpinner />;
   }
+
+  console.log(seatArr);
 
   return (
     <div className="seat-box">
@@ -114,9 +196,14 @@ const SeatmapGrid = () => {
                         <button
                           type="button"
                           className={`seat ${
-                            clicked ? "clicked-seat" : ""
+                            //기본을 true로 만들고 hendleclick을 했을 때 배열이 비어있지 않다면 false로 바꿔서 클래스 비워두기
+                            //clicked && isAddedClass ? "clicked-seat" : ""
+                            // clicked ? "clicked-seat" : ""
+                            seatArr.find((item) => item === cell.number)
+                              ? "clicked-seat"
+                              : ""
                           } ${cell.travelerPricing[0].seatAvailabilityStatus}`}
-                          onClick={() => handleButtonClick(rowIndex, colIndex)}
+                          onClick={() => handleButtonClick(cell.number)}
                         >
                           {cell.travelerPricing[0].seatAvailabilityStatus ===
                           "AVAILABLE"
@@ -133,7 +220,6 @@ const SeatmapGrid = () => {
                           } ${cell.code === "LA" ? "toilet" : ""} ${
                             cell.code === "G" ? "galley" : ""
                           }`}
-                          onClick={() => handleButtonClick(rowIndex, colIndex)}
                         />
                       )}
                     </td>

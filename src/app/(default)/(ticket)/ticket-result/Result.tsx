@@ -36,6 +36,10 @@ const Result = ({
   const [filters, setFilters] = useState<IFilterProps>();
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data]);
+
   /* -------------------------------------------------------------------------- */
   /*                           항공편 조회 결과에 해당하는 항공사만 추출                  */
   /* -------------------------------------------------------------------------- */
