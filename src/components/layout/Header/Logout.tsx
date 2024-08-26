@@ -5,7 +5,15 @@ import Image from "next/image";
 
 const Logout = ({ type }: { type: string }) => {
   return (
-    <button className="logout img-box" type="button" onClick={() => signOut()}>
+    <button
+      className="logout img-box"
+      type="button"
+      onClick={() => {
+        signOut({
+          callbackUrl: "/",
+        });
+      }}
+    >
       <Image
         src={`/img/icon-logout-${type === "default" ? "black" : "white"}.svg`}
         alt="로그아웃"

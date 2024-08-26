@@ -5,6 +5,7 @@ import lottieJson from "../../public/lottie/loading.json";
 import React from "react";
 
 const Loading = () => {
+
   return (
     <div
       style={{
@@ -24,6 +25,6 @@ const Loading = () => {
       />
     </div>
   );
-};
+
 
 export default Loading;

@@ -65,28 +65,37 @@ const FootPrint = async () => {
         <h2 className="hidden">여행 통계</h2>
         <Animation />
         <div className="data-box">
-          <div className="left-box">
-            <dl>
-              <dt className="data-title">
-                <h3>비행횟수</h3>
-              </dt>
-              <dd>
-                <strong>{flightCount}</strong>flights
-              </dd>
-            </dl>
-            <dl>
-              <dt className="data-title">
-                <h3>비행시간</h3>
-              </dt>
-              <dd>
-                <strong>{flightTime.split("H")[0].slice(2)}</strong>h
-                <strong>{flightTime.split("H")[1].slice(0, 2)}</strong>min
-              </dd>
-            </dl>
-          </div>
-          <div className="right-box">
-            <Chart item={item} />
-          </div>
+          {flightCount ? (
+            <>
+              {" "}
+              <div className="left-box">
+                <dl>
+                  <dt className="data-title">
+                    <h3>비행횟수</h3>
+                  </dt>
+                  <dd>
+                    <strong>{flightCount}</strong>flights
+                  </dd>
+                </dl>
+                <dl>
+                  <dt className="data-title">
+                    <h3>비행시간</h3>
+                  </dt>
+                  <dd>
+                    <strong>{flightTime.split("H")[0].slice(2)}</strong>h
+                    <strong>{flightTime.split("H")[1].slice(0, 2)}</strong>min
+                  </dd>
+                </dl>
+              </div>
+              <div className="right-box">
+                <Chart item={item} />
+              </div>
+            </>
+          ) : (
+            <div className="nodata-box">
+              <p>항공권을 구매하고 나의 발자국을 확인해보세요 !</p>
+            </div>
+          )}
         </div>
       </section>
 
