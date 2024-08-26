@@ -16,11 +16,12 @@ const orderAction = async (
   price: Price[],
   totalPrice: number,
   image: string,
+  reservationId: string,
 ) => {
   const session = await auth();
   const token = session?.accessToken as string;
-
   const passengersArr: PaymentPassenger[] = Object.values(formData.passengers);
+
   const passengers = passengersArr.map((item) => ({
     type: item.type,
     nameKor: item.nameKor,
@@ -34,8 +35,6 @@ const orderAction = async (
     nationality: item.nationality,
     issueCountry: item.issueCountry,
     email: item.email,
-    image,
-    seat: "",
   }));
 
   const orderData = {
@@ -45,7 +44,7 @@ const orderAction = async (
         quantity: 1,
       },
     ],
-    reservationId: "eJzTd9cPDjUJdPQAAAtZAlw%3D",
+    reservationId,
     totalPrice: `${totalPrice}`,
     itineraries,
     price,
@@ -59,6 +58,8 @@ const orderAction = async (
       },
       email: formData.purchaser.email,
     },
+    image,
+    seat: [],
   };
 
   const res = await fetch(`${SERVER}/orders`, {
