@@ -2,6 +2,8 @@ import { ChangeEvent, useState } from "react";
 import "./PassengersModal.scss";
 import Button from "@/components/Button/Button";
 import Image from "next/image";
+import { useSetRecoilState } from "recoil";
+import { modalState } from "@/atoms/atoms";
 
 interface PassengersModalProps {
   handleClose: (a: boolean) => void;
@@ -30,6 +32,7 @@ const PassengersModal = ({
   const [children, setChildren] = useState(passengers.children);
   const [infants, setInfants] = useState(passengers.infants);
   const [cabinType, setCabinType] = useState(cabin.cabin);
+  const setModal = useSetRecoilState(modalState);
 
   const handleCabin = (e: ChangeEvent<HTMLInputElement>) => {
     setCabinType(e.target.value);
@@ -104,7 +107,14 @@ const PassengersModal = ({
                   if (adults > 1) {
                     setAdults((state) => state - 1);
                   } else {
-                    alert("성인 1명은 탑승해야 합니다!");
+                    setModal({
+                      isOpen: true,
+                      title: "안내",
+                      content:
+                        "만 14세 미만 승객은 보호자와 함께 탑승해야 합니다.\n성인을 1명 이상 선택하세요!",
+                      buttonNum: 1,
+                      handleConfirm: () => {},
+                    });
                   }
                 }}
               >
