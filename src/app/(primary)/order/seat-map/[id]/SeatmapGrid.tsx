@@ -4,6 +4,7 @@ import { seatMapb747 } from "@/lib/seatMapb747";
 import React, { useEffect, useState } from "react";
 import "./seatmapGrid.scss";
 import { SeatData, SeatFacilities } from "@/types";
+import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 
 type IGrid = Array<SeatData | SeatFacilities | null>[];
 
@@ -75,7 +76,7 @@ const SeatmapGrid = () => {
   };
 
   if (!grid) {
-    return <div>엣헴g</div>;
+    return <LoadingSpinner />;
   }
 
   return (
