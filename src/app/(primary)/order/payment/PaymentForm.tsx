@@ -1,6 +1,6 @@
 "use client";
 
-import { modalState, orderState } from "@/atoms/atoms";
+import { modalState, orderState, searchResultState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
 import Submit from "@/components/Submit/Submit";
 import orderAction from "@/data/actions/orderAction";
@@ -11,7 +11,7 @@ import { User } from "next-auth";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
 import OrderContext from "../orderContext";
 
 export interface PaymentPassenger {
@@ -62,6 +62,7 @@ const PaymentForm = ({
   const [nameEngLast, setNameEngLast] = useState("");
   const [nameEngFirst, setNameEngFirst] = useState("");
   const [passportNumber, setPassportNumber] = useState("");
+  const resetSearchResultData = useResetRecoilState(searchResultState);
 
   const {
     register,
@@ -82,7 +83,7 @@ const PaymentForm = ({
 
   const handleForm = (formData: PaymentData) => {
     let totalNum = 0;
-    passengers.map((item) => {
+    passengers.forEach((item) => {
       totalNum += item.length;
       return null;
     });
@@ -122,6 +123,7 @@ const PaymentForm = ({
             });
           } else {
             // 결제 성공 후 주문 api 통신
+            resetSearchResultData();
             const result = await orderAction(
               formData,
               itineraries,
