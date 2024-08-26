@@ -2,7 +2,7 @@
 
 import { modalState } from "@/atoms/atoms";
 import Button from "@/components/Button/Button";
-import { OrderItem } from "@/types";
+import seatPatchAction from "@/data/actions/seatSelectAction";
 import { useRouter } from "next/navigation";
 
 import React from "react";
@@ -12,18 +12,20 @@ const CompleteButton = ({
   id,
   seatArr,
   setSeatArr,
+  orderId,
 }: {
   id: string;
   seatArr: Array<[number, number] | string>;
   setSeatArr: React.Dispatch<
     React.SetStateAction<Array<[number, number] | string>>
   >;
+  orderId: number;
 }) => {
   const setModal = useSetRecoilState(modalState);
   const router = useRouter();
   const findEmpty = seatArr.includes("");
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (findEmpty) {
       setModal({
         isOpen: true,
@@ -44,6 +46,9 @@ const CompleteButton = ({
           router.push(`/order/complete/${id}`);
         },
       });
+      const seats = seatArr;
+
+      await seatPatchAction(orderId, seats);
     }
   };
   return (
