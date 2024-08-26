@@ -4,9 +4,9 @@ import { seatMapb747 } from "@/lib/seatMapb747";
 import React, { useEffect, useState } from "react";
 import "./seatmapGrid.scss";
 import { SeatData, SeatFacilities } from "@/types";
-import LoadingSpinner from "@/components/Loading/LoadingSpinner";
 import { useSetRecoilState } from "recoil";
 import { modalState } from "@/atoms/atoms";
+import Loading from "@/app/loading";
 
 type IGrid = Array<SeatData | SeatFacilities | null>[];
 
@@ -164,7 +164,7 @@ const SeatmapGrid = ({
   };
 
   if (!grid) {
-    return <LoadingSpinner />;
+    return <Loading />;
   }
 
   // console.log(seatArr);
