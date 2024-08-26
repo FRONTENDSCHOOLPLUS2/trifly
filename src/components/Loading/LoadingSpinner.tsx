@@ -8,7 +8,7 @@ const Lottie = dynamic(() => import("react-lottie-player"), {
   ssr: false,
 });
 
-const Loading = () => {
+const LoadingSpinner = () => {
   return (
     <div
       style={{
@@ -27,4 +27,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default LoadingSpinner;
