@@ -81,7 +81,7 @@ const TicketResult = async ({ searchParams }: IPageProps) => {
   const { code, airportCode } = await fetchCodes<AirportData>();
   const { code: airline } = await fetchCodes<AirlineData>();
   const queryString = new URLSearchParams(searchParams).toString();
-  // const data = await fetchTicketSearch(queryString);
+  const data = await fetchTicketSearch(queryString);
 
   const data1: OffersSearchData[] = [
     {
@@ -51905,7 +51905,7 @@ const TicketResult = async ({ searchParams }: IPageProps) => {
   /* -------------------------------------------------------------------------- */
   /*                 carrierCode가 validCarrierCodes에 포함된 객체만 필터링           */
   /* -------------------------------------------------------------------------- */
-  const filteredData = data1.filter((offer) =>
+  const filteredData = data.filter((offer) =>
     offer.itineraries.some((itinerary) =>
       itinerary.segments.some((segment) =>
         Object.keys(airline).includes(segment.carrierCode),
