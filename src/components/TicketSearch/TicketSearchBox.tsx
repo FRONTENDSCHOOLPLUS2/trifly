@@ -1,13 +1,13 @@
 "use client";
 
-import { searchResultState } from "@/atoms/atoms";
+import { modalState, searchResultState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
 import RouteModal from "@/components/TicketSearch/SearchModals/RouteModal";
 import { AirportData } from "@/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import Button from "@/components/Button/Button";
 import PassengersModal from "./SearchModals/PassengersModal";
 import ScheduleModal from "./SearchModals/ScheduleModal";
@@ -55,6 +55,7 @@ const TicketSearchBox = ({
     cabinKor: "모든 클래스",
   });
   const [passengersModal, setPassengersModal] = useState(false);
+  const setModal = useSetRecoilState(modalState);
 
   useEffect(() => {
     setTripType(searchResult.tripType);
@@ -158,17 +159,35 @@ const TicketSearchBox = ({
 
   const handleClick = () => {
     if (!origin.code) {
-      alert("출발 공항을 선택하세요!");
+      setModal({
+        isOpen: true,
+        title: "안내",
+        content: "출발 공항이 선택되지 않았습니다.\n출발 공항을 선택하세요!",
+        buttonNum: 1,
+        handleConfirm: () => {},
+      });
       return;
     }
 
     if (!destination.code) {
-      alert("도착 공항을 선택하세요!");
+      setModal({
+        isOpen: true,
+        title: "안내",
+        content: "도착 공항이 선택되지 않았습니다.\n도착 공항을 선택하세요!",
+        buttonNum: 1,
+        handleConfirm: () => {},
+      });
       return;
     }
 
     if (!schedule.departureDate) {
-      alert("일정을 선택하세요!");
+      setModal({
+        isOpen: true,
+        title: "안내",
+        content: "여행 일정이 선택되지 않았습니다.\n여행 일정을 선택하세요!",
+        buttonNum: 1,
+        handleConfirm: () => {},
+      });
       return;
     }
 
@@ -176,7 +195,13 @@ const TicketSearchBox = ({
     const destinationAirport = code[destination.code] as AirportData;
 
     if (originAirport.cityCode === destinationAirport.cityCode) {
-      alert("다른 도시로만 여행할 수 있습니다! 다시 선택해주세요.");
+      setModal({
+        isOpen: true,
+        title: "안내",
+        content: "같은 도시로 여행할 수 없습니다!\n공항을 다시 선택하세요!",
+        buttonNum: 1,
+        handleConfirm: () => {},
+      });
       return;
     }
 
@@ -196,13 +221,13 @@ const TicketSearchBox = ({
     if (handleChange) {
       router.push(
         // eslint-disable-next-line prettier/prettier
-        `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" && `&returnDate=${schedule.returnDate}`}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`
+        `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" && `&returnDate=${schedule.returnDate}`}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`,
       );
       handleChange();
     } else {
       router.push(
         // eslint-disable-next-line prettier/prettier
-        `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" && `&returnDate=${schedule.returnDate}`}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`
+        `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" && `&returnDate=${schedule.returnDate}`}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`,
       );
     }
   };
