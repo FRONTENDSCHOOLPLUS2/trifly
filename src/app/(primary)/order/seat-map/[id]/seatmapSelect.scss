@@ -2,8 +2,14 @@
   display: flex;
   justify-content: space-between;
 
+  .seat-select-left-box {
+    flex: 1;
+  }
+
   // 오른쪽 박스
   .seat-select-right-box {
+    flex: 0;
+    min-width: 30rem;
     //좌석안내
     .seat-map-guide {
       padding: var(--layout-padding);
