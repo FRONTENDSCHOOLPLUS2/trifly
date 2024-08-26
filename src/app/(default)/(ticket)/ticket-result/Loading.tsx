@@ -1,6 +1,8 @@
+import "./Loading.scss";
+
 // 항공권 검색 로딩 화면
 const Loading = () => {
-  return <h1>로딩 중</h1>;
+  return <section className="ticket-searching">로딩 중</section>;
 };
 
 export default Loading;
