@@ -1,5 +1,12 @@
-import Lottie from "react-lottie-player";
+"use client";
+
+import dynamic from "next/dynamic";
+import React from "react";
 import loadingLottie from "../../../public/lottie/loading.json";
+
+const Lottie = dynamic(() => import("react-lottie-player"), {
+  ssr: false,
+});
 
 const LoadingSpinner = () => {
   return (
@@ -8,13 +15,13 @@ const LoadingSpinner = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
       }}
     >
       <Lottie
+        loop
         play
-        style={{ width: 150, height: 150 }}
         animationData={loadingLottie}
+        style={{ width: 150, height: 150 }}
       />
     </div>
   );
