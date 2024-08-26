@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import React from "react";
-import loadingLottie from "../../../public/lottie/loading.json"; // Lottie JSON 파일을 가져옵니다
+import loadingLottie from "../../../public/lottie/loading.json";
 
 const Lottie = dynamic(() => import("react-lottie-player"), {
   ssr: false,
