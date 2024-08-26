@@ -1,7 +1,164 @@
 .ticket-searching {
   position: fixed;
   inset: 0;
-  box-shadow: inset 0 0 20px red;
-  background-color: var(--color-white);
   z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 9rem;
+  font-size: var(--title-max);
+  color: #fff;
+  text-align: center;
+  line-height: 1.5;
+  padding: var(--layout-header-bottom);
+  word-break: keep-all;
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .img-box {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .title-box {
+    h3 {
+      font-weight: normal;
+    }
+  }
+
+  .itinerary-box {
+    display: flex;
+    max-width: 36rem;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+    gap: 1rem;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      border-top: 1px dashed var(--color-white);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      background: url(/img/icon-airline.svg) no-repeat center / cover;
+      width: 4rem;
+      aspect-ratio: 1/1;
+      top: 0;
+      left: 10%;
+      transform: translateY(-50%);
+      filter: brightness(5);
+      animation: airplane 3s 0.2s infinite linear;
+    }
+
+    @keyframes airplane {
+      0% {
+        left: 0%;
+        opacity: 0;
+      }
+      10% {
+        left: 10%;
+        opacity: 1;
+      }
+      90% {
+        left: 80%;
+        opacity: 1;
+      }
+      100% {
+        left: 90%;
+        opacity: 0;
+      }
+    }
+
+    li {
+      display: flex;
+      flex-direction: column;
+      letter-spacing: 0.04em;
+
+      &.origin {
+        transform: translateX(-50%);
+      }
+      &.destination {
+        transform: translateX(50%);
+      }
+
+      .eng {
+        position: relative;
+        padding-top: 3rem;
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          width: 1.5rem;
+          aspect-ratio: 1 / 1;
+          background: var(--color-white);
+          border: 2px solid var(--color-gray-100);
+          outline: 2px solid var(--color-white);
+          border-radius: 50%;
+          top: 0;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          box-sizing: border-box;
+        }
+      }
+      .kor {
+        color: var(--color-gray-50);
+        font-size: var(--title-large);
+        letter-spacing: normal;
+        margin-top: var(--title-min);
+      }
+      .date {
+        color: var(--color-gray-50);
+        font-size: var(--title-big);
+        letter-spacing: normal;
+        margin-top: 0.4rem;
+      }
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .itinerary-box {
+      li {
+        &.origin {
+          text-align: left;
+          transform: none;
+
+          .eng::before {
+            left: 0;
+            transform: translate(0%, -50%);
+          }
+        }
+
+        &.destination {
+          text-align: right;
+          transform: none;
+
+          .eng::before {
+            left: auto;
+            right: 0;
+            transform: translate(0%, -50%);
+          }
+        }
+      }
+    }
+  }
 }
