@@ -83,7 +83,7 @@ const TicketSearchBox = ({
       cabin: searchResult.cabin.cabin,
       cabinKor: searchResult.cabin.cabinKor,
     });
-  }, [searchResult]);
+  }, []);
 
   const handleTripType = (e: ChangeEvent<HTMLInputElement>) => {
     setTripType(e.target.value);
@@ -205,6 +205,24 @@ const TicketSearchBox = ({
       return;
     }
 
+    console.log({
+      tripType,
+      nonStop,
+      origin,
+      destination,
+      schedule,
+      passengers,
+      cabin,
+    });
+
+    router.push(
+      `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" ? `&returnDate=${schedule.returnDate}` : ""}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`,
+    );
+
+    if (handleChange) {
+      handleChange();
+    }
+
     /* -------------------------------------------------------------------------- */
     /*                             검색정보로 넘겨줄 날짜 형식 저장                       */
     /* -------------------------------------------------------------------------- */
@@ -217,19 +235,6 @@ const TicketSearchBox = ({
       passengers,
       cabin,
     });
-
-    if (handleChange) {
-      router.push(
-        // eslint-disable-next-line prettier/prettier
-        `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" && `&returnDate=${schedule.returnDate}`}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`,
-      );
-      handleChange();
-    } else {
-      router.push(
-        // eslint-disable-next-line prettier/prettier
-        `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" && `&returnDate=${schedule.returnDate}`}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`,
-      );
-    }
   };
 
   return (
