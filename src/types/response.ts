@@ -62,6 +62,10 @@ export interface ValidationError<E> {
   }
    */
 
+export interface RefreshTokenRes extends CoreSuccessRes {
+  accessToken: string;
+}
+
 // 데이터 검증 실패 응답
 export interface ValidationErrorRes<E> extends CoreErrorRes {
   errors: ValidationError<E>[];
