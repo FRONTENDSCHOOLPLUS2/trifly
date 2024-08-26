@@ -3,19 +3,20 @@ import SeatmapGrid from "./SeatmapGrid";
 import "./seatmapSelect.scss";
 import { FetchOrder } from "@/lib/fetchOrder";
 import Link from "next/link";
+import CompleteButton from "./CompleteButton";
 
 const Page = async ({ params: { id } }: { params: { id: string } }) => {
   const dataList = await FetchOrder();
   const data = dataList.item.find((item) => item.reservationId === id);
-  console.log(data?.passengers.map((item) => item));
-  console.log(
-    "sssssseatpassenger",
-    data?.passengers.map((item) => item.nameKor),
-  );
-  console.log(
-    "sssssseatpassengerseat",
-    data?.passengers.map((item) => item.seat),
-  );
+  // console.log(data?.passengers.map((item) => item));
+  // console.log(
+  //   "sssssseatpassenger",
+  //   data?.passengers.map((item) => item.nameKor),
+  // );
+  // console.log(
+  //   "sssssseatpassengerseat",
+  //   data?.passengers.map((item) => item.seat),
+  // );
 
   const passengerData = data?.passengers.map((item, birth) => {
     return (
@@ -148,7 +149,7 @@ const Page = async ({ params: { id } }: { params: { id: string } }) => {
         </div>
         {passengerData}
 
-        <Link href={`/order/complete/${id}`}>선택 완료</Link>
+        <CompleteButton id={id} />
       </div>
     </div>
   );

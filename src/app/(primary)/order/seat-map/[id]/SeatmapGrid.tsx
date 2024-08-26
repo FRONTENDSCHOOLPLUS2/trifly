@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import "./seatmapGrid.scss";
 import { SeatData, SeatFacilities } from "@/types";
 import LoadingSpinner from "@/components/Loading/LoadingSpinner";
+import { useSetRecoilState } from "recoil";
+import { modalState } from "@/atoms/atoms";
 
 type IGrid = Array<SeatData | SeatFacilities | null>[];
 
@@ -15,6 +17,7 @@ const SeatmapGrid = ({
 }) => {
   const [grid, setGrid] = useState<IGrid>();
   const [seatArr, setSeatArr] = useState<Array<[number, number] | string>>([]);
+  const setModal = useSetRecoilState(modalState);
   // console.log("좌석", seatArr);
   //cell number들이 담긴 배열로 수정하기
   //class 생성을 막아주는 상태관리 만들기
@@ -130,6 +133,14 @@ const SeatmapGrid = ({
           return newSeatArr;
         } else {
           console.log("배열 꽉 참 모달 띄워");
+          setModal({
+            isOpen: true,
+            title: "",
+            content: "이미 모든 탑승객의 좌석을 선택 하였습니다",
+            buttonNum: 1,
+            handleConfirm: () => {},
+            handleCancel: () => {},
+          });
           return prevSeatArr;
         }
       });
