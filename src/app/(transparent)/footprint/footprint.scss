@@ -84,6 +84,11 @@
           margin-bottom: -2rem;
         }
       }
+      .nodata-box {
+        padding: 3rem 7rem;
+        justify-content: center;
+        font-size: var(--title-big);
+      }
     }
   }
 
@@ -203,6 +208,9 @@
           .recharts-wrapper {
             margin: 0 auto;
           }
+        }
+        .nodata-box {
+          padding: 3rem 1rem;
         }
       }
     }

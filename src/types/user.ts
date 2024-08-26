@@ -5,14 +5,18 @@ export interface UserData {
   phone: string;
   birth: string;
   type: "user";
-  loginType: "email" | "kakao";
+  loginType: "email" | "kakao" | "google";
   token: {
     accessToken: string;
     refreshToken: string;
   };
   createdAt: string;
   updatedAt: string;
+  extra?: object;
 }
+
+export type OAuthUser = Required<Pick<UserData, "type" | "loginType">> &
+  Partial<Pick<UserData, "name" | "email" | "phone" | "birth" | "extra">>;
 
 export type UserInToken = Pick<UserData, "_id" | "name"> & {
   accessToken: string;
@@ -27,3 +31,5 @@ export type UserForm = {
   phone: string;
   birth?: string;
 };
+
+export type UserLoginForm = Pick<UserForm, "email" | "password">;
