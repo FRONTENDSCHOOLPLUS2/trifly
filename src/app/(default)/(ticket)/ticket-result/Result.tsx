@@ -1,14 +1,14 @@
 "use client";
 
 import { searchResultState } from "@/atoms/atoms";
+import Button from "@/components/Button/Button";
 import { AirlineData, CodeState, OffersSearchData } from "@/types";
 import Image from "next/image";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import Filter from "./Filter";
-import TicketResultList from "./TicketResultList";
 import Sorting from "./Sorting";
-import Button from "@/components/Button/Button";
+import TicketResultList from "./TicketResultList";
 
 export interface IFilterProps {
   nonStop?: boolean;

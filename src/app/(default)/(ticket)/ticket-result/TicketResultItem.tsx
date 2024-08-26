@@ -94,7 +94,7 @@ const TicketResultItem = ({
     const waitingHours = Math.floor(waitingMinutes / 60);
     const waitingMins = waitingMinutes % 60;
 
-    return `${waitingHours}시간  ${Number(waitingMins) > 0 ? `${waitingMins}분` : ""}`;
+    return `${Number(waitingHours) > 0 ? `${waitingHours}시간` : ""}  ${Number(waitingMins) > 0 ? `${waitingMins}분` : ""}`;
   }
 
   /* -------------------------------------------------------------------------- */
