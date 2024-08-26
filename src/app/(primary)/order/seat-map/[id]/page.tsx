@@ -8,6 +8,7 @@ import Link from "next/link";
 const Page = async ({ params: { id } }: { params: { id: string } }) => {
   const dataList = await FetchOrder();
   const data = dataList.item.find((item) => item.reservationId === id);
+  console.log(data?.passengers.map((item) => item));
   console.log(
     "sssssseatpassenger",
     data?.passengers.map((item) => item.nameKor),
@@ -22,9 +23,9 @@ const Page = async ({ params: { id } }: { params: { id: string } }) => {
       <div key={birth} className="passenger-seat">
         <p className="passenger-name">{item.nameKor}</p>
         <p
-          className={`${item.seat === "" ? "unselected-seat" : "selected-seat"}`}
+          className={`${item.seat === undefined ? "unselected-seat" : "selected-seat"}`}
         >
-          {item.seat === "" ? "선택된 좌석 없음" : item.seat}
+          {item.seat === undefined ? "선택된 좌석 없음" : item.seat}
         </p>
       </div>
     );
@@ -32,7 +33,7 @@ const Page = async ({ params: { id } }: { params: { id: string } }) => {
   return (
     <div className="seat-select-box">
       <div className="seat-select-left-box">
-        <SeatmapGrid />
+        <SeatmapGrid passengerLength={data?.passengers.length} />
       </div>
       <div className="seat-select-right-box">
         <div className="seat-map-guide">
