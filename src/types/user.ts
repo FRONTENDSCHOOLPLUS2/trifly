@@ -12,7 +12,7 @@ export interface UserData {
   };
   createdAt: string;
   updatedAt: string;
-  extra?: {};
+  extra?: object;
 }
 
 export type OAuthUser = Required<Pick<UserData, "type" | "loginType">> &
