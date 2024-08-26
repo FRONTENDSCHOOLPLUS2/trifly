@@ -6,17 +6,18 @@ import Button from "@/components/Button/Button";
 import Link from "next/link";
 
 const Page = async ({ params: { id } }: { params: { id: string } }) => {
-  const data = await FetchOrderId(id);
+  const dataList = await FetchOrder();
+  const data = dataList.item.find((item) => item.reservationId === id);
   console.log(
     "sssssseatpassenger",
-    data.passengers.map((item) => item.nameKor),
+    data?.passengers.map((item) => item.nameKor),
   );
   console.log(
     "sssssseatpassengerseat",
-    data.passengers.map((item) => item.seat),
+    data?.passengers.map((item) => item.seat),
   );
 
-  const passengerData = data.passengers.map((item, birth) => {
+  const passengerData = data?.passengers.map((item, birth) => {
     return (
       <div key={birth} className="passenger-seat">
         <p className="passenger-name">{item.nameKor}</p>
