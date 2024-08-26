@@ -9,10 +9,9 @@ import { countries } from "@/lib/countries";
 import { AirportData, CodeState, IMPData, Purchaser } from "@/types";
 import { User } from "next-auth";
 import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
-import OrderContext from "../orderContext";
 
 export interface PaymentPassenger {
   type: "adult" | "child" | "infant";
@@ -55,7 +54,6 @@ const PaymentForm = ({
 }) => {
   const router = useRouter();
   const setModal = useSetRecoilState(modalState);
-  const { setOrderStatus } = useContext(OrderContext);
   const { totalPrice, itineraries, price } = useRecoilValue(orderState);
   const passengers = usePersonalPrice();
   const [clickedTitle, setClickedTitle] = useState(["0-0"]);
@@ -155,10 +153,6 @@ const PaymentForm = ({
       },
     );
   };
-
-  useEffect(() => {
-    setOrderStatus(2);
-  }, []);
 
   return (
     <form className="input-form" onSubmit={handleSubmit(handleForm)}>

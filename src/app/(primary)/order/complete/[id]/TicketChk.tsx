@@ -4,8 +4,7 @@ import Badge from "@/components/Badge/Badge";
 import Button from "@/components/Button/Button";
 import Ticket from "@/components/Ticket/Ticket";
 import { AirportData, CodeState, OrderItem } from "@/types";
-import { useContext, useEffect, useState } from "react";
-import OrderContext from "../../orderContext";
+import { useState } from "react";
 
 const TicketChk = ({
   data,
@@ -15,11 +14,6 @@ const TicketChk = ({
   code: CodeState<AirportData>;
 }) => {
   const [showTicketNum, setTicketNum] = useState(0);
-  const { setOrderStatus } = useContext(OrderContext);
-
-  useEffect(() => {
-    setOrderStatus(4);
-  }, []);
 
   return (
     <section className="order-inner eticket-box flexVer">

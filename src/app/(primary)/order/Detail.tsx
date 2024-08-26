@@ -6,10 +6,13 @@ import { AirportData, CodeState, FareDetailsBySegment } from "@/types";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRecoilValueLoadable } from "recoil";
-import { cabinKor } from "./orderContext";
 
 interface FareDetails {
   [key: string]: FareDetailsBySegment;
+}
+
+interface CabinType {
+  [index: string]: string;
 }
 
 const Detail = ({ code }: { code: CodeState<AirportData> }) => {
@@ -37,6 +40,12 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
     });
     return acc;
   }, {} as FareDetails);
+
+  const cabinKor: CabinType = {
+    ECONOMY: "일반석",
+    BUSINESS: "비즈니스석",
+    FIRST: "일등석",
+  };
 
   return (
     <div className="detail-box">
