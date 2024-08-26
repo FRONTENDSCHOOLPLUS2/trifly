@@ -9,9 +9,11 @@ import CompleteButton from "./CompleteButton";
 const SeatmapGroup = ({
   data,
   id,
+  orderId,
 }: {
   data: OrderItem | undefined;
   id: string;
+  orderId: number;
 }) => {
   const passengerData = data?.passengers.map((item, birth) => {
     // console.log(item);
@@ -35,6 +37,7 @@ const SeatmapGroup = ({
           passengerLength={data?.passengers.length}
           seatArr={seatArr}
           setSeatArr={setSeatArr}
+          orderId={orderId}
         />
       </div>
       <div className="seat-select-right-box">
@@ -161,7 +164,12 @@ const SeatmapGroup = ({
           </div>
         ))} */}
 
-        <CompleteButton id={id} seatArr={seatArr} setSeatArr={setSeatArr} />
+        <CompleteButton
+          id={id}
+          seatArr={seatArr}
+          setSeatArr={setSeatArr}
+          orderId={orderId}
+        />
       </div>
     </div>
   );

@@ -14,12 +14,14 @@ const SeatmapGrid = ({
   passengerLength,
   seatArr,
   setSeatArr,
+  orderId,
 }: {
   passengerLength: number | undefined;
   seatArr: Array<[number, number] | string>;
   setSeatArr: React.Dispatch<
     React.SetStateAction<Array<[number, number] | string>>
   >;
+  orderId: number;
 }) => {
   const [grid, setGrid] = useState<IGrid>();
   // const [seatArr, setSeatArr] = useState<Array<[number, number] | string>>([]);
