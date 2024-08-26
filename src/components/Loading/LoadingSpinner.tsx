@@ -1,23 +1,30 @@
-import Lottie from "react-lottie-player";
-import loadingLottie from "../../../public/lottie/loading.json";
+"use client";
 
-const LoadingSpinner = () => {
+import dynamic from "next/dynamic";
+import React from "react";
+import loadingLottie from "../../../public/lottie/loading.json"; // Lottie JSON 파일을 가져옵니다
+
+const Lottie = dynamic(() => import("react-lottie-player"), {
+  ssr: false,
+});
+
+const Loading = () => {
   return (
     <div
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
       }}
     >
       <Lottie
+        loop
         play
-        style={{ width: 150, height: 150 }}
         animationData={loadingLottie}
+        style={{ width: 150, height: 150 }}
       />
     </div>
   );
 };
 
-export default LoadingSpinner;
+export default Loading;
