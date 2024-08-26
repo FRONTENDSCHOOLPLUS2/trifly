@@ -12,11 +12,17 @@ type IGrid = Array<SeatData | SeatFacilities | null>[];
 
 const SeatmapGrid = ({
   passengerLength,
+  seatArr,
+  setSeatArr,
 }: {
   passengerLength: number | undefined;
+  seatArr: Array<[number, number] | string>;
+  setSeatArr: React.Dispatch<
+    React.SetStateAction<Array<[number, number] | string>>
+  >;
 }) => {
   const [grid, setGrid] = useState<IGrid>();
-  const [seatArr, setSeatArr] = useState<Array<[number, number] | string>>([]);
+  // const [seatArr, setSeatArr] = useState<Array<[number, number] | string>>([]);
   const setModal = useSetRecoilState(modalState);
   // console.log("좌석", seatArr);
   //cell number들이 담긴 배열로 수정하기
@@ -159,7 +165,7 @@ const SeatmapGrid = ({
     return <LoadingSpinner />;
   }
 
-  console.log(seatArr);
+  // console.log(seatArr);
 
   return (
     <div className="seat-box">
