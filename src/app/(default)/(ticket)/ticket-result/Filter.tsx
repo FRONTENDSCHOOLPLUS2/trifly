@@ -229,19 +229,21 @@ const Filter = ({
     });
   };
 
-  const airlines = carrierCodes.map((item, idx) => (
-    <li key={idx}>
-      <input
-        ref={airlineRef}
-        type="checkbox"
-        id={item}
-        value={item}
-        checked={selectedAirlines.includes(item)}
-        onChange={handleAirlineChk}
-      />
-      <label htmlFor={item}>{airline[item].value}</label>
-    </li>
-  ));
+  const airlines = carrierCodes.map((item, idx) => {
+    return (
+      <li key={idx}>
+        <input
+          ref={airlineRef}
+          type="checkbox"
+          id={item}
+          value={item}
+          checked={selectedAirlines.includes(item)}
+          onChange={handleAirlineChk}
+        />
+        <label htmlFor={item}>{airline[item].nameKor}</label>
+      </li>
+    );
+  });
 
   return (
     <div className="filter">
