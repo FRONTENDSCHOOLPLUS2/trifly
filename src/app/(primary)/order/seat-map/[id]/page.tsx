@@ -1,8 +1,7 @@
 import Image from "next/image";
 import SeatmapGrid from "./SeatmapGrid";
 import "./seatmapSelect.scss";
-import FetchOrderId, { FetchOrder } from "@/lib/fetchOrder";
-import Button from "@/components/Button/Button";
+import { FetchOrder } from "@/lib/fetchOrder";
 import Link from "next/link";
 
 const Page = async ({ params: { id } }: { params: { id: string } }) => {
