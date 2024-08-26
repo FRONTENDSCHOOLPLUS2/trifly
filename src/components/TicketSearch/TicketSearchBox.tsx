@@ -1,16 +1,12 @@
 "use client";
 
-import { modalState, searchResultState } from "@/atoms/atoms";
+import { searchResultState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
-import RouteModal from "@/components/TicketSearch/SearchModals/RouteModal";
-import { AirportData, CodeState } from "@/types";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
 import Button from "@/components/Button/Button";
-import PassengersModal from "./SearchModals/PassengersModal";
-import ScheduleModal from "./SearchModals/ScheduleModal";
+import { AirportData, CodeState } from "@/types";
+import { useRouter } from "next/navigation";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
+import { useRecoilState } from "recoil";
 import "./TicketSearch.scss";
 
 const TicketSearchBox = ({
@@ -34,15 +30,12 @@ const TicketSearchBox = ({
     code: "",
     value: "",
   });
-  const [originModal, setOriginModal] = useState(false);
-  const [destinationModal, setDestinationModal] = useState(false);
   const [schedule, setSchedule] = useState({
     departureDate: "",
     departureFormattedDate: "",
     returnDate: "",
     returnFormattedDate: "",
   });
-  const [scheduleModal, setScheduleModal] = useState(false);
   const [passengers, setPassengers] = useState({
     adults: 1,
     children: 0,
@@ -52,8 +45,6 @@ const TicketSearchBox = ({
     cabin: "",
     cabinKor: "모든 클래스",
   });
-  const [passengersModal, setPassengersModal] = useState(false);
-  const setModal = useSetRecoilState(modalState);
 
   useEffect(() => {
     if (searchResult) {
@@ -99,112 +90,7 @@ const TicketSearchBox = ({
     setNonStop(!nonStop);
   };
 
-  const handleOrigin = () => {
-    setOriginModal(true);
-    if (destinationModal) {
-      setDestinationModal(false);
-    } else if (scheduleModal) {
-      setScheduleModal(false);
-    } else if (passengersModal) {
-      setPassengersModal(false);
-    }
-  };
-
-  const handleDestination = () => {
-    setDestinationModal(true);
-    if (originModal) {
-      setOriginModal(false);
-    } else if (scheduleModal) {
-      setScheduleModal(false);
-    } else if (passengersModal) {
-      setPassengersModal(false);
-    }
-  };
-
-  const handleItinerary = () => {
-    setScheduleModal(true);
-    if (originModal) {
-      setOriginModal(false);
-    } else if (destinationModal) {
-      setDestinationModal(false);
-    } else if (passengersModal) {
-      setPassengersModal(false);
-    }
-  };
-
-  const handlePassengers = () => {
-    setPassengersModal(true);
-    if (originModal) {
-      setOriginModal(false);
-    } else if (destinationModal) {
-      setDestinationModal(false);
-    } else if (scheduleModal) {
-      setScheduleModal(false);
-    }
-  };
-
-  const handleSwitch = useCallback(() => {
-    if (destination.code) {
-      setOrigin({
-        code: destination.code,
-        value: destination.value,
-      });
-
-      setDestination({
-        code: origin.code,
-        value: origin.value,
-      });
-    }
-  }, [origin, destination]);
-
   const handleClick = () => {
-    if (!origin.code) {
-      setModal({
-        isOpen: true,
-        title: "안내",
-        content: "출발 공항이 선택되지 않았습니다.\n출발 공항을 선택하세요!",
-        buttonNum: 1,
-        handleConfirm: () => {},
-      });
-      return;
-    }
-
-    if (!destination.code) {
-      setModal({
-        isOpen: true,
-        title: "안내",
-        content: "도착 공항이 선택되지 않았습니다.\n도착 공항을 선택하세요!",
-        buttonNum: 1,
-        handleConfirm: () => {},
-      });
-      return;
-    }
-
-    if (!schedule.departureDate) {
-      setModal({
-        isOpen: true,
-        title: "안내",
-        content: "여행 일정이 선택되지 않았습니다.\n여행 일정을 선택하세요!",
-        buttonNum: 1,
-        handleConfirm: () => {},
-      });
-      return;
-    }
-
-    const originAirport = code[origin.code] as AirportData;
-    const destinationAirport = code[destination.code] as AirportData;
-
-    if (originAirport.cityCode === destinationAirport.cityCode) {
-      setModal({
-        isOpen: true,
-        title: "안내",
-        content: "같은 도시로 여행할 수 없습니다!\n공항을 다시 선택하세요!",
-        buttonNum: 1,
-        handleConfirm: () => {},
-      });
-      return;
-    }
-
     console.log({
       tripType,
       nonStop,
@@ -218,29 +104,13 @@ const TicketSearchBox = ({
     router.push(
       `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" ? `&returnDate=${schedule.returnDate}` : ""}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`,
     );
-
-    // if (handleChange) {
-    //   handleChange();
-    // }
-
-    /* -------------------------------------------------------------------------- */
-    /*                             검색정보로 넘겨줄 날짜 형식 저장                       */
-    /* -------------------------------------------------------------------------- */
-    setSearchResult({
-      tripType,
-      nonStop,
-      origin,
-      destination,
-      schedule,
-      passengers,
-      cabin,
-    });
   };
 
   const originText = useMemo(
     () => (origin.code ? `${origin.value} (${origin.code})` : "공항 선택"),
     [origin],
   );
+
   const destinationText = useMemo(
     () =>
       destination.code
@@ -248,6 +118,7 @@ const TicketSearchBox = ({
         : "공항 선택",
     [destination],
   );
+
   const scheduleText = useMemo(() => {
     if (!schedule.departureDate) return "여행 일정 선택";
     return tripType === "round"
@@ -301,11 +172,7 @@ const TicketSearchBox = ({
         </div>
         <div className="search-main">
           <div className="route large">
-            <button
-              type="button"
-              className={`schedule-button origin ${originModal ? "selected" : ""}`}
-              onClick={handleOrigin}
-            >
+            <button type="button" className={`schedule-button origin`}>
               <span className="schedule-title">출발</span>
               <span
                 className={`schedule-contents ${origin.code ? "selected" : ""}`}
@@ -313,25 +180,7 @@ const TicketSearchBox = ({
                 {originText}
               </span>
             </button>
-            <button
-              type="button"
-              className={`route-switch ${destination.code ? "is-active" : "disabled"} img-box`}
-              onClick={handleSwitch}
-            >
-              <Image
-                src="/img/icon-switch.svg"
-                alt="출/도착 변경"
-                width={0}
-                height={0}
-                sizes="100%"
-              />
-              <span className="hidden">출/도착 변경</span>
-            </button>
-            <button
-              type="button"
-              className={`schedule-button ${destinationModal ? "selected" : ""}`}
-              onClick={handleDestination}
-            >
+            <button type="button" className={`schedule-button `}>
               <span className="schedule-title">도착</span>
               <span
                 className={`schedule-contents ${destination.code ? "selected" : ""}`}
@@ -341,11 +190,7 @@ const TicketSearchBox = ({
             </button>
           </div>
           <div className="itinerary small">
-            <button
-              type="button"
-              className={`schedule-button ${scheduleModal ? "selected" : ""}`}
-              onClick={handleItinerary}
-            >
+            <button type="button" className={`schedule-button`}>
               {tripType === "round" ? (
                 <span className="schedule-title">출발일 - 도착일</span>
               ) : (
@@ -360,11 +205,7 @@ const TicketSearchBox = ({
             </button>
           </div>
           <div className="passenger small">
-            <button
-              type="button"
-              className={`schedule-button passenger ${passengersModal ? "selected" : ""}`}
-              onClick={handlePassengers}
-            >
+            <button type="button" className={`schedule-button passenger `}>
               <span className="schedule-title">인원, 좌석 등급</span>
               <span
                 className={`schedule-contents ${passengers.adults && cabin ? "selected" : ""}`}
@@ -379,47 +220,6 @@ const TicketSearchBox = ({
             </Button>
           </div>
         </div>
-        {originModal && (
-          <div className="search-modal">
-            <RouteModal
-              type="origin"
-              handleClose={setOriginModal}
-              airport={airport}
-              setOrigin={setOrigin}
-            />
-          </div>
-        )}
-        {destinationModal && (
-          <div className="search-modal">
-            <RouteModal
-              type="destination"
-              handleClose={setDestinationModal}
-              airport={airport}
-              setDestination={setDestination}
-            />
-          </div>
-        )}
-        {scheduleModal && (
-          <div className="search-modal">
-            <ScheduleModal
-              handleClose={setScheduleModal}
-              tripType={tripType}
-              schedule={schedule}
-              setSchedule={setSchedule}
-            />
-          </div>
-        )}
-        {passengersModal && (
-          <div className="search-modal">
-            <PassengersModal
-              handleClose={setPassengersModal}
-              passengers={passengers}
-              setPassengers={setPassengers}
-              cabin={cabin}
-              setCabin={setCabin}
-            />
-          </div>
-        )}
       </div>
     </div>
   );

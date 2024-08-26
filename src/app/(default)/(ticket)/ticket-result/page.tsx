@@ -79,7 +79,6 @@ const TicketResult = async ({ searchParams }: IPageProps) => {
   const session = await auth();
   const user = !!session?.user;
   const { returnDate } = searchParams;
-  console.log(searchParams);
 
   const { code, airportCode } = await fetchCodes<AirportData>();
   const { code: airline } = await fetchCodes<AirlineData>();
