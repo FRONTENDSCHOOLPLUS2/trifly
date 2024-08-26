@@ -1,6 +1,6 @@
 "use client";
 
-import { AirportData } from "@/types";
+import { AirportData, CodeState } from "@/types";
 import { useState } from "react";
 import TicketSearchBox from "./TicketSearchBox";
 import SearchInfoBox from "./SearchInfoBox";
@@ -9,9 +9,8 @@ const SearchInfo = ({
   code,
   airport,
 }: {
-  code: {
-    [key: string]: AirportData;
-  };
+  code: CodeState<AirportData>;
+
   airport: AirportData[];
 }) => {
   const [searchMode, setSearchMode] = useState(false);
@@ -29,7 +28,7 @@ const SearchInfo = ({
           handleChange={handleChange}
         />
       ) : (
-        <SearchInfoBox handleChange={handleChange} />
+        <SearchInfoBox code={code} handleChange={handleChange} />
       )}
     </>
   );
