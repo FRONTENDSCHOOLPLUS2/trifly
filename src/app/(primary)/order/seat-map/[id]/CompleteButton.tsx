@@ -8,28 +8,48 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { useSetRecoilState } from "recoil";
 
-const CompleteButton = ({ id }: { id: string }) => {
+const CompleteButton = ({
+  id,
+  seatArr,
+  setSeatArr,
+}: {
+  id: string;
+  seatArr: Array<[number, number] | string>;
+  setSeatArr: React.Dispatch<
+    React.SetStateAction<Array<[number, number] | string>>
+  >;
+}) => {
   const setModal = useSetRecoilState(modalState);
   const router = useRouter();
+  const findEmpty = seatArr.includes("");
+
+  const handleClick = () => {
+    if (findEmpty) {
+      setModal({
+        isOpen: true,
+        title: "모든 좌석을 선택해야 합니다",
+        content: "좌석을 모두 선택하신 후 다시 시도해 주세요.",
+        buttonNum: 1,
+        handleConfirm: () => {
+          setModal({ isOpen: false });
+        },
+      });
+    } else {
+      setModal({
+        isOpen: true,
+        title: "좌석 선택을 완료 하시겠습니까?",
+        content: "지정된 좌석은 변경할 수 없습니다.",
+        buttonNum: 1,
+        handleConfirm: () => {
+          router.push(`/order/complete/${id}`);
+        },
+      });
+    }
+  };
   return (
-    <>
-      <Button
-        size="full"
-        onClick={() =>
-          setModal({
-            isOpen: true,
-            title: "좌석 선택을 완료 하시겠습니까? ",
-            content: "지정 된 좌석은 변경 할 수 없습니다",
-            buttonNum: 1,
-            handleConfirm: () => {
-              router.push(`/order/complete/${id}`);
-            },
-          })
-        }
-      >
-        선택 완료
-      </Button>
-    </>
+    <Button size="full" onClick={handleClick}>
+      선택 완료
+    </Button>
   );
 };
 
