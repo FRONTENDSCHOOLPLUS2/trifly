@@ -32,19 +32,20 @@ const dohyeon = Do_Hyeon({
 export const metadata: Metadata = {
   // title: { template: `%s | 솔직할지도`, default: "솔직할지도" },
   title: "TriFly",
-  description: "",
+  description: "TriFly에서 항공권을 예매하고 Triple의 기쁨을 누려보세요!",
   authors: {
     name: "Passport",
   },
   icons: {
     icon: "/favicon.svg",
   },
-  keywords: "",
+  keywords:
+    "항공권, 항공권 검색, 최저가 항공권, 포토 티켓, 티켓 꾸미기, 여행사, 해외여행, 해외항공, 자유여행, 국내항공, 국내여행, 제주여행",
   openGraph: {
     title: "TriFly",
-    description: "",
-    images: "/opengraph_img.png",
-    url: "",
+    description: "TriFly에서 항공권을 예매하고 Triple의 기쁨을 누려보세요!",
+    images: "/opengraph_img.svg",
+    url: "https://trifly.vercel.app/",
     type: "website",
     siteName: "TriFly",
   },
@@ -58,6 +59,38 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        <link
+          rel="apple-touch-icon"
+          sizes="16x16"
+          href="/apple-touch-icon-16x16.ico"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="32x32"
+          href="/apple-touch-icon-32x32.ico"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="96x96"
+          href="/apple-touch-icon-96x96.ico"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon-180x180.ico"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.ico"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.ico"
+        />
         <script defer src="https://cdn.iamport.kr/v1/iamport.js" />
       </head>
       <body
