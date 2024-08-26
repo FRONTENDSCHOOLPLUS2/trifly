@@ -1,7 +1,7 @@
+import { fetchCodes } from "@/data/fetch/fetchCode";
+import { AirportData } from "@/types";
 import { Suspense } from "react";
 import TicketLoading from "./Loading";
-import { fetchCodes } from "@/data/fetch/fetchCode";
-import { AirportData, CodeState } from "@/types";
 
 export default async function TicketLayout({
   children,
