@@ -1,12 +1,13 @@
 import { fetchCodes } from "@/data/fetch/fetchCode";
-import FetchOrderId from "@/lib/fetchOrder";
+import { FetchOrder } from "@/lib/fetchOrder";
 import { AirportData } from "@/types";
 import Detail from "../../Detail";
-import TicketChk from "./TicketChk";
 import OrderProgress from "../../OrderProgress";
+import TicketChk from "./TicketChk";
 
 const CompletePage = async ({ params: { id } }: { params: { id: string } }) => {
-  const data = await FetchOrderId(id);
+  const dataList = await FetchOrder();
+  const data = dataList.item.find((item) => item.reservationId === id);
   const { code } = await fetchCodes<AirportData>();
 
   return (

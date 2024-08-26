@@ -62,6 +62,30 @@ const PaymentForm = ({
   const [passportNumber, setPassportNumber] = useState("");
   const resetSearchResultData = useResetRecoilState(searchResultState);
 
+  const generateRandomStr = () => {
+    let letters = "";
+    let numbers = "";
+    const lettersCondition = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const numbersCondition = "0123456789";
+
+    for (let i = 0; i < 3; i++) {
+      letters += lettersCondition.charAt(
+        Math.floor(Math.random() * lettersCondition.length),
+      );
+      numbers += numbersCondition.charAt(
+        Math.floor(Math.random() * numbersCondition.length),
+      );
+    }
+    const combined = (letters + numbers).split("");
+    for (let i = combined.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [combined[i], combined[j]] = [combined[j], combined[i]];
+    }
+
+    return combined.join("");
+  };
+  const reservationId = generateRandomStr();
+
   const {
     register,
     handleSubmit,
@@ -128,6 +152,7 @@ const PaymentForm = ({
               price,
               finalPrice,
               image,
+              reservationId,
             );
             setModal({
               isOpen: true,
@@ -135,7 +160,8 @@ const PaymentForm = ({
               content:
                 "항공권 구매가 완료되었습니다. \n좌석 선택 화면으로 이동합니다.",
               buttonNum: 1,
-              handleConfirm: () => router.push(`/order/seat-map/${result._id}`),
+              handleConfirm: () =>
+                router.push(`/order/seat-map/${reservationId}`),
               handleCancel: () => {},
             });
           }
