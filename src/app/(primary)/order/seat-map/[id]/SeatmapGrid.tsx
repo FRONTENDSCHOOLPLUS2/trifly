@@ -152,14 +152,17 @@ const SeatmapGrid = ({
           newSeatArr[targetIdx] = cellNumber;
           return newSeatArr;
         } else {
-          setModal({
-            isOpen: true,
-            title: "",
-            content: "이미 모든 탑승객의 좌석을 선택 하였습니다",
-            buttonNum: 1,
-            handleConfirm: () => {},
-            handleCancel: () => {},
-          });
+          // 상태 업데이트 이후에 모달 상태를 업데이트하도록 setTimeout을 사용
+          setTimeout(() => {
+            setModal({
+              isOpen: true,
+              title: "",
+              content: "이미 모든 탑승객의 좌석을 선택 하였습니다",
+              buttonNum: 1,
+              handleConfirm: () => {},
+              handleCancel: () => {},
+            });
+          }, 0);
           return prevSeatArr;
         }
       });
