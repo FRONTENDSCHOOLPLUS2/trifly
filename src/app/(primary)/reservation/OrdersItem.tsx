@@ -7,6 +7,10 @@ import { useRouter } from "next/navigation";
 const OrdersItem = ({ item }: { item: OrderItem }) => {
   const router = useRouter();
 
+  //itinenary.length => 1이면 편도, length가 2면 왕복
+  //segmanets.length => 경유 여부, length === 1 직항 ,, length ===2  경유
+  // 목적지 :
+
   const handleClick = (_id: number) => {
     router.push(`/reservation/${_id}`);
   };
@@ -21,7 +25,7 @@ const OrdersItem = ({ item }: { item: OrderItem }) => {
         {item.itineraries[0].segments[0].departure.iataCode}
       </td>
       <td className="arrival">
-        {item.itineraries.slice(-1)[0].segments[0].departure.iataCode}
+        {item.itineraries[0].segments[0].arrival.iataCode}
       </td>
       <td className="travel">
         {item.itineraries.length === 2 ? (
