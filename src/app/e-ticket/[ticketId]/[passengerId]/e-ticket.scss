@@ -6,6 +6,6 @@
     position: absolute;
     margin-top: calc(var(--title-max) * 1.5);
     right: calc(var(--title-max) * 2);
-    z-index: 1;
+    z-index: 999;
   }
 }
