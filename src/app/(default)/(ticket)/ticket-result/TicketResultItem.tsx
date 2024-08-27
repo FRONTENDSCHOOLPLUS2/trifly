@@ -244,7 +244,7 @@ const TicketResultItem = ({
         content: (
           <>
             선택하신 항공편을 조회 중입니다.
-            <Loading />
+            <Loading type="small" />
           </>
         ),
         buttonNum: 0,

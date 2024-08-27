@@ -8,7 +8,7 @@ import "./loading.scss";
 
 const Lottie = dynamic(() => import("react-lottie-player"), { ssr: true });
 
-function Loading() {
+function Loading({ type = "default" }) {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -16,18 +16,15 @@ function Loading() {
   }, [isMounted]);
 
   if (!isMounted) {
-    console.log("마운트 안됐다!");
-    return null; // 서버에서는 아무것도 렌더링하지 않음
+    return null;
   }
-
-  console.log("마운트 됐지롱~");
 
   return (
     <>
       {!isMounted ? (
         <p>로딩</p>
       ) : (
-        <div className="loading">
+        <div className={`loading ${type}`}>
           <Lottie
             loop
             play

@@ -3,4 +3,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &.default {
+    height: 100vh;
+  }
+
+  &.small {
+    width: 10rem;
+    height: 10rem;
+  }
 }
