@@ -2,13 +2,12 @@
 
 import { modalState, searchResultState } from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
+import Button from "@/components/Button/Button";
 import RouteModal from "@/components/TicketSearch/SearchModals/RouteModal";
 import { AirportData, CodeState } from "@/types";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import Button from "@/components/Button/Button";
 import PassengersModal from "./SearchModals/PassengersModal";
 import ScheduleModal from "./SearchModals/ScheduleModal";
 import "./TicketSearch.scss";
@@ -23,7 +22,6 @@ const TicketSearchBox = ({
   handleChange?: () => void;
 }) => {
   const [searchResult, setSearchResult] = useRecoilState(searchResultState);
-  const router = useRouter();
   const [tripType, setTripType] = useState("round");
   const [nonStop, setNonStop] = useState(false);
   const [origin, setOrigin] = useState({
@@ -204,16 +202,6 @@ const TicketSearchBox = ({
       });
       return;
     }
-
-    console.log({
-      tripType,
-      nonStop,
-      origin,
-      destination,
-      schedule,
-      passengers,
-      cabin,
-    });
 
     if (typeof window !== "undefined") {
       window.location.href = `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" ? `&returnDate=${schedule.returnDate}` : ""}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`;
