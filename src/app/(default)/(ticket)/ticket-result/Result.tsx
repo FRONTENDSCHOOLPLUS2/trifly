@@ -9,6 +9,7 @@ import { useRecoilValue } from "recoil";
 import Filter from "./Filter";
 import Sorting from "./Sorting";
 import TicketResultList from "./TicketResultList";
+import { useSearchParams } from "next/navigation";
 
 export interface IFilterProps {
   nonStop?: boolean;
@@ -35,6 +36,8 @@ const Result = ({
   const [filteredData, setFilteredData] = useState(data);
   const [filters, setFilters] = useState<IFilterProps>();
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const searchParams = useSearchParams();
+  const nonStop = searchParams.get("nonStop") || "";
 
   useEffect(() => {
     setFilteredData(data);
@@ -94,7 +97,7 @@ const Result = ({
         });
       }
 
-      if (searchResult.tripType === "round") {
+      if (returnDate) {
         if (filters.returnDepTime) {
           const { returnDepTime } = filters;
 
@@ -358,14 +361,14 @@ const Result = ({
           <div className="mobile-filter-container">
             <Sorting
               handleSorting={handleSorting}
-              tripType={searchResult.tripType}
+              tripType={returnDate ? "round" : "oneway"}
             />
 
             <Filter
               airline={airline}
               carrierCodes={carrierCodes}
-              tripType={searchResult.tripType}
-              nonStop={searchResult.nonStop}
+              tripType={returnDate ? "round" : "oneway"}
+              nonStop={nonStop ? true : false}
               handleFilterChange={handleFilterChange}
             />
           </div>
@@ -419,45 +422,7 @@ const Result = ({
           </div>
         )}
       </div>
-      {/* {isFilterOpen && (
-        <div className="search-filter mobile">
-          <div className="mobile-filter-header">
-            <h4>정렬 및 필터</h4>
-            <button
-              className="close-button"
-              onClick={() => setIsFilterOpen(false)}
-            >
-              <div className="img-box">
-                <Image
-                  src="/img/icon-close-black.svg"
-                  alt="닫기"
-                  width={0}
-                  height={0}
-                  sizes="100%"
-                />
-              </div>
-              <span className="hidden">필터 닫기</span>
-            </button>
-          </div>
-          <div className="mobile-filter-contents">
-            <div className="mobile-sorting">
-              <p>정렬</p>
-              <Sorting
-                handleSorting={handleSorting}
-                tripType={searchResult.tripType}
-              />
-            </div>
 
-            <Filter
-              airline={airline}
-              carrierCodes={carrierCodes}
-              tripType={searchResult.tripType}
-              nonStop={searchResult.nonStop}
-              handleFilterChange={handleFilterChange}
-            />
-          </div>
-        </div>
-      )} */}
       {!isFilterOpen && (
         <button
           className="filter-button"
