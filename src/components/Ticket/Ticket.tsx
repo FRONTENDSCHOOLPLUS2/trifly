@@ -48,7 +48,7 @@ const Ticket = ({
         <div className="flex-box">
           <dl>
             <dt>Passanger Name</dt>
-            <dd>{passengers[passengerId].nameEng}</dd>
+            <dd className="text-upper">{passengers[passengerId].nameEng}</dd>
           </dl>
           <dl>
             <dt>E-ticket Number</dt>
@@ -88,7 +88,9 @@ const Ticket = ({
               <div className="flex-box">
                 <dl>
                   <dt>Passanger Name</dt>
-                  <dd>{passengers[passengerId].nameEng}</dd>
+                  <dd className="text-upper">
+                    {passengers[passengerId].nameEng}
+                  </dd>
                 </dl>
                 <dl>
                   <dt>Date</dt>

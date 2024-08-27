@@ -154,6 +154,10 @@
   display: block;
 }
 
+.text-upper {
+  text-transform: uppercase;
+}
+
 /* 모바일 */
 @media (max-width: 1023px) {
   .containerLayout {
