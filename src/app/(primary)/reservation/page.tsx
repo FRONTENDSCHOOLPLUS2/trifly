@@ -12,7 +12,7 @@ const reservation = async () => {
   return (
     <>
       <div className="reservation-header">
-        <h1 className="title">예약내역</h1>
+        <h2 className="title">예약내역</h2>
         <div className="search-cover">
           <div className="input-cover">
             <input type="text" name="reservation-search" id="search" />

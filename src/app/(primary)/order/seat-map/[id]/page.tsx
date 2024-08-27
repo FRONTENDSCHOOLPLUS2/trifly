@@ -14,6 +14,7 @@ const Page = async ({ params: { id } }: { params: { id: string } }) => {
 
   return (
     <>
+      <h3 className="hidden">좌석 선택</h3>
       <OrderProgress orderStatus={3} />
       <SeatmapGroup data={data} id={id} orderId={orderId} code={code} />;
     </>
