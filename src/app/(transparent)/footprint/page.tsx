@@ -103,7 +103,7 @@ const FootPrint = async () => {
 
         {dataByYear.map((yearData, yearIdx) => (
           <div key={`연도별-${yearIdx}`} className="tickets-inner">
-            <h4 className="year">{yearData.year}</h4>
+            <h3 className="year">{yearData.year}</h3>
             <div className="tickets">
               {yearData.data.map((ticket) =>
                 ticket.passengers.map((_, passengerIdx) => (
