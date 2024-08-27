@@ -124,7 +124,7 @@ const Journey = async ({
 
   return (
     <>
-      <div className="ticket-box">{itinerary}</div>
+      <div className="reservation-box">{itinerary}</div>
     </>
   );
 };

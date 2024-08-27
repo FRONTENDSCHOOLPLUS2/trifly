@@ -23,10 +23,12 @@ const reservationId = async ({
       <tbody key={idx}>
         <tr>
           <td className="passport-number">{item.passport.number}</td>
-          <td className="web-passenger">
-            {item.nameEng} ({item.nameKor})
+          <td className="passenger">
+            <span className="pc">
+              {item.nameEng} ({item.nameKor})
+            </span>
+            <span className="mo">{item.nameKor}</span>
           </td>
-          <td className="mobile-passenger">{item.nameKor}</td>
           <td className="birth">{item.birth}</td>
           <td>
             <TicketLink id={params.reservationDetail} passengerId={idx} />
@@ -62,15 +64,14 @@ const reservationId = async ({
 
       <div className="ticket-print">
         <h2 className="title">탑승객별 티켓</h2>
-        <div className="table-box">
+        <div className="">
           <section>
             <table>
               <caption className="hidden">탑승객별 티켓 내역</caption>
               <thead>
                 <tr>
                   <th>여권번호</th>
-                  <th className="web-passenger">탑승객</th>
-                  <th className="mobile-passenger">탑승객</th>
+                  <th>탑승객</th>
                   <th className="birth">생년월일</th>
                   <th>티켓 목록</th>
                 </tr>

@@ -42,8 +42,7 @@
         }
       }
 
-      .departure,
-      .arrival {
+      .box {
         display: flex;
         flex-direction: column;
         text-align: center;
@@ -97,10 +96,6 @@
         &::after {
           background-color: var(--color-blue-100);
         }
-
-        &::before {
-          // transform: translate(-10%, -50%);
-        }
       }
 
       .arrival {
@@ -109,7 +104,6 @@
         }
 
         &::before {
-          // transform: translate(90%, -50%);
           left: auto;
           right: 0;
         }
@@ -207,22 +201,37 @@
         width: 33%;
       }
     }
+
     .journey-box .journey {
-      .departure {
-        .airport-code {
-          font-size: var(--title-extra);
+      .box {
+        &::before {
+          display: none;
+        }
+        &::after {
+          transform: translateY(-50%);
         }
 
-        .airport-kr {
-          font-size: var(--title-large);
+        &.departure {
+          text-align: left;
+          &::after {
+            left: 0;
+          }
+        }
+
+        &.arrival {
+          text-align: right;
+          &::after {
+            left: auto;
+            right: 0;
+          }
         }
       }
 
-      .arrival {
-        .airport-code {
-          font-size: var(--title-extra);
-          margin-bottom: 1rem;
-        }
+      .airport-code {
+        font-size: var(--title-extra);
+      }
+      .airport-kr {
+        font-size: var(--title-large);
       }
     }
   }
@@ -233,8 +242,7 @@
     .journey-box {
       padding: 5rem 2rem 4rem 2rem;
       .journey {
-        .departure,
-        .arrival {
+        .box {
           .airport-code {
             font-size: var(--title-extra);
             margin-bottom: 1rem;
