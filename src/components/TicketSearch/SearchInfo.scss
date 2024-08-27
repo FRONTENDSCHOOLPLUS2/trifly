@@ -85,8 +85,11 @@
       flex-grow: 1;
       flex-shrink: 0;
       display: flex;
-      justify-content: center;
       align-items: center;
+
+      & > button {
+        margin-right: auto;
+      }
     }
   }
 }

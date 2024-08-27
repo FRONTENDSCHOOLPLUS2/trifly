@@ -6,7 +6,6 @@ import "./seatmapGrid.scss";
 import { SeatData, SeatFacilities } from "@/types";
 import { useSetRecoilState } from "recoil";
 import { modalState } from "@/atoms/atoms";
-import Loading from "@/app/loading";
 
 type IGrid = Array<SeatData | SeatFacilities | null>[];
 
@@ -164,7 +163,8 @@ const SeatmapGrid = ({
   };
 
   if (!grid) {
-    return <Loading />;
+    return null;
+    // return <Loading />;
   }
 
   // console.log(seatArr);
