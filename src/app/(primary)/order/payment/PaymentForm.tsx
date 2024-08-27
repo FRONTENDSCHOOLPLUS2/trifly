@@ -121,7 +121,7 @@ const PaymentForm = ({
     IMP.init(process.env.NEXT_PUBLIC_MERCHANT_CODE as string);
     IMP.request_pay(
       {
-        pg: "tosspayments.iamporttest_3",
+        pg: "kcp",
         pay_method: "card",
         merchant_uid:
           new Date().getTime() + Math.floor(Math.random() * 1000000),
@@ -134,16 +134,7 @@ const PaymentForm = ({
 
       async (res: IMPData) => {
         try {
-          if (res.error_code) {
-            setModal({
-              isOpen: true,
-              title: "안내",
-              content: "결제를 취소하셨습니다.",
-              buttonNum: 1,
-              handleConfirm: () => {},
-              handleCancel: () => {},
-            });
-          } else {
+          if (res.success) {
             // 결제 성공 후 주문 api 통신
             resetSearchResultData();
             const result = await orderAction(
@@ -162,6 +153,15 @@ const PaymentForm = ({
               buttonNum: 1,
               handleConfirm: () =>
                 router.push(`/order/seat-map/${reservationId}`),
+              handleCancel: () => {},
+            });
+          } else {
+            setModal({
+              isOpen: true,
+              title: "안내",
+              content: "결제를 취소하셨습니다.",
+              buttonNum: 1,
+              handleConfirm: () => {},
               handleCancel: () => {},
             });
           }
