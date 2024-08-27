@@ -3,7 +3,7 @@
 import { seatMapb747 } from "@/lib/seatMapb747";
 import React, { useEffect, useState } from "react";
 import "./seatmapGrid.scss";
-import { SeatData, SeatFacilities } from "@/types";
+import { OrderItem, SeatData, SeatFacilities } from "@/types";
 import { useSetRecoilState } from "recoil";
 import { modalState } from "@/atoms/atoms";
 
@@ -14,13 +14,13 @@ const SeatmapGrid = ({
   seatArr,
   setSeatArr,
   orderId,
+  data,
 }: {
   passengerLength: number | undefined;
   seatArr: Array<[number, number] | string>;
-  setSeatArr: React.Dispatch<
-    React.SetStateAction<Array<[number, number] | string>>
-  >;
+  setSeatArr: React.Dispatch<React.SetStateAction<Array<string>>>;
   orderId: number;
+  data: OrderItem | undefined;
 }) => {
   const [grid, setGrid] = useState<IGrid>();
   // const [seatArr, setSeatArr] = useState<Array<[number, number] | string>>([]);
@@ -75,8 +75,8 @@ const SeatmapGrid = ({
    *
    */
 
-  const { data } = seatMapb747;
-  const seatData = data.map((item) => ({
+  const { data: seatDatas } = seatMapb747;
+  const seatData = seatDatas.map((item) => ({
     decks: item.decks,
     seats: item.decks.map((deck) => deck.seats),
     coordinates: item.decks.map((deck) =>
@@ -103,7 +103,7 @@ const SeatmapGrid = ({
       newGrid[row][col] = seatData[0].seats[0][idx];
     });
 
-    data[0].decks[0].facilities.forEach((item) => {
+    seatDatas[0].decks[0].facilities.forEach((item) => {
       newGrid[item.coordinates.x][item.coordinates.y] = item;
     });
 
@@ -120,9 +120,14 @@ const SeatmapGrid = ({
   const handleButtonClick = (cellNumber: string) => {
     const isAlreadyClicked = seatArr.find((item) => item === cellNumber);
 
+    const itinerarySeat = data?.itineraries.map((_, idx) => {
+      console.log(idx);
+    });
     if (isAlreadyClicked) {
       setSeatArr((prevSeatArr) => {
         const targetIdx = prevSeatArr.findIndex((item) => item === cellNumber);
+        console.log("prevSeatArr", prevSeatArr);
+        console.log("targetIdx", targetIdx);
         if (targetIdx >= 0) {
           const newSeatArr = [...prevSeatArr];
           newSeatArr[targetIdx] = "";
@@ -152,6 +157,8 @@ const SeatmapGrid = ({
         }
       });
     }
+
+    console.log("itinerarySeat", itinerarySeat);
   };
 
   const isClicked = (rowIndex: number, colIndex: number) => {
