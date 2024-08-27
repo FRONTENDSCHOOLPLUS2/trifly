@@ -215,13 +215,17 @@ const TicketSearchBox = ({
       cabin,
     });
 
-    router.push(
-      `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" ? `&returnDate=${schedule.returnDate}` : ""}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`,
-    );
+    if (typeof window !== "undefined") {
+      window.location.href = `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" ? `&returnDate=${schedule.returnDate}` : ""}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`;
+    }
 
-    // if (handleChange) {
-    //   handleChange();
-    // }
+    // router.push(
+    //   `/ticket-result?originLocationCode=${origin.code}&destinationLocationCode=${destination.code}&departureDate=${schedule.departureDate}${tripType === "round" ? `&returnDate=${schedule.returnDate}` : ""}&adults=${passengers.adults}${passengers.children > 0 ? `&children=${passengers.children}` : ""}${passengers.infants > 0 ? `&infants=${passengers.infants}` : ""}${nonStop ? `&nonStop=${nonStop}` : ""}${cabin.cabin && `&travelClass=${cabin.cabin}`}&currencyCode=KRW`,
+    // );
+
+    if (handleChange) {
+      handleChange();
+    }
 
     /* -------------------------------------------------------------------------- */
     /*                             검색정보로 넘겨줄 날짜 형식 저장                       */
@@ -241,6 +245,7 @@ const TicketSearchBox = ({
     () => (origin.code ? `${origin.value} (${origin.code})` : "공항 선택"),
     [origin],
   );
+
   const destinationText = useMemo(
     () =>
       destination.code
@@ -248,6 +253,7 @@ const TicketSearchBox = ({
         : "공항 선택",
     [destination],
   );
+
   const scheduleText = useMemo(() => {
     if (!schedule.departureDate) return "여행 일정 선택";
     return tripType === "round"
