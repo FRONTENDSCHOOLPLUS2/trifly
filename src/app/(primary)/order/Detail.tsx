@@ -43,6 +43,7 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
 
   const cabinKor: CabinType = {
     ECONOMY: "일반석",
+    PREMIUM_ECONOMY: "프리미엄 일반석",
     BUSINESS: "비즈니스석",
     FIRST: "일등석",
   };
@@ -51,8 +52,11 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
     <div className="detail-box">
       {data.map((item, idx) => {
         const duration = item.duration!.split("PT")[1].split("H");
-        const hour = duration[0];
-        const minute = duration[1].split("M")[0];
+        const hour = duration.length > 1 ? duration[0] : 0;
+        const minute =
+          duration.length > 1
+            ? duration[1].split("M")[0]
+            : duration[0].split("M")[0];
 
         return (
           <article key={idx}>
@@ -65,7 +69,7 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
                   {idx === 0 ? departureDate : returnDate}
                 </span>
                 <span className="duration">
-                  소요시간 <span>{`${hour}시간 ${minute}분`}</span>
+                  소요시간 <span>{`${hour}시간 ${minute || 0}분`}</span>
                 </span>
               </div>
             </div>
