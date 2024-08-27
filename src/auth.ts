@@ -11,7 +11,13 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 const SERVER = process.env.NEXT_PUBLIC_MARKET_API_SERVER;
 const CLIENT_ID = process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID as string;
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+export const {
+  handlers,
+  signIn,
+  signOut,
+  auth,
+  unstable_update: update,
+} = NextAuth({
   trustHost: true,
   providers: [
     CredentialsProvider({
