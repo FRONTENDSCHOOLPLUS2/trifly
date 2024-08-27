@@ -4,8 +4,6 @@ import FetchOrderId from "@/lib/fetchOrder";
 
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import { AirportData } from "@/types";
-import { backgroundClip } from "html2canvas/dist/types/css/property-descriptors/background-clip";
-import { color } from "html2canvas/dist/types/css/types/color";
 import TicketLink from "./TicketLink";
 import Journey from "./Journey";
 
@@ -44,7 +42,7 @@ const reservationId = async ({
     <>
       <div className="ticket-detail">
         <div className="title-box">
-          <h1 className="title">상세내역</h1>
+          <h2 className="title">상세내역</h2>
           <div className="tag">
             {data?.itineraries.length >= 2 ? (
               <Badge>왕복</Badge>
