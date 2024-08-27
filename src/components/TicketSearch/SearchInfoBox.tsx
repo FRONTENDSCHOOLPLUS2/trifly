@@ -147,7 +147,7 @@ const SearchInfoBox = ({
               <span className="schedule-contents">
                 {/* {formatDate(departureDate)}
                 {returnDate && ` ~ ${formatDate(returnDate)}`} */}
-                {`${searchResult.schedule.departureFormattedDate}${searchResult.tripType === "round" && ` ~ ${searchResult.schedule.returnFormattedDate}`}`}
+                {`${searchResult.schedule.departureFormattedDate}${searchResult.tripType === "round" ? ` ~ ${searchResult.schedule.returnFormattedDate}` : ""}`}
               </span>
             </div>
           </div>

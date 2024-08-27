@@ -130,14 +130,12 @@ const SeatmapGrid = ({
   const handleButtonClick = (cellNumber: string) => {
     const isAlreadyClicked = seatArr.find((item) => item === cellNumber);
 
-    const itinerarySeat = data?.itineraries.map((_, idx) => {
-      console.log(idx);
-    });
+    const itinerarySeat = data?.itineraries.map((_, idx) => {});
     if (isAlreadyClicked) {
       setSeatArr((prevSeatArr) => {
         const targetIdx = prevSeatArr.findIndex((item) => item === cellNumber);
-        console.log("prevSeatArr", prevSeatArr);
-        console.log("targetIdx", targetIdx);
+        // console.log("prevSeatArr", prevSeatArr);
+        // console.log("targetIdx", targetIdx);
         if (targetIdx >= 0) {
           const newSeatArr = [...prevSeatArr];
           newSeatArr[targetIdx] = "";
@@ -154,21 +152,21 @@ const SeatmapGrid = ({
           newSeatArr[targetIdx] = cellNumber;
           return newSeatArr;
         } else {
-          console.log("배열 꽉 참 모달 띄워");
-          setModal({
-            isOpen: true,
-            title: "",
-            content: "이미 모든 탑승객의 좌석을 선택 하였습니다",
-            buttonNum: 1,
-            handleConfirm: () => {},
-            handleCancel: () => {},
-          });
+          // 상태 업데이트 이후에 모달 상태를 업데이트하도록 setTimeout을 사용
+          setTimeout(() => {
+            setModal({
+              isOpen: true,
+              title: "",
+              content: "이미 모든 탑승객의 좌석을 선택 하였습니다",
+              buttonNum: 1,
+              handleConfirm: () => {},
+              handleCancel: () => {},
+            });
+          }, 0);
           return prevSeatArr;
         }
       });
     }
-
-    console.log("itinerarySeat", itinerarySeat);
   };
 
   const isClicked = (rowIndex: number, colIndex: number) => {
