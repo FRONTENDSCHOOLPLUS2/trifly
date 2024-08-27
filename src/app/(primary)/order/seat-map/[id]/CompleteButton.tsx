@@ -15,10 +15,8 @@ const CompleteButton = ({
   orderId,
 }: {
   id: string;
-  seatArr: Array<[number, number] | string>;
-  setSeatArr: React.Dispatch<
-    React.SetStateAction<Array<[number, number] | string>>
-  >;
+  seatArr: Array<string>;
+  setSeatArr: React.Dispatch<React.SetStateAction<Array<string>>>;
   orderId: number;
 }) => {
   const setModal = useSetRecoilState(modalState);
