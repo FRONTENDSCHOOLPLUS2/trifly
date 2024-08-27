@@ -1,6 +1,5 @@
 import { AirportData, CodeState, OrderItem, OrderItineraries } from "@/types";
 import React from "react";
-import { fetchCodes } from "@/data/fetch/fetchCode";
 import "./Journery.scss";
 import Image from "next/image";
 
@@ -24,13 +23,12 @@ const Journey = async ({
 
     const departureCode = item.segments[0].departure.iataCode;
 
-    console.log("XXSXSDSXD", item);
     // console.log(item.segments.map((item) => item.departure));
     return (
-      <div className="ticket" key={idx}>
+      <div className="ticket-detail-item" key={idx}>
         <div className="journey-box">
           <div className="journey">
-            <div className="departure">
+            <div className="box departure">
               <span className="airport-code">{departureCode}</span>
               <span className="airport-kr">{code[departureCode].value}</span>
               <span className="airline-at">
@@ -55,7 +53,7 @@ const Journey = async ({
               </span>
             </div>
 
-            <div className="arrival">
+            <div className="box arrival">
               <div className="circle" />
               <span className="airport-code">
                 {/* {itinerary.segments[0].arrival.iataCode} */}
