@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import "./TicketResultItem.scss";
+import Loading from "@/app/loading";
 
 const TicketResultItem = ({
   user,
@@ -240,7 +241,12 @@ const TicketResultItem = ({
         isOpen: true,
         closeButton: false,
         title: "항공편 조회",
-        content: "선택하신 항공편을 조회 중입니다.",
+        content: (
+          <>
+            선택하신 항공편을 조회 중입니다.
+            <Loading />
+          </>
+        ),
         buttonNum: 0,
         handleConfirm: () => {},
         handleCancel: () => {},
@@ -248,14 +254,6 @@ const TicketResultItem = ({
 
       try {
         const price = await fetchPrice(flightOffers);
-
-        console.log({
-          departureDate,
-          returnDate,
-          totalPrice,
-          itineraries,
-          price,
-        });
 
         setOrderState({
           departureDate,
