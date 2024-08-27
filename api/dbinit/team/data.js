@@ -3827,6 +3827,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "2-3",
           },
           {
             code: "223",
@@ -3837,6 +3838,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "2-3",
           },
           {
             code: "32S",
@@ -3847,6 +3849,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "318",
@@ -3857,6 +3860,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "319",
@@ -3867,6 +3871,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "320",
@@ -3877,6 +3882,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "20N",
@@ -3887,6 +3893,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "32N",
@@ -3897,6 +3904,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "321",
@@ -3907,6 +3915,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "21N",
@@ -3917,6 +3926,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "32Q",
@@ -3927,6 +3937,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "330",
@@ -3937,6 +3948,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "2-4-2",
           },
           {
             code: "332",
@@ -3947,6 +3959,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "2-4-2",
           },
           {
             code: "333",
@@ -3957,6 +3970,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "2-4-2",
           },
           {
             code: "339",
@@ -3967,6 +3981,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "2-4-2",
           },
           {
             code: "343",
@@ -3977,6 +3992,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "2-4-2",
           },
           {
             code: "346",
@@ -3987,6 +4003,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "2-4-2",
           },
           {
             code: "359",
@@ -3997,6 +4014,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
           {
             code: "351",
@@ -4007,6 +4025,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
           {
             code: "35K",
@@ -4017,6 +4036,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
           {
             code: "388",
@@ -4027,6 +4047,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Airbus",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-4-3",
           },
           {
             code: "737",
@@ -4037,6 +4058,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "73H",
@@ -4047,6 +4069,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "738",
@@ -4057,6 +4080,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "73J",
@@ -4067,6 +4091,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "739",
@@ -4077,6 +4102,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "38M",
@@ -4087,6 +4113,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "7M8",
@@ -4097,6 +4124,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "39M",
@@ -4107,6 +4135,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "7M9",
@@ -4117,6 +4146,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "744",
@@ -4127,6 +4157,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-4-3",
           },
           {
             code: "748",
@@ -4137,6 +4168,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-4-3",
           },
           {
             code: "74H",
@@ -4147,6 +4179,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-4-3",
           },
           {
             code: "752",
@@ -4157,6 +4190,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "75W",
@@ -4167,6 +4201,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "753",
@@ -4177,6 +4212,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "협동체",
             specEng: "Narrow Body Aircraft",
+            seatmap: "3-3",
           },
           {
             code: "767",
@@ -4187,6 +4223,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "2-3-2",
           },
           {
             code: "763",
@@ -4197,6 +4234,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "2-3-2",
           },
           {
             code: "76W",
@@ -4207,6 +4245,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "2-3-2",
           },
           {
             code: "764",
@@ -4217,6 +4256,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "2-3-2",
           },
           {
             code: "777",
@@ -4227,6 +4267,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
           {
             code: "772",
@@ -4237,6 +4278,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
           {
             code: "77E",
@@ -4247,6 +4289,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
           {
             code: "77L",
@@ -4257,6 +4300,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
           {
             code: "773",
@@ -4267,6 +4311,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
           {
             code: "77W",
@@ -4277,6 +4322,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
           {
             code: "787",
@@ -4287,6 +4333,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
           {
             code: "788",
@@ -4297,6 +4344,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
           {
             code: "789",
@@ -4307,6 +4355,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
           {
             code: "781",
@@ -4317,6 +4366,7 @@ export const initData = async (clientId, nextSeq) => {
             manufacturerEng: "Boeing",
             specKor: "광동체",
             specEng: "Wide Body Aircraft",
+            seatmap: "3-3-3",
           },
         ],
       },

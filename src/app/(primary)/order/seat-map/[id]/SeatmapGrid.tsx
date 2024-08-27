@@ -1,12 +1,11 @@
 "use client";
 
-import { seatMapb747 } from "@/lib/seatMapb747";
+import { seatMap333 } from "@/lib/seatMap-3-3-3";
 import React, { useEffect, useState } from "react";
 import "./seatmapGrid.scss";
 import { SeatData, SeatFacilities } from "@/types";
 import { useSetRecoilState } from "recoil";
 import { modalState } from "@/atoms/atoms";
-import Loading from "@/app/loading";
 
 type IGrid = Array<SeatData | SeatFacilities | null>[];
 
@@ -76,7 +75,7 @@ const SeatmapGrid = ({
    *
    */
 
-  const { data } = seatMapb747;
+  const { data } = seatMap333;
   const seatData = data.map((item) => ({
     decks: item.decks,
     seats: item.decks.map((deck) => deck.seats),
@@ -164,7 +163,8 @@ const SeatmapGrid = ({
   };
 
   if (!grid) {
-    return <Loading />;
+    return null;
+    // return <Loading />;
   }
 
   // console.log(seatArr);

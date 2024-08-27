@@ -60,7 +60,8 @@ export interface OrderItem extends OrderData {
   history?: {
     actor: number;
     updated: {
-      image: string;
+      image?: string;
+      seat?: string[][];
     };
     createdAt: string;
   }[];
