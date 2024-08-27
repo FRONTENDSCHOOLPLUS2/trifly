@@ -57,9 +57,6 @@ const PaymentForm = ({
   const { totalPrice, itineraries, price } = useRecoilValue(orderState);
   const passengers = usePersonalPrice();
   const [clickedTitle, setClickedTitle] = useState(["0-0"]);
-  const [nameEngLast, setNameEngLast] = useState("");
-  const [nameEngFirst, setNameEngFirst] = useState("");
-  const [passportNumber, setPassportNumber] = useState("");
   const resetSearchResultData = useResetRecoilState(searchResultState);
 
   const generateRandomStr = () => {
@@ -99,9 +96,6 @@ const PaymentForm = ({
         : [...clickedTitle, uniqueIdx],
     );
   };
-
-  const handleUpperCase = (str: string) =>
-    str.replace(/./g, (item) => item.toUpperCase());
 
   const handleForm = (formData: PaymentData) => {
     let totalNum = 0;
@@ -482,7 +476,7 @@ const PaymentForm = ({
                     </div>
 
                     <div className="input-box">
-                      <label htmlFor="nameEngLast">
+                      <label htmlFor={`passengers.${key}.nameEngLast`}>
                         영문 성
                         <span className="errorMsg">
                           {/* {errors &&
@@ -490,16 +484,13 @@ const PaymentForm = ({
                         </span>
                       </label>
                       <input
-                        id="nameEngLast"
+                        id={`passengers.${key}.nameEngLast`}
+                        className="text-upper"
                         placeholder="영문 성을 입력하세요"
                         type="text"
                         {...register(`passengers.${key}.nameEngLast`, {
                           required: "영문 성을 입력하세요.",
                         })}
-                        value={nameEngLast}
-                        onChange={(e) =>
-                          setNameEngLast(handleUpperCase(e.target.value))
-                        }
                       />
                     </div>
                     <div className="input-box">
@@ -512,15 +503,12 @@ const PaymentForm = ({
                       </label>
                       <input
                         id="nameEngFirst"
+                        className="text-upper"
                         placeholder="영문 이름을 입력하세요"
                         type="text"
                         {...register(`passengers.${key}.nameEngFirst`, {
                           required: "영문 이름을 입력하세요.",
                         })}
-                        value={nameEngFirst}
-                        onChange={(e) =>
-                          setNameEngFirst(handleUpperCase(e.target.value))
-                        }
                       />
                     </div>
                     <div className="input-box">
@@ -617,6 +605,7 @@ const PaymentForm = ({
                         </span>
                       </label>
                       <input
+                        className="text-upper"
                         type="text"
                         placeholder="M12345678"
                         maxLength={9}
@@ -626,10 +615,6 @@ const PaymentForm = ({
                             message: "여권 번호를 확인해주세요.",
                           },
                         })}
-                        value={passportNumber}
-                        onChange={(e) =>
-                          setPassportNumber(handleUpperCase(e.target.value))
-                        }
                       />
                     </div>
                     <div className="input-box">
