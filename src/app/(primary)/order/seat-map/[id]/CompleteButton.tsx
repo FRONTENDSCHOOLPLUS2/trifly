@@ -30,9 +30,7 @@ const CompleteButton = ({
         title: "모든 좌석을 선택해야 합니다",
         content: "좌석을 모두 선택하신 후 다시 시도해 주세요.",
         buttonNum: 1,
-        handleConfirm: () => {
-          setModal({ isOpen: false });
-        },
+        handleConfirm: () => {},
       });
     } else {
       setModal({
