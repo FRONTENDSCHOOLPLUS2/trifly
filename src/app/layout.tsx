@@ -1,7 +1,7 @@
 import "@/styles/globals.scss";
 import "@/styles/variables.scss";
-import "@/styles/responsive.scss";
 import "@/styles/common.scss";
+import "@/styles/responsive.scss";
 
 import type { Metadata } from "next";
 import { Noto_Sans_KR, Roboto, Do_Hyeon } from "next/font/google";
