@@ -10,7 +10,7 @@ interface ModalProps {
   isOpen: boolean;
   closeButton?: boolean;
   title?: string;
-  content?: string;
+  content?: React.ReactNode;
   buttonNum?: 0 | 1 | 2;
   handleConfirm?: () => void;
   handleCancel?: () => void;
@@ -64,7 +64,7 @@ export const modalState = atom<ModalProps>({
     isOpen: false,
     closeButton: true,
     title: "",
-    content: "",
+    content: null,
     buttonNum: 1,
     handleConfirm: () => {},
     handleCancel: () => {},
