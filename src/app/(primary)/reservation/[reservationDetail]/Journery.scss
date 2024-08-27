@@ -1,4 +1,4 @@
-.ticket {
+.ticket-detail-item {
   background-color: white;
   box-shadow: var(--box-shadow);
   border-radius: 2rem;
@@ -6,7 +6,7 @@
   .journey-box {
     display: flex;
     justify-content: center;
-    padding: 8rem 0;
+    padding: 8rem var(--layout-padding);
 
     .journey {
       display: flex;
@@ -14,10 +14,15 @@
       gap: 8rem;
       // box-shadow: inset 0 0 10px red;
       border-top: 0.2rem solid var(--color-gray-50);
+      width: 100%;
+      max-width: 60rem;
 
       .stopover {
         display: flex;
         flex-direction: column;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
 
         .img-box {
           text-align: center;
@@ -59,9 +64,12 @@
           content: "";
           display: block;
           position: absolute;
-          width: 3rem;
+          width: 50%;
           height: 3rem;
-          background-color: gray;
+          background-color: var(--color-white);
+          top: 0;
+          left: 0;
+          transform: translateY(-50%);
         }
 
         .airport-code {
@@ -91,7 +99,7 @@
         }
 
         &::before {
-          transform: translate(-10%, -50%);
+          // transform: translate(-10%, -50%);
         }
       }
 
@@ -101,7 +109,9 @@
         }
 
         &::before {
-          transform: translate(90%, -50%);
+          // transform: translate(90%, -50%);
+          left: auto;
+          right: 0;
         }
       }
     }
@@ -142,12 +152,48 @@
   }
 }
 
-.ticket + .ticket {
+//
+
+.table-box {
+  display: flex;
+
+  .table-top,
+  .table-bottom {
+    width: 50%;
+  }
+  table {
+    width: 100%;
+    overflow: hidden;
+
+    thead {
+      background-color: var(--color-gray-30);
+
+      th {
+        background-color: var(--color-gray-30);
+        font-size: var(--title-medium);
+        color: var(--color-gray-100);
+        font-weight: 500;
+        border-bottom: 0.5px solid var(--color-gray-100);
+        line-height: 4rem;
+      }
+    }
+
+    tbody {
+      td {
+        font-size: var(--title-big);
+        text-align: center;
+        line-height: 6.5rem;
+      }
+    }
+  }
+}
+
+.ticket-detail-item + .ticket-detail-item {
   margin-top: 4rem;
 }
 
 @media (max-width: 767px) {
-  .ticket {
+  .ticket-detail-item {
     .table-box {
       flex-direction: column;
 
@@ -183,7 +229,7 @@
 }
 
 @media (min-width: 500px) and (max-width: 767px) {
-  .ticket {
+  .ticket-detail-item {
     .journey-box {
       padding: 5rem 2rem 4rem 2rem;
       .journey {
@@ -207,7 +253,7 @@
 }
 
 @media (min-width: 349px) and (max-width: 500px) {
-  .ticket {
+  .ticket-detail-item {
     .journey-box {
       .journey {
         gap: 5rem;
@@ -217,7 +263,7 @@
 }
 
 @media (max-width: 349px) {
-  .ticket {
+  .ticket-detail-item {
     .journey-box {
       padding: 5rem 2rem 4rem 2rem;
       .journey {
