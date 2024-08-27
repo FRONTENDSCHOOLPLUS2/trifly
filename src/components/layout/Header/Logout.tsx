@@ -4,16 +4,16 @@ import { signOut } from "next-auth/react";
 import Image from "next/image";
 
 const Logout = ({ type }: { type: string }) => {
+  const handleSignOut = async () => {
+    try {
+      await signOut({ callbackUrl: "/" });
+    } catch (error) {
+      console.error("Sign out error:", error);
+    }
+  };
+
   return (
-    <button
-      className="logout img-box"
-      type="button"
-      onClick={() => {
-        signOut({
-          callbackUrl: "/",
-        });
-      }}
-    >
+    <button className="logout img-box" type="button" onClick={handleSignOut}>
       <Image
         src={`/img/icon-logout-${type === "default" ? "black" : "white"}.svg`}
         alt="로그아웃"
