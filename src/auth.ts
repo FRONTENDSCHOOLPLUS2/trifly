@@ -128,6 +128,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) {
         token.id = user.id;
         token.type = user.type;
+        token.phone = user.phone;
+        token.birth = user.birth;
         token.accessToken = user.accessToken;
         token.refreshToken = user.refreshToken;
       }
