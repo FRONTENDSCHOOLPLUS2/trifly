@@ -23,8 +23,8 @@ const usePersonalPrice = (): PersonalPrice[] => {
     ADULT: 0,
     CHILD: 1,
     INFANT: 2,
+    HELD_INFANT: 2,
   };
-
   price.forEach((item) =>
     personalPrice[personalIdx[item.travelerType]].push(item.price),
   );

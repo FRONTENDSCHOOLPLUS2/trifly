@@ -455,7 +455,7 @@ const PaymentForm = ({
                       </label>
                       <div className="radio-box">
                         <input
-                          id="genderM"
+                          id={`passengers.${key}.genderM`}
                           type="radio"
                           value="M"
                           className="hidden"
@@ -463,9 +463,11 @@ const PaymentForm = ({
                             required: "성별을 선택하세요.",
                           })}
                         />
-                        <label htmlFor="genderM">남자</label>
+                        <label htmlFor={`passengers.${key}.genderM`}>
+                          남자
+                        </label>
                         <input
-                          id="genderF"
+                          id={`passengers.${key}.genderF`}
                           type="radio"
                           value="F"
                           className="hidden"
@@ -473,7 +475,9 @@ const PaymentForm = ({
                             required: "성별을 선택하세요.",
                           })}
                         />
-                        <label htmlFor="genderF">여자</label>
+                        <label htmlFor={`passengers.${key}.genderF`}>
+                          여자
+                        </label>
                       </div>
                     </div>
 

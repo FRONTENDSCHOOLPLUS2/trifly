@@ -1,6 +1,6 @@
 "use client";
 
-import { seatMapb747 } from "@/lib/seatMapb747";
+import { seatMap333 } from "@/lib/seatMap-3-3-3";
 import React, { useEffect, useState } from "react";
 import "./seatmapGrid.scss";
 import { OrderItem, SeatData, SeatFacilities } from "@/types";
@@ -75,8 +75,10 @@ const SeatmapGrid = ({
    *
    */
 
+
   const { data: seatDatas } = seatMapb747;
   const seatData = seatDatas.map((item) => ({
+
     decks: item.decks,
     seats: item.decks.map((deck) => deck.seats),
     coordinates: item.decks.map((deck) =>

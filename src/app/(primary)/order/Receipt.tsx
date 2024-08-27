@@ -58,12 +58,9 @@ const Receipt = () => {
               let YR = 0;
               let taxes = 0;
 
-              item[0].taxes.map((tax) => {
-                if (tax.code === "YR") {
-                  YR = +tax.amount;
-                } else {
-                  taxes += +tax.amount;
-                }
+              item[0].taxes?.map((tax) => {
+                if (tax.code === "YR") YR = +tax.amount;
+                else taxes += +tax.amount;
                 return null;
               });
 
@@ -102,7 +99,9 @@ const Receipt = () => {
                       <tr>
                         <td className="tit">발권 수수료</td>
                         <td className="count">{count}명</td>
-                        <td className="price">{getLocalNum(charge)}원</td>
+                        <td className="price">
+                          {getLocalNum(charge * count)}원
+                        </td>
                       </tr>
                     </tbody>
                   </table>

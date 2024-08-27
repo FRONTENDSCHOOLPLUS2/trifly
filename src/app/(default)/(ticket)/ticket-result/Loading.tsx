@@ -34,7 +34,7 @@ const TicketLoading = ({ code }: { code: CodeState<AirportData> }) => {
             {code[destinationLocationCode].value}
           </strong>
           까지의 <br />
-          왕복 여정을 찾는중입니다
+          {returnDate ? "왕복" : "편도"} 여정을 찾는중입니다
         </h3>
       </div>
       <ul className="itinerary-box">
