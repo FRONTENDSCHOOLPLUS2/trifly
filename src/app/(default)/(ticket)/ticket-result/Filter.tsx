@@ -592,7 +592,7 @@ const Filter = ({
           <AccordionBody>
             <div className="filter-contents maxPrice">
               <label htmlFor="max-price">
-                {maxPrice === 5000000
+                {maxPrice === 2000000
                   ? "전체"
                   : `${maxPrice.toLocaleString()}원 미만`}
               </label>
@@ -601,7 +601,7 @@ const Filter = ({
                 className="input-range horizontal"
                 id="max-price"
                 min={100000}
-                max={5000000}
+                max={2000000}
                 value={maxPrice}
                 step={100000}
                 onChange={handlePriceChange}
