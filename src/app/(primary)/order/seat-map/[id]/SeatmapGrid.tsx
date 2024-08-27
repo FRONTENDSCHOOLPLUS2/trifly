@@ -1,21 +1,31 @@
 "use client";
 
-import { seatMap333 } from "@/lib/seatMap-3-3-3";
+import seatmap from "@/lib/seatmap";
 import React, { useEffect, useState } from "react";
 import "./seatmapGrid.scss";
-import { OrderItem, SeatData, SeatFacilities } from "@/types";
+import {
+  AircraftData,
+  CodeState,
+  OrderItem,
+  SeatData,
+  SeatFacilities,
+  SeatMap,
+  SeatMapData,
+} from "@/types";
 import { useSetRecoilState } from "recoil";
 import { modalState } from "@/atoms/atoms";
 
 type IGrid = Array<SeatData | SeatFacilities | null>[];
 
 const SeatmapGrid = ({
+  seatmapData,
   passengerLength,
   seatArr,
   setSeatArr,
   orderId,
   data,
 }: {
+  seatmapData: SeatMapData[];
   passengerLength: number | undefined;
   seatArr: Array<[number, number] | string>;
   setSeatArr: React.Dispatch<React.SetStateAction<Array<string>>>;
@@ -75,10 +85,8 @@ const SeatmapGrid = ({
    *
    */
 
-
-  const { data: seatDatas } = seatMapb747;
-  const seatData = seatDatas.map((item) => ({
-
+  // const { data: seatDatas } = seatMapb747;
+  const seatData = seatmapData.map((item) => ({
     decks: item.decks,
     seats: item.decks.map((deck) => deck.seats),
     coordinates: item.decks.map((deck) =>
@@ -105,7 +113,7 @@ const SeatmapGrid = ({
       newGrid[row][col] = seatData[0].seats[0][idx];
     });
 
-    seatDatas[0].decks[0].facilities.forEach((item) => {
+    seatmapData[0].decks[0].facilities.forEach((item) => {
       newGrid[item.coordinates.x][item.coordinates.y] = item;
     });
 

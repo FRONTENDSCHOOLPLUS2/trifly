@@ -77,4 +77,5 @@ export interface AircraftData {
   manufacturerEng: "Airbus" | "Boeing";
   specKor: "협동체" | "광동체";
   specEng: "Narrow Body Aircraft" | "Wide Body Aircraft";
+  seatmap: string;
 }

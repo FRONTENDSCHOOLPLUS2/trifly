@@ -171,4 +171,8 @@ export interface IMPData {
   merchant_uid: string;
   error_code?: string;
   error_msg?: string;
+  success: boolean;
+  pay_method: "card";
+  pg_provider: "kcp";
+  pg_type: "payment";
 }

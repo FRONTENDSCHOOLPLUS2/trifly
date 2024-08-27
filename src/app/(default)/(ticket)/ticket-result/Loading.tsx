@@ -29,7 +29,7 @@ const TicketLoading = ({ code }: { code: CodeState<AirportData> }) => {
       <div className="title-box">
         <h3>
           <strong className="bold">{code[originLocationCode].value}</strong>
-          에서부터{" "}
+          에서{" "}
           <strong className="bold">
             {code[destinationLocationCode].value}
           </strong>
