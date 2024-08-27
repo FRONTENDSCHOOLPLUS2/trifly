@@ -27,8 +27,7 @@ const FootPrint = async () => {
   const getFormatDuration = (minutes: number) => {
     const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
-
-    return `PT${hours}H${remainingMinutes}M`;
+    return `PT${hours}H${remainingMinutes < 10 ? `0${remainingMinutes}` : remainingMinutes}M`;
   };
 
   // 총 비행 횟수
