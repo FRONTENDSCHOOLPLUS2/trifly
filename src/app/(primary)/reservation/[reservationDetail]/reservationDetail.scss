@@ -2,7 +2,7 @@
   .title-box {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 
     .tag {
       display: flex;
@@ -15,8 +15,8 @@
 
 .ticket-print {
   .title {
-    margin-top: 20rem;
-    margin-bottom: 4.6rem;
+    margin-bottom: calc(var(--layout-padding) * 2);
+    margin-top: calc(var(--layout-padding) * 6.3);
   }
 
   table {

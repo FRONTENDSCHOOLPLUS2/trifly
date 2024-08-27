@@ -40,7 +40,7 @@ const TicketPrint = ({
         <Button onClick={() => handlePrint()}>E-Ticket 저장</Button>
       </div>
       <div ref={componentRef}>
-        <Ticket data={data} code={code} passengerId={passengerId} />
+        <Ticket type="pdf" data={data} code={code} passengerId={passengerId} />
       </div>
     </>
   );

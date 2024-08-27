@@ -4,6 +4,7 @@ import { FetchOrder } from "@/lib/fetchOrder";
 import SeatmapGroup from "./SeatmapGroup";
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import { AircraftData } from "@/types";
+import OrderProgress from "../../OrderProgress";
 
 const Page = async ({ params: { id } }: { params: { id: string } }) => {
   const dataList = await FetchOrder();
@@ -11,7 +12,12 @@ const Page = async ({ params: { id } }: { params: { id: string } }) => {
   const orderId = data!._id;
   const { code } = await fetchCodes<AircraftData>();
 
-  return <SeatmapGroup data={data} id={id} orderId={orderId} code={code} />;
+  return (
+    <>
+      <OrderProgress orderStatus={3} />
+      <SeatmapGroup data={data} id={id} orderId={orderId} code={code} />;
+    </>
+  );
 };
 
 export default Page;

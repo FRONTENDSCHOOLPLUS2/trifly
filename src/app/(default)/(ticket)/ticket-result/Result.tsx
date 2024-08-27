@@ -338,7 +338,7 @@ const Result = ({
         <h3 className="hidden">항공권 검색 결과</h3>
 
         <div className={`search-filter ${isFilterOpen && "is-active"}`}>
-          <h3 className="hidden">필터</h3>
+          <h4 className="hidden">필터</h4>
 
           <div className="mobile-filter-header mo">
             <h4>정렬 및 필터</h4>
@@ -382,8 +382,6 @@ const Result = ({
 
         {filteredData.length ? (
           <div className="search-result-list">
-            <h3 className="hidden">{filteredData.length}개의 검색 결과</h3>
-
             <div className="result-list-header">
               <div className="result-list-text">
                 <p className="result-list-title">
