@@ -96,7 +96,9 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
                         <li className="iatacode">
                           {segment.departure.iataCode}
                         </li>
-                        <li>{code[segment.departure.iataCode].nameKor}</li>
+                        <li>
+                          {code[segment.departure.iataCode]?.nameKor || null}
+                        </li>
                         {segment.departure.terminal && (
                           <li>T{segment.departure.terminal}</li>
                         )}
@@ -107,7 +109,8 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
                             segment.carrierCode && (
                             <span className="operating">
                               실제탑승:{" "}
-                              {code[segment.operating.carrierCode].value}
+                              {code[segment.operating.carrierCode].value ||
+                                segment.operating.carrierCode}
                             </span>
                           )}
                         <span className="aircraft">
@@ -126,7 +129,9 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
                       </div>
                       <ul className="arrival">
                         <li className="iatacode">{segment.arrival.iataCode}</li>
-                        <li>{code[segment.arrival.iataCode].nameKor}</li>
+                        <li>
+                          {code[segment.arrival.iataCode]?.nameKor || null}
+                        </li>
                         {segment.arrival.terminal && (
                           <li>T{segment.arrival.terminal}</li>
                         )}
