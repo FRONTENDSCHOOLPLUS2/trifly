@@ -21,6 +21,7 @@ const AccordionHeader = React.forwardRef<
       ref={ref}
       onClick={(e) => handleClick(e)}
       {...props}
+      aria-controls={`아코디언${eventKey}`}
       aria-expanded={`${activeKey === eventKey ? "true" : "false"}`}
       className={`accordion-header ${activeKey === eventKey ? "act" : ""}`}
     >

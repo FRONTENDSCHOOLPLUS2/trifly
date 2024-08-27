@@ -32,9 +32,9 @@ const Ticket = ({
 
   return (
     <article className={`ticket-box ${type}-ver`} ref={ticketRef}>
-      <h3 className="hidden">
-        {type === "default" ? "티켓 상세보기 " : "티켓 수정 및 저장하기"}
-      </h3>
+      <h4 className="hidden">
+        {type === "default" ? "티켓 상세보기 " : "티켓 수정하기"}
+      </h4>
       <div className="top-box">
         <div className="barcode">
           <Image
