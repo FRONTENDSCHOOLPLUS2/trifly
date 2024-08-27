@@ -1,21 +1,9 @@
-<div align="center">
-<h1>
-<svg width="187" height="70" viewBox="0 0 187 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M27.6824 7.35156C31.0959 7.35156 33.863 4.44141 33.863 0.851562C33.863 0.597907 33.8492 0.347644 33.8223 0.101562H51.4528V69.1016H33.8223C33.8492 68.8555 33.863 68.6052 33.863 68.3516C33.863 64.7617 31.0959 61.8516 27.6824 61.8516C24.269 61.8516 21.5018 64.7617 21.5018 68.3516C21.5018 68.6052 21.5157 68.8555 21.5425 69.1016H3.90988V47.5431C3.90988 47.5431 4.23421 47.1762 2.65383 44.6081C1.07345 42.04 0.707031 41.7396 0.707031 41.7396L6.60784 46.431C6.60784 46.431 8.35074 48.5525 12.8678 48.807C17.3849 49.0615 19.3851 47.3368 19.3851 47.3368L34.9833 34.6834L34.9863 34.6836L36.0239 33.7303C35.3571 35.4356 33.9229 37.1282 32.7543 38.4819L46.1613 40.1663L47.5036 38.323C38.2377 35.8651 39.0726 32.5213 39.5117 30.7623C39.5386 30.6549 39.5639 30.5533 39.5854 30.4583L44.9298 25.5481C46.799 23.8777 49.1468 21.0133 43.5277 20.9849C39.0035 20.962 37.4657 22.3884 35.5673 24.1492C35.2317 24.4605 34.8847 24.7824 34.508 25.1085C34.331 25.2616 34.1451 25.4295 33.9458 25.6096C27.6824 31.741 26.3696 32.4524 9.12142 32.8356L12.221 33.0571L9.11948 32.8372L6.82075 34.7799C7.58864 34.89 8.48258 34.9947 9.43 35.1057C15.6349 35.8325 24.1338 36.8279 14.5393 41.3809C10.3434 43.372 6.58926 42.6596 3.90988 41.7396V0.101562H21.5425C21.5157 0.347644 21.5018 0.597907 21.5018 0.851562C21.5018 4.44141 24.269 7.35156 27.6824 7.35156Z" fill="#FF5B10"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M186.126 21.2422V26.3636L179.539 32.3513V44.2366C179.539 46.9218 177.462 48.8978 174.473 48.8978C171.686 48.8978 170.267 47.3271 170.267 44.2366V29.037H163.681V45.1992C163.681 50.671 167.582 54.2176 172.801 54.2176C175.891 54.2176 178.627 52.9003 179.539 50.671V54.7242C179.539 58.0175 177.361 60.0948 174.979 60.0948C171.534 60.0948 169.812 58.2708 169.812 55.3322H163.681C163.681 61.7667 167.38 65.7692 174.675 65.7692C181.059 65.7692 186.126 61.6654 186.126 54.6229V21.2422H186.126Z" fill="#02076F"/>
-<path d="M159.397 53.9635H152.811V19.9165H159.397V53.9635Z" fill="#02076F"/>
-<path d="M147.394 39.7772H132.6V53.9634H125.558V20.3218H149.522V26.1989H132.6V33.8494H147.394V39.7772Z" fill="#02076F"/>
-<path d="M121.182 53.9635H114.595V29.0362H121.182V53.9635ZM121.182 26.047H114.595V19.9165H121.182V26.047Z" fill="#02076F"/>
-<path d="M103.231 53.9628H96.6443V29.0356H102.825V32.0248C105.004 28.6809 107.537 28.377 110.223 28.377H111.084V35.1154C110.476 35.0141 109.868 34.9634 109.26 34.9634C105.207 34.9634 103.231 36.99 103.231 40.9926V53.9628Z" fill="#02076F"/>
-<path d="M85.7536 53.9634H78.7112V26.1989H68.5781V20.3218H95.9373V26.1989H85.7536V53.9634Z" fill="#02076F"/>
-</svg>
-</h1>
+# TriFly
 
-![Frame 30](https://github.com/boostcampwm2023/web01-GitChallenge/assets/79246447/fe5e7fbd-93fe-40ea-be09-a902b712f6c3)
+![Frame 30](https://github.com/user-attachments/assets/5edf2b25-7bce-4432-bd0e-57d49586b1e1)
 
-</div>
-
-> 배포 링크 <br /> > **https://trifly.vercel.app**
+> 배포 링크
+> **https://trifly.vercel.app**
 
 <br/>
 
@@ -47,7 +35,15 @@
   - [요구사항 정의서](#요구사항-정의서)
   - [플로우 차트](#플로우-차트)
 - [🔎 FE 기술적 도전](#-fe-기술적-도전)
-  - [](#)
+
+  - [반응형 UI](#반응형-ui)
+  - [타입 지정](#타입-지정)
+  - [아마데우스 api 사용](#아마데우스-api-사용)
+  - [항공권 필터링](#항공권-필터링)
+  - [좌석 배치도](#좌석-배치도)
+  - [웹 접근성 고려](#웹-접근성-고려)
+  - [캔버스](#캔버스)
+
 - [🧡 팀원 소개](#-팀원-소개)
 
 <br />
@@ -64,17 +60,47 @@ TriFly는 항공권 예약 사이트입니다. 다양한 검색 조건을 설정
 
 > 사용자의 환경을 고려하여 구현된 항공권 검색 UI를 이용하여 손쉽게 항공권을 검색할 수 있어요.
 
-| 웹                                                                                                                | 모바일                             |
-| ----------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| <img alt="" src="https://github.com/user-attachments/assets/8c9a3dfe-308d-491a-90cb-623db0f04880" width="100%" /> | <img alt="" src="" width="100%" /> |
+<table>
+    <thead>
+        <tr>
+            <th>웹</th>
+            <th>모바일</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td width="75%" align="center">
+            <img alt="" src="https://github.com/user-attachments/assets/8c9a3dfe-308d-491a-90cb-623db0f04880" width="100%" />
+          </td>
+          <td width="25%" align="center">
+            <img alt="" src="https://github.com/user-attachments/assets/2c24a5cf-0818-4f14-9b61-5a7555aa95f4" width="100%" />
+          </td>
+        </tr>
+    </tbody>
+</table>
 
 ### 원하는 정보를 바로 필터링할 수 있어요.
 
 > 직항, 출발/도착 시간, 원하는 항공사, 가격대 등을 선택하여 내게 딱 맞는 항공편을 조회해보세요.
 
-| 웹                                 | 모바일                             |
-| ---------------------------------- | ---------------------------------- |
-| <img alt="" src="" width="100%" /> | <img alt="" src="" width="100%" /> |
+<table>
+    <thead>
+        <tr>
+            <th>웹</th>
+            <th>모바일</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td width="75%" align="center">
+            <img alt="" src="https://github.com/user-attachments/assets/24ffc0f6-040b-4c68-80b0-067b6da9cbc5" width="100%" />
+          </td>
+          <td width="25%" align="center">
+            <img alt="" src="https://github.com/user-attachments/assets/4c0c41e0-5e70-4c6b-b3d6-042644671f0f" width="100%" />
+          </td>
+        </tr>
+    </tbody>
+</table>
 
 ### 선택한 항공권을 구매할 수 있어요.
 
@@ -83,25 +109,147 @@ TriFly는 항공권 예약 사이트입니다. 다양한 검색 조건을 설정
 - **항공편 상세 조회** : 경유지 정보, 항공기 정보, 수하물 정보, 공동운항 정보
 - **운임 상세 조회** : 탑승자 연령대 별 항공료, 유류할증료, 제세공과금 등의 요금 상세
 
-| 웹                                | 모바일                            |
-| --------------------------------- | --------------------------------- |
-| <img alt="" src="" width="80%" /> | <img alt="" src="" width="20%" /> |
+<table>
+    <thead>
+        <tr>
+            <th>웹</th>
+            <th>모바일</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td width="75%" align="center">
+            <img alt="" src="https://github.com/user-attachments/assets/b0b161d3-33c9-45ae-8916-4acd871e9d54" width="100%" />
+          </td>
+          <td width="25%" align="center">
+            <img alt="" src="https://github.com/user-attachments/assets/8800f41e-e06c-4596-9a38-ed2fac2be72c" width="100%" />
+          </td>
+        </tr>
+        <tr>
+          <td width="75%" align="center">
+            <img alt="" src="https://github.com/user-attachments/assets/6e466fd8-cff0-4223-850c-210b9f099ce9" width="100%" />
+          </td>
+          <td width="25%" align="center">
+            <img alt="" src="https://github.com/user-attachments/assets/7ae2b5fe-6fb8-4bec-aa6d-a758e470a5a9" width="100%" />
+          </td>
+        </tr>
+    </tbody>
+</table>
 
 ### 항공편에 따라 원하는 좌석을 선택할 수 있어요.
 
 > 탑승하는 항공기의 좌석 배치도를 확인하고 원하는 좌석을 선택할 수 있어요.
 
-| 웹                                | 모바일                            |
-| --------------------------------- | --------------------------------- |
-| <img alt="" src="" width="80%" /> | <img alt="" src="" width="20%" /> |
+<table>
+    <thead>
+        <tr>
+            <th>웹</th>
+            <th>모바일</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td width="75%" align="center">
+            <img alt="" src="https://github.com/user-attachments/assets/8198f43f-252e-45d5-871d-c79e51ba47c5" width="100%" />
+          </td>
+          <td width="25%" align="center">
+            <img alt="" src="https://github.com/user-attachments/assets/7793c274-3813-4255-bef3-3decd983809a" width="100%" />
+          </td>
+        </tr>
+    </tbody>
+</table>
 
 ### 나만의 티켓을 꾸미고 기록을 확인할 수 있어요.
 
 > 티켓을 커스텀하여 나만의 티켓을 만들어 보세요. '발자국' 메뉴에서 내 여행 기록도 확인할 수 있어요.
 
-| 웹                                | 모바일                            |
-| --------------------------------- | --------------------------------- |
-| <img alt="" src="" width="80%" /> | <img alt="" src="" width="20%" /> |
+<table>
+    <thead>
+        <tr>
+            <th>웹</th>
+            <th>모바일</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td width="75%">
+            <img alt="" src="https://github.com/user-attachments/assets/8f38e872-b43a-4b6c-9ceb-a47a7adb6a7c" width="100%" />
+          </td>
+          <td width="25%">
+            <img alt="" src="https://github.com/user-attachments/assets/0edaa5f8-d426-4701-8679-2e644cc96dbb" width="100%" />
+          </td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+
+## 💻 담당 기능
+
+### 이소정
+
+**[ 로그인 / 회원가입 ]**
+
+- 이메일 로그인 및 회원가입
+- 소셜 로그인 및 회원가입 (카카오, 구글)
+
+**[ 항공권 구매 ]**
+
+- 항공편 정보 및 약관 동의
+- 탑승객 정보 입력 및 결제
+- 예약 상세 내역 및 티켓 확인
+
+**[ 발자국 ]**
+
+- 여행 기록 통계 및 연도별 티켓 조회
+- 포토 티켓 커스텀 및 저장
+
+**[ 공통 ]**
+
+- 항공권 검색 로딩
+- 아코디언
+- 프로그레스바
+- 포토 티켓
+
+---
+
+### 전희선
+
+**[ 항공편 좌석 선택 ]**
+
+- 항공편 기종별 좌석 렌더링
+- 탑승자별 좌석 선택
+
+**[ 예약 내역 ]**
+
+- 예약 목록 조회
+- 예약 상세 조회 및 E-Ticket 출력
+
+**[ 공통 ]**
+
+- 푸터
+- 로딩
+- 에러
+
+---
+
+### 정진욱
+
+**[ 메인 ]**
+
+- 항공권 검색
+- “나만의 티켓 꾸미기” 배너
+
+**[ 항공권 검색 결과 ]**
+
+- 항공권 검색 결과 조회
+- 항공권 검색 결과 필터링
+
+**[ 공통 ]**
+
+- 헤더
+- 버튼 및 링크
+- 모달
 
 <br />
 
@@ -116,15 +264,15 @@ TriFly는 항공권 예약 사이트입니다. 다양한 검색 조건을 설정
     </thead>
     <tbody>
         <tr>
-            <td>
-                  <p>프론트엔드</p>
-            </td>
-            <td>
-                  <img src="https://img.shields.io/badge/Next.js-000000?logo=Next.js&logoColor=white">
-                  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=ffffff">
-                  <img src="https://img.shields.io/badge/sass-CC6699?logo=sass&logoColor=white">
-                  <img src="https://img.shields.io/badge/react-61DAFB?logo=react&logoColor=333333">
-            </td>
+          <td>
+            <p>프론트엔드</p>
+          </td>
+          <td>
+            <img src="https://img.shields.io/badge/Next.js-000000?logo=Next.js&logoColor=white">
+            <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=ffffff">
+            <img src="https://img.shields.io/badge/sass-CC6699?logo=sass&logoColor=white">
+            <img src="https://img.shields.io/badge/react-61DAFB?logo=react&logoColor=333333">
+          </td>
         </tr>
         <tr>
             <td>
@@ -180,11 +328,7 @@ TriFly는 항공권 예약 사이트입니다. 다양한 검색 조건을 설정
 
 ## 🔎 FE 기술적 도전
 
-### 반응형 UI 개발
-
-| 웹                                | 모바일                            |
-| --------------------------------- | --------------------------------- |
-| <img alt="" src="" width="80%" /> | <img alt="" src="" width="20%" /> |
+### 반응형 UI
 
 - 색상과 글꼴을 디자인 토큰으로 추상화한 **컬러, 타이포그래피 시스템**으로 **디자인 일관성을 유지하고 코드베이스를 더 쉽게 관리**할 수 있었습니다.
 - 색상과 글꼴에 의미를 부여한 **Semantic Token으로 커뮤니케이션 비용을 절약**할 수 있었습니다.
@@ -224,7 +368,6 @@ TriFly는 항공권 예약 사이트입니다. 다양한 검색 조건을 설정
     --title-min: 0.8rem;
 
     min-width: 320px;
-    // overflow-x: auto;
   }
 
   .mo {
@@ -240,37 +383,346 @@ TriFly는 항공권 예약 사이트입니다. 다양한 검색 조건을 설정
 </div>
 </details>
 
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">반응형</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td width="50%">
+            <img alt="" src="https://github.com/user-attachments/assets/acec28cb-e0e9-4203-b0b3-752cf6fbe58f" width="100%" />
+          </td>
+          <td width="50%">
+            <img alt="" src="https://github.com/user-attachments/assets/efa60a3e-97d3-4f5d-b3cd-2ddae76620fd" width="100%" />
+          </td>
+        </tr>
+    </tbody>
+</table>
+
+### 타입 지정
+
+- 오픈 마켓 api, 아마데우스 api 요청과 응답의 타입을 미리 지정하였습니다.
+- 사용하는 api의 응답 데이터의 **depth가 깊고**, **양이 방대한** 상황에서 코드를 작성할 때부터 지정된 타입을 확인하여 **에러를 미연에 방지**하고, **효율적인 코드를 작성**할 수 있었습니다.
+- 개발 전에 반복적으로 사용되는 데이터의 타입을 따로 지정 후 `extends`, `Pick`, `Omit` 등의 키워드를 활용하여 **확장성과 재사용성**을 높였습니다.
+
+| 아마데우스 데이터                                                                                                 | 타입 지정                                                                                                         |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| <img alt="" src="https://github.com/user-attachments/assets/17172682-64fc-456f-8afa-dc758ccb5f59" width="100%" /> | <img alt="" src="https://github.com/user-attachments/assets/8aa4cd7e-c458-43b7-9988-0bcc915279e6" width="100%" /> |
+
+| 타입 자동 완성                                                                                                    | 타입 오류                                                                                                         |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| <img alt="" src="https://github.com/user-attachments/assets/3a231f03-6a71-4399-b669-cf1593e03aa3" width="100%" /> | <img alt="" src="https://github.com/user-attachments/assets/f76a75f5-e02a-46c4-a6ab-807d099f2325" width="100%" /> |
+
 ### 아마데우스 api 사용
 
--
+> **아마데우스**
+>
+> - 여행, 항공 업계에서 세계 최대 규모의 발권 시스템 제작 기업으로, 전 세계 120여개 항공사에서 사용 중입니다.
+> - 우리나라에서 대표적으로 대한항공과 아시아나항공에서 이용하고 있습니다.
 
-| 항공권 조회                                                                                                       |
+아마데우스에서 제공하는 무료 api인 **self-service api**를 활용하였습니다.
+
+<details>
+<summary>아마데우스 토큰</summary>
+<div markdown="1">
+
+```ts
+const fetchAuth = async (): Promise<string> => {
+  const url = `${AMADEUS_API_SERVER}/v1/security/oauth2/token`;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+      grant_type: "client_credentials",
+      client_id: AMADEUS_CLIENT_ID,
+      client_secret: AMADEUS_CLIENT_SECRET,
+    }),
+  });
+
+  const resJson: ITokenSuccess = await res.json();
+
+  if (!resJson.access_token) {
+    throw new Error("Amadeus access_token을 불러올 수 없습니다!");
+  }
+
+  const accessToken = resJson.access_token;
+
+  return accessToken;
+};
+```
+
+</div>
+</details>
+
+<br/>
+
+<details>
+<summary>항공권 검색 (flight-offers-search)</summary>
+<div markdown="1">
+
+<br />
+
+> 검색 조건을 <code>query</code> 에 담아 api를 호출하였습니다.
+
+```ts
+const fetchTicketSearch = async (
+  query: string,
+): Promise<OffersSearchData[]> => {
+  let accessToken = await fetchAuth();
+
+  const url = `${AMADEUS_API_SERVER}/v2/shopping/flight-offers?${query}`;
+
+  try {
+    const res = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      next: { revalidate: 0 },
+    });
+
+    if (res.status === 401) {
+      accessToken = await fetchAuth();
+
+      const reRes = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        next: { revalidate: 0 },
+      });
+
+      const reResJson: OffersSearch = await reRes.json();
+
+      if (!reResJson.meta) {
+        throw new Error("검색에 실패했습니다.");
+      }
+
+      return reResJson.data;
+    }
+
+    const resJson: OffersSearch = await res.json();
+
+    if (!resJson.meta) {
+      throw new Error("검색에 실패했습니다.");
+    }
+
+    return resJson.data;
+  } catch (e) {
+    console.error(e);
+    throw new Error("오류가 발생했습니다.");
+  }
+};
+```
+
+</div>
+</details>
+
+<br/>
+
+<details>
+<summary>항공편 상세 조회 (flight-offers-pricing)</summary>
+<div markdown="1">
+
+<br />
+
+> **서버 액션**을 생성하여 사용자가 선택한 항공권에 대한 여정, 가격 등 상세 정보를 요청하였습니다.
+
+```ts
+const flightPriceAction = async (
+  flightOffers: OffersSearchData,
+): Promise<TravelerPricing[]> => {
+  let accessToken = await fetchAuth();
+  const url = `${AMADEUS_API_SERVER}/v1/shopping/flight-offers/pricing`;
+
+  const request = {
+    data: {
+      type: "flight-offers-pricing",
+      flightOffers: [flightOffers],
+    },
+  };
+
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-HTTP-Method-Override": "GET",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(request),
+    });
+
+    if (res.status === 401) {
+      accessToken = await fetchAuth();
+
+      const reRes = await fetch(url, {
+        headers: {
+          "Content-Type": "application/json",
+          "X-HTTP-Method-Override": "GET",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(flightOffers),
+      });
+
+      const reResJson: OffersPrice = await reRes.json();
+
+      if (!reResJson.data) {
+        throw new Error("에러가 발생했습니다.");
+      }
+
+      return reResJson.data.flightOffers[0].travelerPricings;
+    }
+
+    const resJson: OffersPrice = await res.json();
+    if (!resJson.data) {
+      throw new Error("에러가 발생했습니다.");
+    }
+
+    return resJson.data.flightOffers[0].travelerPricings;
+  } catch (e) {
+    console.error(e);
+    throw new Error("오류가 발생했습니다.");
+  }
+};
+```
+
+</div>
+</details>
+
+<br/>
+
+| 항공권 조회                                                                                                       | 항공권 상세                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| <img alt="" src="https://github.com/user-attachments/assets/0b2aa730-2869-487f-be0b-529154dff88e" width="100%" /> | <img alt="" src="https://github.com/user-attachments/assets/df33f284-6d7b-4387-a82f-6a7f50705625" width="100%" /> |
+
+- 한계
+  - self-service api의 경우 배포용 prod 버전에서는 예약 내역을 생성, 실시간 좌석 배치도 불러오기 기능을 사용하기 위해 사업자 및 계약을 체결해야 하는 어려움이 있었습니다.
+  - 이에 좌석 배치도의 경우 test 계정으로 seat-map display api를 호출하여 객체에 다양한 좌석 배치를 저장하여 사용했습니다.
+
+| seatmap 데이터                                                                                                   |
+| ---------------------------------------------------------------------------------------------------------------- |
+| <img alt="" src="https://github.com/user-attachments/assets/a79e3b9e-ae34-46e5-ac07-0f49e6e2137b" width="200" /> |
+
+### 항공권 필터링
+
+- 조건을 설정하여 api로부터 받아온 항공권 데이터를 **정렬 및 필터링**하였습니다.
+  - 검색 조건 : 경유 여부, 출발/도착 시간, 항공 동맹체 및 항공사
+  - 정렬 조건 : 가격, 출발시간, 도착시간
+
+<details>
+<summary>항공권 필터링 로직</summary>
+<div markdown="1">
+
+<br />
+
+> useCallback hook으로 filter를 setting하는 함수를 메모이제이션하여 컴포넌트가 렌더링되더라도 **함수가 초기화되는 것을 방지**하였습니다.
+
+```ts
+const handleFilterChange = useCallback((newFilters: IFilterProps) => {
+  setFilters((prevFilters) => ({
+    ...prevFilters,
+    ...newFilters,
+  }));
+}, []);
+```
+
+> filtering할 항목이 변경되면 기존 데이터 배열에서 `filter` 메서드를 이용하여 **조건에 맞는 항공편을 찾아 상태를 업데이트**하였습니다.
+
+```ts
+const applyFilters = () => {
+  let newFilteredData = [...data];
+
+  if (filters) {
+    if (filters."필터") {
+      const airlines = filters."필터";
+      newFilteredData = newFilteredData.filter((offer) =>
+        offer.itineraries.every((itinerary) =>
+          itinerary.segments.every((segment) =>
+            "비교 로직"
+          )
+        )
+      );
+    }
+  }
+
+  setFilteredData(newFilteredData);
+}
+```
+
+</div>
+</details>
+
+| 항공권 필터링                                                                                                     |
 | ----------------------------------------------------------------------------------------------------------------- |
-| <img alt="" src="https://github.com/user-attachments/assets/c56b6a3d-95df-4cc2-87bd-8158b36a752c" width="100%" /> |
+| <img alt="" src="https://github.com/user-attachments/assets/1710853d-dd7a-4993-81c9-aeac5965def6" width="100%" /> |
 
-| 항공권 상세                                                                                                       |
+### 좌석 배치도
+
+- 항공기 좌석 배열(예: 3-4-3, 2-3 등)과 날개 좌석, 비상구, 화장실, 갤리 등 시설 정보를 **동적으로 받아 좌석 배치도를 구현**하였습니다.
+  - 기내 x, y 좌표를 사용해 정확한 위치를 시각적으로 배치하여 구체적인 레이아웃을 제공합니다.
+- 탑승자의 좌석을 배열로 관리하였습니다.
+  - 여러 탑승객이 선택한 좌석을 상태 값으로 관리하여 좌석을 취소하거나 재선택하여도 해당 탑승객에게 좌석이 반영되도록 구현하였습니다.
+
+| 좌석배치도                                                                                                        |
 | ----------------------------------------------------------------------------------------------------------------- |
-| <img alt="" src="https://github.com/user-attachments/assets/0c51e5b5-7140-41df-8ef5-c30b50c139ab" width="100%" /> |
+| <img alt="" src="https://github.com/user-attachments/assets/0f885725-e029-4d50-b05f-d3f66b35dd36" width="100%" /> |
 
-### D3를 이용한 데이터 시각화
+### 웹 접근성 고려
 
-- Problem
-  - D3 tree는 트리 데이터를 위한 레이아웃입니다. 하지만 **Git 로그 데이터는 트리가 아닌 네트워크 그래프 데이터**이기 때문에 D3 tree 레이아웃에 적용할 수 없는 문제가 있었습니다.
-- Solved
-  - Git 로그 데이터에서 **Multiple Parents 노드를 처리하기 위해,** 일부 간선을 분리하여 트리 데이터로 가공한 후 D3 tree 레이아웃에 적용했습니다. 이후에는 **분리한 간선을 다시 추가하여 네트워크 그래프를 시각화**했습니다.
+- **헤딩 태그의 계층적 사용** 및 시맨틱 태그 사용을 통해 데이터를 그룹핑하여 전달력을 높였습니다.
 
-| 라이브러리 비교                                                                                                                 | 문제 해결                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| <img alt="" src="https://github.com/boostcampwm2023/web01-GitChallenge/assets/96400112/c6c77b30-a9d1-461e-bee8-11df0a317232" /> | <img alt="" src="https://github.com/boostcampwm2023/web01-GitChallenge/assets/96400112/b01a4a30-5d4b-4bf2-80c7-8a7dd0e6a3ca" /> |
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">웹 접근성 고려</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td width="50%">
+            <img alt="" src="https://github.com/user-attachments/assets/1f62e3c2-0deb-420d-91a4-e73f15ec7e78" width="100%" />
+          </td>
+          <td width="50%">
+            <img alt="" src="https://github.com/user-attachments/assets/1f62e3c2-0deb-420d-91a4-e73f15ec7e78" width="100%" />
+          </td>
+        </tr>
+    </tbody>
+</table>
 
-### UX 개선
+- 아코디언 컴포넌트에 `aria-controls`, `aria-expanded` 속성을 활용하여 **아코디언의 제어 상태를 스크린 리더기에서 확인**할 수 있도록 하였습니다.
 
-| 랜딩 페이지                                                                                                                     | Git 그래프 변화                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| <img alt="" src="https://github.com/boostcampwm2023/web01-GitChallenge/assets/96400112/aae4947d-5782-4a1e-97b5-23c445cbe573" /> | <img alt="" src="https://github.com/boostcampwm2023/web01-GitChallenge/assets/96400112/1ad9a125-1137-4a8d-b5c0-140360a987c4" /> |
+### 캔버스
 
-- Intersection Observer를 사용하여 브라우저 화면에서 현재 보이는 영역을 동적으로 감지하고, 이를 기반으로 **스크롤 이벤트 애니메이션을 설계하고 구현**했습니다. 이를 통해 서비스에 처음 진입했을 때 사용자에게 적절한 맥락을 전달하고, **자연스러운 화면 전환을 제공**하기 위해 노력했습니다.
-- 사용자가 입력한 Git 명령어의 동작을 시각적으로 파악할 수 있도록 Git 그래프 변화에 애니메이션을 적용했습니다. D3의 데이터 조인을 이용해 데이터 추가, 수정, 그리고 삭제 애니메이션을 구현했습니다.
+- 캔버스 한 획 지우기
+
+  - 획을 그릴 때마다 배열에 담고, 한 획 지우기를 누르면 **마지막 획을 배열에서 제거**했습니다.
+  - 남은 획들을 다시 캔버스에 그림으로서 한 획 지우기를 구현하였습니다.
+
+- 캔버스에서 꾸민 영역을 티켓과 사진 두 가지로 분류해서 저장하였습니다.
+  - 수정된 이미지가 삽입된 **티켓 전체를 파일로 저장**할 수 있습니다.
+  - 수정한 이미지를 **구매 내역(order)에도 저장**하여 추후에도 확인이 가능하도록 구현했습니다.
+
+<table>
+    <thead>
+        <tr>
+            <th>한 획 지우기</th>
+            <th>커스텀한 티켓 저장하기</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td width="50%">
+            <img alt="" src="https://github.com/user-attachments/assets/6374cad8-a41a-4b4f-9eb8-a75f5de397af" width="100%" />
+          </td>
+          <td width="50%">
+            <img alt="" src="https://github.com/user-attachments/assets/47ae71b7-503f-4b56-8b14-a6ffd639b088" width="100%" />
+          </td>
+        </tr>
+    </tbody>
+</table>
 
 <br />
 
