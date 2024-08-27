@@ -28,6 +28,7 @@ const Ticket = ({
     history && history.length >= 2
       ? history[history.length - 1].updated.image
       : image;
+  const seats = history![0].updated.seat!;
 
   return (
     <article className={`ticket-box ${type}-ver`} ref={ticketRef}>
@@ -115,8 +116,8 @@ const Ticket = ({
                   <dd>T{item.segments[0].departure.terminal}</dd>
                 </dl>
                 <dl>
-                  <dt>Gate</dt>
-                  <dd>-</dd>
+                  <dt>Seat</dt>
+                  <dd>{seats[idx][passengerId]}</dd>
                 </dl>
               </div>
               <div className="barcode">
