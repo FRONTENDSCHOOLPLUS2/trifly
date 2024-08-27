@@ -1,12 +1,14 @@
 "use client";
 
 import { AircraftData, CodeState, OrderItem, SeatMapData } from "@/types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SeatmapGrid from "./SeatmapGrid";
 import Image from "next/image";
 import CompleteButton from "./CompleteButton";
 import seatmap from "@/lib/seatmap";
 import { useRouter } from "next/navigation";
+import { useSetRecoilState } from "recoil";
+import { modalState } from "@/atoms/atoms";
 
 const SeatmapGroup = ({
   data,
@@ -68,19 +70,28 @@ const SeatmapGroup = ({
 
   const [seatArr, setSeatArr] = useState<string[]>([]);
   // const [seatAllArr, setSeatAllArr] = useState<string[][]>([]);
-  console.log(seatArr);
 
+  const setModal = useSetRecoilState(modalState);
   const aircraft = data?.itineraries[0].segments[0].aircraft.code;
   let seatmapData: SeatMapData[] = [];
 
-  if (aircraft) {
-    if (code[aircraft]) {
-      seatmapData = seatmap[code[aircraft].seatmap].data;
-    } else {
-      alert("이런 기종 없음. 좌석 선택을 할 수 없습니다!");
-      // router.push('/order/complete/')
+  useEffect(() => {
+    if (aircraft) {
+      if (code[aircraft]) {
+        seatmapData = seatmap[code[aircraft].seatmap].data;
+      } else {
+        setModal({
+          isOpen: true,
+          title: "좌석 선택 불가",
+          content: "해당 항공기는 현장에서 좌석 선택이 가능합니다",
+          buttonNum: 1,
+          handleConfirm: () => {
+            router.push(`/order/complete/${id}`);
+          },
+        });
+      }
     }
-  }
+  }, []);
 
   return (
     <>
