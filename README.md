@@ -1,36 +1,223 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+<h1>
+<svg width="187" height="70" viewBox="0 0 187 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.6824 7.35156C31.0959 7.35156 33.863 4.44141 33.863 0.851562C33.863 0.597907 33.8492 0.347644 33.8223 0.101562H51.4528V69.1016H33.8223C33.8492 68.8555 33.863 68.6052 33.863 68.3516C33.863 64.7617 31.0959 61.8516 27.6824 61.8516C24.269 61.8516 21.5018 64.7617 21.5018 68.3516C21.5018 68.6052 21.5157 68.8555 21.5425 69.1016H3.90988V47.5431C3.90988 47.5431 4.23421 47.1762 2.65383 44.6081C1.07345 42.04 0.707031 41.7396 0.707031 41.7396L6.60784 46.431C6.60784 46.431 8.35074 48.5525 12.8678 48.807C17.3849 49.0615 19.3851 47.3368 19.3851 47.3368L34.9833 34.6834L34.9863 34.6836L36.0239 33.7303C35.3571 35.4356 33.9229 37.1282 32.7543 38.4819L46.1613 40.1663L47.5036 38.323C38.2377 35.8651 39.0726 32.5213 39.5117 30.7623C39.5386 30.6549 39.5639 30.5533 39.5854 30.4583L44.9298 25.5481C46.799 23.8777 49.1468 21.0133 43.5277 20.9849C39.0035 20.962 37.4657 22.3884 35.5673 24.1492C35.2317 24.4605 34.8847 24.7824 34.508 25.1085C34.331 25.2616 34.1451 25.4295 33.9458 25.6096C27.6824 31.741 26.3696 32.4524 9.12142 32.8356L12.221 33.0571L9.11948 32.8372L6.82075 34.7799C7.58864 34.89 8.48258 34.9947 9.43 35.1057C15.6349 35.8325 24.1338 36.8279 14.5393 41.3809C10.3434 43.372 6.58926 42.6596 3.90988 41.7396V0.101562H21.5425C21.5157 0.347644 21.5018 0.597907 21.5018 0.851562C21.5018 4.44141 24.269 7.35156 27.6824 7.35156Z" fill="#FF5B10"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M186.126 21.2422V26.3636L179.539 32.3513V44.2366C179.539 46.9218 177.462 48.8978 174.473 48.8978C171.686 48.8978 170.267 47.3271 170.267 44.2366V29.037H163.681V45.1992C163.681 50.671 167.582 54.2176 172.801 54.2176C175.891 54.2176 178.627 52.9003 179.539 50.671V54.7242C179.539 58.0175 177.361 60.0948 174.979 60.0948C171.534 60.0948 169.812 58.2708 169.812 55.3322H163.681C163.681 61.7667 167.38 65.7692 174.675 65.7692C181.059 65.7692 186.126 61.6654 186.126 54.6229V21.2422H186.126Z" fill="#02076F"/>
+<path d="M159.397 53.9635H152.811V19.9165H159.397V53.9635Z" fill="#02076F"/>
+<path d="M147.394 39.7772H132.6V53.9634H125.558V20.3218H149.522V26.1989H132.6V33.8494H147.394V39.7772Z" fill="#02076F"/>
+<path d="M121.182 53.9635H114.595V29.0362H121.182V53.9635ZM121.182 26.047H114.595V19.9165H121.182V26.047Z" fill="#02076F"/>
+<path d="M103.231 53.9628H96.6443V29.0356H102.825V32.0248C105.004 28.6809 107.537 28.377 110.223 28.377H111.084V35.1154C110.476 35.0141 109.868 34.9634 109.26 34.9634C105.207 34.9634 103.231 36.99 103.231 40.9926V53.9628Z" fill="#02076F"/>
+<path d="M85.7536 53.9634H78.7112V26.1989H68.5781V20.3218H95.9373V26.1989H85.7536V53.9634Z" fill="#02076F"/>
+</svg>
+</h1>
 
-## Getting Started
+![Frame 30](https://github.com/boostcampwm2023/web01-GitChallenge/assets/79246447/fe5e7fbd-93fe-40ea-be09-a902b712f6c3)
 
-First, run the development server:
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+> 배포 링크 <br /> > **https://trifly.vercel.app**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br/>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<p align=center>
+  <a href="https://meadow-hydrogen-e0d.notion.site/PASSPORT-a1f40332c9aa4af0b96cb326ff34dfe3">팀 노션</a>
+  &nbsp; | &nbsp;
+  <a href="https://docs.google.com/spreadsheets/d/1zGIht0h751fY8YmtPecdMdpFqrwfU584OrK5PBmjd-k/edit?gid=0#gid=0">요구사항 정의서</a>   &nbsp; | &nbsp;
+  <a href="https://www.figma.com/design/JrEiJJOCJB035mRysV3sbq/PASSPORT?node-id=1-2&t=M1ghG7ydxZtgDUSj-1">figma</a>
+  &nbsp; | &nbsp;
+  <a href="https://github.com/FRONTENDSCHOOLPLUS2/trifly/wiki">개발 위키</a>
+</p>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<div align=center>
+    <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fboostcampwm2023%2Fweb01-GitChallenge%2Fhit-counter&count_bg=%23FF7B5A&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com"/></a>
+</div>
 
-## Learn More
+## 📄 목차
 
-To learn more about Next.js, take a look at the following resources:
+- [📄 목차](#-목차)
+- [✍🏻 프로젝트 개요](#-프로젝트-개요)
+- [🚀 핵심 기능](#-핵심-기능)
+  - [어떤 기기로든 편리하게 항공권을 검색할 수 있어요.](#어떤-기기로든-편리하게-항공권을-검색할-수-있어요)
+  - [원하는 정보를 바로 필터링할 수 있어요.](#원하는-정보를-바로-필터링할-수-있어요)
+  - [선택한 항공권을 구매할 수 있어요.](#선택한-항공권을-구매할-수-있어요)
+  - [항공편에 따라 원하는 좌석을 선택할 수 있어요.](#항공편에-따라-원하는-좌석을-선택할-수-있어요)
+  - [나만의 티켓을 꾸미고 기록을 확인할 수 있어요.](#나만의-티켓을-꾸미고-기록을-확인할-수-있어요)
+- [⚙️ 기술 스택](#️-기술-스택)
+- [🏛️ 서비스 구조](#️-서비스-구조)
+  - [요구사항 정의서](#요구사항-정의서)
+  - [플로우 차트](#플로우-차트)
+- [🔎 FE 기술적 도전](#-fe-기술적-도전)
+  - [디자인 시스템 구축](#디자인-시스템-구축)
+  - [컴포넌트 테스트 코드](#컴포넌트-테스트-코드)
+  - [D3를 이용한 데이터 시각화](#d3를-이용한-데이터-시각화)
+  - [UX 개선](#ux-개선)
+- [🧡 팀원 소개](#-팀원-소개)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<br />
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## ✍🏻 프로젝트 개요
 
-## Deploy on Vercel
+TriFly는 항공권 예약 사이트입니다. 다양한 검색 조건을 설정하여 나에게 맞는 항공권을 검색할 수 있습니다. 항공권 구매 후 좌석 지정도 가능합니다. 발권된 티켓을 나만의 티켓으로 커스텀하고 내 항공 여행 기록을 확인할 수 있습니다.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<br />
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🚀 핵심 기능
+
+### 어떤 기기로든 편리하게 항공권을 검색할 수 있어요.
+
+> 사용자의 환경을 고려하여 구현된 항공권 검색 UI를 이용하여 손쉽게 항공권을 검색할 수 있어요.
+
+| 웹                                | 모바일                            |
+| --------------------------------- | --------------------------------- |
+| <img alt="" src="" width="80%" /> | <img alt="" src="" width="20%" /> |
+
+### 원하는 정보를 바로 필터링할 수 있어요.
+
+> 직항, 출발/도착 시간, 원하는 항공사, 가격대 등을 선택하여 내게 딱 맞는 항공편을 조회해보세요.
+
+<img alt='' src="" />
+
+### 선택한 항공권을 구매할 수 있어요.
+
+> 약관 동의부터 정보 입력, 결제까지 항공권 구매 프로세스를 경험할 수 있어요.
+
+- **항공편 상세 조회** : 경유지 정보, 항공기 정보, 수하물 정보, 공동운항 정보
+- **운임 상세 조회** : 탑승자 연령대 별 항공료, 유류할증료, 제세공과금 등의 요금 상세
+
+<img alt='' src="" />
+
+### 항공편에 따라 원하는 좌석을 선택할 수 있어요.
+
+> 탑승하는 항공기의 좌석 배치도를 확인하고 원하는 좌석을 선택할 수 있어요.
+
+<img alt='' src="" />
+
+### 나만의 티켓을 꾸미고 기록을 확인할 수 있어요.
+
+> 티켓을 커스텀하여 나만의 티켓을 만들어 보세요. '발자국' 메뉴에서 내 여행 기록도 확인할 수 있어요.
+
+<img alt='' src="" />
+
+<br />
+
+## ⚙️ 기술 스택
+
+<table>
+    <thead>
+        <tr>
+            <th>분류</th>
+            <th>기술 스택</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                  <p>프론트엔드</p>
+            </td>
+            <td>
+                  <img src="https://img.shields.io/badge/Next.js-000000?logo=Next.js&logoColor=white">
+                  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=ffffff">
+                  <img src="https://img.shields.io/badge/sass-CC6699?logo=sass&logoColor=white">
+                  <img src="https://img.shields.io/badge/react-61DAFB?logo=react&logoColor=333333">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>패키지 매니저</p>
+            </td>
+            <td>
+              <img src="https://img.shields.io/badge/npm-c12127?logo=npm&logoColor=ffffff">
+            </td>
+        </tr>
+                <tr>
+            <td>
+                <p>배포</p>
+            </td>
+            <td>
+                <img src="https://img.shields.io/badge/Vercel-000000?logo=Vercel&logoColor=white">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>협업</p>
+            </td>
+            <td>
+                <img src="https://img.shields.io/badge/Notion-000000?logo=Notion">
+                <img src="https://img.shields.io/badge/Figma-F24E1E?logo=Figma&logoColor=ffffff">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+
+## 🏛️ 서비스 구조
+
+### 요구사항 정의서
+
+<img width="100%" alt="요구사항 정의서" src="https://github.com/user-attachments/assets/f3c9f762-28d2-4e28-a772-bcd7e055d316">
+
+### 플로우 차트
+
+| 로그인 & 회원가입                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------- |
+| <img width="100%" alt="플로우 차트" src="https://github.com/user-attachments/assets/80a146ff-5b0f-45d0-8b87-3f2fff742d37"> |
+
+| 포토티켓                                                                                                                   |
+| -------------------------------------------------------------------------------------------------------------------------- |
+| <img width="100%" alt="플로우 차트" src="https://github.com/user-attachments/assets/ecaa8f1b-6258-4ae8-9126-569a8f3878e0"> |
+
+| 항공권 구매                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- |
+| <img width="100%" alt="플로우 차트" src="https://github.com/user-attachments/assets/5a228650-9f7b-41bf-bf11-9ed98772c08c"> |
+
+<br />
+
+## 🔎 FE 기술적 도전
+
+### 디자인 시스템 구축
+
+| 컬러, 타이포그래피 시스템                                                                                                       | Semantic Token                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| <img alt="" src="https://github.com/boostcampwm2023/web01-GitChallenge/assets/96400112/38512eb4-9a99-48bf-a2df-0bf9a89bb83d" /> | <img alt="" src="https://github.com/boostcampwm2023/web01-GitChallenge/assets/96400112/d61c67c7-f2b9-4109-b8a5-7fd7ab97a518" /> |
+
+- 색상과 글꼴을 디자인 토큰으로 추상화한 **컬러, 타이포그래피 시스템**으로 **디자인 일관성을 유지하고 코드베이스를 더 쉽게 관리**할 수 있었습니다.
+- 색상과 글꼴에 의미를 부여한 **Semantic Token으로 커뮤니케이션 비용을 절약**할 수 있었습니다.
+- 디자인 변경이 필요할 때 변수에 주입된 색상 코드만 수정하면 되어 **초기 개발 단계에서 디자인 변경에 대한 유연성을 확보**할 수 있었습니다.
+
+### 컴포넌트 테스트 코드
+
+- Describe-Context-It, **DCI 패턴으로 테스트 케이스를 계층화**하여 테스트 결과의 가독성을 개선했습니다.
+- 복잡한 로직을 각 구문, 함수, 분기별로 철저히 테스트하여 기능 추가 및 리팩토링 시에도 **컴포넌트의 무결성을 유지**할 수 있었습니다.
+- 테스트 케이스를 작성하며 놓친 기능 요구사항을 파악하여 **TDD로 구현**했습니다.
+
+<img alt="" src="https://github.com/boostcampwm2023/web01-GitChallenge/assets/96400112/1456a155-42fe-4f98-bbe6-4000ac72f0ff" width="80%" />
+
+### D3를 이용한 데이터 시각화
+
+- Problem
+  - D3 tree는 트리 데이터를 위한 레이아웃입니다. 하지만 **Git 로그 데이터는 트리가 아닌 네트워크 그래프 데이터**이기 때문에 D3 tree 레이아웃에 적용할 수 없는 문제가 있었습니다.
+- Solved
+  - Git 로그 데이터에서 **Multiple Parents 노드를 처리하기 위해,** 일부 간선을 분리하여 트리 데이터로 가공한 후 D3 tree 레이아웃에 적용했습니다. 이후에는 **분리한 간선을 다시 추가하여 네트워크 그래프를 시각화**했습니다.
+
+| 라이브러리 비교                                                                                                                 | 문제 해결                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| <img alt="" src="https://github.com/boostcampwm2023/web01-GitChallenge/assets/96400112/c6c77b30-a9d1-461e-bee8-11df0a317232" /> | <img alt="" src="https://github.com/boostcampwm2023/web01-GitChallenge/assets/96400112/b01a4a30-5d4b-4bf2-80c7-8a7dd0e6a3ca" /> |
+
+### UX 개선
+
+| 랜딩 페이지                                                                                                                     | Git 그래프 변화                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| <img alt="" src="https://github.com/boostcampwm2023/web01-GitChallenge/assets/96400112/aae4947d-5782-4a1e-97b5-23c445cbe573" /> | <img alt="" src="https://github.com/boostcampwm2023/web01-GitChallenge/assets/96400112/1ad9a125-1137-4a8d-b5c0-140360a987c4" /> |
+
+- Intersection Observer를 사용하여 브라우저 화면에서 현재 보이는 영역을 동적으로 감지하고, 이를 기반으로 **스크롤 이벤트 애니메이션을 설계하고 구현**했습니다. 이를 통해 서비스에 처음 진입했을 때 사용자에게 적절한 맥락을 전달하고, **자연스러운 화면 전환을 제공**하기 위해 노력했습니다.
+- 사용자가 입력한 Git 명령어의 동작을 시각적으로 파악할 수 있도록 Git 그래프 변화에 애니메이션을 적용했습니다. D3의 데이터 조인을 이용해 데이터 추가, 수정, 그리고 삭제 애니메이션을 구현했습니다.
+
+<br />
+
+## 🧡 팀원 소개
+
+|                                                       이소정                                                        |                                                       전희선                                                        | 정진욱                                                                                                            |
+| :-----------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: | ----------------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/ChatNull/frankmap/assets/84115816/8d17df8e-0da1-4c92-863a-da87705460ec" width="100" /> | <img src="https://github.com/ChatNull/frankmap/assets/84115816/3e777bdf-5e7f-47e3-a0dd-afe0a2fed078" width="100" /> | <img src="https://github.com/ChatNull/frankmap/assets/84115816/b9cd199b-61df-403b-a2c5-28ec85f5ae35" width="100"> |
+|                                       [@s0zzang](https://github.com/s0zzang)                                        |                                       [@heesun2](https://github.com/heesun2)                                        | [@JWJung-99](https://github.com/JWJung-99)                                                                        |
