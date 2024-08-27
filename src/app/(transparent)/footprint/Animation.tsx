@@ -5,12 +5,7 @@ import lottieJson from "../../../../public/lottie/map.json";
 
 const Animation = () => {
   return (
-    <Lottie
-      play
-      className="lottie"
-      // loop={false}
-      animationData={lottieJson}
-    />
+    <Lottie play className="lottie" loop={false} animationData={lottieJson} />
   );
 };
 
