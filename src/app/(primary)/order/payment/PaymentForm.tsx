@@ -393,6 +393,23 @@ const PaymentForm = ({
             if (!item.length) return false;
             const type = idx === 0 ? "성인" : idx === 1 ? "소아" : "유아";
             const typeEn = idx === 0 ? "adult" : idx === 1 ? "child" : "infant";
+            const testUsers = [
+              {
+                nameKor: "이소정",
+                nameEngFirst: "SOJEONG",
+                nameEngLast: "LEE",
+              },
+              {
+                nameKor: "전희선",
+                nameEngFirst: "HEESEON",
+                nameEngLast: "JEON",
+              },
+              {
+                nameKor: "정진욱",
+                nameEngFirst: "JINWOOK",
+                nameEngLast: "JUNG",
+              },
+            ];
 
             return item.map((_, count) => {
               const key = `[${typeEn}_${count}]`;
@@ -434,7 +451,7 @@ const PaymentForm = ({
                         id="nameKor"
                         placeholder="이름을 입력하세요"
                         type="text"
-                        defaultValue={type}
+                        defaultValue={testUsers[idx].nameKor}
                         {...register(`passengers.${key}.nameKor`, {
                           required: "이름을 입력하세요.",
                           minLength: {
@@ -457,7 +474,7 @@ const PaymentForm = ({
                           type="radio"
                           value="M"
                           className="hidden"
-                          checked
+                          checked={idx === 2 ? true : false}
                           {...register(`passengers.${key}.gender`, {
                             required: "성별을 선택하세요.",
                           })}
@@ -469,6 +486,7 @@ const PaymentForm = ({
                           id={`passengers.${key}.genderF`}
                           type="radio"
                           value="F"
+                          checked={idx === 2 ? false : true}
                           className="hidden"
                           {...register(`passengers.${key}.gender`, {
                             required: "성별을 선택하세요.",
@@ -492,7 +510,7 @@ const PaymentForm = ({
                         id={`passengers.${key}.nameEngLast`}
                         className="text-upper"
                         placeholder="영문 성을 입력하세요"
-                        defaultValue={typeEn}
+                        defaultValue={testUsers[idx].nameEngLast}
                         type="text"
                         {...register(`passengers.${key}.nameEngLast`, {
                           required: "영문 성을 입력하세요.",
@@ -512,7 +530,7 @@ const PaymentForm = ({
                         className="text-upper"
                         placeholder="영문 이름을 입력하세요"
                         type="text"
-                        defaultValue={`${typeEn}`}
+                        defaultValue={testUsers[idx].nameEngFirst}
                         {...register(`passengers.${key}.nameEngFirst`, {
                           required: "영문 이름을 입력하세요.",
                         })}
