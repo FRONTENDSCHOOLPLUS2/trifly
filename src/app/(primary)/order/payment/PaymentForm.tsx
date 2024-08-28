@@ -324,6 +324,7 @@ const PaymentForm = ({
                 id="emergencyPhone1"
                 maxLength={3}
                 placeholder="010"
+                defaultValue="010"
                 {...register("purchaser.emergencyPhone1", {
                   required: "비상 연락처를 입력하세요.",
                   minLength: {
@@ -342,6 +343,7 @@ const PaymentForm = ({
                 id="emergencyPhone2"
                 maxLength={4}
                 placeholder="1234"
+                defaultValue="1234"
                 {...register("purchaser.emergencyPhone2", {
                   required: "비상 연락처를 입력하세요.",
                   minLength: {
@@ -360,6 +362,7 @@ const PaymentForm = ({
                 id="emergencyPhone3"
                 maxLength={4}
                 placeholder="5678"
+                defaultValue="5678"
                 {...register("purchaser.emergencyPhone3", {
                   required: "비상 연락처를 입력하세요.",
                   minLength: {
@@ -431,6 +434,7 @@ const PaymentForm = ({
                         id="nameKor"
                         placeholder="이름을 입력하세요"
                         type="text"
+                        defaultValue={type}
                         {...register(`passengers.${key}.nameKor`, {
                           required: "이름을 입력하세요.",
                           minLength: {
@@ -453,6 +457,7 @@ const PaymentForm = ({
                           type="radio"
                           value="M"
                           className="hidden"
+                          checked
                           {...register(`passengers.${key}.gender`, {
                             required: "성별을 선택하세요.",
                           })}
@@ -487,6 +492,7 @@ const PaymentForm = ({
                         id={`passengers.${key}.nameEngLast`}
                         className="text-upper"
                         placeholder="영문 성을 입력하세요"
+                        defaultValue={typeEn}
                         type="text"
                         {...register(`passengers.${key}.nameEngLast`, {
                           required: "영문 성을 입력하세요.",
@@ -506,6 +512,7 @@ const PaymentForm = ({
                         className="text-upper"
                         placeholder="영문 이름을 입력하세요"
                         type="text"
+                        defaultValue={`${typeEn}`}
                         {...register(`passengers.${key}.nameEngFirst`, {
                           required: "영문 이름을 입력하세요.",
                         })}
@@ -522,6 +529,7 @@ const PaymentForm = ({
                         type="tel"
                         maxLength={8}
                         placeholder="20020101"
+                        defaultValue="19901010"
                         {...register(`passengers.${key}.birth`, {
                           required: "생년월일을 입력하세요.",
                           minLength: {
@@ -546,6 +554,7 @@ const PaymentForm = ({
                           id="phone1"
                           maxLength={3}
                           placeholder="010"
+                          defaultValue="010"
                           {...register(`passengers.${key}.phone1`, {
                             required: "핸드폰 번호를 입력하세요.",
                             minLength: {
@@ -564,6 +573,7 @@ const PaymentForm = ({
                           id="phone2"
                           maxLength={4}
                           placeholder="1234"
+                          defaultValue="1234"
                           {...register(`passengers.${key}.phone2`, {
                             required: "핸드폰 번호를 입력하세요.",
                             minLength: {
@@ -582,6 +592,7 @@ const PaymentForm = ({
                           id="phone3"
                           maxLength={4}
                           placeholder="5678"
+                          defaultValue="5678"
                           {...register(`passengers.${key}.phone3`, {
                             required: "핸드폰 번호를 입력하세요.",
                             minLength: {
@@ -609,6 +620,7 @@ const PaymentForm = ({
                         type="text"
                         placeholder="M12345678"
                         maxLength={9}
+                        defaultValue="M12345678"
                         {...register(`passengers.${key}.passport.number`, {
                           minLength: {
                             value: 9,
@@ -629,6 +641,7 @@ const PaymentForm = ({
                         type="tel"
                         maxLength={8}
                         placeholder="20020101"
+                        defaultValue="20271212"
                         {...register(`passengers.${key}.passport.expDate`, {
                           minLength: {
                             value: 8,
@@ -681,6 +694,7 @@ const PaymentForm = ({
                         id="email"
                         placeholder="이메일을 입력하세요"
                         type="text"
+                        defaultValue="test@email.com"
                         {...register(`passengers.${key}.email`)}
                       />
                     </div>
