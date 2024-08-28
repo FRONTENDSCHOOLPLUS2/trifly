@@ -270,8 +270,8 @@ TriFly는 항공권 예약 사이트입니다. 다양한 검색 조건을 설정
           <td>
             <img src="https://img.shields.io/badge/Next.js-000000?logo=Next.js&logoColor=white">
             <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=ffffff">
-            <img src="https://img.shields.io/badge/sass-CC6699?logo=sass&logoColor=white">
             <img src="https://img.shields.io/badge/react-61DAFB?logo=react&logoColor=333333">
+            <img src="https://img.shields.io/badge/sass-CC6699?logo=sass&logoColor=white">
           </td>
         </tr>
         <tr>
@@ -410,18 +410,18 @@ TriFly는 항공권 예약 사이트입니다. 다양한 검색 조건을 설정
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | <img alt="" src="https://github.com/user-attachments/assets/17172682-64fc-456f-8afa-dc758ccb5f59" width="100%" /> | <img alt="" src="https://github.com/user-attachments/assets/8aa4cd7e-c458-43b7-9988-0bcc915279e6" width="100%" /> |
 
-| 타입 자동 완성                                                                                                    | 타입 오류                                                                                                         |
+| 타입 자동 완성                                                                                                    | 타입 오류 방지                                                                                                    |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | <img alt="" src="https://github.com/user-attachments/assets/3a231f03-6a71-4399-b669-cf1593e03aa3" width="100%" /> | <img alt="" src="https://github.com/user-attachments/assets/f76a75f5-e02a-46c4-a6ab-807d099f2325" width="100%" /> |
 
 ### 아마데우스 api 사용
 
+아마데우스에서 제공하는 무료 api인 **self-service api**를 활용하였습니다.
+
 > **아마데우스**
 >
 > - 여행, 항공 업계에서 세계 최대 규모의 발권 시스템 제작 기업으로, 전 세계 120여개 항공사에서 사용 중입니다.
 > - 우리나라에서 대표적으로 대한항공과 아시아나항공에서 이용하고 있습니다.
-
-아마데우스에서 제공하는 무료 api인 **self-service api**를 활용하였습니다.
 
 <details>
 <summary>아마데우스 토큰</summary>
