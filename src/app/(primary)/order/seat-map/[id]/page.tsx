@@ -5,6 +5,7 @@ import SeatmapGroup from "./SeatmapGroup";
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import { AircraftData } from "@/types";
 import OrderProgress from "../../OrderProgress";
+import Scroll from "@/components/Scroll/Scroll";
 
 const Page = async ({ params: { id } }: { params: { id: string } }) => {
   const dataList = await FetchOrder();
@@ -16,6 +17,7 @@ const Page = async ({ params: { id } }: { params: { id: string } }) => {
     <>
       <h3 className="hidden">좌석 선택</h3>
       <OrderProgress orderStatus={3} />
+      <Scroll />
       <SeatmapGroup data={data} id={id} orderId={orderId} code={code} />;
     </>
   );
