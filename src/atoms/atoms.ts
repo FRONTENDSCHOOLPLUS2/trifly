@@ -1,6 +1,6 @@
 "use client";
 
-import { NewOrderData, OrderData } from "@/types";
+import { OrderData } from "@/types";
 import { atom, RecoilEnv } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
@@ -84,6 +84,10 @@ const { persistAtom } = recoilPersist({
   storage: sessionStorage,
 });
 
+const { persistAtom: localPersistAtom } = recoilPersist({
+  key: "localGlobalState",
+});
+
 export const defaultSearchResult = {
   tripType: "round",
   nonStop: false,
@@ -121,4 +125,13 @@ export const searchResultState = atom<SearchResultProps>({
 export const orderState = atom<OrderProps>({
   key: "orderState",
   effects_UNSTABLE: [persistAtom],
+});
+
+export const savedEmailState = atom<{
+  isEmailSaved: boolean;
+  savedEamil: string;
+}>({
+  key: "savedEmailState",
+  default: { isEmailSaved: false, savedEamil: "" },
+  effects_UNSTABLE: [localPersistAtom],
 });
