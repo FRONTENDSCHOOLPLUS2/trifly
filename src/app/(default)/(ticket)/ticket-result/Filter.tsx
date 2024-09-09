@@ -125,6 +125,10 @@ const Filter = ({
     });
   };
 
+  /* -------------------------------------------------------------------------- */
+  /*                                   가격 설정                                  */
+  /* -------------------------------------------------------------------------- */
+
   const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, style, max } = e.target;
     setMaxPrice(Number(value));
@@ -133,6 +137,9 @@ const Filter = ({
     style.background = `linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) ${percent * +value}%, var(--color-gray-50) ${percent * +value}%, var(--color-gray-50) 100%`;
   };
 
+  /* -------------------------------------------------------------------------- */
+  /*                                 항공사 선택                                   */
+  /* -------------------------------------------------------------------------- */
   const allianceCont = [
     {
       name: "Skyteam",
@@ -153,7 +160,7 @@ const Filter = ({
       checked: true,
     },
     {
-      name: "",
+      name: "others",
       title: "기타",
       content: "",
       checked: true,
@@ -167,7 +174,7 @@ const Filter = ({
     setAllianceCheck(allianceCheck.map((item) => ({ ...item, checked: true })));
   };
 
-  const handleDeselectAll = () => {
+  const handleUnselectAll = () => {
     setAllianceCheck(
       allianceCheck.map((item) => ({ ...item, checked: false })),
     );
@@ -183,6 +190,11 @@ const Filter = ({
       if (alliance.checked) {
         carrierCodes.forEach((carrierCode) => {
           if (airline[carrierCode].allianceEng === alliance.name) {
+            updatedAirlines.push(carrierCode);
+          } else if (
+            airline[carrierCode].allianceEng === "" &&
+            alliance.name === "others"
+          ) {
             updatedAirlines.push(carrierCode);
           }
         });
@@ -571,7 +583,7 @@ const Filter = ({
                       allianceCheck.filter((item) => item.checked !== true)
                         .length < 1
                     }
-                    onChange={handleDeselectAll}
+                    onChange={handleUnselectAll}
                   />
                   <label htmlFor="allCancel">모두 해제</label>
                 </li>
