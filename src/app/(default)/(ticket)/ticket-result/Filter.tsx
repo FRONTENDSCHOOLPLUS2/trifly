@@ -16,12 +16,14 @@ const Filter = ({
   carrierCodes,
   tripType,
   nonStop,
+  prices,
   handleFilterChange,
 }: {
   airline: CodeState<AirlineData>;
   carrierCodes: string[];
   tripType: string;
   nonStop: boolean;
+  prices: number[];
   handleFilterChange: (filter: IFilterProps) => void;
 }) => {
   const [isNonStop, setIsNonStop] = useState(false);
@@ -29,7 +31,7 @@ const Filter = ({
   const [originArrTime, setOriginArrTime] = useState<number[]>([6, 12, 18, 24]);
   const [returnDepTime, setReturnDepTime] = useState<number[]>([6, 12, 18, 24]);
   const [returnArrTime, setReturnArrTime] = useState<number[]>([6, 12, 18, 24]);
-  const [maxPrice, setMaxPrice] = useState(5000000);
+  const [maxPrice, setMaxPrice] = useState(Math.max(...prices));
   const [selectedAirlines, setSelectedAirlines] =
     useState<string[]>(carrierCodes);
   const airlineRef = useRef(null);
@@ -125,6 +127,10 @@ const Filter = ({
     });
   };
 
+  /* -------------------------------------------------------------------------- */
+  /*                                   가격 설정                                  */
+  /* -------------------------------------------------------------------------- */
+
   const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, style, max } = e.target;
     setMaxPrice(Number(value));
@@ -133,6 +139,9 @@ const Filter = ({
     style.background = `linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) ${percent * +value}%, var(--color-gray-50) ${percent * +value}%, var(--color-gray-50) 100%`;
   };
 
+  /* -------------------------------------------------------------------------- */
+  /*                                 항공사 선택                                   */
+  /* -------------------------------------------------------------------------- */
   const allianceCont = [
     {
       name: "Skyteam",
@@ -153,7 +162,7 @@ const Filter = ({
       checked: true,
     },
     {
-      name: "",
+      name: "others",
       title: "기타",
       content: "",
       checked: true,
@@ -167,7 +176,7 @@ const Filter = ({
     setAllianceCheck(allianceCheck.map((item) => ({ ...item, checked: true })));
   };
 
-  const handleDeselectAll = () => {
+  const handleUnselectAll = () => {
     setAllianceCheck(
       allianceCheck.map((item) => ({ ...item, checked: false })),
     );
@@ -183,6 +192,11 @@ const Filter = ({
       if (alliance.checked) {
         carrierCodes.forEach((carrierCode) => {
           if (airline[carrierCode].allianceEng === alliance.name) {
+            updatedAirlines.push(carrierCode);
+          } else if (
+            airline[carrierCode].allianceEng === "" &&
+            alliance.name === "others"
+          ) {
             updatedAirlines.push(carrierCode);
           }
         });
@@ -571,7 +585,7 @@ const Filter = ({
                       allianceCheck.filter((item) => item.checked !== true)
                         .length < 1
                     }
-                    onChange={handleDeselectAll}
+                    onChange={handleUnselectAll}
                   />
                   <label htmlFor="allCancel">모두 해제</label>
                 </li>
@@ -592,18 +606,16 @@ const Filter = ({
           <AccordionBody>
             <div className="filter-contents maxPrice">
               <label htmlFor="max-price">
-                {maxPrice === 2000000
-                  ? "전체"
-                  : `${maxPrice.toLocaleString()}원 미만`}
+                {`${maxPrice.toLocaleString()}원 미만`}
               </label>
               <input
                 type="range"
                 className="input-range horizontal"
                 id="max-price"
-                min={100000}
-                max={2000000}
+                min={0}
+                max={Math.max(...prices)}
                 value={maxPrice}
-                step={100000}
+                step={100}
                 onChange={handlePriceChange}
               />
             </div>
