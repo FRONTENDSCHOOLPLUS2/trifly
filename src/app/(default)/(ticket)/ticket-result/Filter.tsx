@@ -16,12 +16,14 @@ const Filter = ({
   carrierCodes,
   tripType,
   nonStop,
+  prices,
   handleFilterChange,
 }: {
   airline: CodeState<AirlineData>;
   carrierCodes: string[];
   tripType: string;
   nonStop: boolean;
+  prices: number[];
   handleFilterChange: (filter: IFilterProps) => void;
 }) => {
   const [isNonStop, setIsNonStop] = useState(false);
@@ -29,7 +31,7 @@ const Filter = ({
   const [originArrTime, setOriginArrTime] = useState<number[]>([6, 12, 18, 24]);
   const [returnDepTime, setReturnDepTime] = useState<number[]>([6, 12, 18, 24]);
   const [returnArrTime, setReturnArrTime] = useState<number[]>([6, 12, 18, 24]);
-  const [maxPrice, setMaxPrice] = useState(5000000);
+  const [maxPrice, setMaxPrice] = useState(Math.max(...prices));
   const [selectedAirlines, setSelectedAirlines] =
     useState<string[]>(carrierCodes);
   const airlineRef = useRef(null);
@@ -604,18 +606,16 @@ const Filter = ({
           <AccordionBody>
             <div className="filter-contents maxPrice">
               <label htmlFor="max-price">
-                {maxPrice === 2000000
-                  ? "전체"
-                  : `${maxPrice.toLocaleString()}원 미만`}
+                {`${maxPrice.toLocaleString()}원 미만`}
               </label>
               <input
                 type="range"
                 className="input-range horizontal"
                 id="max-price"
-                min={100000}
-                max={2000000}
+                min={0}
+                max={Math.max(...prices)}
                 value={maxPrice}
-                step={100000}
+                step={100}
                 onChange={handlePriceChange}
               />
             </div>
