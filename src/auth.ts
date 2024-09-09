@@ -55,11 +55,6 @@ export const {
       clientSecret: process.env.KAKAO_CLIENT_SECRET,
     }),
 
-    naver({
-      clientId: process.env.NAVER_CLIENT_ID,
-      clientSecret: process.env.NAVER_CLIENT_SECRET,
-    }),
-
     google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -82,6 +77,7 @@ export const {
           console.log("id/pwd 로그인", user);
           break;
         case "google":
+        case "kakao":
           console.log("OAuth 로그인", user);
 
           // DB에서 id를 조회해서 있으면 로그인 처리를 없으면 자동 회원 가입 후 로그인 처리
@@ -93,8 +89,6 @@ export const {
               loginType: account.provider,
               name: user.name || "",
               email: user.email || "",
-              phone: user.phone || "",
-              birth: user.birth || "",
               extra: {
                 ...profile,
                 providerAccountId: account.providerAccountId,
@@ -109,7 +103,7 @@ export const {
             const resData = await loginOAuth(account.providerAccountId);
             if (resData.ok) {
               userInfo = resData.item;
-              console.log(userInfo);
+              console.log("userInfo", userInfo);
             } else {
               // API 서버의 에러 메시지 처리
               throw new Error(resData.message);
