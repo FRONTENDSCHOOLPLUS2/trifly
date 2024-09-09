@@ -2,7 +2,6 @@ import NextAuth, { CredentialsSignin, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import google from "next-auth/providers/google";
 import kakao from "next-auth/providers/kakao";
-import naver from "next-auth/providers/naver";
 import { OAuthUser, RefreshTokenRes, UserData } from "./types";
 import { loginOAuth, signupWithOAuth } from "./data/actions/authAction";
 import { fetchAccessToken } from "./data/fetch/fetchAccessToken";
@@ -41,6 +40,7 @@ export const {
             phone: user.phone,
             birth: user.extra.birth,
             type: user.type,
+            loginType: "email",
             accessToken: user.token.accessToken,
             refreshToken: user.token.refreshToken,
           };
@@ -115,6 +115,7 @@ export const {
 
           user.id = String(userInfo._id);
           user.type = userInfo.type;
+          user.loginType = userInfo.loginType;
           user.accessToken = userInfo.token!.accessToken;
           user.refreshToken = userInfo.token!.refreshToken;
 
@@ -132,6 +133,7 @@ export const {
         token.birth = user.birth;
         token.accessToken = user.accessToken;
         token.refreshToken = user.refreshToken;
+        token.loginType = user.loginType;
       }
 
       // JWT 자체의 만료 시간 추출
@@ -184,6 +186,7 @@ export const {
     async session({ session, token }) {
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;
+      session.loginType = token.loginType;
       session.user.birth = token.birth;
       session.user.phone = token.phone;
       return session;

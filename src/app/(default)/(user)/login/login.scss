@@ -64,20 +64,52 @@
       background: var(--color-gray-10) url() no-repeat center / 2rem;
       border-radius: 1rem;
       transition: all var(--transition-duration);
+      position: relative;
 
       &:hover {
         box-shadow: var(--box-shadow);
       }
+      &::after {
+        content: "최근 로그인";
+        display: block;
+        position: absolute;
+        bottom: -0.5rem;
+        left: 50%;
+        transform: translate(-50%, 100%);
+        width: max-content;
+        font-size: var(--title-medium);
+        background: var(--color-primary-30);
+        color: var(--color-primary);
+        border-radius: 0.4em;
+        padding: 0.6em 0.8em;
+        opacity: 0;
+      }
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -0.5rem;
+        left: 50%;
+        transform: translate(-50%, 50%) rotate(45deg);
+        font-size: var(--title-medium);
+        background: var(--color-primary-30);
+        width: 0.8rem;
+        aspect-ratio: 1/1;
+        opacity: 0;
+      }
 
       &.kakao {
         background-image: url(/img/icon-sns-kakao.svg);
-        // background-size: 2.2rem;
-      }
-      &.naver {
-        background-image: url(/img/icon-sns-naver.svg);
       }
       &.google {
         background-image: url(/img/icon-sns-google.svg);
+      }
+
+      &.act {
+        &::before,
+        &::after {
+          opacity: 1;
+        }
       }
     }
   }

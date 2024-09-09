@@ -38,7 +38,7 @@ const Header: React.FC<HeaderProps> = async ({ type = "default" }) => {
 
         <div className="header-user">
           {user ? (
-            <Logout type={type} />
+            <Logout loginType={session.loginType} type={type} />
           ) : (
             <Link href="/login">
               <div className="img-box">
