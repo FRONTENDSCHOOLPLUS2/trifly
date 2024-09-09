@@ -34,7 +34,7 @@ export interface AirlineData {
   value: string;
   nameKor: string;
   nameEng: string;
-  allianceKor?: "스카이팀" | "스타얼라이언스" | "원월드" | "";
+  allianceKor: "스카이팀" | "스타얼라이언스" | "원월드" | "";
   allianceEng: "Skyteam" | "Star Alliance" | "oneworld" | "";
   carrierType: "FSC" | "LCC";
 }
