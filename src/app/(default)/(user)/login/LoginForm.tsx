@@ -1,6 +1,6 @@
 "use client";
 
-import { modalState, savedEmailState } from "@/atoms/atoms";
+import { loginTypeState, modalState, savedEmailState } from "@/atoms/atoms";
 import Anchor from "@/components/Anchor/Anchor";
 import Submit from "@/components/Submit/Submit";
 import {
@@ -11,11 +11,12 @@ import {
 import { UserForm, UserLoginForm } from "@/types";
 import { ChangeEvent, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 const LoginForm = () => {
   const setModal = useSetRecoilState(modalState);
   const [savedEmail, setSavedEmail] = useRecoilState(savedEmailState);
+  const loginType = useRecoilValue(loginTypeState);
   const savedEmailInput = useRef<null | HTMLInputElement>(null);
   const {
     register,
@@ -136,12 +137,16 @@ const LoginForm = () => {
           <span>SNS</span> <span className="hidden">로그인</span>
         </h3>
         <div className="sns-box">
-          <button type="submit" className="kakao" formAction={signInWithKakao}>
+          <button
+            type="submit"
+            className={`kakao ${loginType === "kakao" ? "act" : ""}`}
+            formAction={signInWithKakao}
+          >
             <h4 className="hidden">카카오로 로그인</h4>
           </button>
           <button
             type="submit"
-            className="google"
+            className={`google ${loginType === "google" ? "act" : ""}`}
             formAction={signInWithGoogle}
           >
             <h4 className="hidden">구글로 로그인</h4>

@@ -3,10 +3,12 @@ export declare module "@auth/core/types" {
     type?: string;
     birth: string;
     phone: string;
+    loginType: "email" | "kakao" | "google";
     accessToken: string;
     refreshToken: string;
   }
   interface Session {
+    loginType: "email" | "kakao" | "google";
     accessToken: string;
     refreshToken: string;
   }
@@ -17,5 +19,6 @@ export declare module "@auth/core/jwt" {
     refreshToken: string;
     birth: string;
     phone: string;
+    loginType: "email" | "kakao" | "google";
   }
 }

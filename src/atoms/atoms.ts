@@ -135,3 +135,9 @@ export const savedEmailState = atom<{
   default: { isEmailSaved: false, savedEamil: "" },
   effects_UNSTABLE: [localPersistAtom],
 });
+
+export const loginTypeState = atom({
+  key: "loginTypeState",
+  default: "email",
+  effects_UNSTABLE: [localPersistAtom],
+});

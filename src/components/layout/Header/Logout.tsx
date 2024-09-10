@@ -1,9 +1,19 @@
 "use client";
 
+import { loginTypeState } from "@/atoms/atoms";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
 
-const Logout = ({ type }: { type: string }) => {
+const Logout = ({
+  type,
+  loginType,
+}: {
+  type: string;
+  loginType: "email" | "kakao" | "google";
+}) => {
+  const [loginTypeRecoil, setLoginTypeRecoil] = useRecoilState(loginTypeState);
   const handleSignOut = async () => {
     try {
       await signOut({ redirect: true, callbackUrl: "/" });
@@ -11,6 +21,10 @@ const Logout = ({ type }: { type: string }) => {
       console.error("Sign out error:", error);
     }
   };
+
+  useEffect(() => {
+    if (loginType !== loginTypeRecoil) setLoginTypeRecoil(loginType);
+  }, []);
 
   return (
     <button
