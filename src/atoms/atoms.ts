@@ -58,8 +58,8 @@ export interface SearchResultProps {
 const sessionStorage =
   typeof window !== "undefined" ? window.sessionStorage : undefined;
 
-// const localStorage =
-//   typeof window !== "undefined" ? window.localStorage : undefined;
+const localStorage =
+  typeof window !== "undefined" ? window.localStorage : undefined;
 
 export const modalState = atom<ModalProps>({
   key: "modalState",
@@ -89,7 +89,7 @@ const { persistAtom: sessionPersistAtom } = recoilPersist({
 
 const { persistAtom: localPersistAtom } = recoilPersist({
   key: "localGlobalState",
-  // storage: localStorage,
+  storage: localStorage,
 });
 
 export const defaultSearchResult = {
