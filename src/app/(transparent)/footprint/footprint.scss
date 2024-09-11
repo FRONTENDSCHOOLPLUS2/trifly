@@ -36,6 +36,14 @@
       opacity: 0;
     }
 
+    .lottie {
+      aspect-ratio: 4096/2643;
+
+      svg {
+        vertical-align: top;
+      }
+    }
+
     .data-box {
       position: absolute;
       bottom: 3rem;
