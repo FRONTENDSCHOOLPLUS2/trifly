@@ -61,6 +61,13 @@ const Result = ({
   // carrierCodes 배열
   const carrierCodes = [...new Set(extractCarrierCodes(data))];
 
+  // 가격 배열
+  const prices: number[] = [];
+
+  data.forEach((item) => {
+    prices.push(Number(item.price.grandTotal));
+  });
+
   const handleFilterChange = useCallback((newFilters: IFilterProps) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
@@ -161,9 +168,9 @@ const Result = ({
       if (filters.maxPrice) {
         const { maxPrice } = filters;
 
-        if (filters.maxPrice < 5000000) {
+        if (filters.maxPrice < Math.max(...prices)) {
           newFilteredData = newFilteredData.filter(
-            (offer) => Number(offer.price.grandTotal) < maxPrice,
+            (offer) => Number(offer.price.grandTotal) <= maxPrice,
           );
         }
       }
@@ -369,6 +376,7 @@ const Result = ({
               carrierCodes={carrierCodes}
               tripType={returnDate ? "round" : "oneway"}
               nonStop={nonStop ? true : false}
+              prices={prices}
               handleFilterChange={handleFilterChange}
             />
           </div>

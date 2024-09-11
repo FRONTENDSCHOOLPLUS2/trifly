@@ -2,8 +2,8 @@ export interface UserData {
   _id: number;
   email: string;
   name: string;
-  phone: string;
-  birth: string;
+  phone?: string;
+  birth?: string;
   type: "user";
   loginType: "email" | "kakao" | "google";
   token: {

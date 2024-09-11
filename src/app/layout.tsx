@@ -16,9 +16,7 @@ const roboto = Roboto({
 });
 
 const noto = Noto_Sans_KR({
-  display: "swap",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-noto",
 });
 
@@ -96,10 +94,7 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} ${noto.variable} ${dohyeon.variable}`}
       >
-        <RecoilRootWrapper>
-          {children}
-          <Footer />
-        </RecoilRootWrapper>
+        <RecoilRootWrapper>{children}</RecoilRootWrapper>
       </body>
     </html>
   );

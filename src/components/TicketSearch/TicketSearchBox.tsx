@@ -1,6 +1,10 @@
 "use client";
 
-import { modalState, searchResultState } from "@/atoms/atoms";
+import {
+  modalState,
+  recentSearchState,
+  searchResultState,
+} from "@/atoms/atoms";
 import Badge from "@/components/Badge/Badge";
 import Button from "@/components/Button/Button";
 import RouteModal from "@/components/TicketSearch/SearchModals/RouteModal";
@@ -21,6 +25,7 @@ const TicketSearchBox = ({
   airport: AirportData[];
   handleChange?: () => void;
 }) => {
+  const [recentSearch, setRecentSearch] = useRecoilState(recentSearchState);
   const [searchResult, setSearchResult] = useRecoilState(searchResultState);
   const [tripType, setTripType] = useState("round");
   const [nonStop, setNonStop] = useState(false);
@@ -227,6 +232,36 @@ const TicketSearchBox = ({
       passengers,
       cabin,
     });
+
+    if (recentSearch.length < 3) {
+      setRecentSearch([
+        {
+          tripType,
+          nonStop,
+          origin,
+          destination,
+          schedule,
+          passengers,
+          cabin,
+        },
+        ...recentSearch,
+      ]);
+    } else {
+      const newRecentSearch = [...recentSearch];
+      newRecentSearch.pop();
+      setRecentSearch([
+        {
+          tripType,
+          nonStop,
+          origin,
+          destination,
+          schedule,
+          passengers,
+          cabin,
+        },
+        ...newRecentSearch,
+      ]);
+    }
   };
 
   const originText = useMemo(

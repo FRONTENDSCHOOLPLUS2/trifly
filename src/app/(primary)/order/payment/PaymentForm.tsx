@@ -254,7 +254,7 @@ const PaymentForm = ({
                 id="phone1"
                 maxLength={3}
                 placeholder="010"
-                defaultValue={user?.phone.split("-")[0]}
+                defaultValue={user?.phone?.split("-")[0]}
                 {...register("purchaser.phone1", {
                   required: "핸드폰 번호를 입력하세요.",
                   minLength: {
@@ -273,7 +273,7 @@ const PaymentForm = ({
                 id="phone2"
                 maxLength={4}
                 placeholder="1234"
-                defaultValue={user?.phone.split("-")[1]}
+                defaultValue={user?.phone?.split("-")[1]}
                 {...register("purchaser.phone2", {
                   required: "핸드폰 번호를 입력하세요.",
                   minLength: {
@@ -292,7 +292,7 @@ const PaymentForm = ({
                 id="phone3"
                 maxLength={4}
                 placeholder="5678"
-                defaultValue={user?.phone.split("-")[2]}
+                defaultValue={user?.phone?.split("-")[2]}
                 {...register("purchaser.phone3", {
                   required: "핸드폰 번호를 입력하세요.",
                   minLength: {

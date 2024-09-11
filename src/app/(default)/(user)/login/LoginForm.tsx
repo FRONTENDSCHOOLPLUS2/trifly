@@ -1,6 +1,6 @@
 "use client";
 
-import { modalState } from "@/atoms/atoms";
+import { loginTypeState, modalState, savedEmailState } from "@/atoms/atoms";
 import Anchor from "@/components/Anchor/Anchor";
 import Submit from "@/components/Submit/Submit";
 import {
@@ -9,12 +9,15 @@ import {
   signInWithKakao,
 } from "@/data/actions/authAction";
 import { UserForm, UserLoginForm } from "@/types";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 const LoginForm = () => {
   const setModal = useSetRecoilState(modalState);
+  const [savedEmail, setSavedEmail] = useRecoilState(savedEmailState);
+  const loginType = useRecoilValue(loginTypeState);
+  const savedEmailInput = useRef<null | HTMLInputElement>(null);
   const {
     register,
     handleSubmit,
@@ -34,8 +37,14 @@ const LoginForm = () => {
   const login = async (loginData: UserLoginForm) => {
     const resData = await signInWithCredentials(loginData);
     if (!resData) {
-      // console.log('로그인 완료')
+      // 로그인 완료
+      if (savedEmailInput.current) {
+        if (savedEmailInput.current.checked)
+          setSavedEmail({ isEmailSaved: true, savedEamil: loginData.email });
+        else setSavedEmail({ isEmailSaved: false, savedEamil: "" });
+      }
     } else if (!resData.ok) {
+      // 로그인 실패
       if ("errors" in resData) {
         resData.errors.forEach((error) =>
           setError(error.path, { message: error.msg }),
@@ -46,13 +55,20 @@ const LoginForm = () => {
           closeButton: false,
           title: "안내",
           content: resData.message,
-          buttonNum: 0,
+          buttonNum: 1,
           handleConfirm: () => {},
           handleCancel: () => {},
         });
       }
     }
   };
+
+  useEffect(() => {
+    if (savedEmail.isEmailSaved) {
+      savedEmailInput.current!.checked = true;
+      setValue("email", savedEmail.savedEamil);
+    }
+  }, []);
 
   return (
     <form className="form">
@@ -95,7 +111,12 @@ const LoginForm = () => {
               <label htmlFor="getTestUser">테스트 계정 불러오기</label>
             </div>
             <div className="chk-box">
-              <input type="checkbox" name="saveEmail" id="saveEmail" />
+              <input
+                type="checkbox"
+                name="saveEmail"
+                id="saveEmail"
+                ref={savedEmailInput}
+              />
               <label htmlFor="saveEmail">이메일 저장</label>
             </div>
           </div>
@@ -116,12 +137,16 @@ const LoginForm = () => {
           <span>SNS</span> <span className="hidden">로그인</span>
         </h3>
         <div className="sns-box">
-          <button type="submit" className="kakao" formAction={signInWithKakao}>
+          <button
+            type="submit"
+            className={`kakao ${loginType === "kakao" ? "act" : ""}`}
+            formAction={signInWithKakao}
+          >
             <h4 className="hidden">카카오로 로그인</h4>
           </button>
           <button
             type="submit"
-            className="google"
+            className={`google ${loginType === "google" ? "act" : ""}`}
             formAction={signInWithGoogle}
           >
             <h4 className="hidden">구글로 로그인</h4>

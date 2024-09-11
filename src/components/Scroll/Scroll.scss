@@ -1,0 +1,120 @@
+.scroll-box {
+  visibility: hidden;
+  padding-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  z-index: 1;
+  opacity: 1;
+  animation: fadeOut 8s forwards;
+
+  .scroll-box-text {
+    font-size: var(--title-large);
+    font-weight: 500;
+    margin: 0 1rem;
+  }
+
+  .left {
+    top: 0;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-left: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-animation: sdb 2s infinite;
+    animation: sdb 2s infinite;
+    opacity: 0;
+    box-sizing: border-box;
+
+    &:nth-of-type(1) {
+      left: 16px;
+      -webkit-animation-delay: 0.3s;
+      animation-delay: 0.3s;
+    }
+    &:nth-of-type(2) {
+      left: 32px;
+      -webkit-animation-delay: 0.15s;
+      animation-delay: 0.15s;
+    }
+    &:nth-of-type(3) {
+      left: 48px;
+      -webkit-animation-delay: 0s;
+      animation-delay: 0s;
+    }
+  }
+
+  .right {
+    top: 0;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-left: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    -webkit-animation: sdb 2s infinite;
+    animation: sdb 2s infinite;
+    opacity: 0;
+    box-sizing: border-box;
+
+    &:nth-of-type(4) {
+      left: 64px;
+      -webkit-animation-delay: 0s;
+      animation-delay: 0s;
+    }
+    &:nth-of-type(5) {
+      left: 80px;
+      -webkit-animation-delay: 0.15s;
+      animation-delay: 0.15s;
+    }
+    &:nth-of-type(6) {
+      left: 96px;
+      -webkit-animation-delay: 0.3s;
+      animation-delay: 0.3s;
+    }
+  }
+}
+
+@-webkit-keyframes sdb {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sdb {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .scroll-box {
+    visibility: visible;
+  }
+}

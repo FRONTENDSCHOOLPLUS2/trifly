@@ -109,10 +109,6 @@ export async function signInWithKakao(formData: FormData) {
   await signIn("kakao", { redirectTo: "/" });
 }
 
-export async function signInWithNaver(formData: FormData) {
-  await signIn("naver", { redirectTo: "/" });
-}
-
 export async function signInWithGoogle(formData: FormData) {
   await signIn("google", { redirectTo: "/" });
 }

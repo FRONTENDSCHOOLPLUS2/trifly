@@ -1,6 +1,6 @@
 "use client";
 
-import { NewOrderData, OrderData } from "@/types";
+import { OrderData } from "@/types";
 import { atom, RecoilEnv } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
@@ -27,7 +27,7 @@ interface DateProps {
   returnDate?: string;
 }
 
-interface SearchResultProps {
+export interface SearchResultProps {
   tripType: string;
   nonStop: boolean;
   origin: {
@@ -58,6 +58,9 @@ interface SearchResultProps {
 const sessionStorage =
   typeof window !== "undefined" ? window.sessionStorage : undefined;
 
+const localStorage =
+  typeof window !== "undefined" ? window.localStorage : undefined;
+
 export const modalState = atom<ModalProps>({
   key: "modalState",
   default: {
@@ -79,9 +82,14 @@ export const dateState = atom<DateProps>({
   },
 });
 
-const { persistAtom } = recoilPersist({
-  key: "globalState",
+const { persistAtom: sessionPersistAtom } = recoilPersist({
+  key: "sessionGlobalState",
   storage: sessionStorage,
+});
+
+const { persistAtom: localPersistAtom } = recoilPersist({
+  key: "localGlobalState",
+  storage: localStorage,
 });
 
 export const defaultSearchResult = {
@@ -115,10 +123,31 @@ export const defaultSearchResult = {
 export const searchResultState = atom<SearchResultProps>({
   key: "searchResultState",
   default: defaultSearchResult,
-  effects_UNSTABLE: [persistAtom],
+  effects_UNSTABLE: [sessionPersistAtom],
+});
+
+export const recentSearchState = atom<SearchResultProps[]>({
+  key: "recentSearchState",
+  default: [],
+  effects_UNSTABLE: [localPersistAtom],
 });
 
 export const orderState = atom<OrderProps>({
   key: "orderState",
-  effects_UNSTABLE: [persistAtom],
+  effects_UNSTABLE: [sessionPersistAtom],
+});
+
+export const savedEmailState = atom<{
+  isEmailSaved: boolean;
+  savedEamil: string;
+}>({
+  key: "savedEmailState",
+  default: { isEmailSaved: false, savedEamil: "" },
+  effects_UNSTABLE: [localPersistAtom],
+});
+
+export const loginTypeState = atom({
+  key: "loginTypeState",
+  default: "email",
+  effects_UNSTABLE: [localPersistAtom],
 });

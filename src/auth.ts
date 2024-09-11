@@ -2,7 +2,6 @@ import NextAuth, { CredentialsSignin, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import google from "next-auth/providers/google";
 import kakao from "next-auth/providers/kakao";
-import naver from "next-auth/providers/naver";
 import { OAuthUser, RefreshTokenRes, UserData } from "./types";
 import { loginOAuth, signupWithOAuth } from "./data/actions/authAction";
 import { fetchAccessToken } from "./data/fetch/fetchAccessToken";
@@ -41,6 +40,7 @@ export const {
             phone: user.phone,
             birth: user.extra.birth,
             type: user.type,
+            loginType: "email",
             accessToken: user.token.accessToken,
             refreshToken: user.token.refreshToken,
           };
@@ -53,11 +53,6 @@ export const {
     kakao({
       clientId: process.env.KAKAO_CLIENT_ID,
       clientSecret: process.env.KAKAO_CLIENT_SECRET,
-    }),
-
-    naver({
-      clientId: process.env.NAVER_CLIENT_ID,
-      clientSecret: process.env.NAVER_CLIENT_SECRET,
     }),
 
     google({
@@ -82,6 +77,7 @@ export const {
           console.log("id/pwd 로그인", user);
           break;
         case "google":
+        case "kakao":
           console.log("OAuth 로그인", user);
 
           // DB에서 id를 조회해서 있으면 로그인 처리를 없으면 자동 회원 가입 후 로그인 처리
@@ -93,8 +89,6 @@ export const {
               loginType: account.provider,
               name: user.name || "",
               email: user.email || "",
-              phone: user.phone || "",
-              birth: user.birth || "",
               extra: {
                 ...profile,
                 providerAccountId: account.providerAccountId,
@@ -109,7 +103,7 @@ export const {
             const resData = await loginOAuth(account.providerAccountId);
             if (resData.ok) {
               userInfo = resData.item;
-              console.log(userInfo);
+              console.log("userInfo", userInfo);
             } else {
               // API 서버의 에러 메시지 처리
               throw new Error(resData.message);
@@ -121,6 +115,7 @@ export const {
 
           user.id = String(userInfo._id);
           user.type = userInfo.type;
+          user.loginType = userInfo.loginType;
           user.accessToken = userInfo.token!.accessToken;
           user.refreshToken = userInfo.token!.refreshToken;
 
@@ -138,6 +133,7 @@ export const {
         token.birth = user.birth;
         token.accessToken = user.accessToken;
         token.refreshToken = user.refreshToken;
+        token.loginType = user.loginType;
       }
 
       // JWT 자체의 만료 시간 추출
@@ -190,6 +186,7 @@ export const {
     async session({ session, token }) {
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;
+      session.loginType = token.loginType;
       session.user.birth = token.birth;
       session.user.phone = token.phone;
       return session;
