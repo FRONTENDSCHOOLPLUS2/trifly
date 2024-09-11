@@ -1,5 +1,9 @@
-import { recentSearchState, SearchResultProps } from "@/atoms/atoms";
-import { useRecoilState } from "recoil";
+import {
+  recentSearchState,
+  SearchResultProps,
+  searchResultState,
+} from "@/atoms/atoms";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import Badge from "../Badge/Badge";
 import "./RecentSearchResult.scss";
 
@@ -11,9 +15,14 @@ const RecentSearchResult = ({
   id: number;
 }) => {
   const [recentSearch, setRecentSearch] = useRecoilState(recentSearchState);
+  const setSearchResult = useSetRecoilState(searchResultState);
 
   const handleClick = () => {
-    console.log("검색!");
+    if (typeof window !== "undefined") {
+      window.location.href = `/ticket-result?originLocationCode=${data.origin.code}&destinationLocationCode=${data.destination.code}&departureDate=${data.schedule.departureDate}${data.tripType === "round" ? `&returnDate=${data.schedule.returnDate}` : ""}&adults=${data.passengers.adults}${data.passengers.children > 0 ? `&children=${data.passengers.children}` : ""}${data.passengers.infants > 0 ? `&infants=${data.passengers.infants}` : ""}${data.nonStop ? `&nonStop=${data.nonStop}` : ""}${data.cabin.cabin ? `&travelClass=${data.cabin.cabin}` : ""}&currencyCode=KRW`;
+    }
+
+    setSearchResult(data);
   };
 
   const handleDelete = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -31,13 +40,13 @@ const RecentSearchResult = ({
         <img src="/img/icon-close-black.svg" alt="닫기" />
         <i className="hidden">닫기</i>
       </button>
+
       {data.tripType === "oneway" ? (
         <Badge type="secondary">편도</Badge>
       ) : (
         <Badge type="secondary">왕복</Badge>
       )}
 
-      {/* <Badge type="secondary">편도</Badge> */}
       <div className="route">
         <p>
           {data.origin.value} ({data.origin.code})

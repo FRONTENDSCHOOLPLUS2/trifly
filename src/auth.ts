@@ -60,9 +60,7 @@ export const {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-
-  secret: process.env.AUTH_SECRET,
-
+  
   session: {
     strategy: "jwt",
     maxAge: 60 * 60 * 24,
