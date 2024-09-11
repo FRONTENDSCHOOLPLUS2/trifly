@@ -1,3 +1,4 @@
+import { Footer } from "@/components/layout/Footer/Footer";
 import Header from "@/components/layout/Header/Header";
 
 export default function PrimaryLayout({
@@ -9,6 +10,7 @@ export default function PrimaryLayout({
     <>
       <Header type="primary" />
       <main className="containerLayout primaryVer layout">{children}</main>
+      <Footer />
     </>
   );
 }
