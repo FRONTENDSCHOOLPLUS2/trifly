@@ -233,34 +233,51 @@ const TicketSearchBox = ({
       cabin,
     });
 
-    if (recentSearch.length < 3) {
-      setRecentSearch([
-        {
-          tripType,
-          nonStop,
-          origin,
-          destination,
-          schedule,
-          passengers,
-          cabin,
-        },
-        ...recentSearch,
-      ]);
-    } else {
+    const duplicateIndex = recentSearch.findIndex((item) => {
+      return (
+        tripType === item.tripType &&
+        JSON.stringify(origin) === JSON.stringify(item.origin) &&
+        JSON.stringify(destination) === JSON.stringify(item.destination) &&
+        JSON.stringify(schedule) === JSON.stringify(item.schedule) &&
+        JSON.stringify(passengers) === JSON.stringify(item.passengers) &&
+        JSON.stringify(cabin) === JSON.stringify(item.cabin)
+      );
+    });
+
+    if (duplicateIndex !== -1) {
       const newRecentSearch = [...recentSearch];
-      newRecentSearch.pop();
-      setRecentSearch([
-        {
-          tripType,
-          nonStop,
-          origin,
-          destination,
-          schedule,
-          passengers,
-          cabin,
-        },
-        ...newRecentSearch,
-      ]);
+      const [duplicateSearch] = newRecentSearch.splice(duplicateIndex, 1); // 중복된 항목 제거
+      setRecentSearch([duplicateSearch, ...newRecentSearch]);
+    } else {
+      if (recentSearch.length < 3) {
+        setRecentSearch([
+          {
+            tripType,
+            nonStop,
+            origin,
+            destination,
+            schedule,
+            passengers,
+            cabin,
+          },
+          ...recentSearch,
+        ]);
+      } else {
+        const newRecentSearch = [...recentSearch];
+        newRecentSearch.pop();
+        setRecentSearch([
+          {
+            tripType,
+            nonStop,
+            origin,
+            destination,
+            schedule,
+            passengers,
+            cabin,
+          },
+          ...newRecentSearch,
+        ]);
+      }
     }
   };
 
