@@ -61,8 +61,6 @@ export const {
     }),
   ],
 
-  secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
-
   session: {
     strategy: "jwt",
     maxAge: 60 * 60 * 24,
