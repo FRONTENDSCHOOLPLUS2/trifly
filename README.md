@@ -685,7 +685,7 @@ const applyFilters = () => {
             <img alt="" src="https://github.com/user-attachments/assets/1f62e3c2-0deb-420d-91a4-e73f15ec7e78" width="100%" />
           </td>
           <td width="50%">
-            <img alt="" src="https://github.com/user-attachments/assets/1f62e3c2-0deb-420d-91a4-e73f15ec7e78" width="100%" />
+            <img alt="" src="https://github.com/user-attachments/assets/db9e8786-392a-4ff3-a583-e7fbf1fd05f6" width="100%" />
           </td>
         </tr>
     </tbody>
