@@ -1,10 +1,10 @@
 "use client";
 
-import { loginTypeState } from "@/atoms/atoms";
+import { loginTypeState, modalState } from "@/atoms/atoms";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 const Logout = ({
   type,
@@ -14,9 +14,13 @@ const Logout = ({
   loginType: "email" | "kakao" | "google";
 }) => {
   const [loginTypeRecoil, setLoginTypeRecoil] = useRecoilState(loginTypeState);
+  const setModal = useSetRecoilState(modalState);
+
   const handleSignOut = async () => {
     try {
-      await signOut({ redirect: true, callbackUrl: "/" });
+      setTimeout(async () => {
+        await signOut({ redirect: true, callbackUrl: "/" });
+      }, 500);
     } catch (error) {
       console.error("Sign out error:", error);
     }
@@ -30,7 +34,16 @@ const Logout = ({
     <button
       className="logout img-box"
       type="button"
-      onClick={() => handleSignOut()}
+      onClick={() =>
+        setModal({
+          isOpen: true,
+          closeButton: true,
+          content: "로그아웃 하시겠습니까?",
+          buttonNum: 2,
+          handleConfirm: () => handleSignOut(),
+          handleCancel: () => {},
+        })
+      }
     >
       <Image
         src={`/img/icon-logout-${type === "default" ? "black" : "white"}.svg`}
