@@ -9,7 +9,7 @@ import { countries } from "@/lib/countries";
 import { AirportData, CodeState, IMPData, Purchaser } from "@/types";
 import { User } from "next-auth";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { BaseSyntheticEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
 
@@ -97,7 +97,28 @@ const PaymentForm = ({
     );
   };
 
-  const handleForm = (formData: PaymentData) => {
+  const handleCreateOrder = async (
+    formData: PaymentData,
+    finalPrice: number,
+    image: string,
+  ) => {
+    resetSearchResultData();
+    const result = await orderAction(
+      formData,
+      itineraries,
+      price,
+      finalPrice,
+      image,
+      reservationId,
+    );
+  };
+
+  const handleForm = (
+    formData: PaymentData,
+    e: BaseSyntheticEvent<object> | undefined,
+  ) => {
+    const submitButtonText = (e!.nativeEvent as HTMLFormElement).submitter
+      .innerText;
     let totalNum = 0;
     passengers.forEach((item) => {
       totalNum += item.length;
@@ -110,68 +131,73 @@ const PaymentForm = ({
         .iataCode;
     const image = code[arrival].img;
 
-    // 결제
-    const { IMP } = window;
-    IMP.init(process.env.NEXT_PUBLIC_MERCHANT_CODE as string);
-    IMP.request_pay(
-      {
-        pg: "kcp",
-        pay_method: "card",
-        merchant_uid:
-          new Date().getTime() + Math.floor(Math.random() * 1000000),
-        name: "항공권 구매",
-        amount: finalPrice,
-        buyer_name: formData.purchaser.name,
-        buyer_tel: `${formData.purchaser.phone1}-${formData.purchaser.phone2}-${formData.purchaser.phone3}`,
-        buyer_email: formData.purchaser.email,
-      },
+    if (submitButtonText === "결제하기") {
+      const { IMP } = window;
+      IMP.init(process.env.NEXT_PUBLIC_MERCHANT_CODE as string);
+      IMP.request_pay(
+        {
+          pg: "kcp",
+          pay_method: "card",
+          merchant_uid:
+            new Date().getTime() + Math.floor(Math.random() * 1000000),
+          name: "항공권 구매",
+          amount: finalPrice,
+          buyer_name: formData.purchaser.name,
+          buyer_tel: `${formData.purchaser.phone1}-${formData.purchaser.phone2}-${formData.purchaser.phone3}`,
+          buyer_email: formData.purchaser.email,
+        },
 
-      async (res: IMPData) => {
-        try {
-          if (res.success) {
-            // 결제 성공 후 주문 api 통신
-            resetSearchResultData();
-            const result = await orderAction(
-              formData,
-              itineraries,
-              price,
-              finalPrice,
-              image,
-              reservationId,
-            );
+        async (res: IMPData) => {
+          try {
+            if (res.success) {
+              // 결제 성공 후 주문 api 통신
+              handleCreateOrder(formData, finalPrice, image);
+              setModal({
+                isOpen: true,
+                title: "안내",
+                content:
+                  "항공권 구매가 완료되었습니다. \n좌석 선택 화면으로 이동합니다.",
+                buttonNum: 1,
+                handleConfirm: () =>
+                  router.push(`/order/seat-map/${reservationId}`),
+                handleCancel: () => {},
+              });
+            } else {
+              setModal({
+                isOpen: true,
+                title: "안내",
+                content: "결제를 취소하셨습니다.",
+                buttonNum: 1,
+                handleConfirm: () => {},
+                handleCancel: () => {},
+              });
+            }
+          } catch {
             setModal({
               isOpen: true,
               title: "안내",
               content:
-                "항공권 구매가 완료되었습니다. \n좌석 선택 화면으로 이동합니다.",
-              buttonNum: 1,
-              handleConfirm: () =>
-                router.push(`/order/seat-map/${reservationId}`),
-              handleCancel: () => {},
-            });
-          } else {
-            setModal({
-              isOpen: true,
-              title: "안내",
-              content: "결제를 취소하셨습니다.",
+                "일시적인 오류가 발생했습니다. \n잠시 후 다시 시도해주세요.",
               buttonNum: 1,
               handleConfirm: () => {},
               handleCancel: () => {},
             });
           }
-        } catch {
-          setModal({
-            isOpen: true,
-            title: "안내",
-            content:
-              "일시적인 오류가 발생했습니다. \n잠시 후 다시 시도해주세요.",
-            buttonNum: 1,
-            handleConfirm: () => {},
-            handleCancel: () => {},
-          });
-        }
-      },
-    );
+        },
+      );
+    } else {
+      // 테스트 결제 스킵
+      handleCreateOrder(formData, finalPrice, image);
+      setModal({
+        isOpen: true,
+        closeButton: false,
+        title: "안내",
+        content: "결제를 스킵하였습니다. \n좌석 선택 화면으로 이동합니다.",
+        buttonNum: 1,
+        handleConfirm: () => router.push(`/order/seat-map/${reservationId}`),
+        handleCancel: () => {},
+      });
+    }
   };
 
   return (
@@ -474,7 +500,7 @@ const PaymentForm = ({
                           type="radio"
                           value="M"
                           className="hidden"
-                          checked={idx === 2 ? true : false}
+                          checked={idx === 2}
                           {...register(`passengers.${key}.gender`, {
                             required: "성별을 선택하세요.",
                           })}
@@ -486,7 +512,7 @@ const PaymentForm = ({
                           id={`passengers.${key}.genderF`}
                           type="radio"
                           value="F"
-                          checked={idx === 2 ? false : true}
+                          checked={idx !== 2}
                           className="hidden"
                           {...register(`passengers.${key}.gender`, {
                             required: "성별을 선택하세요.",
@@ -746,14 +772,17 @@ const PaymentForm = ({
       </div>
 
       <div className="btn-box">
-        <Submit size="full">결제</Submit>
-        <div className="info-box">
-          <ul>
-            <li>
-              <strong>테스트 결제</strong>이므로 실제로 결제되지 않습니다.
-            </li>
-          </ul>
-        </div>
+        <Submit size="full">결제하기</Submit>
+        <Submit size="full" bgColor="primary30">
+          결제 건너뛰기
+        </Submit>
+      </div>
+      <div className="info-box">
+        <ul>
+          <li>
+            <strong>테스트 결제</strong>이므로 실제로 결제되지 않습니다.
+          </li>
+        </ul>
       </div>
     </form>
   );
