@@ -9,18 +9,16 @@ interface DataType {
 
 const useAllChecked = (
   data: DataType[],
-  setData: Dispatch<SetStateAction<DataType[]>>
+  setData: Dispatch<SetStateAction<DataType[]>>,
 ) => {
   const setCheck = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
 
     if (name === "allChk") {
-      setData(data.map((item) => ({ ...item, checked: checked })));
+      setData(data.map((item) => ({ ...item, checked })));
     } else {
       setData(
-        data.map((item) =>
-          item.name === name ? { ...item, checked: checked } : item
-        )
+        data.map((item) => (item.name === name ? { ...item, checked } : item)),
       );
     }
   };
