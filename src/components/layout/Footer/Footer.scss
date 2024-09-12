@@ -51,7 +51,7 @@ img {
       order: 1;
     }
 
-    img {
+    img-box {
       width: 8rem;
       padding-bottom: 2rem;
     }
@@ -59,7 +59,7 @@ img {
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  img {
+  img-box {
     width: 8rem;
     padding-bottom: 2rem;
   }
