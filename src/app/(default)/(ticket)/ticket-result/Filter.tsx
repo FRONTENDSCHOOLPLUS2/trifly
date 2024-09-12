@@ -601,7 +601,7 @@ const Filter = ({
       <Accordion type="small">
         <AccordionItem eventKey={1}>
           <AccordionHeader>
-            <p className="filter-title">가격대</p>
+            <p className="filter-title">가격대 (탑승객 전체)</p>
           </AccordionHeader>
           <AccordionBody>
             <div className="filter-contents maxPrice">
