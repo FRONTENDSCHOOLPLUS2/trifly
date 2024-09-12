@@ -6,6 +6,8 @@ export default async function middleware(request: NextRequest) {
 
   if (!session?.user)
     return NextResponse.redirect(`${request.nextUrl.origin}/login`);
+
+  return null;
 }
 
 export const config = {
