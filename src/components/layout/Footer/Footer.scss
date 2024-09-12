@@ -59,10 +59,8 @@ img {
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .footer-infobox {
-    img {
-      width: 8rem;
-      padding-bottom: 2rem;
-    }
+  img {
+    width: 8rem;
+    padding-bottom: 2rem;
   }
 }
