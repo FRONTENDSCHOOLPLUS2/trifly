@@ -1,25 +1,15 @@
 "use client";
 
-import { searchResultState } from "@/atoms/atoms";
+import { FilterProps, filterState, searchResultState } from "@/atoms/atoms";
 import Button from "@/components/Button/Button";
 import { AirlineData, CodeState, OffersSearchData } from "@/types";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import Filter from "./Filter";
 import Sorting from "./Sorting";
 import TicketResultList from "./TicketResultList";
-import { useSearchParams } from "next/navigation";
-
-export interface IFilterProps {
-  nonStop?: boolean;
-  originDepTime?: number[];
-  originArrTime?: number[];
-  returnDepTime?: number[];
-  returnArrTime?: number[];
-  airline?: string[];
-  maxPrice?: number;
-}
 
 const Result = ({
   user,
@@ -34,10 +24,15 @@ const Result = ({
 }) => {
   const searchResult = useRecoilValue(searchResultState);
   const [filteredData, setFilteredData] = useState(data);
-  const [filters, setFilters] = useState<IFilterProps>();
+  // const [filters, setFilters] = useState<IFilterProps>();
+  const [filters, setFilters] = useRecoilState(filterState);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const searchParams = useSearchParams();
   const nonStop = searchParams.get("nonStop") || "";
+
+  useEffect(() => {
+    console.log(filters);
+  }, []);
 
   useEffect(() => {
     setFilteredData(data);
@@ -68,9 +63,25 @@ const Result = ({
     prices.push(Number(item.price.grandTotal));
   });
 
-  const handleFilterChange = useCallback((newFilters: IFilterProps) => {
+  const handleFilterChange = useCallback((newFilters: FilterProps) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
+      // 새로운 배열을 만드는 방식으로 업데이트
+      // airline: newFilters.airline
+      //   ? [...newFilters.airline]
+      //   : prevFilters.airline,
+      // originArrTime: newFilters.originArrTime
+      //   ? [...newFilters.originArrTime]
+      //   : prevFilters.originArrTime,
+      // originDepTime: newFilters.originDepTime
+      //   ? [...newFilters.originDepTime]
+      //   : prevFilters.originDepTime,
+      // returnArrTime: newFilters.returnArrTime
+      //   ? [...newFilters.returnArrTime]
+      //   : prevFilters.returnArrTime,
+      // returnDepTime: newFilters.returnDepTime
+      //   ? [...newFilters.returnDepTime]
+      //   : prevFilters.returnDepTime,
       ...newFilters,
     }));
   }, []);
@@ -375,8 +386,9 @@ const Result = ({
               airline={airline}
               carrierCodes={carrierCodes}
               tripType={returnDate ? "round" : "oneway"}
-              nonStop={nonStop ? true : false}
+              nonStop={!!nonStop}
               prices={prices}
+              filters={filters}
               handleFilterChange={handleFilterChange}
             />
           </div>

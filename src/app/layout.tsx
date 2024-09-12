@@ -1,12 +1,10 @@
-import "@/styles/globals.scss";
-import "@/styles/variables.scss";
-import "@/styles/common.scss";
-import "@/styles/responsive.scss";
-
-import type { Metadata } from "next";
-import { Noto_Sans_KR, Roboto, Do_Hyeon } from "next/font/google";
 import RecoilRootWrapper from "@/RecoilWrapper";
-import { Footer } from "@/components/layout/Footer/Footer";
+import "@/styles/common.scss";
+import "@/styles/globals.scss";
+import "@/styles/responsive.scss";
+import "@/styles/variables.scss";
+import type { Metadata } from "next";
+import { Do_Hyeon, Noto_Sans_KR, Roboto } from "next/font/google";
 
 const roboto = Roboto({
   display: "swap",

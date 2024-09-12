@@ -16,6 +16,16 @@ interface ModalProps {
   handleCancel?: () => void;
 }
 
+export interface FilterProps {
+  nonStop?: boolean;
+  originDepTime?: number[];
+  originArrTime?: number[];
+  returnDepTime?: number[];
+  returnArrTime?: number[];
+  airline?: string[];
+  maxPrice?: number;
+}
+
 export interface OrderProps
   extends Pick<OrderData, "totalPrice" | "itineraries" | "price"> {
   departureDate: string;
@@ -130,6 +140,12 @@ export const recentSearchState = atom<SearchResultProps[]>({
   key: "recentSearchState",
   default: [],
   effects_UNSTABLE: [localPersistAtom],
+});
+
+export const filterState = atom<FilterProps>({
+  key: "filterState",
+  default: {},
+  effects_UNSTABLE: [sessionPersistAtom],
 });
 
 export const orderState = atom<OrderProps>({
