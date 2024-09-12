@@ -21,7 +21,9 @@ const OrdersItem = ({ item }: { item: OrderItem }) => {
       <td className="reservation-number">
         <h3>{item.reservationId.substring(0, 6)}</h3>
       </td>
-      <td className="reservation-date">{item.createdAt.substring(0, 10)}</td>
+      <td className="reservation-date">
+        {item.createdAt.substring(0, 10).replaceAll(".", "-")}
+      </td>
       <td className="departure">
         {item.itineraries[0].segments[0].departure.iataCode}
       </td>
