@@ -59,7 +59,7 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
             : duration[0].split("M")[0];
 
         return (
-          <article key={idx}>
+          <article key={idx === 0 ? "가는편" : "오는편"}>
             <div className="detail-title">
               <h4>
                 <Badge>{idx === 0 ? "가는편" : "오는편"}</Badge>

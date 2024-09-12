@@ -422,6 +422,10 @@
         font-size: var(--title-medium);
       }
     }
+    .btn-box {
+      display: flex;
+      gap: 1rem;
+    }
 
     // 예약자 정보
     .reservation {
@@ -578,10 +582,6 @@
   }
 
   @media (max-width: 1023px) {
-    .progress {
-      top: calc(var(--header-height) * -1.8);
-    }
-
     .flexVer {
       flex-direction: column;
 
