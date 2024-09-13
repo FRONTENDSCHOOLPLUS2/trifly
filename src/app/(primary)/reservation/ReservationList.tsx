@@ -1,6 +1,7 @@
 import { FetchOrder } from "@/lib/fetchOrder";
 import OrdersItem from "./OrdersItem";
 import "./reservation.scss";
+import Pagination from "./Pagination";
 
 const ReservationList = async () => {
   const data = await FetchOrder();
@@ -29,6 +30,7 @@ const ReservationList = async () => {
           ))}
         </table>
       </section>
+      {/* <Pagination /> */}
     </>
   );
 };

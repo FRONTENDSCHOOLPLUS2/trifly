@@ -1,23 +1,38 @@
 "use client";
-import Link from "next/link";
-import { useParams } from "next/navigation";
-import React from "react";
 
-const Pagination = () => {
-  const params = useParams();
-  console.log(params);
+import "./pagination.scss";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+
+interface PaginationPropType {
+  page: number;
+  totalPages: number;
+}
+
+const Pagination: React.FC<PaginationPropType> = ({ page, totalPages }) => {
+  const searchParams = useSearchParams();
+  const pageList = [];
+
+  for (let i = 1; i <= totalPages; i++) {
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    newSearchParams.set("page", String(i));
+    const search = newSearchParams.toString();
+
+    pageList.push(
+      <li key={i} className="pagination-number">
+        <Link
+          href={`/reservation?${search}`}
+          className={page === i ? "active" : ""}
+        >
+          {i}
+        </Link>
+      </li>,
+    );
+  }
+
   return (
-    <div className="pagination-number">
-      <ul>
-        <li>
-          <Link href={`/reservation?page=1`}>1</Link>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <Link href={`/reservation?page=2`}>2</Link>
-        </li>
-      </ul>
+    <div className="pagination">
+      <ul>{pageList}</ul>
     </div>
   );
 };

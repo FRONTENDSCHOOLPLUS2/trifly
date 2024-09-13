@@ -1,11 +1,11 @@
 import Badge from "@/components/Badge/Badge";
 import "./reservationDetail.scss";
-import FetchOrderId from "@/lib/fetchOrder";
 
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import { AirportData } from "@/types";
 import TicketLink from "./TicketLink";
 import Journey from "./Journey";
+import { FetchOrderId } from "@/lib/fetchOrder";
 
 const reservationId = async ({
   params,
