@@ -32,9 +32,15 @@
     border-bottom: 1px solid var(--color-gray-30);
     color: var(--color-gray-100);
     font-size: var(--title-medium);
+    max-height: 16rem;
+    overflow: auto;
+    word-break: keep-all;
 
     &.act {
       display: block;
+    }
+    pre {
+      white-space: pre-line;
     }
   }
 

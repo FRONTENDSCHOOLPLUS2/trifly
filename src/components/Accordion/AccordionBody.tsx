@@ -13,7 +13,7 @@ const AccordionBody = ({ children }: Props) => {
 
   return (
     <div className={`accordion-body ${activeKey === eventKey ? "act" : ""}`}>
-      {children}
+      <pre>{children}</pre>
     </div>
   );
 };
