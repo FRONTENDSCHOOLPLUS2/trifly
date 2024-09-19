@@ -1,8 +1,5 @@
 import React from "react";
-import { FetchOrderList } from "@/lib/fetchOrder";
-import OrdersItem from "./OrdersItem";
 import "./reservation.scss";
-import Pagination from "./Pagination";
 import Search from "./Search";
 import ReservationList from "./ReservationList";
 
