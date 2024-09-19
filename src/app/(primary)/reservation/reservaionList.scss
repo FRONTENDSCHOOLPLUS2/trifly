@@ -1,0 +1,14 @@
+.reservation-header {
+  display: flex;
+  justify-content: space-between;
+
+  .search-cover {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+
+    .input-cover {
+      width: 23rem;
+    }
+  }
+}

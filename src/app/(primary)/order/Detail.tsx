@@ -59,7 +59,7 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
             : duration[0].split("M")[0];
 
         return (
-          <article key={idx}>
+          <article key={idx === 0 ? "가는편" : "오는편"}>
             <div className="detail-title">
               <h4>
                 <Badge>{idx === 0 ? "가는편" : "오는편"}</Badge>
@@ -79,69 +79,103 @@ const Detail = ({ code }: { code: CodeState<AirportData> }) => {
                 const segmentDetail = fareDetails[segment.id];
                 const departure = segment.departure.at.split("T")[1];
                 const arrival = segment.arrival.at.split("T")[1];
+                const nextSegment = item.segments[segmentIdx + 1];
 
                 return (
-                  <div key={segmentIdx} className="detail-segment">
-                    <div className="segment left-box">
-                      <span className="departure">{departure.slice(0, 5)}</span>
-                      <div className="img-box">
-                        <Image
-                          src={`https://flights.myrealtrip.com/air/wfw/imgs/mbl/logo/air/${segment.carrierCode}.png`}
-                          alt={segment.carrierCode}
-                          width={0}
-                          height={0}
-                          sizes="100%"
-                        />
+                  <>
+                    <div
+                      key={segmentIdx}
+                      className={`detail-segment ${
+                        (nextSegment &&
+                          segment.arrival.iataCode !==
+                            nextSegment?.departure.iataCode) ||
+                        segment.arrival.terminal !==
+                          nextSegment?.departure.terminal
+                          ? "infoOtherStop"
+                          : ""
+                      }`}
+                    >
+                      <div className="segment left-box">
+                        <span className="departure">
+                          {departure.slice(0, 5)}
+                        </span>
+                        <div className="img-box">
+                          <Image
+                            src={`https://flights.myrealtrip.com/air/wfw/imgs/mbl/logo/air/${segment.carrierCode}.png`}
+                            alt={segment.carrierCode}
+                            width={0}
+                            height={0}
+                            sizes="100%"
+                          />
+                        </div>
+                        <span className="arrival">{arrival.slice(0, 5)}</span>
                       </div>
-                      <span className="arrival">{arrival.slice(0, 5)}</span>
-                    </div>
-                    <div className="segment right-box">
-                      <ul className="departure">
-                        <li className="iatacode">
-                          {segment.departure.iataCode}
-                        </li>
-                        <li>
-                          {code[segment.departure.iataCode]?.nameKor || null}
-                        </li>
-                        {segment.departure.terminal && (
-                          <li>T{segment.departure.terminal}</li>
-                        )}
-                      </ul>
-                      <div className="tag-box">
-                        {segment.operating &&
-                          segment.operating.carrierCode !==
-                            segment.carrierCode && (
-                            <span className="operating">
-                              실제탑승:{" "}
-                              {code[segment.operating.carrierCode].value ||
-                                segment.operating.carrierCode}
+                      <div className="segment right-box">
+                        <ul className="departure">
+                          <li className="iatacode">
+                            {segment.departure.iataCode}
+                          </li>
+                          <li>
+                            {code[segment.departure.iataCode]?.nameKor || null}
+                          </li>
+                          {segment.departure.terminal && (
+                            <li>T{segment.departure.terminal}</li>
+                          )}
+                        </ul>
+                        <div className="tag-box">
+                          {segment.operating &&
+                            segment.operating.carrierCode !==
+                              segment.carrierCode && (
+                              <span className="warning">
+                                실제탑승:{" "}
+                                {code[segment.operating.carrierCode]?.value ||
+                                  segment.operating.carrierCode}
+                              </span>
+                            )}
+                          <span className="aircraft">
+                            {code[segment.aircraft.code]?.nameKor ||
+                              segment.aircraft.code}
+                          </span>
+                          {segmentDetail.includedCheckedBags.weight! > 0 && (
+                            <span className="bags">
+                              {`${segmentDetail.includedCheckedBags.weight}Kg`}
                             </span>
                           )}
-                        <span className="aircraft">
-                          {code[segment.aircraft.code]?.nameKor ||
-                            segment.aircraft.code}
-                        </span>
-                        {segmentDetail.includedCheckedBags.weight! > 0 && (
-                          <span className="bags">
-                            {`${segmentDetail.includedCheckedBags.weight}Kg`}
-                          </span>
-                        )}
 
-                        <span className="class">
-                          {cabinKor[segmentDetail.cabin]}
-                        </span>
-                      </div>
-                      <ul className="arrival">
-                        <li className="iatacode">{segment.arrival.iataCode}</li>
-                        <li>
-                          {code[segment.arrival.iataCode]?.nameKor || null}
-                        </li>
-                        {segment.arrival.terminal && (
-                          <li>T{segment.arrival.terminal}</li>
+                          <span className="class">
+                            {cabinKor[segmentDetail.cabin]}
+                          </span>
+                        </div>
+                        <ul className="arrival">
+                          <li className="iatacode">
+                            {segment.arrival.iataCode}
+                          </li>
+                          <li>
+                            {code[segment.arrival.iataCode]?.nameKor || null}
+                          </li>
+                          {segment.arrival.terminal && (
+                            <li>T{segment.arrival.terminal}</li>
+                          )}
+                        </ul>
+
+                        {nextSegment && (
+                          <div className="infoOtherStop tag-box">
+                            {segment.arrival.iataCode !==
+                            nextSegment.departure.iataCode ? (
+                              <span className="warning">
+                                다른 공항으로 이동하여 탑승
+                              </span>
+                            ) : segment.arrival.terminal !==
+                              nextSegment.departure.terminal ? (
+                              <span className="warning">
+                                다른 터미널로 이동하여 탑승
+                              </span>
+                            ) : null}
+                          </div>
                         )}
-                      </ul>
+                      </div>
                     </div>
-                  </div>
+                  </>
                 );
               })}
             </div>

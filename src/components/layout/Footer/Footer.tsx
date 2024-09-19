@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "./Footer.scss";
+import Image from "next/image";
 
 export const Footer = () => {
   return (
@@ -13,7 +14,15 @@ export const Footer = () => {
             </Link>
             <Link href={"#"}>취소 및 환불 정책</Link>
           </div>
-          <img src="/img/logo-text-gray.svg" alt="로고" />
+          <div className="img-box">
+            <Image
+              src="/img/logo-text-gray.svg"
+              alt="로고"
+              width={0}
+              height={0}
+              sizes="100%"
+            />
+          </div>
         </div>
         <div className="footer-content">
           <p>

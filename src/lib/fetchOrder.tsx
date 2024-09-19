@@ -3,6 +3,7 @@ import { MultiItem, OrderItem, OrderItineraries } from "@/types";
 
 const API = process.env.NEXT_PUBLIC_MARKET_API_SERVER;
 const CLIENT_ID = process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID;
+const LIMIT = process.env.NEXT_PUBLIC_PAGE_LIMIT;
 
 export const FetchOrder = async (): Promise<MultiItem<OrderItem>> => {
   const session = await auth();
@@ -21,7 +22,7 @@ export const FetchOrder = async (): Promise<MultiItem<OrderItem>> => {
   return data;
 };
 
-const FetchOrderId = async (_id: string): Promise<OrderItem> => {
+export const FetchOrderId = async (_id: string): Promise<OrderItem> => {
   const session = await auth();
   const token = session?.accessToken as string;
 
@@ -38,4 +39,30 @@ const FetchOrderId = async (_id: string): Promise<OrderItem> => {
   return data.item;
 };
 
-export default FetchOrderId;
+export const FetchOrderList = async (
+  page?: string,
+  keyword?: string,
+): Promise<MultiItem<OrderItem>> => {
+  const params = new URLSearchParams();
+  const session = await auth();
+  const token = session?.accessToken as string;
+
+  page && params.set("page", page);
+  keyword && params.set("keyword", keyword);
+  LIMIT && params.set("limit", LIMIT);
+  params.toString();
+  // console.log(params);
+
+  const url = `${API}/orders?${params.toString()}`;
+
+  const res = await fetch(url, {
+    method: "GET",
+    headers: {
+      "client-id": CLIENT_ID,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const resJson = await res.json();
+
+  return resJson;
+};

@@ -1,5 +1,6 @@
 "use client";
 
+import { FilterProps } from "@/atoms/atoms";
 import Accordion from "@/components/Accordion/Accordion";
 import AccordionBody from "@/components/Accordion/AccordionBody";
 import AccordionHeader from "@/components/Accordion/AccordionHeader";
@@ -9,7 +10,6 @@ import useAllChecked from "@/hook/useAllChecked";
 import { AirlineData, CodeState } from "@/types";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import "./Filter.scss";
-import { IFilterProps } from "./Result";
 
 const Filter = ({
   airline,
@@ -17,6 +17,7 @@ const Filter = ({
   tripType,
   nonStop,
   prices,
+  filters,
   handleFilterChange,
 }: {
   airline: CodeState<AirlineData>;
@@ -24,23 +25,40 @@ const Filter = ({
   tripType: string;
   nonStop: boolean;
   prices: number[];
-  handleFilterChange: (filter: IFilterProps) => void;
+  filters: FilterProps;
+  handleFilterChange: (filter: FilterProps) => void;
 }) => {
   const [isNonStop, setIsNonStop] = useState(false);
-  const [originDepTime, setOriginDepTime] = useState<number[]>([6, 12, 18, 24]);
-  const [originArrTime, setOriginArrTime] = useState<number[]>([6, 12, 18, 24]);
-  const [returnDepTime, setReturnDepTime] = useState<number[]>([6, 12, 18, 24]);
-  const [returnArrTime, setReturnArrTime] = useState<number[]>([6, 12, 18, 24]);
-  const [maxPrice, setMaxPrice] = useState(Math.max(...prices));
-  const [selectedAirlines, setSelectedAirlines] =
-    useState<string[]>(carrierCodes);
+  const [originDepTime, setOriginDepTime] = useState<number[]>(
+    filters.originDepTime || [6, 12, 18, 24],
+  );
+  const [originArrTime, setOriginArrTime] = useState<number[]>(
+    filters.originArrTime || [6, 12, 18, 24],
+  );
+  const [returnDepTime, setReturnDepTime] = useState<number[]>(
+    filters.returnDepTime || [6, 12, 18, 24],
+  );
+  const [returnArrTime, setReturnArrTime] = useState<number[]>(
+    filters.returnArrTime || [6, 12, 18, 24],
+  );
+  const [maxPrice, setMaxPrice] = useState(0);
+  const [selectedAirlines, setSelectedAirlines] = useState<string[]>(
+    filters.airline || carrierCodes,
+  );
   const airlineRef = useRef(null);
+
+  useEffect(() => {
+    if (prices.length > 0) {
+      const initialPrice = filters.maxPrice || Math.max(...prices);
+      setMaxPrice(initialPrice);
+    }
+  }, [prices, filters.maxPrice]);
 
   /* -------------------------------------------------------------------------- */
   /*                          경유 선택 시 직항 경유 변경 처리                         */
   /* -------------------------------------------------------------------------- */
   useEffect(() => {
-    setIsNonStop(nonStop);
+    setIsNonStop(filters.nonStop || false);
   }, []);
 
   const handleNonStopChange = () => {
@@ -130,7 +148,6 @@ const Filter = ({
   /* -------------------------------------------------------------------------- */
   /*                                   가격 설정                                  */
   /* -------------------------------------------------------------------------- */
-
   const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, style, max } = e.target;
     setMaxPrice(Number(value));
@@ -601,12 +618,12 @@ const Filter = ({
       <Accordion type="small">
         <AccordionItem eventKey={1}>
           <AccordionHeader>
-            <p className="filter-title">가격대</p>
+            <p className="filter-title">가격대 (탑승객 전체)</p>
           </AccordionHeader>
           <AccordionBody>
             <div className="filter-contents maxPrice">
               <label htmlFor="max-price">
-                {`${maxPrice.toLocaleString()}원 미만`}
+                {`${maxPrice?.toLocaleString()}원 미만`}
               </label>
               <input
                 type="range"

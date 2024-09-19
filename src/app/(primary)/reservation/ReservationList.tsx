@@ -1,31 +1,14 @@
-import React from "react";
-import Button from "@/components/Button/Button";
-import { FetchOrderList } from "@/lib/fetchOrder";
+import { FetchOrder } from "@/lib/fetchOrder";
 import OrdersItem from "./OrdersItem";
 import "./reservation.scss";
 import Pagination from "./Pagination";
 
-const PageContainer = async ({
-  searchParams: { page },
-}: {
-  searchParams: { page: string };
-}) => {
-  const data = await FetchOrderList(page);
-
+const ReservationList = async () => {
+  const data = await FetchOrder();
   const reservationData = data.item;
 
   return (
-    <div>
-      <div className="reservation-header">
-        <h2 className="title">예약내역</h2>
-        <div className="search-cover">
-          <div className="input-cover">
-            <input type="text" name="reservation-search" id="search" />
-          </div>
-          <Button>검색</Button>
-        </div>
-      </div>
-
+    <>
       <section>
         <table className="reservation-table">
           <caption className="hidden">예약 내역 리스트</caption>
@@ -47,9 +30,9 @@ const PageContainer = async ({
           ))}
         </table>
       </section>
-      <Pagination {...data.pagination!} />
-    </div>
+      {/* <Pagination /> */}
+    </>
   );
 };
 
-export default PageContainer;
+export default ReservationList;

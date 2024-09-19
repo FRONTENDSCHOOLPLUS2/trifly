@@ -83,7 +83,9 @@ const Journey = async ({
               <tbody>
                 <tr>
                   <td>{data.reservationId.substring(0, 6)}</td>
-                  <td>{data.createdAt.substring(0, 10)}</td>
+                  <td>
+                    {data.createdAt.substring(0, 10).replaceAll(".", "-")}
+                  </td>
                   <td>{item.segments[0].departure.at.substring(0, 10)}</td>
                 </tr>
               </tbody>

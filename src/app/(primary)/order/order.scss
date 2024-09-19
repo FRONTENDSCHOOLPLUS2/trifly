@@ -138,6 +138,10 @@
       display: flex;
       padding: var(--title-large);
 
+      &.infoOtherStop + .detail-segment {
+        margin-top: 3em;
+      }
+
       .segment {
         position: relative;
         display: flex;
@@ -209,39 +213,49 @@
             object-fit: scale-down;
           }
         }
+      }
+    }
 
-        .tag-box {
-          font-size: var(--title-small);
-          font-weight: normal;
-          display: flex;
-          flex-wrap: wrap;
-          gap: var(--title-min);
-          max-width: 32rem;
+    .tag-box {
+      font-size: var(--title-small);
+      font-weight: normal;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--title-min);
+      max-width: 32rem;
 
-          span {
-            background: var(--color-gray-30) url(./) no-repeat center left
-              var(--title-min) / auto var(--title-big);
-            border-radius: 1em;
-            padding: 0.6rem 1rem;
-            padding-left: 3rem;
+      span {
+        background: var(--color-gray-30) url(./) no-repeat center left
+          var(--title-min) / auto var(--title-big);
+        border-radius: 1em;
+        padding: 0.6rem 1rem;
+        padding-left: 3rem;
 
-            &.bags {
-              background-image: url(/img/icon-bags.svg);
-              background-position: center left calc(var(--title-small) - 1px);
-              letter-spacing: 0.06em;
-            }
-            &.class {
-              background-image: url(/img/icon-class.svg);
-            }
-            &.aircraft {
-              background-image: url(/img/icon-craft.svg);
-              letter-spacing: 0.02em;
-            }
-            &.operating {
-              background-image: url(/img/icon-warning-darkgray.svg);
-              background-color: var(--color-primary-30);
-            }
-          }
+        &.bags {
+          background-image: url(/img/icon-bags.svg);
+          background-position: center left calc(var(--title-small) - 1px);
+          letter-spacing: 0.06em;
+        }
+        &.class {
+          background-image: url(/img/icon-class.svg);
+        }
+        &.aircraft {
+          background-image: url(/img/icon-craft.svg);
+          letter-spacing: 0.02em;
+        }
+        &.warning {
+          background-image: url(/img/icon-warning-darkgray.svg);
+          background-color: var(--color-primary-30);
+        }
+      }
+
+      &.infoOtherStop {
+        position: absolute;
+        bottom: -2em;
+        transform: translateY(100%);
+
+        .warning {
+          background-image: url(/img/icon-warning-primary.svg);
         }
       }
     }
@@ -408,6 +422,10 @@
         font-size: var(--title-medium);
       }
     }
+    .btn-box {
+      display: flex;
+      gap: 1rem;
+    }
 
     // 예약자 정보
     .reservation {
@@ -564,10 +582,6 @@
   }
 
   @media (max-width: 1023px) {
-    .progress {
-      top: calc(var(--header-height) * -1.8);
-    }
-
     .flexVer {
       flex-direction: column;
 
