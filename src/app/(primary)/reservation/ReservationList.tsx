@@ -1,4 +1,4 @@
-import { FetchOrder, FetchOrderList } from "@/lib/fetchOrder";
+import { FetchOrderList } from "@/lib/fetchOrder";
 import OrdersItem from "./OrdersItem";
 import "./reservation.scss";
 import Pagination from "./Pagination";
