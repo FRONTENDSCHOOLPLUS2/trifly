@@ -1,6 +1,6 @@
 import Ticket from "@/components/Ticket/Ticket";
 import { fetchCodes } from "@/data/fetch/fetchCode";
-import FetchOrderId from "@/lib/fetchOrder";
+import { FetchOrderId } from "@/lib/fetchOrder";
 import { AirportData } from "@/types";
 import "@/app/(transparent)/footprint/footprint.scss";
 
