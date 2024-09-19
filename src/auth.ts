@@ -1,17 +1,18 @@
+import jwt, { JwtPayload } from "jsonwebtoken";
 import NextAuth, { CredentialsSignin, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import google from "next-auth/providers/google";
 import kakao from "next-auth/providers/kakao";
-import { OAuthUser, RefreshTokenRes, UserData } from "./types";
 import { loginOAuth, signupWithOAuth } from "./data/actions/authAction";
 import { fetchAccessToken } from "./data/fetch/fetchAccessToken";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import { OAuthUser, RefreshTokenRes, UserData } from "./types";
 
 const SERVER = process.env.NEXT_PUBLIC_MARKET_API_SERVER;
 const CLIENT_ID = process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID as string;
+const TOKEN_VALIDITY_PERIOD = 3600 * 1000;
 
 export const {
-  handlers,
+  handlers: { GET, POST },
   signIn,
   signOut,
   auth,
@@ -43,6 +44,7 @@ export const {
             loginType: "email",
             accessToken: user.token.accessToken,
             refreshToken: user.token.refreshToken,
+            accessTokenExpires: Date.now() + TOKEN_VALIDITY_PERIOD,
           };
           return userObject;
         }
@@ -60,7 +62,7 @@ export const {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  
+
   session: {
     strategy: "jwt",
     maxAge: 60 * 60 * 24,
@@ -69,17 +71,24 @@ export const {
   pages: { signIn: "/login" },
 
   callbacks: {
-    async signIn({ user, account, profile, credentials }) {
+    async signIn({ user, account, profile }) {
+      if (account?.provider === "credentials") return true;
+      if (!account?.providerAccountId) {
+        console.error("Provider account ID is missing");
+        return false;
+      }
+
+      let userInfo: UserData | null = null;
       switch (account?.provider) {
         case "credentials":
           console.log("id/pwd 로그인", user);
-          break;
+          return true;
+
         case "google":
         case "kakao":
           console.log("OAuth 로그인", user);
 
           // DB에서 id를 조회해서 있으면 로그인 처리를 없으면 자동 회원 가입 후 로그인 처리
-          let userInfo: UserData | null = null;
           try {
             // 자동 회원 가입
             const newUser: OAuthUser = {
@@ -98,13 +107,13 @@ export const {
             console.log("회원 가입", result);
 
             // 자동 로그인
-            const resData = await loginOAuth(account.providerAccountId);
-            if (resData.ok) {
-              userInfo = resData.item;
+            const loginRes = await loginOAuth(account.providerAccountId);
+            if (loginRes.ok) {
+              userInfo = loginRes.item;
               console.log("userInfo", userInfo);
             } else {
               // API 서버의 에러 메시지 처리
-              throw new Error(resData.message);
+              throw new Error(loginRes.message);
             }
           } catch (err) {
             console.error(err);
@@ -116,8 +125,11 @@ export const {
           user.loginType = userInfo.loginType;
           user.accessToken = userInfo.token!.accessToken;
           user.refreshToken = userInfo.token!.refreshToken;
+          user.accessTokenExpires = Date.now() + TOKEN_VALIDITY_PERIOD;
 
           break;
+        default:
+          return false;
       }
 
       return true;
@@ -132,33 +144,33 @@ export const {
         token.accessToken = user.accessToken;
         token.refreshToken = user.refreshToken;
         token.loginType = user.loginType;
+        token.accessTokenExpires = user.accessTokenExpires;
       }
 
-      // JWT 자체의 만료 시간 추출
-      const decodedToken = jwt.decode(token.accessToken) as JwtPayload | null;
-      const accessTokenExpires = decodedToken?.exp
-        ? decodedToken?.exp * 1000
-        : 0; // 밀리초 단위로 변환
+      // // JWT 자체의 만료 시간 추출
+      // const decodedToken = jwt.decode(token.accessToken) as JwtPayload | null;
+      // const accessTokenExpires = decodedToken?.exp
+      //   ? decodedToken!.exp * 1000
+      //   : 0; // 밀리초 단위로 변환
 
       // 토큰 만료 확인
-      const shouldRefreshToken = Date.now() > accessTokenExpires;
-      if (shouldRefreshToken) {
+      if (token.accessTokenExpires && Date.now() > token.accessTokenExpires) {
         try {
-          console.log("토큰 만료됨.", Date.now() + " > " + accessTokenExpires);
+          // console.log("토큰 만료됨.", Date.now() + " > " + accessTokenExpires);
           const res = await fetchAccessToken(token.refreshToken);
           if (res.ok) {
             const resJson: RefreshTokenRes = await res.json();
             return {
               ...token,
               accessToken: resJson.accessToken,
+              accessTokenExpires: Date.now() + TOKEN_VALIDITY_PERIOD,
             };
-          } else {
-            if (res.status === 401) {
-              console.log(
-                "리플래시 토큰 인증 실패. 로그인 페이지로 이동해야 함",
-                await res.json(),
-              );
-            }
+          }
+          if (res.status === 401) {
+            console.log(
+              "리플래시 토큰 인증 실패. 로그인 페이지로 이동해야 함",
+              await res.json(),
+            );
           }
         } catch (error) {
           if (error instanceof Error) {

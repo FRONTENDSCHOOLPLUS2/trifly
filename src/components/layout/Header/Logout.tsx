@@ -1,7 +1,8 @@
 "use client";
 
 import { loginTypeState, modalState } from "@/atoms/atoms";
-import { signOut } from "next-auth/react";
+import { signOut } from "@/auth";
+import { signoutAction } from "@/data/actions/signoutAction";
 import Image from "next/image";
 import { useEffect } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
@@ -16,15 +17,15 @@ const Logout = ({
   const [loginTypeRecoil, setLoginTypeRecoil] = useRecoilState(loginTypeState);
   const setModal = useSetRecoilState(modalState);
 
-  const handleSignOut = async () => {
-    try {
-      setTimeout(async () => {
-        await signOut({ redirect: true, callbackUrl: "/" });
-      }, 500);
-    } catch (error) {
-      console.error("Sign out error:", error);
-    }
-  };
+  // const handleSignOut = async () => {
+  //   try {
+  //     setTimeout(async () => {
+  //       await signOut({ redirect: true });
+  //     }, 500);
+  //   } catch (error) {
+  //     console.error("Sign out error:", error);
+  //   }
+  // };
 
   useEffect(() => {
     if (loginType !== loginTypeRecoil) setLoginTypeRecoil(loginType);
@@ -40,7 +41,7 @@ const Logout = ({
           closeButton: true,
           content: "로그아웃 하시겠습니까?",
           buttonNum: 2,
-          handleConfirm: () => handleSignOut(),
+          handleConfirm: () => signoutAction(),
           handleCancel: () => {},
         })
       }
