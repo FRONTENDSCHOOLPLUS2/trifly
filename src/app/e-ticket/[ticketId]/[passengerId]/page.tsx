@@ -1,8 +1,7 @@
-import FetchOrderId from "@/lib/fetchOrder";
-import React, { useRef } from "react";
 import "./e-ticket.scss";
 
 import { fetchCodes } from "@/data/fetch/fetchCode";
+import { FetchOrderId } from "@/lib/fetchOrder";
 import { AirportData } from "@/types";
 import TicketPrint from "../TicketPrint";
 
@@ -17,8 +16,6 @@ const page = async ({
     return idx;
   });
   const passengerIdNumber = params.passengerId;
-
-  // const passenger = data.passengers;
 
   return (
     <>

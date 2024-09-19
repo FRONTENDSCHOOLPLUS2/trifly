@@ -47,9 +47,18 @@ export const FetchOrderList = async (
   const session = await auth();
   const token = session?.accessToken as string;
 
-  page && params.set("page", page);
-  keyword && params.set("keyword", keyword);
-  LIMIT && params.set("limit", LIMIT);
+  if (page) {
+    params.set("page", page);
+  }
+
+  if (keyword) {
+    params.set("keyword", keyword);
+  }
+
+  if (LIMIT) {
+    params.set("limit", LIMIT);
+  }
+
   params.toString();
   // console.log(params);
 

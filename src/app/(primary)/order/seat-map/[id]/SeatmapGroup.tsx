@@ -1,14 +1,14 @@
 "use client";
 
-import { AircraftData, CodeState, OrderItem, SeatMapData } from "@/types";
-import React, { useEffect, useState } from "react";
-import SeatmapGrid from "./SeatmapGrid";
-import Image from "next/image";
-import CompleteButton from "./CompleteButton";
-import seatmap from "@/lib/seatmap";
-import { useRouter } from "next/navigation";
-import { useSetRecoilState } from "recoil";
 import { modalState } from "@/atoms/atoms";
+import seatmap from "@/lib/seatmap";
+import { AircraftData, CodeState, OrderItem, SeatMapData } from "@/types";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useSetRecoilState } from "recoil";
+import CompleteButton from "./CompleteButton";
+import SeatmapGrid from "./SeatmapGrid";
 
 const SeatmapGroup = ({
   data,
@@ -40,7 +40,7 @@ const SeatmapGroup = ({
 
   // if (data.itineraries.length >= 2) {
   //   data.itineraries.map((item) => console.log);
-  //itineraries를 map을 돌면서 각 출발 도착에 대해 seatmap 띄우기
+  // itineraries를 map을 돌면서 각 출발 도착에 대해 seatmap 띄우기
   // data.itineraries[0]번째 seatmap -> 인원 수 만큼 좌석 선택 -> passengerLength에 따라 배열에 들어간 ''의 배열에 빈값이 없는지 확인 => 빈값 없다면 seatArr에 담기
   // -> Button 컴포넌트를 선택 완료가 아닌 data.itineraries[0]일때는 '다음 티켓 선택' -> data.itineraries[1] seatmap으로 이동
   // -> data.itineraries[0] 번째 일 때 Button 컴포넌트 선택 시 담은 좌석seatArr을 setSeatAllArr에 담기

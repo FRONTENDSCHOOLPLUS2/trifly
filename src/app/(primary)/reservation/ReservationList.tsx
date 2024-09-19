@@ -1,14 +1,27 @@
-import { FetchOrder } from "@/lib/fetchOrder";
+import { FetchOrderList } from "@/lib/fetchOrder";
 import OrdersItem from "./OrdersItem";
 import "./reservation.scss";
 import Pagination from "./Pagination";
 
-const ReservationList = async () => {
-  const data = await FetchOrder();
+const ReservationList = async ({
+  page,
+  keyword,
+}: {
+  page: string;
+  keyword: string;
+}) => {
+  const data = await FetchOrderList();
   const reservationData = data.item;
+  const filteredItems = keyword
+    ? reservationData.filter((item) =>
+        item.reservationId.substring(0, 6).includes(keyword),
+      )
+    : reservationData;
+
+  console.log("search@@@@@@@@", keyword);
 
   return (
-    <>
+    <div>
       <section>
         <table className="reservation-table">
           <caption className="hidden">예약 내역 리스트</caption>
@@ -24,14 +37,38 @@ const ReservationList = async () => {
               <th>총 금액</th>
             </tr>
           </thead>
-
-          {reservationData?.map((item) => (
-            <OrdersItem key={item._id} item={item} />
-          ))}
+          {filteredItems.length === 0 ? (
+            <tbody>
+              <tr>
+                <td colSpan={8} className="text-center">
+                  일치하는 예약번호가 없습니다
+                </td>
+              </tr>
+            </tbody>
+          ) : (
+            // 필터링된 데이터를 반복 렌더링
+            filteredItems.map((item) => (
+              <OrdersItem key={item._id} item={item} />
+            ))
+          )}
+          {/* {reservationData?.map((item) => (
+            <OrdersItem key={item._id} item={item} keyword={keyword} />
+          ))} */}
+          {/* {keyword ? (
+            <tbody>
+              <tr>
+                <td colSpan={8}>{keyword}</td>
+              </tr>
+            </tbody>
+          ) : (
+            reservationData?.map((item) => (
+              <OrdersItem key={item._id} item={item} keyword={keyword} />
+            ))
+          )} */}
         </table>
       </section>
-      {/* <Pagination /> */}
-    </>
+      <Pagination {...data.pagination!} />
+    </div>
   );
 };
 

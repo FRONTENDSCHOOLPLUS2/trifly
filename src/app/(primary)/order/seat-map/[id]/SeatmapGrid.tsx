@@ -36,8 +36,8 @@ const SeatmapGrid = ({
   // const [seatArr, setSeatArr] = useState<Array<[number, number] | string>>([]);
   const setModal = useSetRecoilState(modalState);
   // console.log("좌석", seatArr);
-  //cell number들이 담긴 배열로 수정하기
-  //class 생성을 막아주는 상태관리 만들기
+  // cell number들이 담긴 배열로 수정하기
+  // class 생성을 막아주는 상태관리 만들기
 
   // 1. clickedCells안에 좌표 말고 number 넘기기
   // 2. 넘긴 number들을 배열로 보내기
@@ -121,7 +121,7 @@ const SeatmapGrid = ({
 
     // 탑승객 수만큼 배열 "" 채우기
     if (passengerLength) {
-      for (let i = 0; i < passengerLength; i++) {
+      for (let i = 0; i < passengerLength; i += 1) {
         seatArr.push("");
       }
     }
@@ -130,7 +130,6 @@ const SeatmapGrid = ({
   const handleButtonClick = (cellNumber: string) => {
     const isAlreadyClicked = seatArr.find((item) => item === cellNumber);
 
-    const itinerarySeat = data?.itineraries.map((_, idx) => {});
     if (isAlreadyClicked) {
       setSeatArr((prevSeatArr) => {
         const targetIdx = prevSeatArr.findIndex((item) => item === cellNumber);
@@ -151,20 +150,19 @@ const SeatmapGrid = ({
           const newSeatArr = [...prevSeatArr];
           newSeatArr[targetIdx] = cellNumber;
           return newSeatArr;
-        } else {
-          // 상태 업데이트 이후에 모달 상태를 업데이트하도록 setTimeout을 사용
-          setTimeout(() => {
-            setModal({
-              isOpen: true,
-              title: "",
-              content: "이미 모든 탑승객의 좌석을 선택 하였습니다",
-              buttonNum: 1,
-              handleConfirm: () => {},
-              handleCancel: () => {},
-            });
-          }, 0);
-          return prevSeatArr;
         }
+        // 상태 업데이트 이후에 모달 상태를 업데이트하도록 setTimeout을 사용
+        setTimeout(() => {
+          setModal({
+            isOpen: true,
+            title: "",
+            content: "이미 모든 탑승객의 좌석을 선택 하였습니다",
+            buttonNum: 1,
+            handleConfirm: () => {},
+            handleCancel: () => {},
+          });
+        }, 0);
+        return prevSeatArr;
       });
     }
   };
@@ -219,8 +217,8 @@ const SeatmapGrid = ({
                         <button
                           type="button"
                           className={`seat ${
-                            //기본을 true로 만들고 hendleclick을 했을 때 배열이 비어있지 않다면 false로 바꿔서 클래스 비워두기
-                            //clicked && isAddedClass ? "clicked-seat" : ""
+                            // 기본을 true로 만들고 hendleclick을 했을 때 배열이 비어있지 않다면 false로 바꿔서 클래스 비워두기
+                            // clicked && isAddedClass ? "clicked-seat" : ""
                             // clicked ? "clicked-seat" : ""
                             seatArr.find((item) => item === cell.number)
                               ? "clicked-seat"
