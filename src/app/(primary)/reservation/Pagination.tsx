@@ -13,7 +13,7 @@ const Pagination: React.FC<PaginationPropType> = ({ page, totalPages }) => {
   const searchParams = useSearchParams();
   const pageList = [];
 
-  for (let i = 1; i <= totalPages; i++) {
+  for (let i = 1; i <= totalPages; i += 1) {
     const newSearchParams = new URLSearchParams(searchParams.toString());
     newSearchParams.set("page", String(i));
     const search = newSearchParams.toString();
