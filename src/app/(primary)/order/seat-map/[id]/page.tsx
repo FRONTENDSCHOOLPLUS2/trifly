@@ -1,11 +1,11 @@
-import "./seatmapSelect.scss";
 import { FetchOrder } from "@/lib/fetchOrder";
+import "./seatmapSelect.scss";
 
-import SeatmapGroup from "./SeatmapGroup";
+import Scroll from "@/components/Scroll/Scroll";
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import { AircraftData } from "@/types";
 import OrderProgress from "../../OrderProgress";
-import Scroll from "@/components/Scroll/Scroll";
+import SeatmapGroup from "./SeatmapGroup";
 
 const Page = async ({ params: { id } }: { params: { id: string } }) => {
   const dataList = await FetchOrder();
