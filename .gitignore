@@ -131,8 +131,8 @@ dist
 .pnp.*
 
 
-# image files
-api/dbinit/team/uploadFiles/*
+# dbinit
+dbinit/
 
 # DS Store
 .DS_Store

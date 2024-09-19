@@ -14,6 +14,11 @@ import {
 import { redirect } from "next/navigation";
 
 const SERVER = process.env.NEXT_PUBLIC_MARKET_API_SERVER;
+const CLIENT_ID = process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID;
+const headers = {
+  "client-id": CLIENT_ID,
+  "Content-Type": "application/json",
+};
 
 // 회원가입
 export async function signup(
@@ -30,10 +35,7 @@ export async function signup(
 
   const res = await fetch(`${SERVER}/users`, {
     method: "POST",
-    headers: {
-      "client-id": process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID,
-      "Content-Type": "application/json",
-    },
+    headers,
     body: JSON.stringify(userObj),
   });
 
@@ -46,10 +48,7 @@ export async function signupWithOAuth(
 ): Promise<ApiResWithValidation<SingleItem<UserData>, UserForm>> {
   const res = await fetch(`${SERVER}/users/signup/oauth`, {
     method: "POST",
-    headers: {
-      "client-id": process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID,
-      "Content-Type": "application/json",
-    },
+    headers,
     body: JSON.stringify(user),
   });
 
@@ -81,10 +80,7 @@ export async function login(
 ): Promise<ApiResWithValidation<SingleItem<UserData>, UserLoginForm>> {
   const res = await fetch(`${SERVER}/users/login`, {
     method: "POST",
-    headers: {
-      "client-id": process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID,
-      "Content-type": "application/json",
-    },
+    headers,
     body: JSON.stringify(userObj),
   });
   return res.json();
@@ -96,19 +92,16 @@ export async function loginOAuth(
 ): Promise<ApiRes<SingleItem<UserData>>> {
   const res = await fetch(`${SERVER}/users/login/with`, {
     method: "POST",
-    headers: {
-      "client-id": process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID,
-      "Content-type": "application/json",
-    },
+    headers,
     body: JSON.stringify({ providerAccountId }),
   });
   return res.json();
 }
 
-export async function signInWithKakao(formData: FormData) {
+export async function signInWithKakao() {
   await signIn("kakao", { redirectTo: "/" });
 }
 
-export async function signInWithGoogle(formData: FormData) {
+export async function signInWithGoogle() {
   await signIn("google", { redirectTo: "/" });
 }
