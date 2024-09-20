@@ -59,7 +59,8 @@ const Ticket = ({
       <div className="img-box" ref={imgBoxRef}>
         <Image
           src={`${URL}${imagePath}`}
-          overrideSrc={`${URL}${imagePath}`}
+          overrideSrc={type === "modify" ? `${URL}${imagePath}` : undefined}
+          loading={type === "default" ? "lazy" : undefined}
           alt={code[arrival].value}
           width={0}
           height={0}
