@@ -10,7 +10,7 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    background: url(/img/img-footprint-bg1.jpg) no-repeat center / cover;
+    background: url(/img/img-footprint-bg1.webp) no-repeat center / cover;
     z-index: 0;
   }
 
@@ -176,7 +176,7 @@
     margin-top: 3rem;
 
     &::before {
-      background-image: url(/img/img-footprint-bg2.jpg);
+      background-image: url(/img/img-footprint-bg2.webp);
     }
 
     .detail-inner {
