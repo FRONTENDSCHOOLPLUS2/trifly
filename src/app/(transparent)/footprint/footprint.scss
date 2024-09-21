@@ -36,9 +36,22 @@
       opacity: 0;
     }
 
-    .lottie {
+    .lottie-box {
       aspect-ratio: 4096/2643;
 
+      .skeleton-ani {
+        aspect-ratio: 4096/2643;
+        mask-image: url(/img/img-map.png);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+      }
+      .lottie {
+        aspect-ratio: inherit;
+        height: 0;
+        &.is-loaded {
+          height: auto;
+        }
+      }
       svg {
         vertical-align: top;
       }
