@@ -10,7 +10,7 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    background: url(/img/img-footprint-bg1.jpg) no-repeat center / cover;
+    background: url(/img/img-footprint-bg1.webp) no-repeat center / cover;
     z-index: 0;
   }
 
@@ -36,9 +36,22 @@
       opacity: 0;
     }
 
-    .lottie {
+    .lottie-box {
       aspect-ratio: 4096/2643;
 
+      .skeleton-ani {
+        aspect-ratio: 4096/2643;
+        mask-image: url(/img/img-map.png);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+      }
+      .lottie {
+        aspect-ratio: inherit;
+        height: 0;
+        &.is-loaded {
+          height: auto;
+        }
+      }
       svg {
         vertical-align: top;
       }
@@ -176,7 +189,7 @@
     margin-top: 3rem;
 
     &::before {
-      background-image: url(/img/img-footprint-bg2.jpg);
+      background-image: url(/img/img-footprint-bg2.webp);
     }
 
     .detail-inner {
