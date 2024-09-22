@@ -14,11 +14,8 @@ const PageContainer = async ({
     <div>
       <div className="reservation-header">
         <h2 className="title">예약내역</h2>
-        <div className="search-cover">
-          <Search />
-        </div>
+        <Search />
       </div>
-
       <ReservationList page={page} keyword={keyword} />
     </div>
   );
