@@ -10,15 +10,14 @@ const ReservationList = async ({
   page: string;
   keyword: string;
 }) => {
-  const data = await FetchOrderList();
+  const data = await FetchOrderList(page);
   const reservationData = data.item;
+
   const filteredItems = keyword
     ? reservationData.filter((item) =>
         item.reservationId.substring(0, 6).includes(keyword),
       )
     : reservationData;
-
-  console.log("search@@@@@@@@", keyword);
 
   return (
     <div>
@@ -51,20 +50,6 @@ const ReservationList = async ({
               <OrdersItem key={item._id} item={item} />
             ))
           )}
-          {/* {reservationData?.map((item) => (
-            <OrdersItem key={item._id} item={item} keyword={keyword} />
-          ))} */}
-          {/* {keyword ? (
-            <tbody>
-              <tr>
-                <td colSpan={8}>{keyword}</td>
-              </tr>
-            </tbody>
-          ) : (
-            reservationData?.map((item) => (
-              <OrdersItem key={item._id} item={item} keyword={keyword} />
-            ))
-          )} */}
         </table>
       </section>
       <Pagination {...data.pagination!} />
