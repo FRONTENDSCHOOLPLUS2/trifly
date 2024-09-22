@@ -3,6 +3,7 @@
 import Badge from "@/components/Badge/Badge";
 import { OrderItem } from "@/types";
 import { useRouter } from "next/navigation";
+import "./OrdersItem.scss";
 
 const OrdersItem = ({ item }: { item: OrderItem }) => {
   const router = useRouter();
@@ -12,13 +13,21 @@ const OrdersItem = ({ item }: { item: OrderItem }) => {
   };
 
   return (
-    <tbody>
-      <tr onClick={() => handleClick(item._id)} style={{ cursor: "pointer" }}>
+    <tbody className="ordersitem">
+      <tr
+        className="item-table"
+        onClick={() => handleClick(item._id)}
+        style={{ cursor: "pointer" }}
+      >
+        <td className="travel">
+          {item.itineraries.length === 2 ? (
+            <Badge>왕복</Badge>
+          ) : (
+            <Badge type="secondary">편도</Badge>
+          )}
+        </td>
         <td className="reservation-number">
           <h3>{item.reservationId.substring(0, 6)}</h3>
-        </td>
-        <td className="reservation-date">
-          {item.createdAt.substring(0, 10).replaceAll(".", "-")}
         </td>
         <td className="departure">
           {item.itineraries[0].segments[0].departure.iataCode}
@@ -28,12 +37,8 @@ const OrdersItem = ({ item }: { item: OrderItem }) => {
             ? item.itineraries[0].segments[1].arrival.iataCode
             : item.itineraries[0].segments[0].arrival.iataCode}
         </td>
-        <td className="travel">
-          {item.itineraries.length === 2 ? (
-            <Badge>왕복</Badge>
-          ) : (
-            <Badge type="secondary">편도</Badge>
-          )}
+        <td className="reservation-date">
+          {item.createdAt.substring(0, 10).replaceAll(".", "-")}
         </td>
         <td className="schedule">
           {item.itineraries[0].segments[0].departure.at.substring(0, 10)}
