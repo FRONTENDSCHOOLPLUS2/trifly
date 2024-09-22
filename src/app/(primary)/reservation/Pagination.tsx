@@ -22,7 +22,7 @@ const Pagination: React.FC<PaginationPropType> = ({ page, totalPages }) => {
       <li key={i} className="pagination-number">
         <Link
           href={`/reservation?${search}`}
-          className={page === i ? "active" : ""}
+          className={page === i ? "active" : "unactive"}
         >
           {i}
         </Link>
