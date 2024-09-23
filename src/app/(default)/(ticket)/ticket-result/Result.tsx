@@ -24,15 +24,10 @@ const Result = ({
 }) => {
   const searchResult = useRecoilValue(searchResultState);
   const [filteredData, setFilteredData] = useState(data);
-  // const [filters, setFilters] = useState<IFilterProps>();
   const [filters, setFilters] = useRecoilState(filterState);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const searchParams = useSearchParams();
   const nonStop = searchParams.get("nonStop") || "";
-
-  useEffect(() => {
-    console.log(filters);
-  }, []);
 
   useEffect(() => {
     setFilteredData(data);
@@ -66,22 +61,6 @@ const Result = ({
   const handleFilterChange = useCallback((newFilters: FilterProps) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
-      // 새로운 배열을 만드는 방식으로 업데이트
-      // airline: newFilters.airline
-      //   ? [...newFilters.airline]
-      //   : prevFilters.airline,
-      // originArrTime: newFilters.originArrTime
-      //   ? [...newFilters.originArrTime]
-      //   : prevFilters.originArrTime,
-      // originDepTime: newFilters.originDepTime
-      //   ? [...newFilters.originDepTime]
-      //   : prevFilters.originDepTime,
-      // returnArrTime: newFilters.returnArrTime
-      //   ? [...newFilters.returnArrTime]
-      //   : prevFilters.returnArrTime,
-      // returnDepTime: newFilters.returnDepTime
-      //   ? [...newFilters.returnDepTime]
-      //   : prevFilters.returnDepTime,
       ...newFilters,
     }));
   }, []);

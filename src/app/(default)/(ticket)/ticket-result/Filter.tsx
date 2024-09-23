@@ -8,7 +8,7 @@ import AccordionItem from "@/components/Accordion/AccordionItem";
 import Badge from "@/components/Badge/Badge";
 import useAllChecked from "@/hook/useAllChecked";
 import { AirlineData, CodeState } from "@/types";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
 import "./Filter.scss";
 
 const Filter = ({
@@ -29,39 +29,22 @@ const Filter = ({
   handleFilterChange: (filter: FilterProps) => void;
 }) => {
   const [isNonStop, setIsNonStop] = useState(false);
-  const [originDepTime, setOriginDepTime] = useState<number[]>(
-    filters.originDepTime || [6, 12, 18, 24],
-  );
-  const [originArrTime, setOriginArrTime] = useState<number[]>(
-    filters.originArrTime || [6, 12, 18, 24],
-  );
-  const [returnDepTime, setReturnDepTime] = useState<number[]>(
-    filters.returnDepTime || [6, 12, 18, 24],
-  );
-  const [returnArrTime, setReturnArrTime] = useState<number[]>(
-    filters.returnArrTime || [6, 12, 18, 24],
-  );
-  const [maxPrice, setMaxPrice] = useState(0);
-  const [selectedAirlines, setSelectedAirlines] = useState<string[]>(
-    filters.airline || carrierCodes,
-  );
+  const [originDepTime, setOriginDepTime] = useState<number[]>([6, 12, 18, 24]);
+  const [originArrTime, setOriginArrTime] = useState<number[]>([6, 12, 18, 24]);
+  const [returnDepTime, setReturnDepTime] = useState<number[]>([6, 12, 18, 24]);
+  const [returnArrTime, setReturnArrTime] = useState<number[]>([6, 12, 18, 24]);
+  const [maxPrice, setMaxPrice] = useState(Math.max(...prices));
+  const [selectedAirlines, setSelectedAirlines] =
+    useState<string[]>(carrierCodes);
   const airlineRef = useRef(null);
 
-  useEffect(() => {
-    if (prices.length > 0) {
-      const initialPrice = filters.maxPrice || Math.max(...prices);
-      setMaxPrice(initialPrice);
-    }
-  }, [prices, filters.maxPrice]);
+  console.log(filters);
 
   /* -------------------------------------------------------------------------- */
   /*                          경유 선택 시 직항 경유 변경 처리                         */
   /* -------------------------------------------------------------------------- */
-  useEffect(() => {
-    setIsNonStop(filters.nonStop || false);
-  }, []);
-
   const handleNonStopChange = () => {
+    console.log("직항/경유 변경");
     setIsNonStop(!isNonStop);
     handleFilterChange({ nonStop: !isNonStop });
   };
@@ -71,11 +54,12 @@ const Filter = ({
   /* -------------------------------------------------------------------------- */
   useEffect(() => {
     handleFilterChange({ originDepTime });
-  }, [originDepTime]);
+  }, [originDepTime, handleFilterChange]);
 
   const handleOriginDepChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
 
+    console.log("출발 출발시간 변경");
     setOriginDepTime((prev) => {
       if (!prev) {
         return [value];
@@ -89,8 +73,9 @@ const Filter = ({
   };
 
   useEffect(() => {
+    console.log("도착 출발시간 변경");
     handleFilterChange({ returnDepTime });
-  }, [returnDepTime]);
+  }, [returnDepTime, handleFilterChange]);
 
   const handleReturnDepChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
@@ -108,8 +93,9 @@ const Filter = ({
   };
 
   useEffect(() => {
+    console.log("출발 도착시간 변경");
     handleFilterChange({ originArrTime });
-  }, [originArrTime]);
+  }, [originArrTime, handleFilterChange]);
 
   const handleOriginArrChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
@@ -127,8 +113,9 @@ const Filter = ({
   };
 
   useEffect(() => {
+    console.log("도착 도착시간 변경");
     handleFilterChange({ returnArrTime });
-  }, [returnArrTime]);
+  }, [returnArrTime, handleFilterChange]);
 
   const handleReturnArrChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
@@ -151,11 +138,11 @@ const Filter = ({
   const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, style, max } = e.target;
     setMaxPrice(Number(value));
+    console.log("가격 변경");
     handleFilterChange({ maxPrice: Number(value) });
     const percent = 100 / +max;
     style.background = `linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) ${percent * +value}%, var(--color-gray-50) ${percent * +value}%, var(--color-gray-50) 100%`;
   };
-
   /* -------------------------------------------------------------------------- */
   /*                                 항공사 선택                                   */
   /* -------------------------------------------------------------------------- */
@@ -220,6 +207,7 @@ const Filter = ({
       }
     });
 
+    console.log("동맹체 변경");
     setSelectedAirlines(updatedAirlines);
   }, [allianceCheck]);
 
@@ -242,6 +230,7 @@ const Filter = ({
   ));
 
   useEffect(() => {
+    console.log("항공사 변경");
     handleFilterChange({ airline: selectedAirlines });
   }, [selectedAirlines]);
 
