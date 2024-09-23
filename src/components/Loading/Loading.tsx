@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-import lottieJson from "../../public/lottie/loading.json";
+import lottieJson from "../../../public/lottie/loading.json";
 import dynamic from "next/dynamic";
-import "./loading.scss";
+import "./Loading.scss";
 
 const Lottie = dynamic(() => import("react-lottie-player"), { ssr: true });
 
