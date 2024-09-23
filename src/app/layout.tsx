@@ -88,7 +88,6 @@ export default function RootLayout({
           sizes="16x16"
           href="/favicon-16x16.ico"
         />
-        <script defer src="https://cdn.iamport.kr/v1/iamport.js" />
       </head>
       <body
         className={`${roboto.variable} ${noto.variable} ${dohyeon.variable}`}
