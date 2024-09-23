@@ -159,7 +159,7 @@ const PaymentForm = ({
                   "항공권 구매가 완료되었습니다. \n좌석 선택 화면으로 이동합니다.",
                 buttonNum: 1,
                 handleConfirm: () =>
-                  router.push(`/order/seat-map/${reservationId}`),
+                  router.replace(`/order/seat-map/${reservationId}`),
                 handleCancel: () => {},
               });
             } else {
@@ -194,7 +194,7 @@ const PaymentForm = ({
         title: "안내",
         content: "결제를 스킵하였습니다. \n좌석 선택 화면으로 이동합니다.",
         buttonNum: 1,
-        handleConfirm: () => router.push(`/order/seat-map/${reservationId}`),
+        handleConfirm: () => router.replace(`/order/seat-map/${reservationId}`),
         handleCancel: () => {},
       });
     }
