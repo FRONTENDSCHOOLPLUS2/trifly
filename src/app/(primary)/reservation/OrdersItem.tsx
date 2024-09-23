@@ -4,6 +4,7 @@ import Badge from "@/components/Badge/Badge";
 import { OrderItem } from "@/types";
 import { useRouter } from "next/navigation";
 import "./OrdersItem.scss";
+import { useEffect } from "react";
 
 const OrdersItem = ({ item }: { item: OrderItem }) => {
   const router = useRouter();
