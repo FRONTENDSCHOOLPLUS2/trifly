@@ -1,0 +1,19 @@
+.search-form {
+  display: flex;
+  height: fit-content;
+  .search-input {
+    width: 20rem;
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .search-form {
+    margin-bottom: 3rem;
+    justify-content: space-between;
+
+    .search-input {
+      width: calc(100% - 90px);
+    }
+  }
+}
