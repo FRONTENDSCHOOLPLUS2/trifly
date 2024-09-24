@@ -27,14 +27,13 @@ const Result = ({
   const [filters, setFilters] = useRecoilState(filterState);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const searchParams = useSearchParams();
-  const nonStop = searchParams.get("nonStop") || "";
+  const nonStop = searchParams.get("nonStop") === "true";
+  const [sortBy, setSortBy] = useState<string>("priceLow");
 
-  useEffect(() => {
-    console.log("항공권 검색 결과 렌더링");
-  }, []);
+  console.log("항공권 검색 결과 렌더링");
 
   /* -------------------------------------------------------------------------- */
-  /*                           항공편 조회 결과에 해당하는 항공사만 추출                  */
+  /*                        항공편 조회 결과에 해당하는 항공사만 추출                     */
   /* -------------------------------------------------------------------------- */
   const extractCarrierCodes = (offers: OffersSearchData[]) => {
     if (offers) {
@@ -58,17 +57,17 @@ const Result = ({
     prices.push(Number(item.price.grandTotal));
   });
 
-  const handleFilterChange = useCallback(
-    (newFilters: FilterProps) => {
-      setFilters((prevFilters) => ({
-        ...prevFilters,
-        ...newFilters,
-      }));
-    },
-    [setFilters],
-  );
+  /* -------------------------------------------------------------------------- */
+  /*                                    필터                                     */
+  /* -------------------------------------------------------------------------- */
+  const handleFilterChange = useCallback((newFilters: FilterProps) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      ...newFilters,
+    }));
+  }, []);
 
-  const applyFilters = () => {
+  const applyFilters = useCallback(() => {
     let newFilteredData = [...data];
 
     if (filters) {
@@ -167,15 +166,14 @@ const Result = ({
           );
         }
       }
-
-      setFilteredData(newFilteredData);
     }
-  };
 
-  useEffect(() => {
-    applyFilters();
-  }, [filters]);
+    return newFilteredData;
+  }, [data, filters]);
 
+  /* -------------------------------------------------------------------------- */
+  /*                                    정렬                                     */
+  /* -------------------------------------------------------------------------- */
   function convertToMinutes(duration: string) {
     const timePattern = /PT(?:(\d+)H)?(?:(\d+)M)?/;
     const matches = duration.match(timePattern);
@@ -187,141 +185,161 @@ const Result = ({
   }
 
   const handleSorting = (e: ChangeEvent<HTMLSelectElement>) => {
-    const sortBy = e.target.value;
-    const sortedData = [...filteredData];
-
-    switch (sortBy) {
-      case "priceLow":
-        sortedData.sort(
-          (a, b) => Number(a.price.grandTotal) - Number(b.price.grandTotal),
-        );
-        break;
-      case "durationShort":
-        sortedData.sort((a, b) => {
-          const durationA = a.itineraries.reduce(
-            (acc, itinerary) =>
-              acc +
-              itinerary.segments.reduce(
-                (segAcc, segment) =>
-                  segAcc + convertToMinutes(segment.duration),
-                0,
-              ),
-            0,
-          );
-
-          const durationB = b.itineraries.reduce(
-            (acc, itinerary) =>
-              acc +
-              itinerary.segments.reduce(
-                (segAcc, segment) =>
-                  segAcc + convertToMinutes(segment.duration),
-                0,
-              ),
-            0,
-          );
-
-          if (durationA !== durationB) {
-            return durationA - durationB;
-          }
-
-          const priceA = Number(a.price.grandTotal);
-          const priceB = Number(b.price.grandTotal);
-
-          return priceA - priceB;
-        });
-        break;
-      case "depDepTime":
-        sortedData.sort((a, b) => {
-          const depTimeA = new Date(
-            a.itineraries[0].segments[0].departure.at,
-          ).getTime();
-          const depTimeB = new Date(
-            b.itineraries[0].segments[0].departure.at,
-          ).getTime();
-
-          if (depTimeA !== depTimeB) {
-            return depTimeA - depTimeB;
-          }
-
-          const priceA = Number(a.price.grandTotal);
-          const priceB = Number(b.price.grandTotal);
-
-          return priceA - priceB;
-        });
-        break;
-      case "returnDepTime":
-        sortedData.sort((a, b) => {
-          const depTimeA = new Date(
-            a.itineraries[1].segments[0].departure.at,
-          ).getTime();
-          const depTimeB = new Date(
-            b.itineraries[1].segments[0].departure.at,
-          ).getTime();
-
-          if (depTimeA !== depTimeB) {
-            return depTimeA - depTimeB;
-          }
-
-          const priceA = Number(a.price.grandTotal);
-          const priceB = Number(b.price.grandTotal);
-
-          return priceA - priceB;
-        });
-        break;
-      case "depArrTime":
-        sortedData.sort((a, b) => {
-          const stopA = a.itineraries[0].segments.length;
-          const stopB = b.itineraries[0].segments.length;
-
-          const arrTimeA = new Date(
-            a.itineraries[0].segments[stopA - 1].arrival.at,
-          ).getTime();
-          const arrTimeB = new Date(
-            b.itineraries[0].segments[stopB - 1].arrival.at,
-          ).getTime();
-
-          if (arrTimeA !== arrTimeB) {
-            return arrTimeA - arrTimeB;
-          }
-
-          const priceA = Number(a.price.grandTotal);
-          const priceB = Number(b.price.grandTotal);
-
-          return priceA - priceB;
-        });
-        break;
-      case "returnArrTime":
-        sortedData.sort((a, b) => {
-          const stopA = a.itineraries[1].segments.length;
-          const stopB = b.itineraries[1].segments.length;
-
-          const arrTimeA = new Date(
-            a.itineraries[1].segments[stopA - 1].arrival.at,
-          ).getTime();
-          const arrTimeB = new Date(
-            b.itineraries[1].segments[stopB - 1].arrival.at,
-          ).getTime();
-
-          if (arrTimeA !== arrTimeB) {
-            return arrTimeA - arrTimeB;
-          }
-
-          const priceA = Number(a.price.grandTotal);
-          const priceB = Number(b.price.grandTotal);
-
-          return priceA - priceB;
-        });
-        break;
-      default:
-        sortedData.sort(
-          (a, b) => Number(a.price.grandTotal) - Number(b.price.grandTotal),
-        );
-        break;
-    }
-
-    setFilteredData(sortedData);
+    const selectedSort = e.target.value;
+    setSortBy(selectedSort);
   };
 
+  const sortData = useCallback(
+    (dataToSort: OffersSearchData[]) => {
+      const sortedData = [...dataToSort];
+
+      switch (sortBy) {
+        case "priceLow":
+          sortedData.sort(
+            (a, b) => Number(a.price.grandTotal) - Number(b.price.grandTotal),
+          );
+          break;
+        case "durationShort":
+          sortedData.sort((a, b) => {
+            const durationA = a.itineraries.reduce(
+              (acc, itinerary) =>
+                acc +
+                itinerary.segments.reduce(
+                  (segAcc, segment) =>
+                    segAcc + convertToMinutes(segment.duration),
+                  0,
+                ),
+              0,
+            );
+
+            const durationB = b.itineraries.reduce(
+              (acc, itinerary) =>
+                acc +
+                itinerary.segments.reduce(
+                  (segAcc, segment) =>
+                    segAcc + convertToMinutes(segment.duration),
+                  0,
+                ),
+              0,
+            );
+
+            if (durationA !== durationB) {
+              return durationA - durationB;
+            }
+
+            const priceA = Number(a.price.grandTotal);
+            const priceB = Number(b.price.grandTotal);
+
+            return priceA - priceB;
+          });
+          break;
+        case "depDepTime":
+          sortedData.sort((a, b) => {
+            const depTimeA = new Date(
+              a.itineraries[0].segments[0].departure.at,
+            ).getTime();
+            const depTimeB = new Date(
+              b.itineraries[0].segments[0].departure.at,
+            ).getTime();
+
+            if (depTimeA !== depTimeB) {
+              return depTimeA - depTimeB;
+            }
+
+            const priceA = Number(a.price.grandTotal);
+            const priceB = Number(b.price.grandTotal);
+
+            return priceA - priceB;
+          });
+          break;
+        case "returnDepTime":
+          sortedData.sort((a, b) => {
+            const depTimeA = new Date(
+              a.itineraries[1].segments[0].departure.at,
+            ).getTime();
+            const depTimeB = new Date(
+              b.itineraries[1].segments[0].departure.at,
+            ).getTime();
+
+            if (depTimeA !== depTimeB) {
+              return depTimeA - depTimeB;
+            }
+
+            const priceA = Number(a.price.grandTotal);
+            const priceB = Number(b.price.grandTotal);
+
+            return priceA - priceB;
+          });
+          break;
+        case "depArrTime":
+          sortedData.sort((a, b) => {
+            const stopA = a.itineraries[0].segments.length;
+            const stopB = b.itineraries[0].segments.length;
+
+            const arrTimeA = new Date(
+              a.itineraries[0].segments[stopA - 1].arrival.at,
+            ).getTime();
+            const arrTimeB = new Date(
+              b.itineraries[0].segments[stopB - 1].arrival.at,
+            ).getTime();
+
+            if (arrTimeA !== arrTimeB) {
+              return arrTimeA - arrTimeB;
+            }
+
+            const priceA = Number(a.price.grandTotal);
+            const priceB = Number(b.price.grandTotal);
+
+            return priceA - priceB;
+          });
+          break;
+        case "returnArrTime":
+          sortedData.sort((a, b) => {
+            const stopA = a.itineraries[1].segments.length;
+            const stopB = b.itineraries[1].segments.length;
+
+            const arrTimeA = new Date(
+              a.itineraries[1].segments[stopA - 1].arrival.at,
+            ).getTime();
+            const arrTimeB = new Date(
+              b.itineraries[1].segments[stopB - 1].arrival.at,
+            ).getTime();
+
+            if (arrTimeA !== arrTimeB) {
+              return arrTimeA - arrTimeB;
+            }
+
+            const priceA = Number(a.price.grandTotal);
+            const priceB = Number(b.price.grandTotal);
+
+            return priceA - priceB;
+          });
+          break;
+        default:
+          sortedData.sort(
+            (a, b) => Number(a.price.grandTotal) - Number(b.price.grandTotal),
+          );
+          break;
+      }
+
+      return sortedData;
+    },
+    [sortBy],
+  );
+
+  /* -------------------------------------------------------------------------- */
+  /*                           정렬 & 필터가 변경되면 적용                            */
+  /* -------------------------------------------------------------------------- */
+  useEffect(() => {
+    const afterFilters = applyFilters();
+    const sortedAndFilteredData = sortData(afterFilters);
+
+    setFilteredData(sortedAndFilteredData);
+  }, [filters, sortBy, applyFilters, sortData]);
+
+  /* -------------------------------------------------------------------------- */
+  /*                              모바일 반응형 필터                                */
+  /* -------------------------------------------------------------------------- */
   useEffect(() => {
     if (isFilterOpen) {
       document
@@ -368,7 +386,7 @@ const Result = ({
               airline={airline}
               carrierCodes={carrierCodes}
               tripType={returnDate ? "round" : "oneway"}
-              nonStop={!!nonStop}
+              nonStop={nonStop}
               prices={prices}
               handleFilterChange={handleFilterChange}
             />
