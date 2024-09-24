@@ -17,7 +17,6 @@ const Filter = ({
   tripType,
   nonStop,
   prices,
-  filters,
   handleFilterChange,
 }: {
   airline: CodeState<AirlineData>;
@@ -25,7 +24,6 @@ const Filter = ({
   tripType: string;
   nonStop: boolean;
   prices: number[];
-  filters: FilterProps;
   handleFilterChange: (filter: FilterProps) => void;
 }) => {
   const [isNonStop, setIsNonStop] = useState(false);
@@ -38,7 +36,9 @@ const Filter = ({
     useState<string[]>(carrierCodes);
   const airlineRef = useRef(null);
 
-  console.log(filters);
+  useEffect(() => {
+    console.log("필터 렌더링");
+  }, []);
 
   /* -------------------------------------------------------------------------- */
   /*                          경유 선택 시 직항 경유 변경 처리                         */
@@ -135,14 +135,18 @@ const Filter = ({
   /* -------------------------------------------------------------------------- */
   /*                                   가격 설정                                  */
   /* -------------------------------------------------------------------------- */
-  const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value, style, max } = e.target;
-    setMaxPrice(Number(value));
-    console.log("가격 변경");
-    handleFilterChange({ maxPrice: Number(value) });
-    const percent = 100 / +max;
-    style.background = `linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) ${percent * +value}%, var(--color-gray-50) ${percent * +value}%, var(--color-gray-50) 100%`;
-  };
+  const handlePriceChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const { value, style, max } = e.target;
+      const newMaxPrice = Number(value);
+      setMaxPrice(newMaxPrice);
+      console.log("가격 변경");
+      handleFilterChange({ maxPrice: newMaxPrice });
+      const percent = 100 / +max;
+      style.background = `linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) ${percent * +value}%, var(--color-gray-50) ${percent * +value}%, var(--color-gray-50) 100%`;
+    },
+    [handleFilterChange],
+  );
   /* -------------------------------------------------------------------------- */
   /*                                 항공사 선택                                   */
   /* -------------------------------------------------------------------------- */

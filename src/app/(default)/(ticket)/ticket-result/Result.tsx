@@ -30,8 +30,8 @@ const Result = ({
   const nonStop = searchParams.get("nonStop") || "";
 
   useEffect(() => {
-    setFilteredData(data);
-  }, [data]);
+    console.log("항공권 검색 결과 렌더링");
+  }, []);
 
   /* -------------------------------------------------------------------------- */
   /*                           항공편 조회 결과에 해당하는 항공사만 추출                  */
@@ -58,12 +58,15 @@ const Result = ({
     prices.push(Number(item.price.grandTotal));
   });
 
-  const handleFilterChange = useCallback((newFilters: FilterProps) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      ...newFilters,
-    }));
-  }, []);
+  const handleFilterChange = useCallback(
+    (newFilters: FilterProps) => {
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        ...newFilters,
+      }));
+    },
+    [setFilters],
+  );
 
   const applyFilters = () => {
     let newFilteredData = [...data];
@@ -367,7 +370,6 @@ const Result = ({
               tripType={returnDate ? "round" : "oneway"}
               nonStop={!!nonStop}
               prices={prices}
-              filters={filters}
               handleFilterChange={handleFilterChange}
             />
           </div>
