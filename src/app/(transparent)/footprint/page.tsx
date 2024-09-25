@@ -12,6 +12,9 @@ interface DataType {
 }
 
 const ChartComponent = dynamic(() => import("./Chart"), { ssr: false });
+const TicketListComponent = dynamic(() => import("./TicketList"), {
+  ssr: false,
+});
 
 const FootPrint = async () => {
   const { item } = await FetchOrder();
@@ -108,29 +111,7 @@ const FootPrint = async () => {
 
       <section className="tickets-box">
         <h2 className="hidden">여행 티켓</h2>
-
-        {dataByYear.map((yearData, yearIdx) => (
-          <div key={`연도별-${yearIdx}`} className="tickets-inner">
-            <h3 className="year">{yearData.year}</h3>
-            <div className="tickets">
-              {yearData.data.map((ticket) =>
-                ticket.passengers.map((_, passengerIdx) => (
-                  <div
-                    key={`티켓-${ticket._id}-${Math.random()}`}
-                    className="ticket-inner"
-                  >
-                    <Ticket
-                      key={`승객-${passengerIdx}`}
-                      data={ticket}
-                      code={code}
-                      passengerId={passengerIdx}
-                    />
-                  </div>
-                )),
-              )}
-            </div>
-          </div>
-        ))}
+        <TicketListComponent data={dataByYear} code={code} />
       </section>
     </div>
   );
