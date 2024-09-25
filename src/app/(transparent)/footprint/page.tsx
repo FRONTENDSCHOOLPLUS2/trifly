@@ -5,13 +5,17 @@ import { AirportData, OrderItem } from "@/types";
 import Animation from "./Animation";
 import "./footprint.scss";
 import dynamic from "next/dynamic";
+import ChartLoading from "./ChartLoading";
 
 interface DataType {
   year: string;
   data: OrderItem[];
 }
 
-const ChartComponent = dynamic(() => import("./Chart"), { ssr: false });
+const ChartComponent = dynamic(() => import("./Chart"), {
+  ssr: false,
+  loading: () => <ChartLoading />,
+});
 const TicketListComponent = dynamic(() => import("./TicketList"), {
   ssr: false,
 });
