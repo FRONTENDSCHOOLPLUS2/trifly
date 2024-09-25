@@ -2,16 +2,20 @@ import Ticket from "@/components/Ticket/Ticket";
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import { FetchOrder } from "@/lib/fetchOrder";
 import { AirportData, OrderItem } from "@/types";
-import Animation from "./Animation";
 import "./footprint.scss";
 import dynamic from "next/dynamic";
 import ChartLoading from "./ChartLoading";
+import MapLoading from "./MapLoading";
 
 interface DataType {
   year: string;
   data: OrderItem[];
 }
 
+const MapComponent = dynamic(() => import("./Map"), {
+  ssr: false,
+  loading: () => <MapLoading />,
+});
 const ChartComponent = dynamic(() => import("./Chart"), {
   ssr: false,
   loading: () => <ChartLoading />,
@@ -71,7 +75,10 @@ const FootPrint = async () => {
     <div className="footprint">
       <section className="animation-box">
         <h2 className="hidden">여행 통계</h2>
-        <Animation />
+        <div className="lottie-box">
+          <MapComponent />
+        </div>
+
         <div className="data-box">
           {flightCount ? (
             <>
