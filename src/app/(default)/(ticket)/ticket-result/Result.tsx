@@ -5,7 +5,7 @@ import Button from "@/components/Button/Button";
 import { AirlineData, CodeState, OffersSearchData } from "@/types";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import Filter from "./Filter";
 import Sorting from "./Sorting";
@@ -23,14 +23,15 @@ const Result = ({
   returnDate?: string;
 }) => {
   const searchResult = useRecoilValue(searchResultState);
+  const [filters, setFilters] = useState<FilterProps>();
+  // const [filters, setFilters] = useRecoilState(filterState);
   const [filteredData, setFilteredData] = useState(data);
-  const [filters, setFilters] = useRecoilState(filterState);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [sortBy, setSortBy] = useState<string>("priceLow");
   const searchParams = useSearchParams();
   const nonStop = searchParams.get("nonStop") === "true";
-  const [sortBy, setSortBy] = useState<string>("priceLow");
 
-  console.log("항공권 검색 결과 렌더링");
+  console.log("Result 렌더링");
 
   /* -------------------------------------------------------------------------- */
   /*                        항공편 조회 결과에 해당하는 항공사만 추출                     */
@@ -48,14 +49,16 @@ const Result = ({
   };
 
   // carrierCodes 배열
-  const carrierCodes = [...new Set(extractCarrierCodes(data))];
+  const carrierCodes = useMemo(() => {
+    return [...new Set(extractCarrierCodes(data))].sort();
+  }, [data]);
 
   // 가격 배열
-  const prices: number[] = [];
-
-  data.forEach((item) => {
-    prices.push(Number(item.price.grandTotal));
-  });
+  const prices = useMemo(() => {
+    const priceList: number[] = [];
+    data.forEach((item) => priceList.push(Number(item.price.grandTotal)));
+    return priceList;
+  }, [data]);
 
   /* -------------------------------------------------------------------------- */
   /*                                    필터                                     */
@@ -169,7 +172,7 @@ const Result = ({
     }
 
     return newFilteredData;
-  }, [data, filters]);
+  }, [filters]);
 
   /* -------------------------------------------------------------------------- */
   /*                                    정렬                                     */
@@ -184,10 +187,10 @@ const Result = ({
     return hours * 60 + minutes;
   }
 
-  const handleSorting = (e: ChangeEvent<HTMLSelectElement>) => {
+  const handleSorting = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
     const selectedSort = e.target.value;
     setSortBy(selectedSort);
-  };
+  }, []);
 
   const sortData = useCallback(
     (dataToSort: OffersSearchData[]) => {
@@ -331,9 +334,8 @@ const Result = ({
   /*                           정렬 & 필터가 변경되면 적용                            */
   /* -------------------------------------------------------------------------- */
   useEffect(() => {
-    const afterFilters = applyFilters();
-    const sortedAndFilteredData = sortData(afterFilters);
-
+    const sortedAndFilteredData = sortData(applyFilters());
+    console.log("정렬 및 필터 변경");
     setFilteredData(sortedAndFilteredData);
   }, [filters, sortBy, applyFilters, sortData]);
 
