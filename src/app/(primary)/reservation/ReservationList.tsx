@@ -52,6 +52,7 @@ const ReservationList = async ({
           )}
         </table>
       </section>
+      {/* 모바일에서는 숨기기 */}
       <Pagination {...data.pagination!} />
     </div>
   );
