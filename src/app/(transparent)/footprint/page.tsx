@@ -2,14 +2,27 @@ import Ticket from "@/components/Ticket/Ticket";
 import { fetchCodes } from "@/data/fetch/fetchCode";
 import { FetchOrder } from "@/lib/fetchOrder";
 import { AirportData, OrderItem } from "@/types";
-import Animation from "./Animation";
-import Chart from "./Chart";
 import "./footprint.scss";
+import dynamic from "next/dynamic";
+import ChartLoading from "./ChartLoading";
+import MapLoading from "./MapLoading";
 
 interface DataType {
   year: string;
   data: OrderItem[];
 }
+
+const MapComponent = dynamic(() => import("./Map"), {
+  ssr: false,
+  loading: () => <MapLoading />,
+});
+const ChartComponent = dynamic(() => import("./Chart"), {
+  ssr: false,
+  loading: () => <ChartLoading />,
+});
+const TicketListComponent = dynamic(() => import("./TicketList"), {
+  ssr: false,
+});
 
 const FootPrint = async () => {
   const { item } = await FetchOrder();
@@ -62,11 +75,13 @@ const FootPrint = async () => {
     <div className="footprint">
       <section className="animation-box">
         <h2 className="hidden">여행 통계</h2>
-        <Animation />
+        <div className="lottie-box">
+          <MapComponent />
+        </div>
+
         <div className="data-box">
           {flightCount ? (
             <>
-              {" "}
               <div className="left-box">
                 <dl>
                   <dt className="data-title">
@@ -87,7 +102,14 @@ const FootPrint = async () => {
                 </dl>
               </div>
               <div className="right-box">
-                <Chart item={item} />
+                <div className="pie-box">
+                  <h3 className="data-title">Airline</h3>
+                  <ChartComponent item={item} type="airline" />
+                </div>
+                <div className="pie-box">
+                  <h3 className="data-title">Airport</h3>
+                  <ChartComponent item={item} type="areas" />
+                </div>
               </div>
             </>
           ) : (
@@ -100,29 +122,7 @@ const FootPrint = async () => {
 
       <section className="tickets-box">
         <h2 className="hidden">여행 티켓</h2>
-
-        {dataByYear.map((yearData, yearIdx) => (
-          <div key={`연도별-${yearIdx}`} className="tickets-inner">
-            <h3 className="year">{yearData.year}</h3>
-            <div className="tickets">
-              {yearData.data.map((ticket) =>
-                ticket.passengers.map((_, passengerIdx) => (
-                  <div
-                    key={`티켓-${ticket._id}-${Math.random()}`}
-                    className="ticket-inner"
-                  >
-                    <Ticket
-                      key={`승객-${passengerIdx}`}
-                      data={ticket}
-                      code={code}
-                      passengerId={passengerIdx}
-                    />
-                  </div>
-                )),
-              )}
-            </div>
-          </div>
-        ))}
+        <TicketListComponent data={dataByYear} code={code} />
       </section>
     </div>
   );

@@ -40,17 +40,12 @@
       aspect-ratio: 4096/2643;
 
       .skeleton-ani {
-        aspect-ratio: 4096/2643;
-        mask-image: url(/img/img-map.png);
+        aspect-ratio: inherit;
         mask-size: contain;
         mask-repeat: no-repeat;
       }
       .lottie {
         aspect-ratio: inherit;
-        height: 0;
-        &.is-loaded {
-          height: auto;
-        }
       }
       svg {
         vertical-align: top;
@@ -181,6 +176,25 @@
           margin-top: -30%;
         }
       }
+    }
+  }
+
+  // 차트 로딩
+  .chartLoading {
+    width: 180px;
+    aspect-ratio: 1/1;
+    position: relative;
+    margin: 0 auto;
+
+    .skeleton-ani {
+      width: 50%;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      mask-image: radial-gradient(circle, transparent 51%, #fff 51%);
     }
   }
 
