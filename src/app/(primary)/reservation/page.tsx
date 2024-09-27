@@ -1,33 +1,26 @@
-import { headers } from "next/headers";
 import React from "react";
 import "./reservation.scss";
 import Search from "./Search";
 import ReservationList from "./ReservationList";
 import MobileReservationList from "./(infiniteScroll)/MobileReservationList";
 
-const Page = async ({
+const page = async ({
   searchParams: { page, keyword },
 }: {
   searchParams: { page: string; keyword: string };
 }) => {
-  const userAgent = headers().get("user-agent") || "";
-  const isMobile = /mobile/i.test(userAgent); // User-Agent 모바일 감지
-
   return (
     <div>
       <div className="reservation-header">
         <h2 className="title">예약내역</h2>
         <Search />
       </div>
-
-      {/* 조건부 렌더링 */}
-      {isMobile ? (
-        <MobileReservationList page={page} keyword={keyword} />
-      ) : (
-        <ReservationList page={page} keyword={keyword} />
-      )}
+      {/* ReservationList는 SSR */}
+      <ReservationList page={page} keyword={keyword} />
+      {/* MobileReservationList는 클라이언트에서 RQProvider를 통해 사용 */}
+      <MobileReservationList keyword={keyword} page={page} />
     </div>
   );
 };
 
-export default Page;
+export default page;
