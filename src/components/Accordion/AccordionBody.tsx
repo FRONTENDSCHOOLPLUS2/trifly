@@ -1,18 +1,14 @@
 "use client";
 
-import React, { useContext } from "react";
-import AccordionContext from "./AccordionContext";
+import React from "react";
 
 interface Props {
-  // eventKey: number;
   children: React.ReactNode;
 }
 
 const AccordionBody = ({ children }: Props) => {
-  const { activeKey, eventKey } = useContext(AccordionContext);
-
   return (
-    <div className={`accordion-body ${activeKey === eventKey ? "act" : ""}`}>
+    <div className="accordion-body">
       <pre>{children}</pre>
     </div>
   );
