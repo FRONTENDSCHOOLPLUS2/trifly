@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo, useState } from "react";
 import AccordionContext from "./AccordionContext";
 
 /**
@@ -13,11 +13,23 @@ const AccordionItem = ({
   eventKey: number;
   children: React.ReactNode;
 }) => {
-  const { activeKey, setActiveKey } = React.useContext(AccordionContext)!;
+  const [activeKey, setActiveKey] = useState(1);
+  const contextValue = useMemo(
+    () => ({
+      eventKey,
+      activeKey,
+      setActiveKey,
+    }),
+    [activeKey],
+  );
 
   return (
-    <AccordionContext.Provider value={{ eventKey, activeKey, setActiveKey }}>
-      <div className="accordion-item">{children}</div>
+    <AccordionContext.Provider value={contextValue}>
+      <div
+        className={`accordion-item ${activeKey === eventKey ? "active" : ""}`}
+      >
+        {children}
+      </div>
     </AccordionContext.Provider>
   );
 };
