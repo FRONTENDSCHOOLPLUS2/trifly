@@ -83,12 +83,11 @@
       width: 9rem;
       height: 6rem;
       margin-bottom: var(--title-extra);
+      overflow: hidden;
 
       img {
-        width: 100%;
+        width: auto;
         height: 100%;
-        object-fit: cover;
-        object-position: left;
       }
     }
     .flex-box dl {
