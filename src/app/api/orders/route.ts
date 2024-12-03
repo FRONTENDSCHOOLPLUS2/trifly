@@ -1,7 +1,8 @@
 import { auth } from "@/auth";
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export async function GET(request: { url: string | URL }) {
+export async function GET(request: NextRequest) {
   const session = await auth(); // 서버에서 인증 처리
   const token = session?.accessToken;
 
@@ -9,7 +10,7 @@ export async function GET(request: { url: string | URL }) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
-  const { searchParams } = new URL(request.url);
+  const { searchParams } = request.nextUrl;
   const page = searchParams.get("page") || "1";
   const keyword = searchParams.get("keyword") || "";
   const limit = searchParams.get("limit") || "5"; // 필요 시 limit도 가져옴
