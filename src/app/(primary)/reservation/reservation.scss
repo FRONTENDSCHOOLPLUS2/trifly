@@ -2,20 +2,11 @@
   display: flex;
   justify-content: space-between;
 
-  .search-cover {
-    display: flex;
-    gap: 1rem;
-    align-items: start;
-
-    .input-cover {
-      width: 23rem;
-    }
+  .title {
+    margin-bottom: 4.6rem;
   }
 }
 
-.title {
-  margin-bottom: 4.6rem;
-}
 .reservation-table {
   width: 100%;
   border-radius: 1rem;
@@ -25,10 +16,11 @@
     background-color: var(--color-gray-30);
 
     th {
+      width: calc(100% / 8);
       font-size: var(--title-big);
       color: var(--color-gray-100);
-      font-weight: 500;
-      border-bottom: 1px solid var(--color-gray-100);
+      font-weight: 400;
+      border-bottom: 1px solid var(--color-gray-50);
       line-height: 4rem;
     }
   }
@@ -40,39 +32,61 @@
       line-height: 6.5rem;
       border-bottom: 1px solid var(--color-gray-30);
     }
+  }
+}
 
-    .reservation-number {
-      color: var(--color-blue-100);
-      font-weight: 600;
-    }
-
-    .schedule {
-      color: var(--color-blue-100);
-      font-weight: 600;
-    }
-
-    .total {
-      color: var(--color-primary);
-      font-weight: 600;
+@media (max-width: 1023px) {
+  .reservation-table {
+    thead th {
+      font-size: medium;
     }
   }
 }
 
-@media (max-width: 349px) {
-  .reservation-header {
-    display: flex;
-    .search-cover {
-      display: flex;
-      gap: 1rem;
-      align-items: start;
-
-      .title {
-        margin-bottom: 2rem;
-      }
-
-      .input-cover {
-        width: 12rem;
+@media (max-width: 900px) {
+  .reservation-date,
+  .personnel,
+  .total {
+    display: none;
+  }
+  .reservation-table {
+    thead tr {
+      .departure,
+      .arrival {
+        width: 10%;
       }
     }
+  }
+}
+
+@media (max-width: 460px) {
+  .reservation-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .title {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .travel,
+  .reservation-date,
+  .personnel,
+  .total {
+    display: none;
+  }
+}
+
+@media (max-width: 350px) {
+  .reservation-header {
+    display: flex;
+    .title {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .departure {
+    display: none;
   }
 }

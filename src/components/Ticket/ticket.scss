@@ -83,12 +83,11 @@
       width: 9rem;
       height: 6rem;
       margin-bottom: var(--title-extra);
+      overflow: hidden;
 
       img {
-        width: 100%;
+        width: auto;
         height: 100%;
-        object-fit: cover;
-        object-position: left;
       }
     }
     .flex-box dl {
@@ -120,7 +119,7 @@
     img {
       object-fit: scale-down;
     }
-    a {
+    .btn-modify {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -135,7 +134,7 @@
       z-index: 1;
     }
 
-    &:hover a {
+    &:hover .btn-modify {
       opacity: 1;
       visibility: visible;
     }
@@ -341,10 +340,10 @@
         flex-direction: column;
         gap: 1.4rem;
 
-        button,
+        .btn,
         label {
           display: block;
-          width: calc(5rem * 2 + var(--title-medium));
+          width: 100%;
           padding: 0.7em 0;
           background: var(--color-gray-30);
           color: var(--color-blue-100);
@@ -362,7 +361,7 @@
         }
       }
 
-      button,
+      .btn,
       label {
         transition: all var(--transition-duration);
         outline: 2px solid transparent;
@@ -438,12 +437,6 @@
 
         .btn-box {
           flex-direction: row;
-
-          button,
-          & > div,
-          label {
-            width: 100%;
-          }
         }
       }
     }

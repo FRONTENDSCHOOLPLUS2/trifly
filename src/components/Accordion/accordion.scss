@@ -17,30 +17,46 @@
       aspect-ratio: 1/1;
       transition: all var(--transition-duration);
     }
-    &.act::after {
-      transform: rotate(180deg);
-    }
-
     .badge {
       vertical-align: 0.1em;
       margin-left: 0.6rem;
     }
   }
+
   .accordion-body {
     display: none;
     padding: var(--title-extra) 0;
     border-bottom: 1px solid var(--color-gray-30);
     color: var(--color-gray-100);
     font-size: var(--title-medium);
-    max-height: 16rem;
-    overflow: auto;
     word-break: keep-all;
-
-    &.act {
-      display: block;
-    }
     pre {
       white-space: pre-line;
+    }
+  }
+
+  // 활성화
+  .accordion-item.active {
+    .accordion-header::after {
+      transform: rotate(180deg);
+    }
+    .accordion-body {
+      display: block;
+    }
+  }
+  .accordion-header.active {
+    &::after {
+      transform: rotate(180deg);
+    }
+    & + .accordion-body {
+      display: block;
+    }
+  }
+
+  &:not(.small) {
+    .accordion-body {
+      max-height: 16rem;
+      overflow: auto;
     }
   }
 

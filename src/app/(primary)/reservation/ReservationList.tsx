@@ -10,15 +10,14 @@ const ReservationList = async ({
   page: string;
   keyword: string;
 }) => {
-  const data = await FetchOrderList();
+  const data = await FetchOrderList(page);
   const reservationData = data.item;
+
   const filteredItems = keyword
     ? reservationData.filter((item) =>
         item.reservationId.substring(0, 6).includes(keyword),
       )
     : reservationData;
-
-  console.log("search@@@@@@@@", keyword);
 
   return (
     <div>
@@ -27,14 +26,14 @@ const ReservationList = async ({
           <caption className="hidden">예약 내역 리스트</caption>
           <thead>
             <tr>
-              <th>예약 번호</th>
-              <th>예약일</th>
-              <th>출발</th>
-              <th>도착</th>
-              <th>왕복/편도</th>
-              <th>출발일</th>
-              <th>인원</th>
-              <th>총 금액</th>
+              <th className="travel">왕복/편도</th>
+              <th className="reservation-number">예약 번호</th>
+              <th className="departure">출발</th>
+              <th className="arrival">도착</th>
+              <th className="reservation-date">예약일</th>
+              <th className="schedule">출발일</th>
+              <th className="personnel">인원</th>
+              <th className="total">총 금액</th>
             </tr>
           </thead>
           {filteredItems.length === 0 ? (
@@ -51,22 +50,9 @@ const ReservationList = async ({
               <OrdersItem key={item._id} item={item} />
             ))
           )}
-          {/* {reservationData?.map((item) => (
-            <OrdersItem key={item._id} item={item} keyword={keyword} />
-          ))} */}
-          {/* {keyword ? (
-            <tbody>
-              <tr>
-                <td colSpan={8}>{keyword}</td>
-              </tr>
-            </tbody>
-          ) : (
-            reservationData?.map((item) => (
-              <OrdersItem key={item._id} item={item} keyword={keyword} />
-            ))
-          )} */}
         </table>
       </section>
+      {/* 모바일에서는 숨기기 */}
       <Pagination {...data.pagination!} />
     </div>
   );

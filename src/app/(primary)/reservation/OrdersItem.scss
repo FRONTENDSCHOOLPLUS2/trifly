@@ -1,0 +1,31 @@
+.ordersitem {
+  .item-table {
+    .reservation-number {
+      color: var(--color-blue-100);
+      font-weight: 500;
+    }
+
+    .reservation-date {
+      color: var(--color-gray-100);
+    }
+
+    .schedule {
+      color: var(--color-gray-100);
+    }
+
+    .total {
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .ordersitem {
+    .item-table {
+      .departure {
+        display: none;
+      }
+    }
+  }
+}

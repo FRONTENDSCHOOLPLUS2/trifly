@@ -4,6 +4,7 @@ import fileUploadAction from "@/data/actions/fileUploadAction";
 import orderFatchAction from "@/data/actions/orderPatchAction";
 import saveAs from "file-saver";
 import html2canvas from "html2canvas";
+import Link from "next/link";
 import {
   ChangeEvent,
   createRef,
@@ -54,16 +55,17 @@ const Canvas = ({
     try {
       const ticketArea = ticketRef.current;
       const imgBoxArea = imgBoxRef.current;
-      const ticket = await html2canvas(ticketArea, { scale: 2 });
-      const canvas = await html2canvas(imgBoxArea, { scale: 2 });
+      const ticket = await html2canvas(ticketArea, {
+        backgroundColor: "transparent",
+      });
+      const canvas = await html2canvas(imgBoxArea);
 
       // 꾸며진 이미지를 구매 내역 이미지에 반영
       if (isCanvasChange) {
         canvas.toBlob(async (blob) => {
           if (blob) {
             const formData = new FormData();
-            formData.append("attach", blob, "result.png");
-
+            formData.append("attach", blob, "ticketCanvas");
             const uploadedFile = await fileUploadAction(formData);
             await orderFatchAction(id, uploadedFile);
           } else {
@@ -253,7 +255,9 @@ const Canvas = ({
           </div>
         </div>
         <div className="btn-box">
-          <button>이전으로</button>
+          <Link href="/footprint" className="btn">
+            이전으로
+          </Link>
           <div className="file-box">
             <label htmlFor="file" className="secondary-ver">
               이미지 첨부
@@ -266,7 +270,7 @@ const Canvas = ({
               hidden
             />
           </div>
-          <button className="primary-ver" onClick={handleDownload}>
+          <button className="btn primary-ver" onClick={handleDownload}>
             저장하기
           </button>
         </div>

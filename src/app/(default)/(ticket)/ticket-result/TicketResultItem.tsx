@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import "./TicketResultItem.scss";
-import Loading from "@/app/loading";
+import Loading from "@/components/Loading/Loading";
 
 const TicketResultItem = ({
   user,

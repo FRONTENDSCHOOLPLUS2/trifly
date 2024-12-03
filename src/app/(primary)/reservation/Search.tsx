@@ -1,6 +1,9 @@
 "use client";
 
-function SearchKeyWords() {
+import Button from "@/components/Button/Button";
+import "./Search.scss";
+
+const SearchKeyWords = () => {
   return (
     <form action="#" className="search-form">
       <input
@@ -8,12 +11,15 @@ function SearchKeyWords() {
         placeholder="예약번호를 입력해주세요"
         className="search-input"
         name="keyword"
+        onChange={(e) => {
+          console.log(e.target.value);
+        }}
       />
-      <button type="submit" className="search-button">
+      <Button type="submit" size="sm" bgColor="primary">
         검색
-      </button>
+      </Button>
     </form>
   );
-}
+};
 
 export default SearchKeyWords;

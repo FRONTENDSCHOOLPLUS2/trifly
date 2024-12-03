@@ -10,7 +10,7 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    background: url(/img/img-footprint-bg1.jpg) no-repeat center / cover;
+    background: url(/img/img-footprint-bg1.webp) no-repeat center / cover;
     z-index: 0;
   }
 
@@ -36,9 +36,17 @@
       opacity: 0;
     }
 
-    .lottie {
+    .lottie-box {
       aspect-ratio: 4096/2643;
 
+      .skeleton-ani {
+        aspect-ratio: inherit;
+        mask-size: contain;
+        mask-repeat: no-repeat;
+      }
+      .lottie {
+        aspect-ratio: inherit;
+      }
       svg {
         vertical-align: top;
       }
@@ -171,12 +179,31 @@
     }
   }
 
+  // 차트 로딩
+  .chartLoading {
+    width: 180px;
+    aspect-ratio: 1/1;
+    position: relative;
+    margin: 0 auto;
+
+    .skeleton-ani {
+      width: 50%;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      mask-image: radial-gradient(circle, transparent 51%, #fff 51%);
+    }
+  }
+
   // 발자국 상세
   &.detail {
     margin-top: 3rem;
 
     &::before {
-      background-image: url(/img/img-footprint-bg2.jpg);
+      background-image: url(/img/img-footprint-bg2.webp);
     }
 
     .detail-inner {
