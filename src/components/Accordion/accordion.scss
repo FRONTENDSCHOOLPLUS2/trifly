@@ -44,6 +44,14 @@
       display: block;
     }
   }
+  .accordion-header.active {
+    &::after {
+      transform: rotate(180deg);
+    }
+    & + .accordion-body {
+      display: block;
+    }
+  }
 
   &:not(.small) {
     .accordion-body {

@@ -55,16 +55,17 @@ const Canvas = ({
     try {
       const ticketArea = ticketRef.current;
       const imgBoxArea = imgBoxRef.current;
-      const ticket = await html2canvas(ticketArea, { scale: 2 });
-      const canvas = await html2canvas(imgBoxArea, { scale: 2 });
+      const ticket = await html2canvas(ticketArea, {
+        backgroundColor: "transparent",
+      });
+      const canvas = await html2canvas(imgBoxArea);
 
       // 꾸며진 이미지를 구매 내역 이미지에 반영
       if (isCanvasChange) {
         canvas.toBlob(async (blob) => {
           if (blob) {
             const formData = new FormData();
-            formData.append("attach", blob, "result.png");
-
+            formData.append("attach", blob, "ticketCanvas");
             const uploadedFile = await fileUploadAction(formData);
             await orderFatchAction(id, uploadedFile);
           } else {
