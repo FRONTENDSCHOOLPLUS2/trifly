@@ -32,8 +32,6 @@ const Filter = memo(
     prices: number[];
     handleFilterChange: (filter: FilterProps) => void;
   }) => {
-    console.log("Filter 렌더링");
-
     return (
       <div className="filter">
         {/* 경유 포함 검색했을 시 필터링 */}
