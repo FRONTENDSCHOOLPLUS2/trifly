@@ -1,12 +1,12 @@
 "use client";
 
-import { FilterProps, filterState, searchResultState } from "@/atoms/atoms";
+import { FilterProps, searchResultState } from "@/atoms/atoms";
 import Button from "@/components/Button/Button";
 import { AirlineData, CodeState, OffersSearchData } from "@/types";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import Filter from "./Filter";
 import Sorting from "./Sorting";
 import TicketResultList from "./TicketResultList";
@@ -30,8 +30,6 @@ const Result = ({
   const [sortBy, setSortBy] = useState<string>("priceLow");
   const searchParams = useSearchParams();
   const nonStop = searchParams.get("nonStop") === "true";
-
-  console.log("Result 렌더링");
 
   /* -------------------------------------------------------------------------- */
   /*                        항공편 조회 결과에 해당하는 항공사만 추출                     */
@@ -335,7 +333,6 @@ const Result = ({
   /* -------------------------------------------------------------------------- */
   useEffect(() => {
     const sortedAndFilteredData = sortData(applyFilters());
-    console.log("정렬 및 필터 변경");
     setFilteredData(sortedAndFilteredData);
   }, [filters, sortBy, applyFilters, sortData]);
 
