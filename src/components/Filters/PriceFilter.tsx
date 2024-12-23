@@ -10,8 +10,6 @@ const PriceFilter = memo(
     prices: number[];
     handleFilterChange: (filter: FilterProps) => void;
   }) => {
-    console.log("가격 필터 렌더링");
-
     const [maxPrice, setMaxPrice] = useState(Math.max(...prices));
     /* -------------------------------------------------------------------------- */
     /*                                   가격 설정                                  */
