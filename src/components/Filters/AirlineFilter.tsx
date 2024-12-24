@@ -17,7 +17,7 @@ const getAirlinesByAlliance = (
   airline: CodeState<AirlineData>,
   carrierCodes: string[],
 ) => {
-  // 동맹체별 항공사 맵핑
+  // 동맹체별 항공사 mapping
   const allianceMap: { [key: string]: string[] } = {};
 
   carrierCodes.forEach((code) => {
@@ -45,9 +45,11 @@ const AirlineFilter = memo(
     selectedAirlines: string[];
     handleFilterChange: Dispatch<SetStateAction<FilterProps>>;
   }) => {
-    const [selectedAirlines, setSelectedAirlines] = useState<string[]>(
-      initialSelectedAirlines || carrierCodes,
-    );
+    const [selectedAirlines, setSelectedAirlines] = useState<string[]>(() => {
+      return !initialSelectedAirlines || initialSelectedAirlines.length === 0
+        ? carrierCodes
+        : initialSelectedAirlines;
+    });
 
     const isInitialMount = useRef(true);
     // 불필요한 재계산 방지
@@ -57,7 +59,7 @@ const AirlineFilter = memo(
     /*                                 항공사 선택                                   */
     /* -------------------------------------------------------------------------- */
     const allianceCont =
-      allianceChk.length > 0
+      allianceChk.length > 0 && initialSelectedAirlines.length > 0
         ? allianceChk
         : [
             {
