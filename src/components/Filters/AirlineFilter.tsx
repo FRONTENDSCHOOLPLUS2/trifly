@@ -13,6 +13,24 @@ import {
   useState,
 } from "react";
 
+const getAirlinesByAlliance = (
+  airline: CodeState<AirlineData>,
+  carrierCodes: string[],
+) => {
+  // 동맹체별 항공사 맵핑
+  const allianceMap: { [key: string]: string[] } = {};
+
+  carrierCodes.forEach((code) => {
+    const alliance = airline[code].allianceEng || "others";
+    if (!allianceMap[alliance]) {
+      allianceMap[alliance] = [];
+    }
+    allianceMap[alliance].push(code);
+  });
+
+  return allianceMap;
+};
+
 const AirlineFilter = memo(
   ({
     airline,
@@ -30,6 +48,10 @@ const AirlineFilter = memo(
     const [selectedAirlines, setSelectedAirlines] = useState<string[]>(
       initialSelectedAirlines || carrierCodes,
     );
+
+    const isInitialMount = useRef(true);
+    // 불필요한 재계산 방지
+    const allianceMap = useRef(getAirlinesByAlliance(airline, carrierCodes));
 
     /* -------------------------------------------------------------------------- */
     /*                                 항공사 선택                                   */
@@ -65,52 +87,50 @@ const AirlineFilter = memo(
           ];
 
     const [allianceCheck, setAllianceCheck] = useState(allianceCont);
-    // 모두 선택, 해제
     const { setCheck } = useAllChecked(allianceCheck, setAllianceCheck);
 
     const handleSelectAll = () => {
-      setAllianceCheck(
-        allianceCheck.map((item) => ({ ...item, checked: true })),
+      // 모든 동맹체를 체크 상태로 변경
+      setAllianceCheck((prev) =>
+        prev.map((item) => ({ ...item, checked: true })),
       );
+
+      // 모든 항공사 선택
+      setSelectedAirlines(carrierCodes);
     };
 
     const handleUnselectAll = () => {
-      setAllianceCheck(
-        allianceCheck.map((item) => ({ ...item, checked: false })),
+      // 모든 동맹체를 체크 해제 상태로 변경
+      setAllianceCheck((prev) =>
+        prev.map((item) => ({ ...item, checked: false })),
       );
+
+      // 모든 항공사 선택 해제
+      setSelectedAirlines([]);
     };
 
     /* -------------------------------------------------------------------------- */
     /*                                  동맹체 체크 여부                              */
     /* -------------------------------------------------------------------------- */
+    const handleAllianceChk = (e: ChangeEvent<HTMLInputElement>) => {
+      const { name, checked } = e.target;
 
-    useEffect(() => {
-      const updatedAirlines: string[] = [];
+      // 현재 변경된 동맹체의 항공사들
+      const airlinesInAlliance = allianceMap.current[name] || [];
 
-      allianceCheck.forEach((alliance) => {
-        if (alliance.checked) {
-          carrierCodes.forEach((carrierCode) => {
-            if (airline[carrierCode].allianceEng === alliance.name) {
-              updatedAirlines.push(carrierCode);
-            } else if (
-              airline[carrierCode].allianceEng === "" &&
-              alliance.name === "others"
-            ) {
-              updatedAirlines.push(carrierCode);
-            }
-          });
+      // 동맹체 체크 상태 업데이트
+      setCheck(e);
+
+      // 해당 동맹체의 항공사들만 선택/해제
+      setSelectedAirlines((prev) => {
+        if (checked) {
+          // 체크된 경우: 해당 동맹체의 항공사들을 추가
+          return [...prev, ...airlinesInAlliance];
+        } else {
+          // 해제된 경우: 해당 동맹체의 항공사들만 제거
+          return prev.filter((code) => !airlinesInAlliance.includes(code));
         }
       });
-
-      // selectedAirlines만 업데이트
-      setSelectedAirlines(updatedAirlines);
-
-      // allianceChk 상태 변경
-      handleFilterChange((prev) => ({ ...prev, allianceChk: allianceCheck }));
-    }, [allianceCheck]);
-
-    const handleAllianceChk = (e: ChangeEvent<HTMLInputElement>) => {
-      setCheck(e);
     };
 
     const alliances = allianceCheck.map((item) => (
@@ -127,10 +147,8 @@ const AirlineFilter = memo(
       </li>
     ));
 
-    // 항공사 선택
     const handleAirlineChk = useCallback((e: ChangeEvent<HTMLInputElement>) => {
       const { value, checked } = e.target;
-
       setSelectedAirlines((prev) => {
         if (checked) {
           return [...prev, value];
@@ -139,24 +157,31 @@ const AirlineFilter = memo(
       });
     }, []);
 
+    // 선택된 항공사가 변경될 때마다 필터 상태 업데이트
     useEffect(() => {
-      handleFilterChange((prev) => ({ ...prev, airline: selectedAirlines }));
-    }, [selectedAirlines]);
+      if (!isInitialMount.current) {
+        handleFilterChange((prev) => ({
+          ...prev,
+          airline: selectedAirlines,
+          allianceChk: allianceCheck,
+        }));
+      } else {
+        isInitialMount.current = false;
+      }
+    }, [selectedAirlines, allianceCheck]);
 
-    const airlines = carrierCodes.map((item, idx) => {
-      return (
-        <li key={idx}>
-          <input
-            type="checkbox"
-            id={item}
-            value={item}
-            checked={selectedAirlines.includes(item)}
-            onChange={handleAirlineChk}
-          />
-          <label htmlFor={item}>{airline[item].nameKor}</label>
-        </li>
-      );
-    });
+    const airlines = carrierCodes.map((item) => (
+      <li key={item}>
+        <input
+          type="checkbox"
+          id={item}
+          value={item}
+          checked={selectedAirlines.includes(item)}
+          onChange={handleAirlineChk}
+        />
+        <label htmlFor={item}>{airline[item].nameKor}</label>
+      </li>
+    ));
 
     return (
       <div className="filter-contents airlines">
@@ -168,11 +193,10 @@ const AirlineFilter = memo(
               name="allChk"
               value="allChk"
               disabled={
-                allianceCheck.filter((item) => item.checked !== true).length < 1
+                allianceCheck.filter((item) => !item.checked).length < 1
               }
               checked={
-                allianceCheck.filter((item) => item.checked !== true).length >=
-                1
+                allianceCheck.filter((item) => !item.checked).length >= 1
               }
               onChange={handleSelectAll}
             />
@@ -185,12 +209,9 @@ const AirlineFilter = memo(
               name="allChk"
               value="allCancel"
               disabled={
-                allianceCheck.filter((item) => item.checked !== true).length >=
-                1
+                allianceCheck.filter((item) => !item.checked).length >= 1
               }
-              checked={
-                allianceCheck.filter((item) => item.checked !== true).length < 1
-              }
+              checked={allianceCheck.filter((item) => !item.checked).length < 1}
               onChange={handleUnselectAll}
             />
             <label htmlFor="allCancel">모두 해제</label>
