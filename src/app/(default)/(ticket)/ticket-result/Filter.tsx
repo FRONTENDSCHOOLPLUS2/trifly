@@ -36,7 +36,11 @@ const Filter = ({
 }) => {
   return (
     <div className="filter">
-      <Sorting handleSorting={() => {}} tripType={"round"} />
+      <Sorting
+        sortBy={filters.sortBy}
+        handleFilterChange={handleFilterChange}
+        tripType={"round"}
+      />
       {/* 경유 포함 검색했을 시 필터링 */}
       {!nonStop && (
         <Accordion type="small">
