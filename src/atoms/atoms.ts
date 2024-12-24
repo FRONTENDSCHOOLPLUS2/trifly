@@ -16,13 +16,20 @@ interface ModalProps {
   handleCancel?: () => void;
 }
 
+export interface IAllianceChk {
+  name: string;
+  title: string;
+  content: string;
+  checked: boolean;
+}
+
 export interface FilterProps {
   nonStop: boolean;
   originDepTime: number[];
   originArrTime: number[];
   returnDepTime: number[];
   returnArrTime: number[];
-  alliance: string[];
+  allianceChk: IAllianceChk[];
   airline: string[];
   maxPrice: number;
   sortBy: string;
@@ -150,7 +157,7 @@ export const defaultFilterState: FilterProps = {
   originArrTime: [6, 12, 18, 24],
   returnDepTime: [6, 12, 18, 24],
   returnArrTime: [6, 12, 18, 24],
-  alliance: [],
+  allianceChk: [],
   airline: [],
   maxPrice: 0,
   sortBy: "priceLow",

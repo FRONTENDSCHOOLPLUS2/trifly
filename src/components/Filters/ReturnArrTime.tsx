@@ -1,12 +1,19 @@
 import "@/app/(default)/(ticket)/ticket-result/Filter.scss";
 import { FilterProps } from "@/atoms/atoms";
-import { ChangeEvent, memo, useEffect, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  memo,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 
 const ReturnArrTime = memo(
   ({
     handleFilterChange,
   }: {
-    handleFilterChange: (filter: FilterProps) => void;
+    handleFilterChange: Dispatch<SetStateAction<FilterProps>>;
   }) => {
     const [returnArrTime, setReturnArrTime] = useState<number[]>([
       6, 12, 18, 24,
@@ -15,9 +22,9 @@ const ReturnArrTime = memo(
     /* -------------------------------------------------------------------------- */
     /*                             출도착 시간 변경 처리                               */
     /* -------------------------------------------------------------------------- */
-    useEffect(() => {
-      handleFilterChange({ returnArrTime });
-    }, [returnArrTime]);
+    // useEffect(() => {
+    //   handleFilterChange({ returnArrTime });
+    // }, [returnArrTime]);
 
     const handleReturnArrChange = (e: ChangeEvent<HTMLInputElement>) => {
       const value = Number(e.target.value);

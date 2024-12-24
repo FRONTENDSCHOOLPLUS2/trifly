@@ -20,7 +20,6 @@ const TicketResultList = ({
   return (
     <Virtuoso
       className="result-list"
-      style={{}}
       data={data}
       useWindowScroll
       totalCount={data.length}
