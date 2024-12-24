@@ -8,8 +8,6 @@ const Sorting = memo(
     handleSorting: (e: ChangeEvent<HTMLSelectElement>) => void;
     tripType: string;
   }) => {
-    console.log("Sorting 렌더링");
-
     return (
       <div className="result-list-sort">
         <div className="sort-container">

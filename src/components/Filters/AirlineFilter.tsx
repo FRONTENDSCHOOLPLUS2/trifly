@@ -1,10 +1,12 @@
 import "@/app/(default)/(ticket)/ticket-result/Filter.scss";
-import { FilterProps } from "@/atoms/atoms";
+import { FilterProps, IAllianceChk } from "@/atoms/atoms";
 import useAllChecked from "@/hook/useAllChecked";
 import { AirlineData, CodeState } from "@/types";
 import {
   ChangeEvent,
+  Dispatch,
   memo,
+  SetStateAction,
   useCallback,
   useEffect,
   useRef,
@@ -15,47 +17,55 @@ const AirlineFilter = memo(
   ({
     airline,
     carrierCodes,
+    allianceChk,
+    selectedAirlines: initialSelectedAirlines,
     handleFilterChange,
   }: {
     airline: CodeState<AirlineData>;
     carrierCodes: string[];
-    handleFilterChange: (filter: FilterProps) => void;
+    allianceChk: IAllianceChk[];
+    selectedAirlines: string[];
+    handleFilterChange: Dispatch<SetStateAction<FilterProps>>;
   }) => {
-    const [selectedAirlines, setSelectedAirlines] =
-      useState<string[]>(carrierCodes);
-    const airlineRef = useRef(null);
+    const [selectedAirlines, setSelectedAirlines] = useState<string[]>(
+      initialSelectedAirlines || carrierCodes,
+    );
 
     /* -------------------------------------------------------------------------- */
     /*                                 항공사 선택                                   */
     /* -------------------------------------------------------------------------- */
-    const allianceCont = [
-      {
-        name: "Skyteam",
-        title: "스카이팀",
-        content: "",
-        checked: true,
-      },
-      {
-        name: "Star Alliance",
-        title: "스타얼라이언스",
-        content: "",
-        checked: true,
-      },
-      {
-        name: "oneworld",
-        title: "원월드",
-        content: "",
-        checked: true,
-      },
-      {
-        name: "others",
-        title: "기타",
-        content: "",
-        checked: true,
-      },
-    ];
+    const allianceCont =
+      allianceChk.length > 0
+        ? allianceChk
+        : [
+            {
+              name: "Skyteam",
+              title: "스카이팀",
+              content: "",
+              checked: true,
+            },
+            {
+              name: "Star Alliance",
+              title: "스타얼라이언스",
+              content: "",
+              checked: true,
+            },
+            {
+              name: "oneworld",
+              title: "원월드",
+              content: "",
+              checked: true,
+            },
+            {
+              name: "others",
+              title: "기타",
+              content: "",
+              checked: true,
+            },
+          ];
 
     const [allianceCheck, setAllianceCheck] = useState(allianceCont);
+    // 모두 선택, 해제
     const { setCheck } = useAllChecked(allianceCheck, setAllianceCheck);
 
     const handleSelectAll = () => {
@@ -73,6 +83,7 @@ const AirlineFilter = memo(
     /* -------------------------------------------------------------------------- */
     /*                                  동맹체 체크 여부                              */
     /* -------------------------------------------------------------------------- */
+
     useEffect(() => {
       const updatedAirlines: string[] = [];
 
@@ -91,7 +102,11 @@ const AirlineFilter = memo(
         }
       });
 
+      // selectedAirlines만 업데이트
       setSelectedAirlines(updatedAirlines);
+
+      // allianceChk 상태 변경
+      handleFilterChange((prev) => ({ ...prev, allianceChk: allianceCheck }));
     }, [allianceCheck]);
 
     const handleAllianceChk = (e: ChangeEvent<HTMLInputElement>) => {
@@ -112,23 +127,7 @@ const AirlineFilter = memo(
       </li>
     ));
 
-    useEffect(() => {
-      handleFilterChange({ airline: selectedAirlines });
-    }, [selectedAirlines]);
-    //   const { value } = e.target;
-
-    //   setSelectedAirlines((prev) => {
-    //     if (!prev) {
-    //       return [value];
-    //     }
-
-    //     if (e.target.checked) {
-    //       return [...prev, value];
-    //     }
-    //     return prev.filter((time) => time !== value);
-    //   });
-    // };
-
+    // 항공사 선택
     const handleAirlineChk = useCallback((e: ChangeEvent<HTMLInputElement>) => {
       const { value, checked } = e.target;
 
@@ -140,11 +139,14 @@ const AirlineFilter = memo(
       });
     }, []);
 
+    useEffect(() => {
+      handleFilterChange((prev) => ({ ...prev, airline: selectedAirlines }));
+    }, [selectedAirlines]);
+
     const airlines = carrierCodes.map((item, idx) => {
       return (
         <li key={idx}>
           <input
-            ref={airlineRef}
             type="checkbox"
             id={item}
             value={item}
