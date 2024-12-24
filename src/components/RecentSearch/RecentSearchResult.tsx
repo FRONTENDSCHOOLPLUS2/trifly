@@ -49,11 +49,15 @@ const RecentSearchResult = ({
         <i className="hidden">닫기</i>
       </button>
 
-      {data.tripType === "oneway" ? (
-        <Badge type="secondary">편도</Badge>
-      ) : (
-        <Badge type="secondary">왕복</Badge>
-      )}
+      <div className="recent-search-badge">
+        {data.tripType === "oneway" ? (
+          <Badge type="secondary">편도</Badge>
+        ) : (
+          <Badge type="secondary">왕복</Badge>
+        )}
+
+        {data.nonStop && <Badge>직항</Badge>}
+      </div>
 
       <div className="route">
         <p>

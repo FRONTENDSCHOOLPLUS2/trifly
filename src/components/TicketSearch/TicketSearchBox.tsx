@@ -241,6 +241,7 @@ const TicketSearchBox = ({
     const duplicateIndex = recentSearch.findIndex((item) => {
       return (
         tripType === item.tripType &&
+        JSON.stringify(nonStop) === JSON.stringify(item.nonStop) &&
         JSON.stringify(origin) === JSON.stringify(item.origin) &&
         JSON.stringify(destination) === JSON.stringify(item.destination) &&
         JSON.stringify(schedule) === JSON.stringify(item.schedule) &&
