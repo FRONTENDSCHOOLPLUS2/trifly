@@ -17,13 +17,15 @@ interface ModalProps {
 }
 
 export interface FilterProps {
-  nonStop?: boolean;
-  originDepTime?: number[];
-  originArrTime?: number[];
-  returnDepTime?: number[];
-  returnArrTime?: number[];
-  airline?: string[];
-  maxPrice?: number;
+  nonStop: boolean;
+  originDepTime: number[];
+  originArrTime: number[];
+  returnDepTime: number[];
+  returnArrTime: number[];
+  alliance: string[];
+  airline: string[];
+  maxPrice: number;
+  sortBy: string;
 }
 
 export interface OrderProps
@@ -142,9 +144,21 @@ export const recentSearchState = atom<SearchResultProps[]>({
   effects_UNSTABLE: [localPersistAtom],
 });
 
+export const defaultFilterState: FilterProps = {
+  nonStop: false,
+  originDepTime: [6, 12, 18, 24],
+  originArrTime: [6, 12, 18, 24],
+  returnDepTime: [6, 12, 18, 24],
+  returnArrTime: [6, 12, 18, 24],
+  alliance: [],
+  airline: [],
+  maxPrice: 0,
+  sortBy: "priceLow",
+};
+
 export const filterState = atom<FilterProps>({
   key: "filterState",
-  default: {},
+  default: defaultFilterState,
   effects_UNSTABLE: [sessionPersistAtom],
 });
 
