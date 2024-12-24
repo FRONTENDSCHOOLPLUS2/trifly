@@ -1,4 +1,6 @@
 import {
+  defaultFilterState,
+  filterState,
   recentSearchState,
   SearchResultProps,
   searchResultState,
@@ -16,6 +18,7 @@ const RecentSearchResult = ({
 }) => {
   const [recentSearch, setRecentSearch] = useRecoilState(recentSearchState);
   const setSearchResult = useSetRecoilState(searchResultState);
+  const setFilterState = useSetRecoilState(filterState);
 
   const handleClick = () => {
     if (typeof window !== "undefined") {
@@ -23,6 +26,11 @@ const RecentSearchResult = ({
     }
 
     setSearchResult(data);
+
+    setFilterState({
+      ...defaultFilterState,
+      nonStop: data.nonStop,
+    });
   };
 
   const handleDelete = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {

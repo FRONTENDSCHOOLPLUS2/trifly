@@ -1,6 +1,8 @@
 "use client";
 
 import {
+  defaultFilterState,
+  filterState,
   modalState,
   recentSearchState,
   searchResultState,
@@ -27,6 +29,7 @@ const TicketSearchBox = ({
 }) => {
   const [recentSearch, setRecentSearch] = useRecoilState(recentSearchState);
   const [searchResult, setSearchResult] = useRecoilState(searchResultState);
+  const setFilterState = useSetRecoilState(filterState);
   const [tripType, setTripType] = useState("round");
   const [nonStop, setNonStop] = useState(false);
   const [origin, setOrigin] = useState({
@@ -232,6 +235,8 @@ const TicketSearchBox = ({
       passengers,
       cabin,
     });
+
+    setFilterState({ ...defaultFilterState, nonStop });
 
     const duplicateIndex = recentSearch.findIndex((item) => {
       return (
