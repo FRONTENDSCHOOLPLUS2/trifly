@@ -1,6 +1,6 @@
 "use client";
 
-import { FilterProps, filterState, searchResultState } from "@/atoms/atoms";
+import { filterState, searchResultState } from "@/atoms/atoms";
 import Button from "@/components/Button/Button";
 import useFilters from "@/hook/useFilters";
 import { AirlineData, CodeState, OffersSearchData } from "@/types";
