@@ -59,15 +59,17 @@ const Result = ({
   const newFilteredData = useFilters(data, filters, prices, returnDate);
 
   useEffect(() => {
-    setFilteredData(newFilteredData);
-  }, [newFilteredData]);
-
-  useEffect(() => {
-    // 초기 데이터 설정
+    // 초기 로드 시 또는 필터 변경 시
     if (data.length > 0) {
-      setFilteredData(data);
+      if (Object.keys(filters).length === 0) {
+        // 필터가 없을 때는 전체 데이터 표시
+        setFilteredData(data);
+      } else {
+        // 필터가 있을 때는 필터링된 데이터 표시
+        setFilteredData(newFilteredData);
+      }
     }
-  }, [data]);
+  }, [data, newFilteredData, filters]);
 
   useEffect(() => {
     // 필터 적용
