@@ -58,8 +58,22 @@ const Result = ({
   /* -------------------------------------------------------------------------- */
   const newFilteredData = useFilters(data, filters, prices, returnDate);
 
+  // useEffect(() => {
+  //   setFilteredData(newFilteredData);
+  // }, [newFilteredData]);
+
   useEffect(() => {
-    setFilteredData(newFilteredData);
+    // 초기 데이터 설정
+    if (data.length > 0) {
+      setFilteredData(data);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    // 필터 적용
+    if (newFilteredData.length > 0) {
+      setFilteredData(newFilteredData);
+    }
   }, [newFilteredData]);
 
   /* -------------------------------------------------------------------------- */
