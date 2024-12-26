@@ -50,7 +50,7 @@ const PaymentForm = ({
   user,
   code,
 }: {
-  user: User;
+  user: User | undefined;
   code: CodeState<AirportData>;
 }) => {
   const router = useRouter();
