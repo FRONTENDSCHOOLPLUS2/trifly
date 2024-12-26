@@ -233,7 +233,7 @@ const useFilters = (
     }
 
     return filteredData;
-  }, [data, filters]);
+  }, [data, filters, prices, returnDate]);
 };
 
 export default useFilters;

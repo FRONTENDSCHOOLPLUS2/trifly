@@ -23,7 +23,9 @@ const Result = ({
 }) => {
   const searchResult = useRecoilValue(searchResultState);
   const [filters, setFilters] = useRecoilState(filterState);
-  const [filteredData, setFilteredData] = useState(data);
+  // const [filteredData, setFilteredData] = useState(() =>
+  //   useFilters(data, filters, prices, returnDate),
+  // );
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   /* -------------------------------------------------------------------------- */
@@ -56,25 +58,13 @@ const Result = ({
   /* -------------------------------------------------------------------------- */
   /*                                  필터 적용                                   */
   /* -------------------------------------------------------------------------- */
-  const newFilteredData = useFilters(data, filters, prices, returnDate);
+  // const newFilteredData = useFilters(data, filters, prices, returnDate);
 
-  useEffect(() => {
-    // 초기 로드 시 또는 필터 변경 시
-    if (data.length > 0) {
-      if (Object.keys(filters).length === 0) {
-        // 필터가 없을 때는 전체 데이터 표시
-        setFilteredData(data);
-      } else {
-        // 필터가 있을 때는 필터링된 데이터 표시
-        setFilteredData(newFilteredData);
-      }
-    }
-  }, [data, newFilteredData, filters]);
-
-  useEffect(() => {
-    // 필터 적용
-    setFilteredData(newFilteredData);
-  }, [newFilteredData]);
+  // useEffect(() => {
+  //   // 필터 적용
+  //   setFilteredData(newFilteredData);
+  // }, [newFilteredData]);
+  const filteredData = useFilters(data, filters, prices, returnDate);
 
   /* -------------------------------------------------------------------------- */
   /*                         모바일 환경에서 뒤편 스크롤 고정                           */
