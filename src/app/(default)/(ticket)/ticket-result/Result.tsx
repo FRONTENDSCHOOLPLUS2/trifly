@@ -58,9 +58,9 @@ const Result = ({
   /* -------------------------------------------------------------------------- */
   const newFilteredData = useFilters(data, filters, prices, returnDate);
 
-  // useEffect(() => {
-  //   setFilteredData(newFilteredData);
-  // }, [newFilteredData]);
+  useEffect(() => {
+    setFilteredData(newFilteredData);
+  }, [newFilteredData]);
 
   useEffect(() => {
     // 초기 데이터 설정
@@ -71,9 +71,7 @@ const Result = ({
 
   useEffect(() => {
     // 필터 적용
-    if (newFilteredData.length > 0) {
-      setFilteredData(newFilteredData);
-    }
+    setFilteredData(newFilteredData);
   }, [newFilteredData]);
 
   /* -------------------------------------------------------------------------- */
