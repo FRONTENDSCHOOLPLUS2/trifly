@@ -96,7 +96,7 @@ const useFilters = (
 
       if (filters.maxPrice < Math.max(...prices)) {
         filteredData = filteredData.filter(
-          (offer) => Number(offer.price.grandTotal) < maxPrice,
+          (offer) => Number(offer.price.grandTotal) <= maxPrice,
         );
       }
     }
