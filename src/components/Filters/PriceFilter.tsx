@@ -57,7 +57,7 @@ const PriceFilter = memo(
     return (
       <div className="filter-contents maxPrice">
         <label htmlFor="max-price">
-          {`${maxPrice?.toLocaleString()}원 미만`}
+          {`${maxPrice?.toLocaleString()}원 이하`}
         </label>
         <input
           ref={sliderRef}

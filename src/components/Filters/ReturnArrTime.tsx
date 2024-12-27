@@ -22,9 +22,9 @@ const ReturnArrTime = memo(
     /* -------------------------------------------------------------------------- */
     /*                             출도착 시간 변경 처리                               */
     /* -------------------------------------------------------------------------- */
-    // useEffect(() => {
-    //   handleFilterChange({ returnArrTime });
-    // }, [returnArrTime]);
+    useEffect(() => {
+      handleFilterChange((prev) => ({ ...prev, returnArrTime }));
+    }, [returnArrTime]);
 
     const handleReturnArrChange = (e: ChangeEvent<HTMLInputElement>) => {
       const value = Number(e.target.value);

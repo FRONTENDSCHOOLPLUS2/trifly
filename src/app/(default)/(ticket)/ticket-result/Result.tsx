@@ -23,9 +23,6 @@ const Result = ({
 }) => {
   const searchResult = useRecoilValue(searchResultState);
   const [filters, setFilters] = useRecoilState(filterState);
-  // const [filteredData, setFilteredData] = useState(() =>
-  //   useFilters(data, filters, prices, returnDate),
-  // );
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   /* -------------------------------------------------------------------------- */
@@ -58,12 +55,6 @@ const Result = ({
   /* -------------------------------------------------------------------------- */
   /*                                  필터 적용                                   */
   /* -------------------------------------------------------------------------- */
-  // const newFilteredData = useFilters(data, filters, prices, returnDate);
-
-  // useEffect(() => {
-  //   // 필터 적용
-  //   setFilteredData(newFilteredData);
-  // }, [newFilteredData]);
   const filteredData = useFilters(data, filters, prices, returnDate);
 
   /* -------------------------------------------------------------------------- */

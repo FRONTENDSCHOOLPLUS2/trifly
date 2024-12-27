@@ -116,20 +116,22 @@ const Filter = ({
       </Accordion>
 
       {/* 최대 가격 필터링 */}
-      <Accordion type="small">
-        <AccordionItem eventKey={1}>
-          <AccordionHeader>
-            <p className="filter-title">가격대 (탑승객 전체)</p>
-          </AccordionHeader>
-          <AccordionBody>
-            <PriceFilter
-              prices={prices}
-              maxPrice={filters.maxPrice}
-              handleFilterChange={handleFilterChange}
-            />
-          </AccordionBody>
-        </AccordionItem>
-      </Accordion>
+      {prices.length >= 2 && (
+        <Accordion type="small">
+          <AccordionItem eventKey={1}>
+            <AccordionHeader>
+              <p className="filter-title">가격대 (탑승객 전체)</p>
+            </AccordionHeader>
+            <AccordionBody>
+              <PriceFilter
+                prices={prices}
+                maxPrice={filters.maxPrice}
+                handleFilterChange={handleFilterChange}
+              />
+            </AccordionBody>
+          </AccordionItem>
+        </Accordion>
+      )}
     </div>
   );
 };

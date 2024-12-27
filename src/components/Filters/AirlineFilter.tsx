@@ -51,7 +51,6 @@ const AirlineFilter = memo(
         : initialSelectedAirlines;
     });
 
-    // const isInitialMount = useRef(true);
     // 불필요한 재계산 방지
     const allianceMap = useRef(getAirlinesByAlliance(airline, carrierCodes));
 
@@ -161,13 +160,6 @@ const AirlineFilter = memo(
 
     // 선택된 항공사가 변경될 때마다 필터 상태 업데이트
     useEffect(() => {
-      // if (!isInitialMount.current) {
-      //   console.log("첫 마운트!");
-
-      // } else {
-      //   isInitialMount.current = false;
-      // }
-      console.log("항공사 필터 변경!");
       handleFilterChange((prev) => ({
         ...prev,
         airline: selectedAirlines,
