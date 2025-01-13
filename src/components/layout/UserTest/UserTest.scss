@@ -1,0 +1,113 @@
+.modal-window:has(.userTest) {
+  width: 90vw;
+  max-width: 70rem;
+
+  pre {
+    text-wrap-mode: wrap;
+  }
+}
+
+.userTest {
+  font-size: var(--title-large);
+  word-break: keep-all;
+
+  section {
+    & + section {
+      margin-top: 2rem;
+    }
+  }
+
+  // 공통 클래스
+  .info {
+    background: var(--color-gray-30);
+    font-weight: normal;
+    padding: 1.8rem;
+    border-radius: 1rem;
+  }
+
+  .list {
+    text-align: left;
+    padding: 0 1rem;
+
+    li {
+      position: relative;
+      display: flex;
+      gap: 1rem;
+
+      & + li {
+        margin-top: 0.4rem;
+      }
+      &::before {
+        content: "-";
+      }
+    }
+  }
+
+  .visitedPage {
+    .progress {
+      position: relative;
+      inset: unset;
+
+      ul {
+        width: calc(100% + 4rem);
+        left: 50%;
+        transform: translateX(-50%);
+
+        &::before {
+          width: calc(100% - 18%);
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        li:first-child,
+        li:last-child {
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  .mission {
+    font-size: 1.03em;
+
+    ol {
+      position: relative;
+
+      li {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.65em;
+          width: 1.5em;
+          aspect-ratio: 1/1;
+          background: var(--color-gray-90);
+          border-radius: 50%;
+          color: #fff;
+          flex-shrink: 0;
+          margin-top: -0.1rem;
+        }
+        p {
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+
+  .guide {
+    color: var(--color-gray-100);
+    font-size: 0.93em;
+  }
+}
+
+@media (max-width: 1023px) {
+  .userTest {
+    font-size: 1.5rem;
+  }
+}
