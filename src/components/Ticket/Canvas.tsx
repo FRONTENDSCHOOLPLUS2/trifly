@@ -2,6 +2,7 @@
 
 import fileUploadAction from "@/data/actions/fileUploadAction";
 import orderFatchAction from "@/data/actions/orderPatchAction";
+import useAddVisitedPage from "@/hook/useAddVisitedPage";
 import saveAs from "file-saver";
 import html2canvas from "html2canvas";
 import Link from "next/link";
@@ -32,6 +33,9 @@ const Canvas = ({
   const [history, setHistory] = useState<string[]>([]);
   const [isCanvasChange, setIsCanvasChange] = useState(false);
 
+  // 사용성 테스트
+  const { setVisitedPage } = useAddVisitedPage();
+
   const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.length) return false;
     const reader = new FileReader();
@@ -46,6 +50,9 @@ const Canvas = ({
   };
 
   const handleDownload = async () => {
+    // 사용자 테스트
+    setVisitedPage("발자국");
+
     if (!ticketRef.current || !imgBoxRef.current) return;
 
     // 모바일 툴박스 안보이도록 클래스 추가
