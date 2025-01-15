@@ -1,8 +1,21 @@
+"use client";
+
 import Progress from "@/components/Progress/Progress";
 import { getTitleByPath } from "./UserTest";
 import Button from "@/components/Button/Button";
+import { useForm } from "react-hook-form";
+import userTestAction from "@/data/actions/userTestAction";
+import { useSetRecoilState } from "recoil";
+import { modalState } from "@/atoms/atoms";
+
+interface FormData {
+  content: string;
+  platform: string;
+  userAgent: string;
+}
 
 const UserTestPage = ({ path }: { path: string }) => {
+  const setModal = useSetRecoilState(modalState);
   const textArr = ["홈", "항공권 검색", "항공권 예약", "발자국", "예약 확인"];
   const missionByPage = {
     홈: "항공권을 검색해보세요!",
@@ -14,6 +27,25 @@ const UserTestPage = ({ path }: { path: string }) => {
       "티켓의 이미지를 바꾸고 그림을 그려보세요! 티켓은 저장도 가능합니다!",
     로그인: "이메일, SNS를 통해 로그인을 시도해보세요!",
     회원가입: "회원가입을 하고 triFly의 서비스를 이용해보세요!",
+  };
+
+  const { register, handleSubmit, reset } = useForm<FormData>();
+
+  const handleForm = async (formData: FormData) => {
+    const res = await userTestAction(path, formData, navigator.userAgent);
+    if (res.ok) {
+      reset();
+      setModal({ isOpen: false }); // '평가하기' 모달 종료
+
+      // '평가 완료 안내' 모달 노출
+      setModal({
+        isOpen: true,
+        title: "안내",
+        content: `[ ${getTitleByPath(path)} ]  평가가 제출되었습니다.`,
+        buttonNum: 1,
+        handleConfirm: () => {},
+      });
+    }
   };
 
   return (
@@ -98,8 +130,12 @@ const UserTestPage = ({ path }: { path: string }) => {
         </section>
       </div>
 
-      <form className="fixed-box">
-        <input type="text" name="" id="" />
+      <form className="fixed-box" onSubmit={handleSubmit(handleForm)}>
+        <input
+          type="text"
+          {...register("content", { required: "평가할 내용을 입력하세요." })}
+          placeholder="평가 내용을 입력해주세요."
+        />
         <Button type="submit" size="sm">
           제출하기
         </Button>
