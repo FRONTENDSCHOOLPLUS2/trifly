@@ -10,8 +10,6 @@ import { modalState } from "@/atoms/atoms";
 
 interface FormData {
   content: string;
-  platform: string;
-  userAgent: string;
 }
 
 const UserTestPage = ({ path }: { path: string }) => {
