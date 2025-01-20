@@ -1,13 +1,17 @@
 import { auth } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
-import UserTest from "../UserTest/UserTest";
 import "./Header.scss";
 import Logout from "./Logout";
+import dynamic from "next/dynamic";
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: "default" | "primary" | "transparent";
 }
+
+const UserTest = dynamic(() => import("../UserTest/UserTest"), {
+  ssr: false,
+});
 
 const Header: React.FC<HeaderProps> = async ({ type = "default" }) => {
   const session = await auth();
