@@ -4,7 +4,7 @@ import { modalState } from "@/atoms/atoms";
 import Button from "@/components/Button/Button";
 import userTestAction from "@/data/actions/userTestAction";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 
@@ -46,6 +46,10 @@ const UserTestForm = () => {
       });
     }
   };
+
+  useEffect(() => {
+    setModal({ isOpen: false });
+  }, []);
 
   return (
     <form className="input-form" onSubmit={handleSubmit(handlePost)}>
