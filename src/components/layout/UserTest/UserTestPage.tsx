@@ -5,17 +5,18 @@ import { getTitleByPath } from "./UserTest";
 import Button from "@/components/Button/Button";
 import { useForm } from "react-hook-form";
 import userTestAction from "@/data/actions/userTestAction";
-import { useSetRecoilState } from "recoil";
-import { modalState } from "@/atoms/atoms";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { modalState, userTestVisitedState } from "@/atoms/atoms";
+import Link from "next/link";
 
 interface FormData {
   content: string;
-  platform: string;
-  userAgent: string;
 }
 
 const UserTestPage = ({ path }: { path: string }) => {
   const setModal = useSetRecoilState(modalState);
+  const [userVisited] = useRecoilState(userTestVisitedState);
+
   const textArr = ["홈", "항공권 검색", "항공권 예약", "발자국", "예약 확인"];
   const missionByPage = {
     홈: "항공권을 검색해보세요!",
@@ -58,13 +59,20 @@ const UserTestPage = ({ path }: { path: string }) => {
         <section className="mission">
           <h4 className="hidden">미션</h4>
           <h5 className="page-mission info">
-            {missionByPage[getTitleByPath(path)]}
+            {userVisited.length >= 5 ? (
+              <p>
+                모든 페이지를 확인하였습니다. <br />
+                <Link href="/user-test">최종 평가로 이동</Link>
+              </p>
+            ) : (
+              missionByPage[getTitleByPath(path)]
+            )}
           </h5>
         </section>
         <section>
           <h4 className="hidden">안내</h4>
           <p className="desc">
-            사용하시면서 느낀 점이나 개선이 필요한 부분을{" "}
+            사용하시면서 느낀 점이나 개선이 필요한 부분을
             <strong>하단의 입력란</strong>에 적어주세요.
           </p>
         </section>

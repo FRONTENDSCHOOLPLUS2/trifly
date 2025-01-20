@@ -6,9 +6,14 @@ const SERVER = process.env.NEXT_PUBLIC_MARKET_API_SERVER;
 const CLIENTID = process.env.NEXT_PUBLIC_MARKET_API_CLIENT_ID as string;
 
 interface FormData {
-  content: string;
-  platform: string;
-  userAgent: string;
+  content?: string;
+  rating?: number;
+  impression?: string;
+  confused?: string;
+  best?: string;
+  improvement?: string;
+  recommend?: string;
+  satisfy?: string;
 }
 
 const userTestAction = async (
@@ -36,6 +41,19 @@ const userTestAction = async (
     tag: userAgent,
   };
 
+  const userFinalTestData = {
+    type: page,
+    title: page,
+    content: `{rating: "${formData.rating}",
+"impression": "${formData.impression}",
+"confused": "${formData.confused}",
+"best": "${formData.best}",
+"improvement": "${formData.improvement}",
+"recommend": "${formData.recommend}",
+"satisfy": "${formData.satisfy}"}`,
+    tag: userAgent,
+  };
+
   const res = await fetch(`${SERVER}/posts`, {
     method: "POST",
     headers: {
@@ -43,7 +61,7 @@ const userTestAction = async (
       "client-id": CLIENTID,
       Authorization: `Bearer ${session?.accessToken}`,
     },
-    body: JSON.stringify(userTestData),
+    body: JSON.stringify(page === "final" ? userFinalTestData : userTestData),
   });
 
   const data = await res.json();
