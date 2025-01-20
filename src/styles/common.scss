@@ -193,5 +193,9 @@
 @media (max-width: 1023px) {
   .containerLayout {
     padding-bottom: 5.6rem;
+
+    &.primaryVer {
+      padding-top: calc(var(--header-height) + 6rem);
+    }
   }
 }
