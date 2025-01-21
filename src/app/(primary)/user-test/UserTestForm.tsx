@@ -63,7 +63,7 @@ const UserTestForm = () => {
           value={stars}
           {...register("rating", {
             required: "별점을 평가해주세요.",
-            min: 1,
+            min: { value: 1, message: "별점을 평가해주세요." },
           })}
         />
         <ul>
@@ -92,8 +92,11 @@ const UserTestForm = () => {
           id="impression"
           placeholder="페이지의 첫 인상을 작성해주세요."
           {...register("impression", {
-            required: "트리플라이의 첫 인상을 5글자 이상 작성해주세요.",
-            minLength: 5,
+            required: "트리플라이의 첫 인상을 작성해주세요.",
+            minLength: {
+              value: 5,
+              message: "트리플라이의 첫 인상을 5글자 이상 작성해주세요.",
+            },
           })}
         />
         <span className="errorMsg">{errors && errors.impression?.message}</span>
@@ -109,8 +112,11 @@ const UserTestForm = () => {
           id="confused"
           placeholder="사용시 어려웠던 점을 작성해주세요."
           {...register("confused", {
-            required: "사용시 어려웠던 점을 5글자 이상 작성해주세요.",
-            minLength: 5,
+            required: "사용시 어려웠던 점을 작성해주세요.",
+            minLength: {
+              value: 5,
+              message: "사용시 어려웠던 점을 5글자 이상 작성해주세요.",
+            },
           })}
         />
         <span className="errorMsg">{errors && errors.confused?.message}</span>
@@ -126,8 +132,11 @@ const UserTestForm = () => {
           id="best"
           placeholder="사용시 가장 좋았던 점을 작성해주세요."
           {...register("best", {
-            required: "사용시 가장 좋았던 점을 5글자 이상 작성해주세요.",
-            minLength: 5,
+            required: "사용시 가장 좋았던 점을 작성해주세요.",
+            minLength: {
+              value: 5,
+              message: "사용시 가장 좋았던 점을 5글자 이상 작성해주세요.",
+            },
           })}
         />
         <span className="errorMsg">{errors && errors.best?.message}</span>
@@ -143,9 +152,12 @@ const UserTestForm = () => {
           id="improvement"
           placeholder="개선이 필요하다고 생각되는 부분을 작성해주세요."
           {...register("improvement", {
-            required:
-              "개선이 필요하다고 생각되는 부분을 5글자 이상 작성해주세요.",
-            minLength: 5,
+            required: "개선이 필요하다고 생각되는 부분을 작성해주세요.",
+            minLength: {
+              value: 5,
+              message:
+                "개선이 필요하다고 생각되는 부분을 5글자 이상 작성해주세요.",
+            },
           })}
         />
         <span className="errorMsg">
@@ -179,8 +191,11 @@ const UserTestForm = () => {
           id="satisfy"
           placeholder="기대했던 것이 충족되지 않은 점이 있다면 작성해주세요."
           {...register("satisfy", {
-            required: "기대가 충족되지 않은 점을 5글자 이상 작성해주세요.",
-            minLength: 5,
+            required: "기대가 충족되지 않은 점을  작성해주세요.",
+            minLength: {
+              value: 5,
+              message: "기대가 충족되지 않은 점을 5글자 이상 작성해주세요.",
+            },
           })}
         />
         <span className="errorMsg">{errors && errors.satisfy?.message}</span>
