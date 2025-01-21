@@ -124,8 +124,8 @@
 // 항상 떠있는 fixed 버튼
 .userTest-button-wr {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 3rem;
+  right: 3rem;
   z-index: 999;
 
   .userTest-button {
@@ -137,10 +137,24 @@
     border-radius: 50%;
     position: relative;
     transition: all var(--transition-duration);
+    animation: shadow-ani 3.4s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955)
+      both;
 
     &:hover {
       background-color: var(--color-primary-hover);
     }
+  }
+}
+
+@keyframes shadow-ani {
+  30% {
+    box-shadow: 0 0 0rem rgba(255, 91, 16, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 1.4rem rgba(255, 91, 16, 0.8);
+  }
+  70% {
+    box-shadow: 0 0 0rem rgba(255, 91, 16, 0.8);
   }
 }
 
