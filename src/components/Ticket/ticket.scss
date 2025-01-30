@@ -178,7 +178,7 @@
       }
       & > span {
         position: relative;
-        padding-top: 0.7em;
+        padding-top: 0.8em;
         color: var(--color-gray-100);
         font-weight: 500;
         letter-spacing: 0.03em;
@@ -187,18 +187,32 @@
           content: "";
           display: block;
           position: absolute;
-          width: var(--title-medium);
+          width: 1.5rem;
           aspect-ratio: 1/1;
-          background: var(--color-gray-90);
+          background: var(--color-gray-30);
           border-radius: 50%;
-          border: 2.5px solid var(--color-gray-30);
-          outline: 2.5px solid var(--color-gray-90);
+          border: 2.5px solid var(--color-gray-90);
           top: 0;
           left: 0;
           transform: translateY(calc(-50% - 2px));
           box-sizing: border-box;
         }
 
+        &.departure {
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            inset: 0;
+            top: 0;
+            left: 0.4rem;
+            transform: translateY(calc(-50% - 2px));
+            aspect-ratio: 1 / 1;
+            background: var(--color-gray-90);
+            border-radius: 50%;
+            width: 0.7rem;
+          }
+        }
         &.arrival {
           &::before {
             left: auto;

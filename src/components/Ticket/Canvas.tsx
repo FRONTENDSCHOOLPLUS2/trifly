@@ -118,6 +118,7 @@ const Canvas = ({
     const img = new Image();
     img.src = previousState;
     img.onload = () => {
+      if (!ctx) return;
       ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
       ctx.drawImage(img, 0, 0);
     };
@@ -128,6 +129,8 @@ const Canvas = ({
     if (history.length === 0) saveState();
 
     setIsCanvasChange(true);
+    if (!ctx) return;
+
     ctx.beginPath();
     pos = { drawable: true, ...getPosition(e) };
     ctx.moveTo(pos.X, pos.Y);
@@ -141,6 +144,8 @@ const Canvas = ({
   const draw = (e: MouseEvent | TouchEvent) => {
     if (pos.drawable) {
       pos = { ...pos, ...getPosition(e) };
+
+      if (!ctx) return;
       ctx.lineTo(pos.X, pos.Y);
       ctx.stroke();
     }
@@ -159,14 +164,23 @@ const Canvas = ({
   };
 
   const handleClear = () => {
+    if (!ctx) return;
     ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
     setHistory([]);
   };
 
   useEffect(() => {
     canvas = canvasRef.current!;
+    if (!canvas) return;
     ctx = canvas.getContext("2d")!;
+  }, [canvasRef]);
 
+  useEffect(() => {
+    const { clientWidth, clientHeight } = canvasBoxRef.current!;
+    setCanvasSize({ width: clientWidth, height: clientHeight });
+  }, []);
+
+  useEffect(() => {
     const handleMouseDown = (e: MouseEvent | TouchEvent) => initDraw(e);
     const handleMouseMove = (e: MouseEvent | TouchEvent) => draw(e);
     const handleMouseUp = () => finishDraw();
@@ -189,12 +203,7 @@ const Canvas = ({
       canvas.removeEventListener("touchmove", handleMouseMove);
       canvas.removeEventListener("touchend", handleMouseUp);
     };
-  });
-
-  useEffect(() => {
-    const { clientWidth, clientHeight } = canvasBoxRef.current!;
-    setCanvasSize({ width: clientWidth, height: clientHeight });
-  }, []);
+  }, [color, brushSize]);
 
   return (
     <div className="canvas-inner">
