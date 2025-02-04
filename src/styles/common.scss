@@ -81,6 +81,7 @@
       display: inline-block;
       margin-left: var(--title-min);
       font-size: var(--title-medium);
+      letter-spacing: -0.05rem;
     }
   }
 
@@ -197,5 +198,10 @@
     &.primaryVer {
       padding-top: calc(var(--header-height) + 6rem);
     }
+  }
+
+  .input-form label .errorMsg {
+    font-size: 1.3rem;
+    margin-left: 0.8rem;
   }
 }
