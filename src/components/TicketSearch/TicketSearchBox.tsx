@@ -26,7 +26,7 @@ const TicketSearchBox = ({
   airport,
   handleChange,
 }: {
-  params: ISearchParams;
+  params?: ISearchParams;
   code: CodeState<AirportData>;
   airport: AirportData[];
   handleChange?: () => void;
