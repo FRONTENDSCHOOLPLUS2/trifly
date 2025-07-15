@@ -9,8 +9,8 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "api.fesp.shop",
-        pathname: "/files/**",
+        hostname: "fesp-api.koyeb.app",
+        pathname: "/market/files/**",
       },
     ],
   },
